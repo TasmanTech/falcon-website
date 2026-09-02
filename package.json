@@ -1,0 +1,51 @@
+{
+  "name": "contracting-website",
+  "version": "0.1.0",
+  "description": "",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm:dev:back-end\" \"npm:dev:front-end\"",
+    "dev:back-end": "cd apps/back-end && npm run start:dev",
+    "dev:front-end": "cd apps/front-end && npm run dev",
+    "prod": "concurrently \"npm:prod:back-end\" \"npm:prod:front-end\"",
+    "prod:back-end": "cd apps/back-end && npm run build && npm start",
+    "prod:front-end": "cd apps/front-end && npm run build && npm start",
+    "build:frontend": "npm run build --workspace=apps/front-end",
+    "start:frontend": "npm run start --workspace=apps/front-end",
+    "build:backend": "npm run build --workspace=apps/back-end",
+    "start:backend": "npm run start:prod --workspace=apps/back-end"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.1",
+    "@nestjs/core": "^12.0.1",
+    "concurrently": "^10.0.5",
+    "react-icons": "^5.7.0",
+    "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-plugin-security": "^4.0.1",
+    "typescript": "^5.9.3"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.3.3",
+    "@tailwindcss/oxide-linux-x64-musl": "^4.3.3",
+    "lightningcss-linux-x64-gnu": "^1.33.0",
+    "lightningcss-linux-x64-musl": "^1.33.0"
+  },
+  "overrides": {
+    "magic-string": "0.30.5"
+  }
+}

@@ -1,0 +1,105 @@
+# ----------------------------------------------------
+# Global Ignores (apply to the whole monorepo)
+# ----------------------------------------------------
+
+# Node.js and Package Manager
+node_modules/
+.npm
+.yarn/
+.pnpm-store/ 
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log* 
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local.example
+
+# Logs
+logs/
+*.log
+
+# Coverage and Test Reports
+coverage/
+.nyc_output/
+*.lcov
+junit.xml
+
+# IDEs and Editor Specific Files
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+.DS_Store
+Thumbs.db 
+ehthumbs.db 
+.project
+.classpath 
+.c9/ 
+*.launch 
+.settings/ 
+*.sublime-workspace # Sublime Text
+
+# Next.js specific for root (if your root is also a Next.js app)
+.next/
+out/
+
+# NestJS specific for root (if your root has a build output directly)
+/dist/
+*.tsbuildinfo
+
+# Other common build outputs
+/build/
+/tmp/
+
+# Prisma
+# By default Prisma Client is generated into node_modules/.prisma/client, which is ignored by node_modules
+# If you configure a custom output directory, you might need to add it here, e.g.:
+# /generated/prisma/client/
+
+# ----------------------------------------------------
+# Application/Package Specific Ignores (within `apps/` and `packages/` directories)
+# ----------------------------------------------------
+
+# Next.js applications (e.g., in apps/nextjs-app/)
+apps/front-end/.(next|vercel)/
+apps/front-end/out/
+# apps/*/node_modules/ # Generally covered by root node_modules/ if using workspaces
+# apps/*/dist/ # Generally covered by root /dist/ or specific /dist/ for NestJS apps
+
+# NestJS applications or shared packages (e.g., in apps/nestjs-api/ or packages/common-lib/)
+apps/back-end/dist/
+packages/back-end/dist/
+apps/back-end/node_modules/ 
+packages/back-end/node_modules/ 
+apps/back-end/coverage/
+packages/back-end/coverage/
+apps/back-end/src/**/*.js 
+packages/back-end/src/**/*.js
+
+
+# ----------------------------------------------------
+# Miscellaneous
+# ----------------------------------------------------
+.envrc
+.DS_Store
+.env.*
+.history
+*.bak
+*.swp
+*.swo 
+*.sqlite 
+*.sqlite-journal
+
+# File uploads
+apps/back-end/uploads/
