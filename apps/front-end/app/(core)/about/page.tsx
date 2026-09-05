@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About Us',
   description: 'Learn more about our premium locksmithing company in New Zealand. We are dedicated to providing the highest quality security solutions.',
-  keywords: 'About Locksmith, Master Locksmiths, Locksmith Company New Zealand, [Brand Name]',
+  keywords: 'About Locksmith, Master Locksmiths, Locksmith Company New Zealand, Falcon Access',
   openGraph: {
-    title: 'About Us | [Brand Name]',
+    title: 'About Us | Falcon Access',
     description: 'Learn more about our premium locksmithing company in New Zealand. We are dedicated to providing the highest quality security solutions.',
-    url: 'https://brandname.co.nz/about',
+    url: 'https://falconaccess.co.nz/about',
   }
 };
 
@@ -17,16 +17,16 @@ export default function AboutPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://brandname.co.nz/about/#webpage",
-        "url": "https://brandname.co.nz/about",
-        "name": "About Us | [Brand Name]",
-        "isPartOf": { "@id": "https://brandname.co.nz/#website" }
+        "@id": "https://falconaccess.co.nz/about/#webpage",
+        "url": "https://falconaccess.co.nz/about",
+        "name": "About Us | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brandname.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://brandname.co.nz/about" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://falconaccess.co.nz/about" }
         ]
       }
     ]

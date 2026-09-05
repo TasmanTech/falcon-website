@@ -4,11 +4,11 @@ import Hero from '@/components/Hero';
 export const metadata: Metadata = {
   title: 'Locksmith Auckland',
   description: 'Auckland\'s trusted commercial and residential locksmiths serving homeowners, government, and businesses across New Zealand. Available 24/7.',
-  keywords: 'Locksmith Auckland, Commercial Locksmith, Residential Locksmith, Emergency Locksmith, [Brand Name]',
+  keywords: 'Locksmith Auckland, Commercial Locksmith, Residential Locksmith, Emergency Locksmith, Falcon Access',
   openGraph: {
-    title: 'Locksmith Auckland | [Brand Name]',
+    title: 'Locksmith Auckland | Falcon Access',
     description: 'Auckland\'s trusted commercial and residential locksmiths serving homeowners, government, and businesses across New Zealand. Available 24/7.',
-    url: 'https://brandname.co.nz/',
+    url: 'https://falconaccess.co.nz/',
   }
 };
 
@@ -18,15 +18,15 @@ export default function Home() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://brandname.co.nz/#webpage",
-        "url": "https://brandname.co.nz/",
-        "name": "Locksmith Auckland | [Brand Name]",
-        "isPartOf": { "@id": "https://brandname.co.nz/#website" }
+        "@id": "https://falconaccess.co.nz/#webpage",
+        "url": "https://falconaccess.co.nz/",
+        "name": "Locksmith Auckland | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brandname.co.nz/" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" }
         ]
       }
     ]
@@ -54,11 +54,11 @@ export default function Home() {
 
             <div className="w-full md:w-1/2">
               <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-6">
-                Why [Brand Name]?
+                Why Falcon Access?
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80 mb-8">
                 <p>
-                  We do not just follow industry standards. We set them. [Brand Name] has a long history and were founding members of the Master Locksmiths Association.
+                  We do not just follow industry standards. We set them. Falcon Access has a long history and were founding members of the Master Locksmiths Association.
                 </p>
                 <p>
                   We also pioneered master keying and restricted security systems in New Zealand.

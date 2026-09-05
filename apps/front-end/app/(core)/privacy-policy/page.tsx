@@ -4,9 +4,9 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how we protect your information and handle your data with care.',
   openGraph: {
-    title: 'Privacy Policy | [Brand Name]',
+    title: 'Privacy Policy | Falcon Access',
     description: 'Our privacy policy and data handling practices. Learn how we protect your information and handle your data with care.',
-    url: 'https://brandname.co.nz/privacy-policy',
+    url: 'https://falconaccess.co.nz/privacy-policy',
   }
 };
 
@@ -16,16 +16,16 @@ export default function PrivacyPolicyPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://brandname.co.nz/privacy-policy/#webpage",
-        "url": "https://brandname.co.nz/privacy-policy",
-        "name": "Privacy Policy | [Brand Name]",
-        "isPartOf": { "@id": "https://brandname.co.nz/#website" }
+        "@id": "https://falconaccess.co.nz/privacy-policy/#webpage",
+        "url": "https://falconaccess.co.nz/privacy-policy",
+        "name": "Privacy Policy | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brandname.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://brandname.co.nz/privacy-policy" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://falconaccess.co.nz/privacy-policy" }
         ]
       }
     ]

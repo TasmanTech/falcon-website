@@ -1,6 +1,6 @@
-# TasmanTech Web Platform
+# Falcon Access Web Platform
 
-This is a full-stack monorepo for the TasmanTech web platform. It contains a Next.js front-end and a NestJS back-end API.
+This is a full-stack monorepo for the Falcon Access web platform. It contains a Next.js front-end and a NestJS back-end API.
 
 ## Project Structure
 - `apps/front-end`: Next.js 15, React 19, Tailwind CSS v4, Jest.

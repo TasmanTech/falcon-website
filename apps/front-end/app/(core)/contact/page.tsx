@@ -3,11 +3,11 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Get in touch with us for quotes or emergency locksmith assistance across New Zealand. We are available 24/7 for all your security needs.',
-  keywords: 'Contact Locksmith, Emergency Locksmith Number, Locksmith Quotes New Zealand, [Brand Name]',
+  keywords: 'Contact Locksmith, Emergency Locksmith Number, Locksmith Quotes New Zealand, Falcon Access',
   openGraph: {
-    title: 'Contact Us | [Brand Name]',
+    title: 'Contact Us | Falcon Access',
     description: 'Get in touch with us for quotes or emergency locksmith assistance across New Zealand. We are available 24/7 for all your security needs.',
-    url: 'https://brandname.co.nz/contact',
+    url: 'https://falconaccess.co.nz/contact',
   }
 };
 
@@ -17,16 +17,16 @@ export default function ContactPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://brandname.co.nz/contact/#webpage",
-        "url": "https://brandname.co.nz/contact",
-        "name": "Contact Us | [Brand Name]",
-        "isPartOf": { "@id": "https://brandname.co.nz/#website" }
+        "@id": "https://falconaccess.co.nz/contact/#webpage",
+        "url": "https://falconaccess.co.nz/contact",
+        "name": "Contact Us | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brandname.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://brandname.co.nz/contact" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://falconaccess.co.nz/contact" }
         ]
       }
     ]

@@ -4,9 +4,9 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms and conditions for using our services. Please read our terms of service carefully before utilizing our locksmithing solutions.',
   openGraph: {
-    title: 'Terms of Service | [Brand Name]',
+    title: 'Terms of Service | Falcon Access',
     description: 'Terms and conditions for using our services. Please read our terms of service carefully before utilizing our locksmithing solutions.',
-    url: 'https://brandname.co.nz/terms-of-service',
+    url: 'https://falconaccess.co.nz/terms-of-service',
   }
 };
 
@@ -16,16 +16,16 @@ export default function TermsOfServicePage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://brandname.co.nz/terms-of-service/#webpage",
-        "url": "https://brandname.co.nz/terms-of-service",
-        "name": "Terms of Service | [Brand Name]",
-        "isPartOf": { "@id": "https://brandname.co.nz/#website" }
+        "@id": "https://falconaccess.co.nz/terms-of-service/#webpage",
+        "url": "https://falconaccess.co.nz/terms-of-service",
+        "name": "Terms of Service | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brandname.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://brandname.co.nz/terms-of-service" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
+          { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://falconaccess.co.nz/terms-of-service" }
         ]
       }
     ]

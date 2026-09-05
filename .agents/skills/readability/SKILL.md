@@ -5,7 +5,7 @@ description: Guidelines for ensuring copy across the website is accessible, scan
 
 # Content Readability Standards
 
-When writing or auditing copy for [Brand Name], ensure it meets the following standards to maximize conversions and user engagement:
+When writing or auditing copy for Falcon Access, ensure it meets the following standards to maximize conversions and user engagement:
 
 ## 1. Paragraph Length
 - Keep paragraphs short: **Maximum 3-4 sentences** per paragraph.
