@@ -24,15 +24,15 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        
+
         <div>
           <h4 className="font-bold text-lg mb-4 font-montserrat">Services</h4>
           <ul className="space-y-2 font-inter">
-            <li><Link href="/lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lockout Services</Link></li>
-            <li><Link href="/lock-change-and-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Change &amp; Installation</Link></li>
-            <li><Link href="/smart-lock-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Installation</Link></li>
-            <li><Link href="/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
-            <li><Link href="/obdii-diagnostic" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">OBDII Diagnostic</Link></li>
+            <li><Link href="/lock/lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lockout Services</Link></li>
+            <li><Link href="/lock/lock-change-and-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Change &amp; Installation</Link></li>
+            <li><Link href="/smart-lock/smart-lock-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Installation</Link></li>
+            <li><Link href="/auto/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
+            <li><Link href="/auto/obdii-diagnostic" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">OBDII Diagnostic</Link></li>
           </ul>
         </div>
 
@@ -51,13 +51,13 @@ export default function Footer() {
           <ul className="space-y-2 font-inter text-brand-light/80">
             <li>123 Business Street</li>
             <li>Auckland, New Zealand</li>
-            <li>Phone: (09) 123 4567</li>
+            <li>Phone: <a href="tel:+6492431404" className="hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
             <li>Email: info@falconaccess.co.nz</li>
           </ul>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/50 font-inter text-sm">
-        &copy; {new Date().getFullYear()} Tasman Tech Limited trading as Falcon Access. All rights reserved.
+        &copy; {new Date().getFullYear()} Falcon Access Limited. All rights reserved.
       </div>
     </footer>
   );
