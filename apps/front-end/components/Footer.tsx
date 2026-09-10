@@ -31,7 +31,7 @@ export default function Footer() {
             <li><Link href="/lock/lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lockout Services</Link></li>
             <li><Link href="/lock/lock-change-and-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Change &amp; Installation</Link></li>
             <li><Link href="/smart-lock/smart-lock-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Installation</Link></li>
-            <li><Link href="/auto/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
+            <li><Link href="/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
             <li><Link href="/auto/obdii-diagnostic" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">OBDII Diagnostic</Link></li>
           </ul>
         </div>

@@ -51,7 +51,7 @@ export default function Navbar() {
                 <div>
                   <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">Auto</h4>
                   <div className="flex flex-col space-y-2">
-                    <Link href="auto/car-lockout" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Car Lockout</Link>
+                    <Link href="car-lockout" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Car Lockout</Link>
                     <Link href="auto/obdii-diagnostic" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">OBDII Diagnostic</Link>
                     <Link href="auto/dead-battery-assistance" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Dead Battery Assist</Link>
                   </div>
@@ -98,20 +98,20 @@ export default function Navbar() {
               {isServicesOpen && (
                 <div className="flex flex-col pl-4 pb-4 space-y-3">
                   <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-2">Lock Services</div>
-                  <Link href="/lockout" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lockout</Link>
-                  <Link href="/rekey" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Rekey</Link>
-                  <Link href="/lock-change-and-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Change &amp; Install</Link>
-                  <Link href="/lock-repair" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Repair</Link>
+                  <Link href="/lock/lockout" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lockout</Link>
+                  <Link href="/lock/rekey" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Rekey</Link>
+                  <Link href="/lock/lock-change-and-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Change &amp; Install</Link>
+                  <Link href="/lock/lock-repair" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Repair</Link>
 
                   <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4">Smart Locks</div>
-                  <Link href="/smart-lock-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Installation</Link>
-                  <Link href="/smart-lock-change" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Change</Link>
-                  <Link href="/smart-lock-repair-and-programming" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Repair &amp; Programming</Link>
+                  <Link href="/smart-lock/smart-lock-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Installation</Link>
+                  <Link href="/smart-lock/smart-lock-change" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Change</Link>
+                  <Link href="/smart-lock/smart-lock-repair-and-programming" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Repair &amp; Programming</Link>
 
                   <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4">Auto</div>
                   <Link href="/car-lockout" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Car Lockout</Link>
-                  <Link href="/obdii-diagnostic" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>OBDII Diagnostic</Link>
-                  <Link href="/dead-battery-assistance" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Dead Battery Assistance</Link>
+                  <Link href="/auto/obdii-diagnostic" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>OBDII Diagnostic</Link>
+                  <Link href="/auto/dead-battery-assistance" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Dead Battery Assistance</Link>
                 </div>
               )}
             </div>
