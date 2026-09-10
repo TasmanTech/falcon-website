@@ -8,10 +8,7 @@ export class ContactController {
 
   @Post()
   @HttpCode(HttpStatus.OK)
-  submitContactForm(@Body() createContactDto: CreateContactDto): {
-    success: boolean;
-    message: string;
-  } {
+  async submitContactForm(@Body() createContactDto: CreateContactDto): Promise<{ success: boolean; message: string }> {
     return this.contactService.submitContactForm(createContactDto);
   }
 }
