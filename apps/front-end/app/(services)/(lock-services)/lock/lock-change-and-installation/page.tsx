@@ -98,7 +98,7 @@ export default function LockChangePage() {
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80">
                 <p>
-                  Whether you're moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance.
+                  Whether you're moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance. We operate on a transparent and highly affordable <strong>$20 flat call-out fee</strong>.
                 </p>
                 <p>
                   Our team specializes in the precise installation of both standard and specialized hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly.
@@ -106,7 +106,7 @@ export default function LockChangePage() {
               </div>
               <div className="mt-8">
                 <Link href="/contact" className="inline-block bg-brand-accent text-white px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:shadow-md transition-all duration-200">
-                  Request a Quote
+                  Book Installation ($20 Call Out)
                 </Link>
               </div>
             </div>

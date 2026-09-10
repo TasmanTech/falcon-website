@@ -98,7 +98,7 @@ export default function LockoutPage() {
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80">
                 <p>
-                  Being locked out of your commercial facility or residential home is more than an inconvenience; it can disrupt operations and pose security concerns. Our property maintenance team specializes in swift, effective lockout resolution.
+                  Being locked out of your commercial facility or residential home is more than an inconvenience. Our property maintenance team specializes in swift, effective lockout resolution, charging a simple, incredibly affordable <strong>$20 flat call-out fee</strong> for everything—no quotes, no waiting, and no hidden costs.
                 </p>
                 <p>
                   We treat emergency access as a priority component of our broader maintenance services, ensuring that your property remains functional and secure at all times.
@@ -106,7 +106,7 @@ export default function LockoutPage() {
               </div>
               <div className="mt-8">
                 <Link href="/contact" className="inline-block bg-brand-accent text-white px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:shadow-md transition-all duration-200">
-                  Connect Now
+                  Connect Now ($20 Call Out)
                 </Link>
               </div>
             </div>

@@ -106,7 +106,7 @@ export default function SmartLockInstallationPage() {
               </div>
               <div className="mt-8">
                 <Link href="/contact" className="inline-block bg-brand-accent text-white px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:shadow-md transition-all duration-200">
-                  Schedule Installation
+                  Schedule Installation ($20 Call Out)
                 </Link>
               </div>
             </div>
