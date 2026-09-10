@@ -1,11 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="bg-brand-dark text-brand-light py-12 border-t border-brand-light/10 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h3 className="text-2xl font-bold font-montserrat mb-4">[Brand Name]</h3>
+          <div className="mb-6">
+            <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={180} height={48} className="h-12 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} />
+          </div>
           <p className="text-brand-light/70 font-inter mb-6">
             Providing high-quality professional services across New Zealand.
           </p>
@@ -21,13 +24,15 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        
+
         <div>
           <h4 className="font-bold text-lg mb-4 font-montserrat">Services</h4>
           <ul className="space-y-2 font-inter">
-            <li><Link href="/services/locksmith" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Commercial Locksmith</Link></li>
-            <li><Link href="/services/locksmith" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Residential Services</Link></li>
-            <li><Link href="/services/locksmith" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Access Control</Link></li>
+            <li><Link href="/lock/lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lockout Services</Link></li>
+            <li><Link href="/lock/lock-change-and-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Change &amp; Installation</Link></li>
+            <li><Link href="/smart-lock/smart-lock-installation" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Installation</Link></li>
+            <li><Link href="/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
+            <li><Link href="/auto/obdii-diagnostic" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">OBDII Diagnostic</Link></li>
           </ul>
         </div>
 
@@ -36,7 +41,8 @@ export default function Footer() {
           <ul className="space-y-2 font-inter">
             <li><Link href="/about" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">About Us</Link></li>
             <li><Link href="/contact" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Contact</Link></li>
-            <li><Link href="/careers" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Careers</Link></li>
+            <li><Link href="/privacy-policy" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Privacy Policy</Link></li>
+            <li><Link href="/terms-of-service" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Terms of Service</Link></li>
           </ul>
         </div>
 
@@ -45,13 +51,13 @@ export default function Footer() {
           <ul className="space-y-2 font-inter text-brand-light/80">
             <li>123 Business Street</li>
             <li>Auckland, New Zealand</li>
-            <li>Phone: (09) 123 4567</li>
-            <li>Email: info@brandname.co.nz</li>
+            <li>Phone: <a href="tel:+6492431404" className="hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
+            <li>Email: info@falconaccess.co.nz</li>
           </ul>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/50 font-inter text-sm">
-        &copy; {new Date().getFullYear()} [Brand Name]. All rights reserved.
+        &copy; {new Date().getFullYear()} Falcon Access Limited. All rights reserved.
       </div>
     </footer>
   );

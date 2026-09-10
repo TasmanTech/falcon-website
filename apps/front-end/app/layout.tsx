@@ -16,10 +16,13 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | [Brand Name]",
-    default: "[Brand Name] | High Quality Locksmithing in NZ",
+    template: "%s | Falcon Access",
+    default: "Falcon Access | High Quality Locksmithing in NZ",
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
+  icons: {
+    icon: '/falcon_access_logo.webp',
+  },
 };
 
 export default function RootLayout({

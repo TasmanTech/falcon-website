@@ -15,6 +15,7 @@ When working within the `apps/front-end` directory:
 - **Data Fetching & Mutations**: Leverage Server Actions for mutations and standard `fetch` with Next.js caching rules for data retrieval whenever possible.
 - **File Conventions**: Use standard App Router file names strictly (`page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`).
 - **Testing**: Every new or modified Component, Page, Server Action, and Hook MUST have an accompanying `.test.tsx` or `.test.ts` test file. Refer to the `frontend-testing` skill for detailed testing guidelines.
+- **Image Optimization**: Whenever using the `<Image>` component from `next/image` with the `fill` property, you **must** provide a `sizes` prop (e.g., `sizes="(max-width: 768px) 100vw, 50vw"`). Failing to do so causes Next.js to default to `100vw`, which triggers console warnings and hurts performance.
 
 ## NestJS Architecture & Best Practices
 When working within the `apps/back-end` directory:
@@ -40,6 +41,11 @@ When working within the `apps/back-end` directory:
 - **Flat UI Elements**: Keep cards, comparison tables, and panels flat and clean. Use subtle borders (`border-gray-200` or `border-white/10`) instead of heavy outer drop shadows (`shadow-xl`).
 - **Responsive Text Alignment**: For textual content blocks (like service capabilities) that stack with images on mobile screens, use `text-center lg:text-left` to ensure the text is centered on small devices but naturally left-aligned on desktop.
 
+## Image & Asset Guidelines
+- **Never Use the Same Image Twice**: Do not duplicate or reuse the same image file across multiple distinct sections of a page or different pages to cut corners. Every section that requires an image must have a unique, contextually appropriate image.
+- **Image Subject Constraints**: When generating or selecting illustrative graphics, use cartoonish vectors of **tools or objects only**. Strictly avoid including characters, people, or animals in the images.
+- **Format & Sizing**: Use `.webp` format at `1024x720` resolution whenever possible.
+
 ## Copywriting & SEO Vocabulary
 - **Prioritize High-Traffic Keywords**: Always use terms like **"web design"** and **"web developer"** (or "web development") when describing services on public-facing pages.
 - **Avoid Technical Jargon**: Avoid using overly technical terms like "engineering", "infrastructure", or "software architecture" unless specifically required for a deeply technical audience. Keep the copy accessible and aligned with what clients actually search for.
@@ -50,3 +56,8 @@ When working within the `apps/back-end` directory:
 - **Promo Codes**: When linking a promotional code (e.g., in a hero offer), direct the user to the quoting flow using a URL parameter (`/quote?promo=CODE`) rather than the standard booking flow (`/book`).
 - **Sitemap Maintenance**: Whenever creating a new public-facing page in the Next.js front-end, always ensure it is added to `apps/front-end/app/sitemap.ts` to maintain accurate SEO indexing.
 - **Internal Linking (Inlinks)**: Always add as many relevant internal links (inlinks) as possible to existing pages, without altering the readable copy. Make sure inlinks are consistently added when generating or modifying content to improve SEO and user navigation.
+
+## Company Information
+- **Phone Number**: The official phone number for Falcon Access is `+64 9 243 1404`. When creating new links, always use this number and format the link as `tel:+6492431404`.
+- **Company Focus**: The overarching framing of the business is **"Commercial & Residential Repair and Maintenance"**. Locksmithing should be presented as just *one* of the specialized services offered, not the entire identity of the business.
+- **No Invented Credentials**: Never invent certifications, licenses, or professional affiliations (e.g., claiming to be part of the "Master Locksmiths Association"). Maintain an authentic tone focused on practical, honest, and reliable hard work without relying on flashy, unsubstantiated credentials.

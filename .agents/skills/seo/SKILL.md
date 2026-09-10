@@ -8,13 +8,13 @@ description: Rules for setting Next.js Metadata tags, including title, descripti
 When creating or modifying Next.js page components, ensure proper metadata is exported using the Next.js `Metadata` API while adhering strictly to Screaming Frog character and pixel length limits to prevent truncation.
 
 ## 1. Title Template Rule & Length Limits
-**CRITICAL**: The `app/layout.tsx` should define a global title template (`"%s | [Brand Name]"`). 
+**CRITICAL**: The `app/layout.tsx` should define a global title template (`"%s | Falcon Access"`). 
 - When setting the `title` in a child page, provide **ONLY the specific page name**.
-- **NEVER** include `| [Brand Name]` in the title string you provide. If you do, it will result in duplicates (e.g., `"Contact Us | [Brand Name] | [Brand Name]"`).
+- **NEVER** include `| Falcon Access` in the title string you provide. If you do, it will result in duplicates (e.g., `"Contact Us | Falcon Access | Falcon Access"`).
 
 **Screaming Frog Title Length Rules**:
 - Google truncates titles around **60 characters** (or ~580 pixels).
-- Ensure the combined title (Page Name + `" | [Brand Name]"`) remains under 60 characters. For example, if your brand name suffix takes up 20 characters, your page-specific `title` string MUST be 40 characters or less.
+- Ensure the combined title (Page Name + `" | Falcon Access"`) remains under 60 characters. For example, if your brand name suffix takes up 20 characters, your page-specific `title` string MUST be 40 characters or less.
 
 ## 2. Meta Description Length Limits
 **Screaming Frog Description Length Rules**:
@@ -47,11 +47,11 @@ For pages that require authentication, admin panels, or internal utilities (e.g.
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Custom React Development', // Example length check needed based on [Brand Name] length
+  title: 'Custom React Development', // Example length check needed based on Falcon Access length
   description: 'Expert React and Next.js development services for scalable, high-performance applications. Build a custom web app tailored to your needs.', // 142 chars (Max 155)
-  keywords: 'React, Next.js, Web Development, [Brand Name]',
+  keywords: 'React, Next.js, Web Development, Falcon Access',
   openGraph: {
-    title: 'Custom React Development | [Brand Name]', // Ensure max 60 chars
+    title: 'Custom React Development | Falcon Access', // Ensure max 60 chars
     description: 'Expert React and Next.js development services for scalable, high-performance applications.', // 92 chars (Max 155)
     url: '[Website URL]/services/react',
   }
@@ -65,7 +65,7 @@ export default function ReactServicePage() {
         "@type": "WebPage",
         "@id": "[Website URL]/services/react/#webpage",
         "url": "[Website URL]/services/react",
-        "name": "Custom React Development | [Brand Name]",
+        "name": "Custom React Development | Falcon Access",
         "isPartOf": { "@id": "[Website URL]/#website" }
       },
       {
