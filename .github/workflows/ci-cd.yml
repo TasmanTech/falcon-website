@@ -94,7 +94,6 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          token_format: 'access_token'
           workload_identity_provider: 'projects/1237791386/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
           service_account: 'github-actions-deploy@website-496607.iam.gserviceaccount.com'
 
@@ -102,11 +101,8 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Log in to Artifact Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGION }}-docker.pkg.dev
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
+        run: |
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://${{ env.REGION }}-docker.pkg.dev
 
       - name: Only push a module (back) that changed
         run: |
@@ -144,7 +140,6 @@ jobs:
         id: auth
         uses: google-github-actions/auth@v2
         with:
-          token_format: 'access_token'
           workload_identity_provider: 'projects/1237791386/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
           service_account: 'github-actions-deploy@website-496607.iam.gserviceaccount.com'
 
@@ -152,11 +147,8 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Log in to Artifact Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGION }}-docker.pkg.dev
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
+        run: |
+          gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://${{ env.REGION }}-docker.pkg.dev
 
       - name: Only push a module (front) that changed
         run: |

@@ -34,13 +34,13 @@ For any public-facing page (e.g., Home, Services, Contact), the exported `metada
   - **Dynamic Extensions**: Add `FAQPage` if the page has FAQs, and `Service` if it's a service offering.
   - **Entity Linkage**: All schemas must link to the root context using `"isPartOf": { "@id": "[Website URL]/#website" }`.
 
-## 4. No-Index or Auth Pages
-For pages that require authentication, admin panels, or internal utilities (e.g., `/dashboard`, `/admin`, `/login`):
+## 4. No-Index Pages
+For utility pages, forms, or internal pages that should not be indexed (e.g., `/thank-you`, `/internal-booking`):
 - Include the `title` (Max 46 chars), `description` (120-155 chars), and `openGraph` data.
 - Do NOT include `keywords`.
 - **DO** include foundational JSON-LD Schema (e.g., `WebPage`, `BreadcrumbList`) for accessibility and structural clarity, even though it won't be indexed.
 - Include `robots: { index: false, follow: true/false }` depending on whether links should be crawled.
-- **Why OpenGraph?** Even if a page is no-indexed by search engines, it can still be shared directly, and OpenGraph tags ensure a rich preview is generated on social platforms and messengers.
+- **Why OpenGraph?** Even if a page is no-indexed by search engines, it can still be shared directly via messages, and OpenGraph tags ensure a rich preview is generated.
 
 ## Example Usage (Public Page)
 ```typescript
