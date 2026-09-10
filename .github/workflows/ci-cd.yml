@@ -5,6 +5,17 @@ on:
     branches:
       - master
   workflow_dispatch:
+    inputs:
+      force_backend:
+        description: 'Force deploy backend (bypasses change detection)'
+        required: false
+        type: boolean
+        default: true
+      force_frontend:
+        description: 'Force deploy frontend (bypasses change detection)'
+        required: false
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -41,7 +52,7 @@ jobs:
   # ==========================================
   test-backend:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.backend == 'true' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.detect-changes.outputs.backend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.force_backend == true) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -58,7 +69,7 @@ jobs:
 
   test-frontend:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.frontend == 'true' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.detect-changes.outputs.frontend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.force_frontend == true) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -78,7 +89,7 @@ jobs:
   # ==========================================
   deploy-backend:
     needs: [detect-changes, test-backend]
-    if: ${{ needs.detect-changes.outputs.backend == 'true' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.detect-changes.outputs.backend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.force_backend == true) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -124,7 +135,7 @@ jobs:
   # ==========================================
   deploy-frontend:
     needs: [detect-changes, test-frontend]
-    if: ${{ needs.detect-changes.outputs.frontend == 'true' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ needs.detect-changes.outputs.frontend == 'true' || (github.event_name == 'workflow_dispatch' && inputs.force_frontend == true) }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
