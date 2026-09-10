@@ -23,18 +23,18 @@ A typical module directory should include the following core files, named accord
 - Use `class-validator` and `class-transformer` decorators in DTOs for request validation.
 
 ## 4. Supplementary Files
-If a module requires additional controllers or services (e.g., for admin specific routes), name them descriptively but keep them within the same resource folder (e.g., `admin-user.controller.ts` or `cleanup.service.ts`).
+If a module requires additional controllers or services (e.g., for specific secondary routes), name them descriptively but keep them within the same resource folder (e.g., `public-contact.controller.ts` or `cleanup.service.ts`).
 
 ## Example Layout
 ```
 src/
-└── user/
+└── contact/
     ├── dto/
-    │   ├── update-profile.dto.ts
-    │   └── customer.dto.ts
-    ├── user.module.ts
-    ├── user.controller.ts
-    ├── admin-user.controller.ts
-    ├── user.service.ts
-    └── user.entity.ts
+    │   ├── create-contact.dto.ts
+    │   └── update-contact.dto.ts
+    ├── contact.module.ts
+    ├── contact.controller.ts
+    ├── internal-contact.controller.ts
+    ├── contact.service.ts
+    └── contact.entity.ts
 ```
