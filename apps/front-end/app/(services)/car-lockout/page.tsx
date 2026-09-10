@@ -98,7 +98,7 @@ export default function CarLockoutPage() {
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80">
                 <p>
-                  Locking your keys inside your vehicle is a stressful and incredibly common situation. Our team provides rapid response vehicle lockout assistance, treating it with the same urgency and professionalism as our commercial property services.
+                  Locking your keys inside your vehicle is a stressful and incredibly common situation. Our team provides rapid response vehicle lockout assistance, with a transparent and incredibly affordable <strong>$20 flat call-out fee</strong> for everything—no quotes or hidden costs.
                 </p>
                 <p>
                   We rely on specialized, non-destructive tools that allow us to manipulate the internal mechanics of your car door safely, retrieving your keys without causing damage to your vehicle.
@@ -106,7 +106,7 @@ export default function CarLockoutPage() {
               </div>
               <div className="mt-8">
                 <Link href="/contact" className="inline-block bg-brand-accent text-white px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:shadow-md transition-all duration-200">
-                  Request Emergency Access
+                  Request Emergency Access ($20 Call Out)
                 </Link>
               </div>
             </div>
