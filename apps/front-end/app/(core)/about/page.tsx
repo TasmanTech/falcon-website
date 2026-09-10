@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'About Us | Falcon Access',
-  description: 'Learn more about Falcon Access. We are dedicated to providing honest, practical, and reliable commercial and residential repair and maintenance services across New Zealand.',
+  title: 'About Us',
+  description: "Learn more about Falcon Access. We provide premium locksmithing services across NZ with a focus on reliability and high-quality workmanship.",
   keywords: 'About Us, Commercial Repair, Residential Maintenance, Property Maintenance New Zealand, Falcon Access',
   openGraph: {
     title: 'About Us | Falcon Access',
@@ -88,7 +88,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-6 font-inter text-brand-light/80 text-lg">
             <p>
-              We don't believe in relying on flashy, unsubstantiated credentials. Our reputation is built purely on practical, honest, and reliable hard work. When you call us, you get straight answers and effective solutions without unnecessary upselling.
+              We don&apos;t believe in relying on flashy, unsubstantiated credentials. Our reputation is built purely on practical, honest, and reliable hard work. When you call us, you get straight answers and effective solutions without unnecessary upselling.
             </p>
             <p>
               Every property has unique demands, and we approach each job with a commitment to doing things right the first time, ensuring long-lasting stability and functionality for your spaces.

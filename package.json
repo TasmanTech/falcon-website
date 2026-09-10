@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "eslint": "^9.16.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-security": "^4.0.1",
     "typescript": "^6.0.0"
   },
@@ -46,6 +47,7 @@
     "lightningcss-linux-x64-musl": "^1.33.0"
   },
   "overrides": {
-    "magic-string": "0.30.5"
+    "magic-string": "0.30.5",
+    "eslint-plugin-react": "^7.37.5"
   }
 }

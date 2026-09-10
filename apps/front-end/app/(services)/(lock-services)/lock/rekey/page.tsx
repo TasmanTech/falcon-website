@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Hardware Rekeying Services | Falcon Access',
+  title: 'Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
   keywords: 'Rekeying, Lock Rekey, Hardware Rekeying, Commercial Security, Falcon Access',
   openGraph: {
@@ -98,7 +98,7 @@ export default function RekeyPage() {
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80">
                 <p>
-                  When you need to restrict access to a building, you don't necessarily have to replace all the hardware. Rekeying is a practical property maintenance solution that alters the internal components of your existing mechanisms.
+                  When you need to restrict access to a building, you don&apos;t necessarily have to replace all the hardware. Rekeying is a practical property maintenance solution that alters the internal components of your existing mechanisms.
                 </p>
                 <p>
                   This service renders all previously issued keys useless and provides you with a fresh set, granting you immediate peace of mind at a fraction of the cost of full hardware replacement.

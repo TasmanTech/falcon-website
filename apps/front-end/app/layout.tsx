@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
   icons: {
-    icon: '/falcon_access_logo.webp',
+    icon: '/favicon.jpg',
   },
 };
 

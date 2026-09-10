@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="mb-6">
-            <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={180} height={48} className="h-12 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} />
+            <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={300} height={80} className="h-16 md:h-20 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} />
           </div>
           <p className="text-brand-light/70 font-inter mb-6">
             Providing high-quality professional services across New Zealand.
