@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Falcon Access',
+  title: 'Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
   openGraph: {
     title: 'Privacy Policy | Falcon Access',
@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
         <div className="bg-white rounded-2xl shadow-sm border border-brand-dark/5 p-8 md:p-12 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
           <div className="prose prose-lg max-w-none font-inter text-brand-dark/80">
             <p className="mb-6">
-              At Falcon Access ("we", "us", "our"), we are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services or visit our website. We comply with the New Zealand Privacy Act 2020.
+              At Falcon Access (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;), we are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services or visit our website. We comply with the New Zealand Privacy Act 2020.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">1. Information We Collect</h2>
@@ -80,12 +80,12 @@ export default function PrivacyPolicyPage() {
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">5. Your Rights</h2>
             <p className="mb-6">
-              You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you'd like to ask for a copy of your information, or to have it corrected, please contact us at <strong>info@falconaccess.co.nz</strong> or call us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.
+              You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you&apos;d like to ask for a copy of your information, or to have it corrected, please contact us at <strong>info@falconaccess.co.nz</strong> or call us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">6. Changes to this Policy</h2>
             <p className="mb-6">
-              We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the "Last updated" date will be revised accordingly.
+              We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the &quot;Last updated&quot; date will be revised accordingly.
             </p>
           </div>
         </div>

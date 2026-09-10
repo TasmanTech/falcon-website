@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Hardware & Lock Repair Services | Falcon Access',
+  title: 'Hardware & Lock Repair Services',
   description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
   keywords: 'Lock Repair, Hardware Repair, Commercial Maintenance, Residential Repair, Falcon Access',
   openGraph: {
@@ -98,7 +98,7 @@ export default function LockRepairPage() {
               </h2>
               <div className="space-y-4 font-inter text-brand-dark/80">
                 <p>
-                  A sticking or broken mechanism isn't just frustrating; it can compromise the security of your entire building. As part of our comprehensive property maintenance services, we specialize in diagnosing and fixing faulty hardware.
+                  A sticking or broken mechanism isn&apos;t just frustrating; it can compromise the security of your entire building. As part of our comprehensive property maintenance services, we specialize in diagnosing and fixing faulty hardware.
                 </p>
                 <p>
                   From residential deadbolts to heavy-duty commercial latches, our goal is to identify the root cause of the issue and implement a lasting, reliable repair.
@@ -202,7 +202,7 @@ export default function LockRepairPage() {
                   </svg>
                 </span>
               </summary>
-              <p className="px-6 pb-6 text-brand-light/70 font-inter">Whenever possible, we prefer to repair existing hardware to save you money. However, if internal mechanisms are completely worn out, we'll offer a straightforward replacement recommendation.</p>
+              <p className="px-6 pb-6 text-brand-light/70 font-inter">Whenever possible, we prefer to repair existing hardware to save you money. However, if internal mechanisms are completely worn out, we&apos;ll offer a straightforward replacement recommendation.</p>
             </details>
             
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">

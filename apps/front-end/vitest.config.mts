@@ -8,10 +8,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./setupTests.ts'],
     globals: true,
+    css: false,
+    pool: 'threads',
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
+      '@asamuzakjp/css-color': path.resolve(__dirname, './mock-css-color.js'),
     },
   },
 });

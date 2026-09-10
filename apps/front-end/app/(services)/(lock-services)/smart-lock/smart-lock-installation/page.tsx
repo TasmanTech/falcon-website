@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Fresh Smart Lock Installation | Falcon Access',
+  title: 'Fresh Smart Lock Installation',
   description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
   keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, Falcon Access',
   openGraph: {
@@ -125,7 +125,7 @@ export default function SmartLockInstallationPage() {
               Smart locks contain sensitive motorized components that have a very low tolerance for friction. If a bore hole is slightly off-center or the strike plate is misaligned, the motor will struggle, leading to rapid battery drain and premature failure.
             </p>
             <p>
-              This is why professional installation is critical. We don't just screw the lock into the door; we ensure the physical foundation is flawlessly aligned so your new investment operates reliably for years.
+              This is why professional installation is critical. We don&apos;t just screw the lock into the door; we ensure the physical foundation is flawlessly aligned so your new investment operates reliably for years.
             </p>
           </div>
         </div>

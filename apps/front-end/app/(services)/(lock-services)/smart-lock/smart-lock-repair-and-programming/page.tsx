@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Smart Lock Diagnostics & Repair | Falcon Access',
+  title: 'Smart Lock Diagnostics & Repair',
   description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
   keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, Falcon Access',
   openGraph: {
@@ -122,7 +122,7 @@ export default function SmartLockRepairPage() {
           </h2>
           <div className="space-y-6 font-inter text-brand-light/80 text-lg">
             <p>
-              Smart hardware issues often present as electronic failures (like a dead keypad or lost Wi-Fi connection) when the underlying cause is actually mechanical. A slightly misaligned door can force the lock's motor to work overtime, rapidly draining batteries and eventually burning out the mechanism.
+              Smart hardware issues often present as electronic failures (like a dead keypad or lost Wi-Fi connection) when the underlying cause is actually mechanical. A slightly misaligned door can force the lock&apos;s motor to work overtime, rapidly draining batteries and eventually burning out the mechanism.
             </p>
             <p>
               We take a practical, holistic approach to repair. Instead of immediately replacing expensive electronic boards, we assess the entire door structure to ensure the physical alignment is perfect before addressing network or power issues.
@@ -202,7 +202,7 @@ export default function SmartLockRepairPage() {
                   </svg>
                 </span>
               </summary>
-              <p className="px-6 pb-6 text-brand-light/70 font-inter">Most smart locks will flash a red light or emit a specific beep when the battery is low. If replacing the batteries with fresh, high-quality ones doesn't resolve the issue, the motor or electronic board may require professional repair.</p>
+              <p className="px-6 pb-6 text-brand-light/70 font-inter">Most smart locks will flash a red light or emit a specific beep when the battery is low. If replacing the batteries with fresh, high-quality ones doesn&apos;t resolve the issue, the motor or electronic board may require professional repair.</p>
             </details>
             
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">

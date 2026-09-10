@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Falcon Access',
+  title: 'Contact Us',
   description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
   keywords: 'Contact Falcon Access, Property Maintenance Contact, Repair Services New Zealand',
   openGraph: {

@@ -3,14 +3,14 @@ import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
 export class CreateContactDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @IsEmail()
   @IsNotEmpty()
-  email: string;
+  email!: string;
 
   @IsString()
   @IsNotEmpty()
   @MinLength(10)
-  message: string;
+  message!: string;
 }

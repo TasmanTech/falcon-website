@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Smart Lock Installation | Falcon Access',
+  title: 'Smart Lock Installation',
   description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
   keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, Falcon Access',
   openGraph: {

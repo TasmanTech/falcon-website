@@ -1,18 +1,17 @@
+import { describe, it, expect, beforeEach, afterEach, jest } from '@jest/globals';
 import { Test, TestingModule } from '@nestjs/testing';
 import { ContactService } from './contact.service';
 import { InternalServerErrorException } from '@nestjs/common';
-import * as nodemailer from 'nodemailer';
-
-jest.mock('nodemailer');
+import * as nodemailerModule from 'nodemailer';
 
 describe('ContactService', () => {
   let service: ContactService;
-  const mockSendMail = jest.fn();
+  const mockSendMail = jest.fn() as any;
 
   beforeEach(async () => {
-    (nodemailer.createTransport as jest.Mock).mockReturnValue({
+    jest.spyOn(nodemailerModule, 'createTransport').mockReturnValue({
       sendMail: mockSendMail,
-    });
+    } as any);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [ContactService],
