@@ -89,8 +89,7 @@ export default function SmartLockInstallationPage() {
         ctaText="Schedule Installation ($20 Call Out)"
         ctaHref="/contact"
         photoPosition="left"
-        theme="light"
-      />
+        theme="light" imageTitle={''} />
 
       <TextContentSection
         title="The Importance of Precision"

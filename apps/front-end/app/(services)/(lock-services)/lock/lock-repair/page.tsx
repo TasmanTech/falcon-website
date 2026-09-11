@@ -89,8 +89,7 @@ export default function LockRepairPage() {
         ctaText="Discuss Your Issue ($20 Call Out)"
         ctaHref="/contact"
         photoPosition="left"
-        theme="light"
-      />
+        theme="light" imageTitle={''} />
 
       <TextContentSection
         title="Repair First, Replace Only When Necessary"
