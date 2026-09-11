@@ -89,8 +89,7 @@ export default function SmartLockRepairPage() {
         ctaText="Request a Diagnostic ($20 Call Out)"
         ctaHref="/contact"
         photoPosition="left"
-        theme="light"
-      />
+        theme="light" imageTitle={''} />
 
       <TextContentSection
         title="Identifying the Root Cause"

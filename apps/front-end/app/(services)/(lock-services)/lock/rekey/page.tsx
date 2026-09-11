@@ -89,8 +89,7 @@ export default function RekeyPage() {
         ctaText="Book a Rekey ($20 Call Out)"
         ctaHref="/contact"
         photoPosition="left"
-        theme="light"
-      />
+        theme="light" imageTitle={''} />
 
       <TextContentSection
         title="When Should You Rekey?"
