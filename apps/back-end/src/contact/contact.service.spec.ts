@@ -11,7 +11,7 @@ describe('ContactService', () => {
   beforeEach(async () => {
     jest.spyOn(nodemailerModule, 'createTransport').mockReturnValue({
       sendMail: mockSendMail,
-    } as any);
+    } as unknown as nodemailerModule.Transporter);
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [ContactService],

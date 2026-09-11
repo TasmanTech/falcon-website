@@ -66,7 +66,7 @@ export default function LockRepairPage() {
   return (
     <div className="w-full pt-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
         <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
           Hardware & Lock Repair
@@ -81,9 +81,9 @@ export default function LockRepairPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-              <div className="relative aspect-3/2 w-full rounded-2xl overflow-hidden bg-brand-light">
+              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-brand-light">
                 <Image
-                  src="/images/services/lock-repair_photo.svg"
+                  src="/images/services/lock-repair_photo.webp"
                   alt="Cartoonish illustration representing hardware and lock repair tools"
                   title="Hardware Repair"
                   fill
@@ -142,7 +142,7 @@ export default function LockRepairPage() {
               We handle a wide array of wear-and-tear related problems.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '100ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
@@ -153,7 +153,7 @@ export default function LockRepairPage() {
                 Often caused by building settlement or sagging doors, preventing the latch from properly securing into the frame.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '200ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -188,7 +188,7 @@ export default function LockRepairPage() {
               Common questions about our repair services.
             </p>
           </div>
-          
+
           <div className="space-y-6">
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
@@ -204,7 +204,7 @@ export default function LockRepairPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Whenever possible, we prefer to repair existing hardware to save you money. However, if internal mechanisms are completely worn out, we&apos;ll offer a straightforward replacement recommendation.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 Can you fix commercial glass door locks?
@@ -219,7 +219,7 @@ export default function LockRepairPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Yes, we handle a wide range of commercial and residential hardware, including specialized mortise locks and glass door hardware.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 How long does a repair usually take?

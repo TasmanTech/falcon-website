@@ -66,7 +66,7 @@ export default function RekeyPage() {
   return (
     <div className="w-full pt-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
         <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
           Hardware Rekeying
@@ -81,9 +81,9 @@ export default function RekeyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-              <div className="relative aspect-3/2 w-full rounded-2xl overflow-hidden bg-brand-light">
+              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-brand-light">
                 <Image
-                  src="/images/services/rekey_photo.svg"
+                  src="/images/services/rekey_photo.webp"
                   alt="Cartoonish illustration representing keys and internal hardware pins"
                   title="Rekeying Services"
                   fill
@@ -142,7 +142,7 @@ export default function RekeyPage() {
               A straightforward approach to managing building access.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '100ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
@@ -153,7 +153,7 @@ export default function RekeyPage() {
                 Save significantly by utilizing your existing, functional hardware instead of buying entirely new sets for every door.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '200ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg>
@@ -188,7 +188,7 @@ export default function RekeyPage() {
               Common questions about our rekeying services.
             </p>
           </div>
-          
+
           <div className="space-y-6">
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
@@ -204,7 +204,7 @@ export default function RekeyPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Replacing hardware involves removing the entire mechanism from the door. Rekeying simply changes the internal pins of your existing hardware so old keys no longer work, which is usually much faster and more cost-effective.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 Can you make all my doors use the same key?
@@ -219,7 +219,7 @@ export default function RekeyPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Yes, provided the hardware mechanisms are of the same brand or share the same keyway profile, we can key them alike for your convenience.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 Is rekeying suitable for commercial master key systems?

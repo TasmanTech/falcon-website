@@ -26,15 +26,15 @@ export default function PhotoContentSection({
 }: PhotoContentSectionProps) {
   const bgClass = theme === 'light' ? 'bg-brand-light' : 'bg-brand-dark';
   const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
-  
+
   const isLeft = photoPosition === 'left';
-  
+
   return (
     <section className={`py-24 ${bgClass} ${textClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-16 items-center`}>
           <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-            <div className={`relative aspect-3/2 w-full rounded-2xl overflow-hidden ${bgClass}`}>
+            <div className={`relative aspect-4/3 w-full rounded-2xl overflow-hidden ${bgClass}`}>
               <Image
                 src={imageSrc}
                 alt={imageAlt}
@@ -56,7 +56,7 @@ export default function PhotoContentSection({
             </div>
             {ctaText && ctaHref && (
               <div className="mt-8">
-                <Link href={ctaHref} className="inline-block bg-brand-accent text-white px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:shadow-md transition-all duration-200">
+                <Link href={ctaHref} className="inline-block bg-brand-accent text-brand-dark px-8 py-4 rounded-full font-bold hover:bg-brand-accent/90 hover:-translate-y-1 transition-all duration-200">
                   {ctaText}
                 </Link>
               </div>

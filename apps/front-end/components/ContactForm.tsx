@@ -2,6 +2,14 @@
 
 import { useState } from "react";
 
+/**
+ * Contact form component.
+ * Provides a form for users to submit inquiries. Captures name, email, service type,
+ * and a message, then sends a POST request to the back-end API. Handles local state
+ * for submission status and error reporting.
+ *
+ * @returns {JSX.Element} The rendered ContactForm component.
+ */
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -49,7 +57,7 @@ export default function ContactForm() {
         setStatus("error");
         setErrorMessage(result.message || "Failed to send message.");
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setErrorMessage("Network error occurred. Please try again.");
     }

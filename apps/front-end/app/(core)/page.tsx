@@ -89,7 +89,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-              <div className="relative aspect-3/2 w-full rounded-2xl overflow-hidden bg-brand-light">
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-light">
                 <Image
                   src="/images/general_repair_tools.webp"
                   alt="General Repair Tools"
@@ -145,7 +145,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row-reverse gap-16 items-center">
             <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-              <div className="relative aspect-3/2 w-full rounded-2xl overflow-hidden bg-brand-light">
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-light">
                 <Image
                   src="/images/locksmith_tools.webp"
                   alt="Specialized Locksmith Tools"

@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+/**
+ * Props for the Hero component.
+ */
 interface HeroProps {
   title: string;
   description: string;
@@ -11,6 +14,19 @@ interface HeroProps {
   isMain?: boolean;
 }
 
+/**
+ * Hero component used across the website to display a prominent banner with an image, title, and call to action.
+ *
+ * @param {HeroProps} props - The properties for the Hero component.
+ * @param {string} props.title - The main heading text.
+ * @param {string} props.description - The sub-heading or description text.
+ * @param {string} props.imageSrc - The source path for the background image.
+ * @param {string} props.imageAlt - The alt text for the background image.
+ * @param {string} [props.ctaText] - Optional text for the call-to-action button.
+ * @param {string} [props.ctaLink] - Optional URL for the call-to-action button.
+ * @param {boolean} [props.isMain=false] - If true, styles the hero for the main landing page.
+ * @returns {JSX.Element} The rendered Hero component.
+ */
 export default function Hero({
   title,
   description,

@@ -45,6 +45,7 @@ When working within the `apps/back-end` directory:
 - **Never Use the Same Image Twice**: Do not duplicate or reuse the same image file across multiple distinct sections of a page or different pages to cut corners. Every section that requires an image must have a unique, contextually appropriate image.
 - **Image Subject Constraints**: When generating or selecting illustrative graphics, use cartoonish vectors of **tools or objects only**. Strictly avoid including characters, people, or animals in the images.
 - **Format & Sizing**: Use `.webp` format at `1024x720` resolution whenever possible.
+- **Strict File Size Limits**: All content images must strictly be under **100KB**. Hero images can be slightly larger, but must remain under **~175KB**.
 
 ## Copywriting & SEO Vocabulary
 - **Prioritize High-Traffic Keywords**: Always use terms like **"web design"** and **"web developer"** (or "web development") when describing services on public-facing pages.

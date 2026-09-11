@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * Global footer component.
+ * Displays company information, social links, and navigation links grouped by category.
+ * Included at the bottom of all pages via the root layout.
+ *
+ * @returns {JSX.Element} The rendered Footer component.
+ */
 export default function Footer() {
   return (
     <footer className="bg-brand-dark text-brand-light py-12 border-t border-brand-light/10 mt-auto">

@@ -79,7 +79,7 @@ export default function OBDIIPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/obdii_photo.jpg"
+        imageSrc="/images/services/obdii_photo.webp"
         imageAlt="Cartoonish illustration of a handheld OBDII diagnostic scanner tool"
         imageTitle="Professional Diagnostic Scanning"
         title="Understand Your Vehicle"

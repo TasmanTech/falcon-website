@@ -66,7 +66,7 @@ export default function SmartLockRepairPage() {
   return (
     <div className="w-full pt-32">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
         <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
           Smart System Diagnostics
@@ -81,9 +81,9 @@ export default function SmartLockRepairPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-              <div className="relative aspect-3/2 w-full rounded-2xl overflow-hidden bg-brand-light">
+              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-brand-light">
                 <Image
-                  src="/images/services/smart-lock-repair_photo.svg"
+                  src="/images/services/smart-lock-repair-and-programming_photo.webp"
                   alt="Cartoonish illustration representing electronic hardware diagnostics"
                   title="Smart Lock Diagnostics"
                   fill
@@ -142,7 +142,7 @@ export default function SmartLockRepairPage() {
               We troubleshoot and repair a wide range of smart system faults.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '100ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
@@ -153,7 +153,7 @@ export default function SmartLockRepairPage() {
                 Resolving mechanical friction and realigning strike plates so the internal motor can operate smoothly without draining power.
               </p>
             </div>
-            
+
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-brand-dark/5 hover:border-brand-accent/50 transition-colors animate-card-ready animate-play flex flex-col items-center text-center" style={{ animationDelay: '200ms' }}>
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.906 14.142 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>
@@ -188,7 +188,7 @@ export default function SmartLockRepairPage() {
               Common questions about electronic hardware repair.
             </p>
           </div>
-          
+
           <div className="space-y-6">
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
@@ -204,7 +204,7 @@ export default function SmartLockRepairPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Most smart locks will flash a red light or emit a specific beep when the battery is low. If replacing the batteries with fresh, high-quality ones doesn&apos;t resolve the issue, the motor or electronic board may require professional repair.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 Can you fix a smart lock that keeps jamming?
@@ -219,7 +219,7 @@ export default function SmartLockRepairPage() {
               </summary>
               <p className="px-6 pb-6 text-brand-light/70 font-inter">Yes. Jamming is often a mechanical issue caused by a misaligned strike plate rather than an electronic failure. We can realign the door frame to eliminate friction and restore smooth motor operation.</p>
             </details>
-            
+
             <details className="group bg-white/10 rounded-xl border border-white/10 [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 p-6 text-brand-light font-montserrat font-bold text-lg">
                 Are smart lock repairs more expensive than standard hardware?
