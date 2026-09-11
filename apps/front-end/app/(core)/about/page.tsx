@@ -57,8 +57,7 @@ export default function AboutPage() {
         imageSrc="/images/about_photo.webp"
         imageAlt="Cartoonish illustration representing our team and tools"
         photoPosition="left"
-        theme="light"
-      />
+        theme="light" imageTitle={''} />
 
       <TextContentSection
         title="Our Honest Approach"
