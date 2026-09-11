@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 import Footer from './Footer';
 
 vi.mock('next/image', () => ({
+  /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
   default: (props: Record<string, unknown>) => <img {...props} />
 }));
 

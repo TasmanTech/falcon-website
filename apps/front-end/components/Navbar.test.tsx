@@ -4,6 +4,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Navbar from './Navbar';
 
 vi.mock('next/image', () => ({
+  /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
   default: (props: Record<string, unknown>) => <img {...props} />
 }));
 

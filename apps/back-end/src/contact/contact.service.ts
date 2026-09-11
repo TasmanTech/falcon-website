@@ -6,6 +6,9 @@ import {
 import { CreateContactDto } from './dto/create-contact.dto';
 import * as nodemailer from 'nodemailer';
 
+/**
+ * Service responsible for handling contact form submissions and dispatching emails.
+ */
 @Injectable()
 export class ContactService {
   private transporter: nodemailer.Transporter;
@@ -24,6 +27,14 @@ export class ContactService {
     });
   }
 
+  /**
+   * Processes a contact form submission. Sends a notification email to the company
+   * and an auto-reply confirmation to the customer.
+   *
+   * @param {CreateContactDto} createContactDto - The data submitted from the contact form.
+   * @returns {Promise<{ success: boolean; message: string }>} Result of the submission.
+   * @throws {InternalServerErrorException} If email dispatch fails.
+   */
   async submitContactForm(createContactDto: CreateContactDto): Promise<{ success: boolean; message: string }> {
     const companyEmailHtml = `
       <div style="font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background-color: #f3f4f6; color: #1f2937;">

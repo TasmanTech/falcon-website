@@ -79,7 +79,7 @@ export default function DeadBatteryPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/dead-battery_photo.jpg"
+        imageSrc="/images/services/dead-battery_photo.webp"
         imageAlt="Cartoonish illustration of a car battery with jumper cables attached"
         imageTitle="Professional Jump Starts"
         title="Quick & Reliable Starts"

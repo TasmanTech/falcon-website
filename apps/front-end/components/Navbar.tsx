@@ -4,6 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * Global navigation bar component.
+ * Displays a responsive navigation menu with a collapsible services dropdown.
+ * Adapts to mobile and desktop screen sizes, featuring a solid background on mobile
+ * and a translucent blur effect on desktop when scrolled.
+ *
+ * @returns {JSX.Element} The rendered Navbar component.
+ */
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -30,7 +38,7 @@ export default function Navbar() {
               </svg>
             </div>
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-160 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div className="bg-brand-dark border border-brand-light/10 rounded-lg shadow-xl overflow-hidden grid grid-cols-3 p-6 gap-6">
+              <div className="bg-brand-dark border border-brand-light/10 rounded-lg shadow-lg overflow-hidden grid grid-cols-3 p-6 gap-6">
                 <div>
                   <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">Lock Services</h4>
                   <div className="flex flex-col space-y-2">
