@@ -6,11 +6,11 @@ import FAQSection from '@/components/sections/FAQSection';
 
 export const metadata: Metadata = {
   title: 'Dead Battery Assistance',
-  description: "Fast and reliable dead battery assistance in New Zealand. Our expert team will help you get your vehicle back on the road safely.",
-  keywords: 'dead battery, jump start',
+  description: 'Fast dead battery jump starts across Auckland. Our mobile fleet safely revives your vehicle battery using surge-protected equipment.',
+  keywords: 'dead battery, jump start, Auckland, car battery, web design',
   openGraph: {
-    title: 'Dead Battery Assistance',
-    description: 'Quick dead battery assistance and jump starts to get you back on the road safely.',
+    title: 'Dead Battery Assistance | Falcon Access',
+    description: 'Fast dead battery jump starts across Auckland. Our mobile fleet safely revives your vehicle battery using surge-protected equipment.',
     url: 'https://falconaccess.co.nz/auto/dead-battery-assistance',
   }
 };
@@ -23,15 +23,22 @@ export default function DeadBatteryPage() {
         "@type": "WebPage",
         "@id": "https://falconaccess.co.nz/auto/dead-battery-assistance/#webpage",
         "url": "https://falconaccess.co.nz/auto/dead-battery-assistance",
-        "name": "Dead Battery Assistance",
+        "name": "Dead Battery Assistance | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Dead Battery Assistance", "item": "https://falconaccess.co.nz/auto/dead-battery-assistance" }
+          { "@type": "ListItem", "position": 2, "name": "Auto Services", "item": "https://falconaccess.co.nz/auto" },
+          { "@type": "ListItem", "position": 3, "name": "Dead Battery Assistance", "item": "https://falconaccess.co.nz/auto/dead-battery-assistance" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Dead Battery Assistance",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Fast dead battery jump starts and diagnostics across Auckland."
       },
       {
         "@type": "FAQPage",
@@ -41,7 +48,7 @@ export default function DeadBatteryPage() {
             "name": "How quickly can you arrive to jump start my car?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We prioritize dead battery calls to ensure rapid dispatch. Our team typically arrives quickly, getting you back on the road without long delays."
+              "text": "We prioritise dead battery calls to ensure rapid dispatch. Our mobile fleet typically arrives quickly anywhere in Auckland, getting you back on the road without long delays."
             }
           },
           {
@@ -49,7 +56,7 @@ export default function DeadBatteryPage() {
             "name": "Is it safe to jump start modern vehicles?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. We use professional-grade jump starter packs equipped with surge protection to prevent damage to your vehicle's sensitive ECU and electronics."
+              "text": "Yes. We use professional-grade jump starter packs equipped with advanced surge protection to completely prevent damage to your vehicle's sensitive ECU and electronics."
             }
           },
           {
@@ -57,7 +64,7 @@ export default function DeadBatteryPage() {
             "name": "What if the battery won't hold a charge?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If a jump start is unsuccessful, we can perform on-the-spot diagnostics. We can often help arrange a replacement or tow if the battery is completely failed."
+              "text": "If a standard jump start is unsuccessful, we perform on-the-spot diagnostics. We can often help arrange a replacement or tow if the battery has completely failed."
             }
           }
         ]
@@ -74,7 +81,7 @@ export default function DeadBatteryPage() {
           Dead Battery Assistance
         </h1>
         <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Fast and reliable jump starts to get you back on the road safely.
+          Fast and highly reliable jump starts to get your vehicle moving again anywhere in Auckland.
         </p>
       </div>
 
@@ -82,12 +89,13 @@ export default function DeadBatteryPage() {
         imageSrc="/images/services/dead-battery_photo.webp"
         imageAlt="Cartoonish illustration of a car battery with jumper cables attached"
         imageTitle="Professional Jump Starts"
-        title="Quick & Reliable Starts"
+        title="Quick & Reliable Engine Starts"
         content={[
-          <p key="1">A dead battery can happen to anyone, leaving you stranded at the worst possible time. Our team provides fast, professional jump starts with a clear <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">We use heavy-duty, surge-protected equipment designed to safely start both standard and high-performance modern vehicles without risking damage to the delicate onboard electronics.</p>
+          <p key="1">A dead battery can happen to absolutely anyone, often leaving you stranded at the worst possible time. Our mobile team provides fast, professional jump starts across Auckland with a brilliantly clear <strong>$20 flat call-out fee</strong>.</p>,
+          <p key="2">We use heavy-duty, surge-protected equipment designed specifically to safely start both standard and high-performance modern vehicles. We do this without risking any damage to the vehicle&apos;s delicate onboard electronics. We are as meticulous about this technical process as a professional web developer is about flawless web design.</p>,
+          <p key="3">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
         ]}
-        ctaText="Request Jump Start ($20 Call Out)"
+        ctaText="Request Jump Start"
         ctaHref="/contact"
         photoPosition="left"
         theme="light"
@@ -96,30 +104,30 @@ export default function DeadBatteryPage() {
       <TextContentSection
         title="Safety First Diagnostics"
         content={[
-          <p key="1">Modern cars are essentially rolling computers. Improperly jump-starting a vehicle using cheap jumper cables can cause power surges that fry critical control modules, leading to incredibly expensive repairs.</p>,
-          <p key="2">Our equipment strictly controls the voltage delivery. If the battery is deeply discharged, we carefully monitor the electrical load, ensuring a smooth and safe start every time.</p>
+          <p key="1">Modern cars are essentially complex rolling computers. Improperly jump-starting a vehicle using cheap jumper cables can cause massive power surges. These surges can fry critical control modules and compromise the vehicle&apos;s defence systems, leading to incredibly expensive repairs.</p>,
+          <p key="2">Our specialised equipment strictly controls the voltage delivery to your vehicle. If the battery is deeply discharged, our training programme ensures our technicians carefully monitor the electrical load, delivering a smooth and safe start every single time.</p>
         ]}
         theme="dark"
       />
 
       <IconListSection
         title="Our Jump Start Process"
-        subtitle="How we get you moving again."
+        subtitle="How we get you moving again quickly and safely."
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
             title: "Rapid Dispatch",
-            description: "We prioritize emergency calls so you aren't left waiting by the side of the road."
+            description: "We strictly prioritise emergency calls so you aren't left waiting by the side of the road. Our Auckland mobile fleet responds quickly."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
             title: "Surge Protection",
-            description: "Advanced jump packs with built-in safeguards to protect your car's sensitive electronics."
+            description: "We utilise advanced jump packs with built-in safeguards to completely protect your car's sensitive electronics during the jump start."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>,
             title: "Battery Health Check",
-            description: "We verify the alternator is charging and assess if the battery simply needs replacing."
+            description: "After starting, we verify the alternator is successfully charging and assess if the battery simply needs to be replaced."
           }
         ]}
         theme="light"
@@ -127,19 +135,19 @@ export default function DeadBatteryPage() {
 
       <FAQSection
         title="Frequently Asked Questions"
-        subtitle="Common questions about our jump start service."
+        subtitle="Common questions about our mobile jump start service."
         faqs={[
           {
             question: "How quickly can you arrive to jump start my car?",
-            answer: "We prioritize dead battery calls to ensure rapid dispatch. Our team typically arrives quickly, getting you back on the road without long delays."
+            answer: "We prioritise dead battery calls to ensure rapid dispatch. Our mobile fleet typically arrives quickly anywhere in Auckland, getting you back on the road without long delays."
           },
           {
             question: "Is it safe to jump start modern vehicles?",
-            answer: "Yes. We use professional-grade jump starter packs equipped with surge protection to prevent damage to your vehicle's sensitive ECU and electronics."
+            answer: "Yes. We use professional-grade jump starter packs equipped with advanced surge protection to completely prevent damage to your vehicle's sensitive ECU and electronics."
           },
           {
             question: "What if the battery won't hold a charge?",
-            answer: "If a jump start is unsuccessful, we can perform on-the-spot diagnostics. We can often help arrange a replacement or tow if the battery is completely failed."
+            answer: "If a standard jump start is unsuccessful, we perform on-the-spot diagnostics. We can often help arrange a replacement or tow if the battery has completely failed."
           }
         ]}
         theme="dark"

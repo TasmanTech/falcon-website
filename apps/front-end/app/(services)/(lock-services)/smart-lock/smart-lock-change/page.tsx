@@ -74,14 +74,14 @@ export default function SmartLockChangePage() {
           Smart System Upgrades
         </h1>
         <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Modernize your property access with professional electronic and smart lock installations.
+          Modernise your property access with professional electronic and smart lock installations.
         </p>
       </div>
 
       <PhotoContentSection
         title="Intelligent Access Control"
         content={[
-          <p key="1">Upgrading to electronic and smart access systems is a vital step in modernizing both commercial facilities and residential homes. We provide end-to-end installation services for a wide variety of digital hardware.</p>,
+          <p key="1">Upgrading to electronic and smart access systems is a vital step in modernising both commercial facilities and residential homes. We provide end-to-end installation services for a wide variety of digital hardware.</p>,
           <p key="2">Transitioning away from traditional physical keys not only enhances convenience but allows for detailed tracking, temporary access codes, and immediate revocation of privileges without the need for hardware rekeying.</p>
         ]}
         imageSrc="/images/services/smart-lock-change_photo.webp"

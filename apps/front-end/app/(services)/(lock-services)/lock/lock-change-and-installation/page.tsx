@@ -85,7 +85,7 @@ export default function LockChangePage() {
         title="Upgrading Your Security"
         content={[
           <p key="1">Whether you&apos;re moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance. We operate on a transparent and highly affordable <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">Our team specializes in the precise installation of both standard and specialized hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly.</p>
+          <p key="2">Our team specialises in the precise installation of both standard and specialised hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly.</p>
         ]}
         ctaText="Book Installation ($20 Call Out)"
         ctaHref="/contact"
@@ -97,7 +97,7 @@ export default function LockChangePage() {
         title="When to Consider Replacement"
         content={[
           <p key="1">While we always attempt repairs first, there are scenarios where a full replacement is the most practical and cost-effective choice. If mechanisms are structurally damaged, severely corroded, or visibly compromised, a repair is only a temporary patch.</p>,
-          <p key="2">Upgrading is also a smart move if you want to modernize your facility with smart access control or if you&apos;ve recently experienced a turnover in staff or tenants and need absolute certainty about access rights.</p>
+          <p key="2">Upgrading is also a smart move if you want to modernise your facility with smart access control or if you&apos;ve recently experienced a turnover in staff or tenants and need absolute certainty about access rights.</p>
         ]}
         theme="dark"
       />

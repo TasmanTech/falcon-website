@@ -81,10 +81,10 @@ export default function SmartLockRepairPage() {
       <PhotoContentSection
         title="Restoring Digital Access"
         content={[
-          <p key="1">When a smart lock or electronic access system fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These modern systems require specialized knowledge that goes beyond traditional mechanical hardware.</p>,
+          <p key="1">When a smart lock or electronic access system fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These modern systems require specialised knowledge that goes beyond traditional mechanical hardware.</p>,
           <p key="2">Our property maintenance experts are equipped to troubleshoot both the physical mechanisms and the electronic components of your smart hardware, providing comprehensive diagnostics to get your system back online quickly.</p>
         ]}
-        imageSrc="/images/services/smart-lock-repair-and-programming_photo.webp"
+        imageSrc="/images/services/smart-lock-repair-programming_photo.webp"
         imageAlt="Cartoonish illustration representing electronic hardware diagnostics"
         ctaText="Request a Diagnostic ($20 Call Out)"
         ctaHref="/contact"

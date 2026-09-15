@@ -1,6 +1,6 @@
 # Falcon Access Front-end
 
-This is the front-end application for the Falcon Access website, built with [Next.js](https://nextjs.org) (App Router). It provides a responsive, high-performance, and SEO-optimized public face for Falcon Access, a premium locksmithing and property maintenance service operating in New Zealand.
+This is the front-end application for the Falcon Access website, built with [Next.js](https://nextjs.org) (App Router). It provides a responsive, high-performance, and SEO-optimised public face for Falcon Access, a premium locksmithing and property maintenance service operating in New Zealand.
 
 ## Features & Architecture
 - **Next.js 15+ (App Router)**: Uses React Server Components (RSCs) by default for optimal performance and SEO.
@@ -27,7 +27,7 @@ To run the automated test suites using Vitest:
 ```bash
 npm run test
 ```
-*Note: We utilize a custom mock for `@asamuzakjp/css-color` within `vitest.config.mts` to handle ESM resolution bugs in `jsdom` environments.*
+*Note: We utilise a custom mock for `@asamuzakjp/css-color` within `vitest.config.mts` to handle ESM resolution bugs in `jsdom` environments.*
 
 ### Linting
 To check for code quality and strict type safety:

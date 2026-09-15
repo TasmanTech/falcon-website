@@ -75,7 +75,7 @@ export default function PrivacyPolicyPage() {
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">4. Data Security</h2>
             <p className="mb-6">
-              We take reasonable steps to ensure your personal information is protected against loss, unauthorized access, use, modification, or disclosure. We use secure servers and standard industry protocols to protect digital data.
+              We take reasonable steps to ensure your personal information is protected against loss, unauthorised access, use, modification, or disclosure. We use secure servers and standard industry protocols to protect digital data.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">5. Your Rights</h2>

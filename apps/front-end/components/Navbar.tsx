@@ -24,8 +24,9 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-3">
           <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={300} height={80} className="h-16 md:h-20 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} priority />
+          <span className="text-brand-light font-bold text-xl sm:text-2xl tracking-tight">Falcon Access</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -40,7 +41,9 @@ export default function Navbar() {
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-160 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="bg-brand-dark border border-brand-light/10 rounded-lg shadow-lg overflow-hidden grid grid-cols-3 p-6 gap-6">
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">Lock Services</h4>
+                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                    <Link href="/lock" className="hover:text-white transition-colors">Lock Services</Link>
+                  </h4>
                   <div className="flex flex-col space-y-2">
                     <Link href="/lock/lockout" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Lockout</Link>
                     <Link href="/lock/rekey" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Rekey</Link>
@@ -49,15 +52,19 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">Smart Locks</h4>
+                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                    <Link href="/smart-lock" className="hover:text-white transition-colors">Smart Locks</Link>
+                  </h4>
                   <div className="flex flex-col space-y-2">
                     <Link href="/smart-lock/smart-lock-installation" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Installation</Link>
                     <Link href="/smart-lock/smart-lock-change" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Change</Link>
-                    <Link href="/smart-lock/smart-lock-repair-and-programming" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Repair &amp; Programming</Link>
+                    <Link href="/smart-lock/smart-lock-repair-programming" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Repair &amp; Programming</Link>
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">Auto</h4>
+                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                    <Link href="/auto" className="hover:text-white transition-colors">Auto</Link>
+                  </h4>
                   <div className="flex flex-col space-y-2">
                     <Link href="/car-lockout" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Car Lockout</Link>
                     <Link href="/auto/obdii-diagnostic" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">OBDII Diagnostic</Link>
@@ -70,7 +77,7 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-brand-accent transition-colors">About</Link>
           <Link href="/contact" className="hover:text-brand-accent transition-colors">Contact</Link>
           <Link href="/contact" className="bg-brand-accent text-brand-dark px-6 py-2 rounded-lg font-bold hover:bg-brand-accent/90 transition-colors">
-            Get Started
+            Get a Quote
           </Link>
         </nav>
 
@@ -105,18 +112,18 @@ export default function Navbar() {
               </div>
               {isServicesOpen && (
                 <div className="flex flex-col pl-4 pb-4 space-y-3">
-                  <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-2">Lock Services</div>
+                  <Link href="/lock" className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-2 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Lock Services</Link>
                   <Link href="/lock/lockout" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lockout</Link>
                   <Link href="/lock/rekey" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Rekey</Link>
                   <Link href="/lock/lock-change-and-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Change &amp; Install</Link>
                   <Link href="/lock/lock-repair" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Lock Repair</Link>
 
-                  <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4">Smart Locks</div>
+                  <Link href="/smart-lock" className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Smart Locks</Link>
                   <Link href="/smart-lock/smart-lock-installation" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Installation</Link>
                   <Link href="/smart-lock/smart-lock-change" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Change</Link>
-                  <Link href="/smart-lock/smart-lock-repair-and-programming" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Repair &amp; Programming</Link>
+                  <Link href="/smart-lock/smart-lock-repair-programming" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Repair &amp; Programming</Link>
 
-                  <div className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4">Auto</div>
+                  <Link href="/auto" className="text-sm font-bold text-brand-accent uppercase tracking-wider mt-4 hover:text-white" onClick={() => setIsMobileMenuOpen(false)}>Auto</Link>
                   <Link href="/car-lockout" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Car Lockout</Link>
                   <Link href="/auto/obdii-diagnostic" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>OBDII Diagnostic</Link>
                   <Link href="/auto/dead-battery-assistance" className="text-lg text-brand-light/80 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Dead Battery Assistance</Link>
@@ -126,7 +133,7 @@ export default function Navbar() {
             <Link href="/about" className="text-xl py-4 border-b border-brand-light/10 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
             <Link href="/contact" className="text-xl py-4 border-b border-brand-light/10 hover:text-brand-accent" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
             <Link href="/contact" className="mt-auto mb-4 bg-brand-accent text-brand-dark text-center px-6 py-3 rounded-lg font-bold hover:bg-brand-accent/90 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-              Get Started
+              Get a Quote
             </Link>
           </nav>
         </div>

@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilizing our repair and maintenance solutions.',
+  description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
   openGraph: {
     title: 'Terms of Service | Falcon Access',
-    description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilizing our repair and maintenance solutions.',
+    description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
     url: 'https://falconaccess.co.nz/terms-of-service',
   }
 };
@@ -54,7 +54,7 @@ export default function TermsOfServicePage() {
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">1. Services Provided</h2>
             <p className="mb-6">
-              Falcon Access provides general property maintenance, hardware repair, and specialized services including locksmithing. We commit to performing all services with reasonable care and skill. We reserve the right to decline any service request that we deem unsafe or outside the scope of our expertise.
+              Falcon Access provides general property maintenance, hardware repair, and specialised services including locksmithing. We commit to performing all services with reasonable care and skill. We reserve the right to decline any service request that we deem unsafe or outside the scope of our expertise.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">2. Quotes and Estimates</h2>

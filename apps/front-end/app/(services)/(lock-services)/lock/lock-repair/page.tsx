@@ -49,7 +49,7 @@ export default function LockRepairPage() {
             "name": "Can you fix commercial glass door locks?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we handle a wide range of commercial and residential hardware, including specialized mortise locks and glass door hardware."
+              "text": "Yes, we handle a wide range of commercial and residential hardware, including specialised mortise locks and glass door hardware."
             }
           },
           {
@@ -81,7 +81,7 @@ export default function LockRepairPage() {
       <PhotoContentSection
         title="Restoring Functionality"
         content={[
-          <p key="1">A sticking or broken mechanism isn&apos;t just frustrating; it can compromise the security of your entire building. As part of our comprehensive property maintenance services, we specialize in diagnosing and fixing faulty hardware.</p>,
+          <p key="1">A sticking or broken mechanism isn&apos;t just frustrating; it can compromise the security of your entire building. As part of our comprehensive property maintenance services, we specialise in diagnosing and fixing faulty hardware.</p>,
           <p key="2">From residential deadbolts to heavy-duty commercial latches, our goal is to identify the root cause of the issue and implement a lasting, reliable repair.</p>
         ]}
         imageSrc="/images/services/lock-repair_photo.webp"
@@ -133,7 +133,7 @@ export default function LockRepairPage() {
           },
           {
             question: "Can you fix commercial glass door locks?",
-            answer: "Yes, we handle a wide range of commercial and residential hardware, including specialized mortise locks and glass door hardware."
+            answer: "Yes, we handle a wide range of commercial and residential hardware, including specialised mortise locks and glass door hardware."
           },
           {
             question: "How long does a repair usually take?",
