@@ -6,9 +6,9 @@ interface IconItem {
 
 interface IconListSectionProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   items: IconItem[];
-  theme?: 'light' | 'dark';
+  theme?: 'light' | 'dark' | 'white';
 }
 
 export default function IconListSection({
@@ -17,9 +17,18 @@ export default function IconListSection({
   items,
   theme = 'light'
 }: IconListSectionProps) {
-  const bgClass = theme === 'light' ? 'bg-brand-light' : 'bg-brand-dark';
-  const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
-  const mutedTextClass = theme === 'light' ? 'text-brand-dark/70' : 'text-brand-light/70';
+  const bgClass = theme === 'dark' ? 'bg-brand-dark' : theme === 'white' ? 'bg-white' : 'bg-brand-light';
+  const textClass = theme === 'dark' ? 'text-brand-light' : 'text-brand-dark';
+  const mutedTextClass = theme === 'dark' ? 'text-brand-light/70' : 'text-brand-dark/70';
+
+  const getGridCols = (count: number) => {
+    if (count === 1) return 'md:grid-cols-1';
+    if (count === 2) return 'md:grid-cols-2 max-w-4xl mx-auto';
+    if (count === 4) return 'md:grid-cols-2 lg:grid-cols-4';
+    return 'md:grid-cols-3'; // Default for 3 items
+  };
+
+  const gridClass = getGridCols(items.length);
 
   return (
     <section className={`py-24 ${bgClass} ${textClass}`}>
@@ -28,12 +37,14 @@ export default function IconListSection({
           <h2 className="text-3xl md:text-4xl font-montserrat font-bold mb-4">
             {title}
           </h2>
-          <p className={`${mutedTextClass} max-w-2xl mx-auto text-lg`}>
-            {subtitle}
-          </p>
+          {subtitle && (
+            <p className={`${mutedTextClass} max-w-2xl mx-auto text-lg`}>
+              {subtitle}
+            </p>
+          )}
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={`grid grid-cols-1 ${gridClass} gap-8`}>
           {items.map((item, index) => (
             <div 
               key={index} 

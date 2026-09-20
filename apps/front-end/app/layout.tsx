@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import FloatingCTA from "../components/FloatingCTA";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,9 +21,6 @@ export const metadata: Metadata = {
     default: "Falcon Access | High Quality Locksmithing in NZ",
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
-  icons: {
-    icon: '/favicon.jpg',
-  },
 };
 
 export default function RootLayout({
@@ -39,6 +37,7 @@ export default function RootLayout({
         <main className="grow">
           {children}
         </main>
+        <FloatingCTA />
         <Footer />
       </body>
     </html>

@@ -1,7 +1,7 @@
 interface TextContentSectionProps {
   title: string;
   content: React.ReactNode[];
-  theme?: 'light' | 'dark';
+  theme?: 'light' | 'dark' | 'white';
 }
 
 export default function TextContentSection({
@@ -9,9 +9,9 @@ export default function TextContentSection({
   content,
   theme = 'dark'
 }: TextContentSectionProps) {
-  const bgClass = theme === 'light' ? 'bg-brand-light' : 'bg-brand-dark';
-  const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
-  const mutedTextClass = theme === 'light' ? 'text-brand-dark/80' : 'text-brand-light/80';
+  const bgClass = theme === 'dark' ? 'bg-brand-dark' : theme === 'white' ? 'bg-white' : 'bg-brand-light';
+  const textClass = theme === 'dark' ? 'text-brand-light' : 'text-brand-dark';
+  const mutedTextClass = theme === 'dark' ? 'text-brand-light/80' : 'text-brand-dark/80';
 
   return (
     <section className={`py-24 ${bgClass} ${textClass}`}>

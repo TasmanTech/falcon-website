@@ -3,14 +3,16 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Vehicle Lockout Services',
-  description: 'Fast and reliable vehicle lockout assistance. We provide non-destructive entry methods to get you back on the road safely.',
-  keywords: 'Car Lockout, Vehicle Lockout, Auto Locksmith, Car Key Rescue, Falcon Access',
+  title: 'Auckland Emergency Car Lockout Service',
+  description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
+  keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Vehicle Lockout Services | Falcon Access',
-    description: 'Fast and reliable vehicle lockout assistance. We provide non-destructive entry methods to get you back on the road safely.',
+    title: 'Auckland Emergency Car Lockout Service',
+    description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
     url: 'https://falconaccess.co.nz/car-lockout',
   }
 };
@@ -23,7 +25,7 @@ export default function CarLockoutPage() {
         "@type": "WebPage",
         "@id": "https://falconaccess.co.nz/car-lockout/#webpage",
         "url": "https://falconaccess.co.nz/car-lockout",
-        "name": "Vehicle Lockout Services | Falcon Access",
+        "name": "Car Lockout Services | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
@@ -32,6 +34,12 @@ export default function CarLockoutPage() {
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
           { "@type": "ListItem", "position": 2, "name": "Vehicle Lockout", "item": "https://falconaccess.co.nz/car-lockout" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Car Lockout Services",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Fast, non-destructive vehicle lockout assistance across Auckland."
       },
       {
         "@type": "FAQPage",
@@ -49,7 +57,7 @@ export default function CarLockoutPage() {
             "name": "Will gaining entry damage my car's paint or weather stripping?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. We use specialized, protective tools designed specifically to bypass the lock mechanism without scratching the paint or tearing the weather seals."
+              "text": "No. We use specialised, protective tools designed specifically to bypass the lock mechanism without scratching the paint or tearing the weather seals."
             }
           },
           {
@@ -57,7 +65,7 @@ export default function CarLockoutPage() {
             "name": "Do I need to prove ownership of the vehicle?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. For legal and security reasons, we require a valid ID and proof of ownership or authorization to access the vehicle before we begin."
+              "text": "Yes. For legal and security reasons, we require a valid form of identification and proof of ownership or authorisation to access the vehicle before we begin."
             }
           }
         ]
@@ -66,68 +74,71 @@ export default function CarLockoutPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Vehicle Lockout Services
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Fast, non-destructive entry when you&apos;re locked out of your car.
-        </p>
-      </div>
+
+      <PageHeaderSection
+        title="Auckland Emergency Car Lockout"
+        subtitle="Fast, non-destructive vehicle entry. Our mobile responders cover Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout_photo.webp"
-        imageAlt="Cartoonish illustration of an automotive wedge tool and car key fob"
-        imageTitle="Vehicle Lockout Assistance"
-        title="Back on the Road Safely"
+        imageSrc="/images/services/car-lockout/content-1.webp"
+        imageAlt="Technician providing safe car lockout assistance"
+        title="Fast & Reliable Car Lockout Services"
         content={[
-          <p key="1">Locking your keys inside your vehicle is a stressful and incredibly common situation. Our team provides rapid response vehicle lockout assistance, with a transparent and incredibly affordable <strong>$20 flat call-out fee</strong> for everything—no quotes or hidden costs.</p>,
-          <p key="2">We rely on specialized, non-destructive tools that allow us to manipulate the internal mechanics of your car door safely, retrieving your keys without causing damage to your vehicle.</p>
+          <p key="1">Getting locked out of your vehicle is frustrating. Our commercial and residential repair and maintenance team provides fast and professional car lockout assistance. We use safe techniques to get you back on the road quickly.</p>
         ]}
-        ctaText="Request Emergency Access ($20 Call Out)"
-        ctaHref="/contact"
         photoPosition="left"
         theme="light"
       />
 
       <TextContentSection
-        title="A Practical, Honest Approach"
+        title="Professional Solutions for Your Vehicle"
         content={[
-          <p key="1">Modern vehicles feature complex security systems and tightly sealed cabins. We don&apos;t rely on outdated or damaging methods like coat hangers or excessive force that can bend your door frame or shatter glass.</p>,
-          <p key="2">Our approach is straightforward: we arrive quickly, verify ownership for security purposes, and use precise, professional techniques to bypass the lock and safely recover your keys.</p>
+          <p key="1">Modern vehicles require specialized care. Our trained technicians understand the intricacies of auto locks and security systems. We deliver top-tier service alongside our web design and web development offerings. Your satisfaction and security are our highest priorities.</p>
         ]}
-        theme="dark"
+        theme="white"
       />
 
-      <IconListSection
-        title="Our Vehicle Service Promise"
-        subtitle="Reliable assistance when you're stranded."
-        items={[
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-            title: "Rapid Dispatch",
-            description: "We prioritize vehicle lockouts to ensure you aren't left waiting by the side of the road or in an unfamiliar parking lot."
-          },
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Damage-Free",
-            description: "Protecting your vehicle's paint, glass, and internal wiring is our top priority during the entry process."
-          },
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: "Universal Capability",
-            description: "Equipped to handle a vast array of vehicle makes and models, from older mechanical locks to modern electronic systems."
-          }
+      <PhotoContentSection
+        imageSrc="/images/services/car-lockout/content-2.webp"
+        imageAlt="Damage-free vehicle entry tools"
+        title="Damage-Free Entry Guaranteed"
+        content={[
+          <p key="1">We prioritize the safety of your vehicle. Using the latest tools, we guarantee a damage-free entry for all car models. Trust our comprehensive repair and maintenance experts to handle the job with precision.</p>
         ]}
+        photoPosition="right"
         theme="light"
       />
 
+      <IconListSection
+        title="Why Choose Our Car Lockout Service"
+        items={[
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "We are ready to help you at any time."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "Highly trained professionals for every job."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "We arrive promptly to get you moving again."
+          }
+        ]}
+        theme="white"
+      />
+
+      <CTASection theme="catchy" />
+
       <FAQSection
         title="Frequently Asked Questions"
-        subtitle="Common questions about vehicle lockouts."
+        subtitle="Common questions about our vehicle lockout services."
         faqs={[
           {
             question: "Can you open my specific make and model?",
@@ -135,11 +146,11 @@ export default function CarLockoutPage() {
           },
           {
             question: "Will gaining entry damage my car's paint or weather stripping?",
-            answer: "No. We use specialized, protective tools designed specifically to bypass the lock mechanism without scratching the paint or tearing the weather seals."
+            answer: "No. We use specialised, protective tools designed specifically to bypass the lock mechanism without scratching the paint or tearing the weather seals."
           },
           {
             question: "Do I need to prove ownership of the vehicle?",
-            answer: "Yes. For legal and security reasons, we require a valid ID and proof of ownership or authorization to access the vehicle before we begin."
+            answer: "Yes. For legal and security reasons, we require a valid form of identification and proof of ownership or authorisation to access the vehicle before we begin."
           }
         ]}
         theme="dark"

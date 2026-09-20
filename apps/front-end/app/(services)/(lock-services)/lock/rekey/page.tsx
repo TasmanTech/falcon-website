@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Hardware Rekeying Services',
+  title: 'Auckland Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
-  keywords: 'Rekeying, Lock Rekey, Hardware Rekeying, Commercial Security, Falcon Access',
+  keywords: 'Rekeying, Lock Rekey, Hardware Rekeying, Commercial Security, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Hardware Rekeying Services | Falcon Access',
+    title: 'Auckland Hardware Rekeying Services',
     description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
     url: 'https://falconaccess.co.nz/rekey',
   }
@@ -30,8 +32,15 @@ export default function RekeyPage() {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Rekeying", "item": "https://falconaccess.co.nz/rekey" }
+          { "@type": "ListItem", "position": 2, "name": "Lock Services", "item": "https://falconaccess.co.nz/lock" },
+          { "@type": "ListItem", "position": 3, "name": "Rekeying", "item": "https://falconaccess.co.nz/lock/rekey" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Hardware Rekeying Services",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Cost-effective hardware rekeying for commercial and residential properties."
       },
       {
         "@type": "FAQPage",
@@ -66,38 +75,45 @@ export default function RekeyPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Hardware Rekeying
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Secure your property efficiently by changing the keys, not the hardware.
-        </p>
-      </div>
+      <PageHeaderSection 
+        title="Auckland Hardware Rekeying"
+        subtitle="Secure your property efficiently by changing the keys. We service Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
         title="Economical Access Control"
         content={[
-          <p key="1">When you need to restrict access to a building, you don&apos;t necessarily have to replace all the hardware. Rekeying is a practical property maintenance solution that alters the internal components of your existing mechanisms.</p>,
-          <p key="2">This service renders all previously issued keys useless and provides you with a fresh set, granting you immediate peace of mind at a fraction of the cost of full hardware replacement.</p>
+          <p key="1">When you critically need to restrict access to a building, you don&apos;t necessarily have to replace all the hardware. Rekeying is a practical commercial and residential property maintenance solution that expertly alters the internal components of your existing mechanisms.</p>,
+          <p key="2">This service entirely renders all previously issued keys useless and quickly provides you with a fresh set, granting you immediate peace of mind at a fraction of the cost of full hardware replacement.</p>
         ]}
-        imageSrc="/images/services/rekey_photo.webp"
-        imageAlt="Cartoonish illustration representing keys and internal hardware pins"
-        ctaText="Book a Rekey ($20 Call Out)"
-        ctaHref="/contact"
+        imageSrc="/images/services/lock/rekey/content-1.webp"
+        imageAlt="Internal pins and springs of a door lock"
         photoPosition="left"
-        theme="light" imageTitle={''} />
+        theme="light"
+      />
 
       <TextContentSection
         title="When Should You Rekey?"
         content={[
-          <p key="1">We recommend rekeying whenever there is a change in occupancy or a potential security risk. This is highly common for commercial spaces experiencing employee turnover or residential properties changing tenants or owners.</p>,
-          <p key="2">If your current hardware is physically sound and operating smoothly, rekeying is the honest, efficient recommendation to secure your premises without upselling unnecessary equipment.</p>
+          <p key="1">We highly recommend rekeying whenever there is a significant change in occupancy or a potential security risk. This is extremely common for commercial spaces experiencing employee turnover or residential properties changing tenants or owners.</p>,
+          <p key="2">If your current hardware is physically sound and operating smoothly, rekeying is the honest, efficient recommendation to secure your premises. Much like seamless web design relies on excellent web development behind the scenes, seamless security relies on well-configured internal lock mechanisms.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        title="Fast & Efficient Service"
+        content={[
+          <p key="1">Our mobile units carry all the necessary precision tools to efficiently rekey your property on-site. We are highly trained in working with a vast array of major lock brands and intricate commercial systems.</p>,
+          <p key="2">Take total control of your building&apos;s access today. Reach out to our maintenance team for a simple, completely transparent <strong>$20 flat call-out fee</strong> to your location.</p>
+        ]}
+        imageSrc="/images/services/lock/rekey/content-2.webp"
+        imageAlt="Rekeying a commercial hardware cylinder"
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -106,22 +122,24 @@ export default function RekeyPage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-            title: "Cost-Effective",
-            description: "Save significantly by utilizing your existing, functional hardware instead of buying entirely new sets for every door."
+            title: 'Auckland Hardware Rekeying Services',
+            description: "Save significantly by utilising your existing, functional hardware instead of buying entirely new sets for every door."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" /></svg>,
-            title: "Keying Alike",
+            title: 'Auckland Hardware Rekeying Services',
             description: "Reduce the number of keys you carry by configuring multiple doors to operate on a single, unified key."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Immediate Security",
+            title: 'Auckland Hardware Rekeying Services',
             description: "Instantly revoke access from old tenants, lost keys, or former employees, restoring complete control over your premises."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

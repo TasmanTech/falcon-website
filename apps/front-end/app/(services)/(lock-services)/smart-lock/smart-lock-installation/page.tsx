@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Fresh Smart Lock Installation',
+  title: 'Auckland Fresh Smart Lock Installation',
   description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
-  keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, Falcon Access',
+  keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Fresh Smart Lock Installation | Falcon Access',
+    title: 'Auckland Fresh Smart Lock Installation',
     description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
     url: 'https://falconaccess.co.nz/smart-lock-installation',
   }
@@ -30,8 +32,15 @@ export default function SmartLockInstallationPage() {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Fresh Installation", "item": "https://falconaccess.co.nz/smart-lock-installation" }
+          { "@type": "ListItem", "position": 2, "name": "Smart Lock Services", "item": "https://falconaccess.co.nz/smart-lock" },
+          { "@type": "ListItem", "position": 3, "name": "Fresh Installation", "item": "https://falconaccess.co.nz/smart-lock/smart-lock-installation" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Fresh Smart Lock Installation",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Precision drilling and fresh installation of smart locks for new doors."
       },
       {
         "@type": "FAQPage",
@@ -66,38 +75,45 @@ export default function SmartLockInstallationPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Fresh Smart Lock Installation
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Precision preparation and setup for brand new doors and complete system overhauls.
-        </p>
-      </div>
+      <PageHeaderSection 
+        title="Auckland Fresh Smart Lock Installation"
+        subtitle="Precision preparation and setup for brand new doors. Our team covers Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
         title="Starting From Scratch"
         content={[
-          <p key="1">Whether you are fitting out a new commercial office, building an extension, or simply replacing an old, damaged door with a blank one, a fresh smart lock installation requires precise carpentry and electronic expertise.</p>,
-          <p key="2">Our property maintenance team is equipped to accurately drill, mortise, and align the door frame to perfectly accommodate modern digital and smart hardware, ensuring seamless operation from day one.</p>
+          <p key="1">Whether you are expertly fitting out a brand new commercial office, building a modern residential extension, or simply replacing an old, damaged door with a completely blank one, a fresh smart lock installation requires significant precision.</p>,
+          <p key="2">Our highly skilled property maintenance team is fully equipped to accurately drill, mortise, and align the door frame to perfectly accommodate modern digital and smart hardware, ensuring totally seamless operation right from day one.</p>
         ]}
-        imageSrc="/images/services/smart-lock-installation_photo.webp"
-        imageAlt="Cartoonish illustration representing a fresh door prep and smart lock"
-        ctaText="Schedule Installation ($20 Call Out)"
-        ctaHref="/contact"
+        imageSrc="/images/services/smart-lock/smart-lock-installation/content-1.webp"
+        imageAlt="Drilling bore holes into a new door for a smart lock"
         photoPosition="left"
-        theme="light" imageTitle={''} />
+        theme="light"
+      />
 
       <TextContentSection
         title="The Importance of Precision"
         content={[
-          <p key="1">Smart locks contain sensitive motorized components that have a very low tolerance for friction. If a bore hole is slightly off-center or the strike plate is misaligned, the motor will struggle, leading to rapid battery drain and premature failure.</p>,
-          <p key="2">This is why professional installation is critical. We don&apos;t just screw the lock into the door; we ensure the physical foundation is flawlessly aligned so your new investment operates reliably for years.</p>
+          <p key="1">Smart locks naturally contain incredibly sensitive motorised components that have a extremely low tolerance for friction. If a bore hole is slightly off-centre or the strike plate is mildly misaligned, the motor will struggle, leading to rapid battery drain and premature mechanical failure.</p>,
+          <p key="2">This is exactly why professional installation is absolutely critical. We don&apos;t just screw the lock into the door; we ensure the physical foundation is flawlessly aligned. We approach this task with the exact same level of careful attention that a top-tier web developer applies to highly responsive web design.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        title="Flawless Electronic Setup"
+        content={[
+          <p key="1">After carefully prepping the door and physically mounting the hardware, we ensure all electronic components are correctly configured and thoroughly tested.</p>,
+          <p key="2">We charge a simple, incredibly clear <strong>$20 flat call-out fee</strong> to come to your location anywhere in Auckland and begin your comprehensive smart lock setup.</p>
+        ]}
+        imageSrc="/images/services/smart-lock/smart-lock-installation/content-2.webp"
+        imageAlt="Connecting internal wiring for a smart keypad"
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -106,22 +122,24 @@ export default function SmartLockInstallationPage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" /></svg>,
-            title: "Door Preparation",
+            title: 'Auckland Fresh Smart Lock Installation',
             description: "Accurate measurement and drilling of blank doors using professional jigs to ensure the crossbore and edge bore are perfectly square."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Hardware Mounting",
-            description: "Securely fastening the motorized deadbolt or lever, ensuring zero friction between the latch and the strike plate."
+            title: 'Auckland Fresh Smart Lock Installation',
+            description: "Securely fastening the motorised deadbolt or lever, ensuring zero friction between the latch and the strike plate."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" /></svg>,
-            title: "System Setup",
+            title: 'Auckland Fresh Smart Lock Installation',
             description: "Configuring the electronic components, testing the network connectivity, and guiding you through the app setup and code generation."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"
