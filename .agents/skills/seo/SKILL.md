@@ -45,6 +45,7 @@ For utility pages, forms, or internal pages that should not be indexed (e.g., `/
 ## Example Usage (Public Page)
 ```typescript
 import { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Custom React Development', // Example length check needed based on Falcon Access length
@@ -81,9 +82,7 @@ export default function ReactServicePage() {
 
   return (
     <main>
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
+      <JsonLd id="schema-react-service" schema={jsonLd} />
       {/* Content */}
     </main>
   );

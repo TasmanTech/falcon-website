@@ -5,6 +5,7 @@ import TextContentSection from '@/components/sections/TextContentSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
@@ -69,7 +70,7 @@ export default function LockServicesPage() {
 
   return (
     <div className="w-full bg-brand-light">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd id="schema-lock-page" schema={jsonLd} />
       <PageHeaderSection 
         title="Auckland Locksmith & Hardware Services"
         subtitle="Professional hardware and lock services. We proudly cover Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."

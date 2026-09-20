@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
@@ -36,7 +37,7 @@ export default function PrivacyPolicyPage() {
 
   return (
     <div className="w-full pt-32 pb-24 bg-brand-light">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd id="schema-privacy-policy-page" schema={jsonLd} />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-text-blurb-ready animate-play-text">

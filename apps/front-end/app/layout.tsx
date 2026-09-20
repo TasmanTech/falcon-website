@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingCTA from "../components/FloatingCTA";
+import JsonLd from '@/components/JsonLd';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -79,7 +80,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${montserrat.variable} font-inter antialiased bg-brand-light text-brand-dark flex flex-col min-h-screen`}
       >
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(globalJsonLd) }} />
+        <JsonLd id="schema-app-layout" schema={globalJsonLd} />
         <Navbar />
         <main className="grow">
           {children}
