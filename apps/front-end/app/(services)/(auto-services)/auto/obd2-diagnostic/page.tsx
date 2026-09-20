@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
   keywords: 'OBDII diagnostic, auto repair, check engine light, Auckland, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Mobile Auto Electrical Diagnostics Auckland',
+    title: 'Mobile Auto Electrical Diagnostics Auckland | Falcon Access',
     description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
     url: "/auto/obd2-diagnostic",
   }
@@ -44,10 +44,12 @@ export default function obd2Page() {
         "@type": "Service",
         "name": "OBDII Diagnostic Scanning",
         "provider": { "@id": "https://falconaccess.co.nz/#organization" },
-        "description": "Mobile OBDII diagnostic scanning to identify check engine light codes across Auckland."
+        "description": "Mobile OBDII diagnostic scanning to identify check engine light codes across Auckland.",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "FAQPage",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" },
         "mainEntity": [
           {
             "@type": "Question",
@@ -140,8 +142,8 @@ export default function obd2Page() {
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: 'Emissions Readiness Check',
-            description: "We check if your vehicle's internal monitors are fully ready to pass a standard New Zealand emissions inspection."
+            title: 'Code Clearing',
+            description: "We can clear old codes from your car. This turns off the dash light after a fix is made."
           }
         ]}
         theme="white"

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -37,19 +38,15 @@ export default function TermsOfServicePage() {
   };
 
   return (
-    <div className="w-full pt-32 pb-24 bg-brand-light">
+    <div className="w-full bg-brand-light">
       <JsonLd id="schema-terms-of-service-page" schema={jsonLd} />
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-text-blurb-ready animate-play-text">
-          <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-            Terms of Service
-          </h1>
-          <p className="text-lg text-brand-dark/70 max-w-2xl mx-auto font-inter">
-            Last updated: September 10, 2026
-          </p>
-        </div>
+      <PageHeaderSection 
+        title="Terms of Service"
+        subtitle="Last updated: September 10, 2026"
+      />
 
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="bg-white rounded-2xl shadow-sm border border-brand-dark/5 p-8 md:p-12 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
           <div className="prose prose-lg max-w-none font-inter text-brand-dark/80">
             <p className="mb-6">

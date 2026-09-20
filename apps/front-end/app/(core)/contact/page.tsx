@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -38,19 +39,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="w-full pt-32 pb-24 bg-brand-light">
+    <div className="w-full bg-brand-light">
       <JsonLd id="schema-contact-page" schema={jsonLd} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-text-blurb-ready animate-play-text">
-          <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-            Do you need a quote? Or do you need fast help? Our team is ready. Use the form below to talk to us.
-          </p>
-        </div>
+      <PageHeaderSection 
+        title="Get in Touch"
+        subtitle="Do you need a quote? Or do you need fast help? Our team is ready. Use the form below to talk to us."
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         <div className="flex flex-col lg:flex-row gap-16">
           <div className="w-full lg:w-1/2 space-y-8 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-brand-dark/5">

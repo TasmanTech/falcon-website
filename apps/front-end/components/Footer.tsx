@@ -72,6 +72,7 @@ export default function Footer() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
+              title="Falcon Access Location Map"
             ></iframe>
           </div>
         </div>

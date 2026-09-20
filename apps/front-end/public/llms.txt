@@ -1,0 +1,18 @@
+# Falcon Access
+
+> Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care and emergency services 24/7.
+
+## Core Pages
+- [Home](https://falconaccess.co.nz/) - Main landing page.
+- [About Us](https://falconaccess.co.nz/about) - Learn about our honest, practical approach.
+- [Contact](https://falconaccess.co.nz/contact) - Get a quote or request fast emergency help.
+
+## Services
+- [Lock Services](https://falconaccess.co.nz/lock) - Professional lock repair, replacement, and rekeying.
+- [Smart Lock Services](https://falconaccess.co.nz/smart-lock) - Smart lock installation and programming.
+- [Auto Services](https://falconaccess.co.nz/auto) - Vehicle lockouts, dead battery assistance, and diagnostics.
+- [Car Lockout](https://falconaccess.co.nz/car-lockout) - 24/7 emergency vehicle unlocking.
+
+## Legal
+- [Privacy Policy](https://falconaccess.co.nz/privacy-policy) - Data handling and privacy practices.
+- [Terms of Service](https://falconaccess.co.nz/terms-of-service) - Terms and conditions for using our services.
