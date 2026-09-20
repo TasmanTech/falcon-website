@@ -64,20 +64,20 @@ export default function Footer() {
             </li>
           </ul>
           <div className="mt-4 rounded-lg overflow-hidden">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ad45978bd686e39%3A0x7277b36f7f430f6a!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1789884229600!5m2!1sen!2snz" 
-              width="200" 
-              height="200" 
-              style={{ border: 0 }} 
-              allowFullScreen 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ad45978bd686e39%3A0x7277b36f7f430f6a!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1789884229600!5m2!1sen!2snz"
+              width="200"
+              height="200"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
               referrerPolicy="strict-origin-when-cross-origin"
             ></iframe>
           </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/50 font-inter text-sm">
-        &copy; 2024 - {new Date().getFullYear()} Falcon Access Limited. All rights reserved.
+        &copy; {new Date().getFullYear()} Falcon Access Limited. All rights reserved.
       </div>
     </footer>
   );
