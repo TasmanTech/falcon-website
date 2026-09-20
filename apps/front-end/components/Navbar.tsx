@@ -25,7 +25,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3">
-          <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={300} height={80} className="h-16 md:h-20 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} priority />
+          <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={300} height={64} className="h-14 md:h-16 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} priority />
           <span className="text-brand-light font-bold text-xl sm:text-2xl tracking-tight">Falcon Access</span>
         </Link>
 
