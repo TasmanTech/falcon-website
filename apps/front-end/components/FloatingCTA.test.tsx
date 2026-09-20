@@ -15,7 +15,7 @@ describe('FloatingCTA', () => {
 
   it('renders correctly', () => {
     render(<FloatingCTA />);
-    
+
     // Check if the phone link has correct href
     const linkElement = screen.getByRole('link', { name: /call for locksmith service/i });
     expect(linkElement).toBeInTheDocument();
@@ -24,15 +24,15 @@ describe('FloatingCTA', () => {
 
   it('displays the chat bubble initially and hides it after 6 seconds', () => {
     render(<FloatingCTA />);
-    
+
     // Bubble should be visible initially
     expect(screen.getByText('24/7 Emergency Lockout Service')).toBeInTheDocument();
-    
+
     // Fast-forward time by 6 seconds
     act(() => {
       vi.advanceTimersByTime(6000);
     });
-    
+
     // Bubble should be hidden now
     expect(screen.queryByText('24/7 Emergency Lockout Service')).not.toBeInTheDocument();
   });

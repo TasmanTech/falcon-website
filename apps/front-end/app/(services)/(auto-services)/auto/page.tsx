@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/auto",
   },
   title: 'Mobile Auto Locksmith Auckland',
-  description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts 24/7.',
+  description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts.',
   keywords: 'Auto Services, Car Lockout, OBDII Diagnostic, Dead Battery Assistance, Auckland, web design, web development, Falcon Access',
   openGraph: {
     title: 'Mobile Auto Locksmith Auckland',
-    description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts 24/7.',
+    description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts.',
     url: "/auto",
   }
 };

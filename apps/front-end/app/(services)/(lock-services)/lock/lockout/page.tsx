@@ -84,7 +84,7 @@ export default function LockoutPage() {
     <div className="w-full">
       <JsonLd id="schema-lockout-page" schema={jsonLd} />
 
-      <PageHeaderSection 
+      <PageHeaderSection
         title="Emergency Lockout Services Auckland Wide"
         subtitle="Fast, reliable emergency lockout assistance. We respond quickly across Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
       />

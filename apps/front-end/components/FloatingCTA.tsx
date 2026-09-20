@@ -18,7 +18,7 @@ export default function FloatingCTA() {
     <div className="fixed bottom-6 right-6 z-50 md:hidden flex flex-col items-end gap-3">
       {isBubbleVisible && (
         <div className="bg-brand-dark text-brand-light text-sm px-4 py-2 rounded-2xl rounded-br-none shadow-md animate-card-ready animate-play">
-          24/7 Emergency Lockout Service
+          Emergency Lockout Service
         </div>
       )}
       <a 

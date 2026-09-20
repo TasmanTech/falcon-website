@@ -64,7 +64,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Phone</h3>
                     <a href="tel:+6492431404" className="text-lg font-bold text-brand-dark hover:text-brand-accent transition-colors">+64 9 243 1404</a>
-                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We are open 24/7 for fast help.</p>
+                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We are open 7am to 6pm, Monday to Saturday.</p>
                   </div>
                 </div>
 
