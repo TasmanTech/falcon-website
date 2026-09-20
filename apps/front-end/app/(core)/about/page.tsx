@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
@@ -40,17 +41,13 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <JsonLd id="schema-about-page" schema={jsonLd} />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          About Falcon Access
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto">
-          Honest, real, and good property care for your home or shop.
-        </p>
-      </div>
+      <PageHeaderSection 
+        title="About Falcon Access"
+        subtitle="Honest, real, and good property care for your home or shop."
+      />
 
       <PhotoContentSection
         title="Who We Are"
