@@ -3,6 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ContactService } from './contact.service';
 import { InternalServerErrorException } from '@nestjs/common';
 import * as nodemailerModule from 'nodemailer';
+import { ConfigModule } from '@nestjs/config';
 
 describe('ContactService', () => {
   let service: ContactService;
@@ -14,6 +15,7 @@ describe('ContactService', () => {
     } as unknown as nodemailerModule.Transporter);
 
     const module: TestingModule = await Test.createTestingModule({
+      imports: [ConfigModule.forRoot()],
       providers: [ContactService],
     }).compile();
 
