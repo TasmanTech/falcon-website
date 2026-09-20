@@ -89,8 +89,10 @@ export default function LockRepairPage() {
           <p key="1">A sticking or broken mechanism isn&apos;t just frustrating; it can severely compromise the security of your entire building. As a vital part of our comprehensive commercial and residential property maintenance services, we specialise in accurately diagnosing and fixing faulty hardware.</p>,
           <p key="2">From residential deadbolts to heavy-duty commercial latches, our ultimate goal is always to quickly identify the root cause of the issue and immediately implement a lasting, highly reliable repair to secure your premises.</p>
         ]}
-        imageSrc="/images/services/lock/lock-repair/content-1.webp"
+        imageSrc="/images/services/lock/lock-repair/lock-repair-service-auckland.webp"
         imageAlt="Expert hardware and lock repair tools"
+        imageTitle="Lock Repair Service"
+        imageDescription="Fixing jammed, stiff, or broken door locks to restore security and functionality."
         photoPosition="left"
         theme="light"
       />
@@ -110,8 +112,10 @@ export default function LockRepairPage() {
           <p key="1">Most standard hardware repairs are successfully completed within an hour of our arrival, greatly depending on the severity of the structural damage or frame misalignment. We bring all the necessary tools to perform these vital fixes directly on-site.</p>,
           <p key="2">We expertly handle a wide range of commercial and residential hardware, including specialised mortise locks and intricate glass door hardware. Reach out today for an honest assessment and an affordable <strong>$20 flat call-out fee</strong>.</p>
         ]}
-        imageSrc="/images/services/lock/lock-repair/content-2.webp"
+        imageSrc="/images/services/lock/lock-repair/broken-lock-mechanism-repair.webp"
         imageAlt="Fixing a damaged residential deadbolt"
+        imageTitle="Lock Mechanism Repair"
+        imageDescription="Internal lock mechanism diagnostics and repair to extend the life of your existing hardware."
         photoPosition="right"
         theme="light"
       />

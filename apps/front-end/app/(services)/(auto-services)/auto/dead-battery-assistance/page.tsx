@@ -84,8 +84,10 @@ export default function DeadBatteryPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/dead-battery-assistance/content-1.webp"
+        imageSrc="/images/services/auto/dead-battery-assistance/dead-battery-jump-start-auckland.webp"
         imageAlt="Professional car battery jump start service"
+        imageTitle="Dead Battery Jump Start"
+        imageDescription="Emergency mobile vehicle jump start assistance to get you back on the road quickly."
         title="Quick & Reliable Engine Starts"
         content={[
           <p key="1">A dead battery can happen to absolutely anyone, often leaving you stranded at the worst possible time. As part of our comprehensive commercial and residential property maintenance, we provide fast, professional jump starts across Auckland with a brilliantly clear <strong>$20 flat call-out fee</strong>.</p>,
@@ -105,8 +107,10 @@ export default function DeadBatteryPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/dead-battery-assistance/content-2.webp"
+        imageSrc="/images/services/auto/dead-battery-assistance/mobile-battery-assistance-vehicle.webp"
         imageAlt="Surge-protected jump starter packs"
+        imageTitle="Mobile Battery Assistance"
+        imageDescription="Our equipped mobile response vehicles carry high-capacity jump packs for all engine sizes."
         title="Surge-Protected Equipment"
         content={[
           <p key="1">We use heavy-duty, surge-protected equipment designed specifically to safely start both standard and high-performance modern vehicles. We do this without risking any damage to the vehicle&apos;s delicate onboard electronics.</p>,

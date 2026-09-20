@@ -83,8 +83,10 @@ export default function CarLockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout/content-1.webp"
+        imageSrc="/images/services/car-lockout/auckland-emergency-car-lockout-technician.webp"
         imageAlt="Technician providing safe car lockout assistance"
+        imageTitle="Auckland Car Lockout Service"
+        imageDescription="Mobile technician providing emergency, non-destructive car lockout assistance across Auckland."
         title="Fast & Reliable Car Lockout Services"
         content={[
           <p key="1">Getting locked out of your vehicle is frustrating. Our commercial and residential repair and maintenance team provides fast and professional car lockout assistance. We use safe techniques to get you back on the road quickly.</p>
@@ -102,8 +104,10 @@ export default function CarLockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout/content-2.webp"
+        imageSrc="/images/services/car-lockout/damage-free-vehicle-entry-tools.webp"
         imageAlt="Damage-free vehicle entry tools"
+        imageTitle="Damage-Free Vehicle Entry"
+        imageDescription="Specialized vehicle entry tools ensuring no damage to your car paint or weather stripping."
         title="Damage-Free Entry Guaranteed"
         content={[
           <p key="1">We prioritize the safety of your vehicle. Using the latest tools, we guarantee a damage-free entry for all car models. Trust our comprehensive repair and maintenance experts to handle the job with precision.</p>

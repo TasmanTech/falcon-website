@@ -96,8 +96,10 @@ export default function SmartLockServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/smart-lock/content-1.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-services-auckland.webp"
         imageAlt="Smart lock installation on a door"
+        imageTitle="Smart Lock Specialists"
+        imageDescription="Comprehensive smart lock services including installation, repair, and programming in Auckland."
         title="Modern Convenience with Smart Lock Systems"
         content={[
           <p key="1">Upgrade your property with intelligent security solutions. Smart locks offer keyless entry and remote access control. Our commercial and residential repair and maintenance experts install these systems flawlessly.</p>

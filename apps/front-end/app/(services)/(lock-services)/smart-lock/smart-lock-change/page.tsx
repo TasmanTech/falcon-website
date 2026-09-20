@@ -89,8 +89,10 @@ export default function SmartLockChangePage() {
           <p key="1">Upgrading to electronic and smart access systems is a vital step in modernising both commercial facilities and residential homes. We provide robust, end-to-end installation services for a wide variety of digital hardware.</p>,
           <p key="2">Transitioning away from traditional physical keys not only enhances your convenience but allows for detailed tracking, temporary access codes, and immediate revocation of privileges without the need for manual hardware rekeying.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-change/content-1.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-change/smart-lock-replacement-auckland.webp"
         imageAlt="Modern smart lock installed on a front door"
+        imageTitle="Smart Lock Replacement"
+        imageDescription="Upgrading outdated mechanical locks to high-security electronic smart lock systems."
         photoPosition="left"
         theme="light"
       />
@@ -110,8 +112,10 @@ export default function SmartLockChangePage() {
           <p key="1">We don&apos;t just screw the hardware into the door; we take the necessary time to securely mount the system and actively assist you with the initial network configuration.</p>,
           <p key="2">Experience the absolute convenience of keyless entry today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to evaluate and upgrade your property anywhere in Auckland.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-change/content-2.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-change/commercial-smart-lock-upgrade.webp"
         imageAlt="Smartphone connecting to a smart lock"
+        imageTitle="Commercial Smart Lock Upgrades"
+        imageDescription="Securing commercial premises with robust, modern keyless entry replacements."
         photoPosition="right"
         theme="light"
       />

@@ -89,8 +89,10 @@ export default function SmartLockInstallationPage() {
           <p key="1">Whether you are expertly fitting out a brand new commercial office, building a modern residential extension, or simply replacing an old, damaged door with a completely blank one, a fresh smart lock installation requires significant precision.</p>,
           <p key="2">Our highly skilled property maintenance team is fully equipped to accurately drill, mortise, and align the door frame to perfectly accommodate modern digital and smart hardware, ensuring totally seamless operation right from day one.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-installation/content-1.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-installation/smart-lock-installation-auckland.webp"
         imageAlt="Drilling bore holes into a new door for a smart lock"
+        imageTitle="Smart Lock Installation"
+        imageDescription="Professional installation of digital and biometric smart locks for modern home security."
         photoPosition="left"
         theme="light"
       />
@@ -110,8 +112,10 @@ export default function SmartLockInstallationPage() {
           <p key="1">After carefully prepping the door and physically mounting the hardware, we ensure all electronic components are correctly configured and thoroughly tested.</p>,
           <p key="2">We charge a simple, incredibly clear <strong>$20 flat call-out fee</strong> to come to your location anywhere in Auckland and begin your comprehensive smart lock setup.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-installation/content-2.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-installation/residential-smart-lock-fitting.webp"
         imageAlt="Connecting internal wiring for a smart keypad"
+        imageTitle="Seamless Smart Lock Fitting"
+        imageDescription="Clean and precise fitting of electronic locks into existing wooden or metal doors."
         photoPosition="right"
         theme="light"
       />

@@ -84,8 +84,10 @@ export default function LockChangePage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lock-change-installation/content-1.webp"
+        imageSrc="/images/services/lock/lock-change-installation/lock-installation-service-auckland.webp"
         imageAlt="Professional hardware replacement tools"
+        imageTitle="Lock Installation Service"
+        imageDescription="Installing new, high-security deadbolts and handle sets for improved property defense."
         title="Upgrading Your Security"
         content={[
           <p key="1">Whether you&apos;re moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance. We operate on a transparent and highly affordable <strong>$20 flat call-out fee</strong>.</p>,
@@ -105,8 +107,10 @@ export default function LockChangePage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lock-change-installation/content-2.webp"
+        imageSrc="/images/services/lock/lock-change-installation/new-door-lock-fitting.webp"
         imageAlt="Modern hardware solutions installed correctly"
+        imageTitle="New Door Lock Fitting"
+        imageDescription="Professional mortising and fitting of fresh locks on wooden, aluminum, and composite doors."
         title="Precision Installation"
         content={[
           <p key="1">We provide professional installation for a wide range of reliable, high-quality hardware. Alternatively, if you have already purchased compatible hardware, we can step in to provide expert, flawless installation services.</p>,

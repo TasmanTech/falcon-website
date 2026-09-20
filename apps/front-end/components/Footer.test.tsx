@@ -16,7 +16,7 @@ describe('Footer Component', () => {
   it('renders footer links and copyright', () => {
     render(<Footer />);
     expect(screen.getByText(/All rights reserved/)).toBeInTheDocument();
-    expect(screen.getByText('Lockout Services')).toBeInTheDocument();
+    expect(screen.getByText('Car Lockout')).toBeInTheDocument();
     expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
   });
 });

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -5,6 +6,7 @@ interface PhotoContentSectionProps {
   imageSrc: string;
   imageAlt: string;
   imageTitle?: string;
+  imageDescription?: string;
   title: string;
   content: React.ReactNode[];
   ctaText?: string;
@@ -17,6 +19,7 @@ export default function PhotoContentSection({
   imageSrc,
   imageAlt,
   imageTitle = "",
+  imageDescription = "",
   title,
   content,
   ctaText,
@@ -28,6 +31,7 @@ export default function PhotoContentSection({
   const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
 
   const isLeft = photoPosition === 'left';
+  const descriptionId = React.useId();
 
   return (
     <section className={`py-24 ${bgClass} ${textClass}`}>
@@ -39,10 +43,16 @@ export default function PhotoContentSection({
                 src={imageSrc}
                 alt={imageAlt}
                 title={imageTitle}
+                aria-describedby={imageDescription ? descriptionId : undefined}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
+              {imageDescription && (
+                <span id={descriptionId} className="sr-only">
+                  {imageDescription}
+                </span>
+              )}
             </div>
           </div>
           <div className="w-full md:w-1/2">

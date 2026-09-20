@@ -89,8 +89,10 @@ export default function SmartLockRepairPage() {
           <p key="1">When a smart lock or electronic access system suddenly fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These highly modern systems require specialised knowledge that goes far beyond traditional mechanical hardware.</p>,
           <p key="2">Our dedicated property maintenance experts are fully equipped to troubleshoot both the physical mechanisms and the electronic components of your smart hardware, providing incredibly comprehensive diagnostics to get your system back online quickly.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/content-1.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-repair-programming-auckland.webp"
         imageAlt="Troubleshooting an electronic lock keypad"
+        imageTitle="Smart Lock Repair Auckland"
+        imageDescription="Expert diagnostic and repair services for commercial and residential smart lock systems."
         photoPosition="left"
         theme="light"
       />
@@ -110,8 +112,10 @@ export default function SmartLockRepairPage() {
           <p key="1">Instead of immediately jumping to replace expensive electronic boards, we meticulously assess the entire door structure. This thoughtful methodology often saves our clients significant time and costly replacement parts.</p>,
           <p key="2">If you are currently experiencing issues with your digital access systems, contact us today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to expertly evaluate the problem directly on-site in Auckland.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/content-2.webp"
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-integration-specialists.webp"
         imageAlt="Testing smart lock connectivity on a smartphone"
+        imageTitle="Smart Lock Programming"
+        imageDescription="Reprogramming and system integration for keyless entry and access control systems."
         photoPosition="right"
         theme="light"
       />

@@ -140,9 +140,10 @@ export default function Home() {
           <p key="2">From routine checks to emergency fixes, including securing compromised access points, our dedicated team ensures your property remains in optimal condition. We also partner with a top-tier web developer to offer digital solutions, meaning we can help your business thrive both physically and online through expert web design.</p>,
           <p key="3">Our team understands that property maintenance is an ongoing programme of work, not just a one-off job. We customise our approach to fit your specific schedule and budget, minimising disruption to your daily life or commercial operations.</p>
         ]}
-        imageSrc="/images/content-1.webp"
+        imageSrc="/images/falcon-access-locksmith-services.webp"
         imageAlt="General Repair Tools"
-        imageTitle="General Maintenance Equipment"
+        imageTitle="Falcon Access Locksmith Services"
+        imageDescription="Your trusted partner for commercial and residential repair, maintenance, and locking solutions."
         ctaText="Connect Now"
         ctaHref="/contact"
         photoPosition="left"
@@ -165,9 +166,10 @@ export default function Home() {
           <p key="1">While we handle a vast range of general repairs, one of our highly specialised services is commercial and residential lockout assistance. Being locked out of your business or home is incredibly stressful, which is exactly why we prioritise rapid, non-destructive entry methods. We aim to have your door open quickly, safely, and without unnecessary damage to your existing hardware.</p>,
           <p key="2">Beyond emergency lockouts, we also provide comprehensive security upgrades, lock replacements, and rekeying. We ensure that every access point in your building is fully operational and secure, creating a robust defence against unauthorised access. Trust us to handle your physical security with the utmost professionalism.</p>
         ]}
-        imageSrc="/images/content-2.webp"
+        imageSrc="/images/auckland-mobile-locksmith-van.webp"
         imageAlt="Specialised Locksmith Tools"
-        imageTitle="Lock and Hardware Repair"
+        imageTitle="Auckland Mobile Services"
+        imageDescription="Our fully-equipped mobile service vehicles ready to dispatch across the greater Auckland region."
         ctaText="View Lock Services"
         ctaHref="/lockout"
         photoPosition="right"
