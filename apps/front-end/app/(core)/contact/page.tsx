@@ -2,11 +2,14 @@ import { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  alternates: {
+    canonical: '/contact',
+  },
+  title: 'Contact Our Auckland Team',
   description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
   keywords: 'Contact Falcon Access, Property Maintenance Contact, Repair Services New Zealand',
   openGraph: {
-    title: 'Contact Us | Falcon Access',
+    title: 'Contact Our Auckland Team | Falcon Access',
     description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
     url: 'https://falconaccess.co.nz/contact',
   }
@@ -43,7 +46,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-            Whether you need a quote for an upcoming project or require urgent assistance, our team is ready to help. Reach out using the details below or fill out our contact form.
+            Do you need a quote? Or do you need fast help? Our team is ready. Use the form below to talk to us.
           </p>
         </div>
 
@@ -60,7 +63,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Phone</h3>
                     <a href="tel:+6492431404" className="text-lg font-bold text-brand-dark hover:text-brand-accent transition-colors">+64 9 243 1404</a>
-                    <p className="text-sm text-brand-dark/70 font-inter mt-1">Available 24/7 for emergencies.</p>
+                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We are open 24/7 for fast help.</p>
                   </div>
                 </div>
 
@@ -71,7 +74,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Email</h3>
                     <a href="mailto:info@falconaccess.co.nz" className="text-lg font-bold text-brand-dark hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a>
-                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We aim to respond within 24 hours.</p>
+                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We aim to reply within 24 hours.</p>
                   </div>
                 </div>
               </div>

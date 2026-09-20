@@ -44,9 +44,10 @@ export default function PhotoContentSection({
                 alt={imageAlt}
                 title={imageTitle}
                 aria-describedby={imageDescription ? descriptionId : undefined}
-                fill
+                width={1024}
+                height={1024}
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover w-full h-full"
               />
               {imageDescription && (
                 <span id={descriptionId} className="sr-only">

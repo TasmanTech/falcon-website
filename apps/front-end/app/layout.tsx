@@ -16,6 +16,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://falconaccess.co.nz'),
   title: {
     template: "%s | Falcon Access",
     default: "Falcon Access | High Quality Locksmithing in NZ",

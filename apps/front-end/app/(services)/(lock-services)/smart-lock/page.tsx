@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/smart-lock',
+  },
   title: 'Smart Lock Installation Auckland',
   description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming for residential and commercial properties.',
   keywords: 'Smart Locks, Smart Lock Installation, Smart Lock Repair, New Zealand, web design, web development, Falcon Access',
@@ -76,19 +79,19 @@ export default function SmartLockServicesPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
           <Link href="/smart-lock/smart-lock-installation" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play">
-              <h3 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Installation</h3>
+              <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Installation</h2>
               <p className="text-brand-dark/70 text-sm">Professional installation of cutting-edge smart lock hardware for your property.</p>
             </div>
           </Link>
           <Link href="/smart-lock/smart-lock-change" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play" style={{ animationDelay: '100ms' }}>
-              <h3 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Change &amp; Upgrade</h3>
+              <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Change &amp; Upgrade</h2>
               <p className="text-brand-dark/70 text-sm">Upgrade your old mechanical locks to modern, secure smart lock systems.</p>
             </div>
           </Link>
           <Link href="/smart-lock/smart-lock-repair-programming" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play" style={{ animationDelay: '200ms' }}>
-              <h3 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Repair &amp; Programming</h3>
+              <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Repair &amp; Programming</h2>
               <p className="text-brand-dark/70 text-sm">Specialised diagnostics, mechanical repairs, and digital reprogramming.</p>
             </div>
           </Link>
@@ -102,7 +105,7 @@ export default function SmartLockServicesPage() {
         imageDescription="Comprehensive smart lock services including installation, repair, and programming in Auckland."
         title="Modern Convenience with Smart Lock Systems"
         content={[
-          <p key="1">Upgrade your property with intelligent security solutions. Smart locks offer keyless entry and remote access control. Our commercial and residential repair and maintenance experts install these systems flawlessly.</p>
+          <p key="1">Update your property with smart security. Smart locks let you in without keys. Our team will set them up perfectly.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -111,7 +114,7 @@ export default function SmartLockServicesPage() {
       <TextContentSection
         title="Seamless Integration and Support"
         content={[
-          <p key="1">We connect your new smart locks to your existing smart home or business network. Our technicians ensure everything works smoothly together. This level of technical integration is a core strength, just like our web design and web development expertise.</p>
+          <p key="1">We connect your new smart locks to your Wi-Fi network. Our team makes sure it works smoothly. We do this well, just like our web design.</p>
         ]}
         theme="dark"
       />

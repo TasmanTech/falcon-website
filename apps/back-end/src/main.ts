@@ -1,9 +1,14 @@
+import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { RedirectFilter } from './redirect.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Apply Helmet to prevent MIME sniffing and other vulnerabilities
+  app.use(helmet());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -12,6 +17,9 @@ async function bootstrap() {
       transform: true,
     }),
   );
+
+  // Catch 404s and redirect snoops
+  app.useGlobalFilters(new RedirectFilter());
 
   app.enableCors();
 

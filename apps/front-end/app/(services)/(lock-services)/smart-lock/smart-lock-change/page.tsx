@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/smart-lock/smart-lock-change',
+  },
   title: 'Auckland Smart System Upgrades',
   description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
   keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, web design, web development, Falcon Access',
@@ -86,8 +89,8 @@ export default function SmartLockChangePage() {
       <PhotoContentSection
         title="Intelligent Access Control"
         content={[
-          <p key="1">Upgrading to electronic and smart access systems is a vital step in modernising both commercial facilities and residential homes. We provide robust, end-to-end installation services for a wide variety of digital hardware.</p>,
-          <p key="2">Transitioning away from traditional physical keys not only enhances your convenience but allows for detailed tracking, temporary access codes, and immediate revocation of privileges without the need for manual hardware rekeying.</p>
+          <p key="1">Moving to smart locks is a key step to update your home or shop. We give strong setup services for many types of digital locks.</p>,
+          <p key="2">Moving away from metal keys is easy. It lets you track who comes in. You can give short-term codes. You can stop access fast without changing the lock.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-change/smart-lock-replacement-auckland.webp"
         imageAlt="Modern smart lock installed on a front door"
@@ -100,8 +103,8 @@ export default function SmartLockChangePage() {
       <TextContentSection
         title="Professional Installation Matters"
         content={[
-          <p key="1">While many smart locks are heavily marketed as simple DIY projects, improper installation can lead to binding mechanisms, heavily reduced battery life, and severely compromised security.</p>,
-          <p key="2">Our property maintenance team completely understands these complexities, much like a seasoned team handles complex web development and flawless web design. We ensure that the door frame, latch hole, and strike plate are perfectly aligned for a truly reliable setup.</p>
+          <p key="1">Many smart locks look like easy DIY jobs. But a bad fit can cause parts to stick. It can drain the power fast and leave your home unsafe.</p>,
+          <p key="2">Our team knows these hard tasks well. We work like a good web team doing web design. We make sure the door frame and holes are lined up for a safe fit.</p>
         ]}
         theme="white"
       />
@@ -109,8 +112,8 @@ export default function SmartLockChangePage() {
       <PhotoContentSection
         title="Seamless Digital Integration"
         content={[
-          <p key="1">We don&apos;t just screw the hardware into the door; we take the necessary time to securely mount the system and actively assist you with the initial network configuration.</p>,
-          <p key="2">Experience the absolute convenience of keyless entry today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to evaluate and upgrade your property anywhere in Auckland.</p>
+          <p key="1">We do not just screw the lock to the door. We take time to mount it right. We also help you set up the Wi-Fi link.</p>,
+          <p key="2">Try the ease of keyless entry today. We charge a clear <strong>$20 flat call-out fee</strong> to check and upgrade your home in Auckland.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-change/commercial-smart-lock-upgrade.webp"
         imageAlt="Smartphone connecting to a smart lock"

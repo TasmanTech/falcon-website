@@ -2,10 +2,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+  title: 'Website Terms of Service',
   description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
   openGraph: {
-    title: 'Terms of Service | Falcon Access',
+    title: 'Website Terms of Service | Falcon Access',
     description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
     url: 'https://falconaccess.co.nz/terms-of-service',
   }

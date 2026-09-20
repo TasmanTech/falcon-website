@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/lock/rekey',
+  },
   title: 'Auckland Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
   keywords: 'Rekeying, Lock Rekey, Hardware Rekeying, Commercial Security, web design, web development, Falcon Access',
@@ -86,8 +89,8 @@ export default function RekeyPage() {
       <PhotoContentSection
         title="Economical Access Control"
         content={[
-          <p key="1">When you critically need to restrict access to a building, you don&apos;t necessarily have to replace all the hardware. Rekeying is a practical commercial and residential property maintenance solution that expertly alters the internal components of your existing mechanisms.</p>,
-          <p key="2">This service entirely renders all previously issued keys useless and quickly provides you with a fresh set, granting you immediate peace of mind at a fraction of the cost of full hardware replacement.</p>
+          <p key="1">You do not always have to buy new locks to stop access. Rekeying is a smart fix. We change the inside parts of your old locks.</p>,
+          <p key="2">This makes all old keys useless. We give you a fresh set of keys. This gives you peace of mind at a low cost.</p>
         ]}
         imageSrc="/images/services/lock/rekey/lock-rekeying-service-auckland.webp"
         imageAlt="Internal pins and springs of a door lock"
@@ -100,8 +103,8 @@ export default function RekeyPage() {
       <TextContentSection
         title="When Should You Rekey?"
         content={[
-          <p key="1">We highly recommend rekeying whenever there is a significant change in occupancy or a potential security risk. This is extremely common for commercial spaces experiencing employee turnover or residential properties changing tenants or owners.</p>,
-          <p key="2">If your current hardware is physically sound and operating smoothly, rekeying is the honest, efficient recommendation to secure your premises. Much like seamless web design relies on excellent web development behind the scenes, seamless security relies on well-configured internal lock mechanisms.</p>
+          <p key="1">We suggest rekeying when there is a big change in occupancy or a risk. This is very common for shops with staff changes or homes with new owners.</p>,
+          <p key="2">If your locks are physically sound, rekeying is the honest choice to stay safe. Much like good web design relies on good code, good security relies on good lock parts.</p>
         ]}
         theme="white"
       />
@@ -109,8 +112,8 @@ export default function RekeyPage() {
       <PhotoContentSection
         title="Fast & Efficient Service"
         content={[
-          <p key="1">Our mobile units carry all the necessary precision tools to efficiently rekey your property on-site. We are highly trained in working with a vast array of major lock brands and intricate commercial systems.</p>,
-          <p key="2">Take total control of your building&apos;s access today. Reach out to our maintenance team for a simple, completely transparent <strong>$20 flat call-out fee</strong> to your location.</p>
+          <p key="1">Our mobile units carry all the tools to rekey your property on-site. We are trained to work with many major lock brands and shop systems.</p>,
+          <p key="2">Take total control of your access today. Reach out to our team for a simple, clear <strong>$20 flat call-out fee</strong> to your place.</p>
         ]}
         imageSrc="/images/services/lock/rekey/residential-lock-rekey-technician.webp"
         imageAlt="Rekeying a commercial hardware cylinder"

@@ -54,7 +54,7 @@ export default function IconListSection({
               <div className="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mb-6 text-brand-accent">
                 {item.icon}
               </div>
-              <h4 className="text-xl font-bold font-montserrat mb-3">{item.title}</h4>
+              <h3 className="text-xl font-bold font-montserrat mb-3">{item.title}</h3>
               <p className="text-brand-dark/70 font-inter">
                 {item.description}
               </p>

@@ -4,6 +4,9 @@ import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/about',
+  },
   title: 'About Our Commercial & Residential Services',
   description: 'Learn about Falcon Access. We provide honest, practical, and highly reliable commercial and residential repair and maintenance services across New Zealand.',
   keywords: 'About Falcon Access, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
@@ -44,15 +47,15 @@ export default function AboutPage() {
           About Falcon Access
         </h1>
         <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto">
-          Honest, practical, and reliable commercial and residential property maintenance.
+          Honest, real, and good property care for your home or shop.
         </p>
       </div>
 
       <PhotoContentSection
         title="Who We Are"
         content={[
-          <p key="1">Falcon Access is a dedicated property maintenance team operating across New Zealand. We specialise in comprehensive commercial and residential repair services, handling everything from routine fixes to urgent troubleshooting.</p>,
-          <p key="2">While we offer specialised services like locksmithing and security hardware installation, our true strength lies in our versatility and readiness to tackle any general maintenance challenge your facility or home might face.</p>
+          <p key="1">Falcon Access is a great team in New Zealand. We fix homes and shops. We do hard work on doors and locks.</p>,
+          <p key="2">We do lock work well. But we also do general fixes. We are ready to help with any issue your home might face.</p>
         ]}
         imageSrc="/falcon_access_logo_about.webp"
         imageAlt="Falcon Access Official Logo"
@@ -65,8 +68,8 @@ export default function AboutPage() {
       <TextContentSection
         title="Our Honest Approach"
         content={[
-          <p key="1">We don&apos;t believe in relying on flashy, unsubstantiated credentials. Our reputation is built purely on practical, honest, and reliable hard work. When you call us, you get straight answers and effective solutions without unnecessary upselling.</p>,
-          <p key="2">Every property has unique demands, and we approach each job with a commitment to doing things right the first time, ensuring long-lasting stability and functionality for your spaces.</p>
+          <p key="1">We do honest work. We do not use fake titles. You get real help when you call. We give good fixes fast.</p>,
+          <p key="2">Each home is different. We do the job right the first time. We make sure your space is safe.</p>
         ]}
         theme="dark"
       />

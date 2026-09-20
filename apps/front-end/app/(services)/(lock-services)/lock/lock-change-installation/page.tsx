@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/lock/lock-change-installation',
+  },
   title: 'Auckland Door Hardware & Lock Replacement',
   description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
   keywords: 'Lock Replacement, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, web design, web development, Falcon Access',
@@ -90,8 +93,9 @@ export default function LockChangePage() {
         imageDescription="Installing new, high-security deadbolts and handle sets for improved property defense."
         title="Upgrading Your Security"
         content={[
-          <p key="1">Whether you&apos;re moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance. We operate on a transparent and highly affordable <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">Our team specialises in the precise installation of both standard and specialised hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly, keeping your assets strictly secure.</p>
+          <p key="1">You might be moving to a new place. Or maybe you need to fix old locks. Putting in new locks is a key part of keeping your property safe.</p>,
+          <p key="2">We are property care experts. We provide strong and reliable lock fit services tailored to your exact needs.</p>,
+          <p key="3">Our team is great at putting in new hardware. We make sure all parts fit perfectly. We keep your assets safe and secure.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -100,8 +104,8 @@ export default function LockChangePage() {
       <TextContentSection
         title="When to Consider Replacement"
         content={[
-          <p key="1">While we always attempt repairs first, there are scenarios where a full replacement is the most practical and cost-effective choice. If mechanisms are structurally damaged, severely corroded, or visibly compromised, a repair is only a temporary patch. Upgrading is a much smarter long-term solution.</p>,
-          <p key="2">Just as expert web development and robust web design form the secure, unshakeable foundation of a great digital presence, high-quality physical hardware forms the foundation of your property&apos;s security. If you&apos;ve recently experienced a turnover in staff or tenants, you need absolute certainty about access rights, making replacement the safest option.</p>
+          <p key="1">We try to fix locks first. But sometimes, buying a new lock is the best choice. If your lock is broken or badly rusted, a fix will not last long. A new lock is a smart choice for the long term.</p>,
+          <p key="2">Good web design keeps a site safe. Good locks keep your property safe. If you have new staff or tenants, you need to be sure about access. A new lock is the safest choice.</p>
         ]}
         theme="white"
       />
@@ -113,8 +117,8 @@ export default function LockChangePage() {
         imageDescription="Professional mortising and fitting of fresh locks on wooden, aluminum, and composite doors."
         title="Precision Installation"
         content={[
-          <p key="1">We provide professional installation for a wide range of reliable, high-quality hardware. Alternatively, if you have already purchased compatible hardware, we can step in to provide expert, flawless installation services.</p>,
-          <p key="2">For standard residential and commercial doors, a complete hardware swap typically takes less than an hour per door. This greatly minimises disruption to your home life or business operations.</p>
+          <p key="1">We install a wide range of good hardware. If you already bought a lock, we can put it in for you. We give expert setup services.</p>,
+          <p key="2">For most doors, a hardware swap takes less than an hour per door. This means less disruption to your home or business.</p>
         ]}
         photoPosition="right"
         theme="light"
@@ -127,17 +131,17 @@ export default function LockChangePage() {
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
             title: 'Commercial Grade Hardware',
-            description: "Heavy-duty latches, push bars, mortise locks, and access control components designed for high traffic and durability."
+            description: "Strong latches, push bars, and locks made for high traffic and long life."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
             title: 'Residential Locks & Latches',
-            description: "Standard deadbolts, knob sets, lever handles, and secure window latches to protect your home."
+            description: "Deadbolts, knobs, levers, and safe window latches to protect your home."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
             title: 'Digital & Smart Keypads',
-            description: "Modern digital keypads and smart deadbolts that integrate with facility management or home automation systems."
+            description: "Modern keypads and smart locks that connect with your home or shop system."
           }
         ]}
         theme="white"
