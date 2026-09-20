@@ -4,12 +4,12 @@ import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 
 export const metadata: Metadata = {
-  title: 'About Us',
-  description: "Learn more about Falcon Access. We provide premium locksmithing services across NZ with a focus on reliability and high-quality workmanship.",
-  keywords: 'About Us, Commercial Repair, Residential Maintenance, Property Maintenance New Zealand, Falcon Access',
+  title: 'About Our Commercial & Residential Services',
+  description: 'Learn about Falcon Access. We provide honest, practical, and highly reliable commercial and residential repair and maintenance services across New Zealand.',
+  keywords: 'About Falcon Access, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
   openGraph: {
-    title: 'About Us | Falcon Access',
-    description: 'Learn more about Falcon Access. We are dedicated to providing honest, practical, and reliable commercial and residential repair and maintenance services across New Zealand.',
+    title: 'About Our Commercial & Residential Services',
+    description: 'Learn about Falcon Access. We provide honest, practical, and highly reliable commercial and residential repair and maintenance services across New Zealand.',
     url: 'https://falconaccess.co.nz/about',
   }
 };
@@ -54,10 +54,13 @@ export default function AboutPage() {
           <p key="1">Falcon Access is a dedicated property maintenance team operating across New Zealand. We specialise in comprehensive commercial and residential repair services, handling everything from routine fixes to urgent troubleshooting.</p>,
           <p key="2">While we offer specialised services like locksmithing and security hardware installation, our true strength lies in our versatility and readiness to tackle any general maintenance challenge your facility or home might face.</p>
         ]}
-        imageSrc="/images/about_photo.webp"
-        imageAlt="Cartoonish illustration representing our team and tools"
+        imageSrc="/falcon_access_logo_about.webp"
+        imageAlt="Falcon Access Official Logo"
+        imageTitle="Falcon Access Property Maintenance"
+        imageDescription="The official logo of Falcon Access, a trusted New Zealand commercial and residential repair service."
         photoPosition="left"
-        theme="light" imageTitle={''} />
+        theme="light"
+      />
 
       <TextContentSection
         title="Our Honest Approach"

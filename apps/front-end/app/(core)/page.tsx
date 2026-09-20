@@ -207,7 +207,7 @@ export default function Home() {
       <CTASection theme="catchy" />
 
       <FAQSection
-        title="Frequently Asked Questions"
+        title="General Maintenance & Locksmith FAQs"
         subtitle="Common questions about our repair and maintenance services."
         faqs={[
           {

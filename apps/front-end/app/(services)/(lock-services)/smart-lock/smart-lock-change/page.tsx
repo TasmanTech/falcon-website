@@ -126,17 +126,17 @@ export default function SmartLockChangePage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: 'Auckland Smart System Upgrades',
+            title: 'Keyless Entry Options',
             description: "Eliminate the hassle of lost physical keys. Enter using PIN codes, biometric scanners, or smartphone applications."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
-            title: 'Auckland Smart System Upgrades',
+            title: 'Access Tracking & Monitoring',
             description: "Monitor exactly who enters your commercial facility and at what time, providing vital oversight for business managers."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-            title: 'Auckland Smart System Upgrades',
+            title: 'Temporary Guest Codes',
             description: "Generate temporary codes for contractors, cleaners, or guests that automatically expire after a scheduled duration."
           }
         ]}
@@ -146,7 +146,7 @@ export default function SmartLockChangePage() {
       <CTASection theme="catchy" />
 
       <FAQSection
-        title="Frequently Asked Questions"
+        title="Smart Lock Upgrade FAQs"
         subtitle="Common questions about smart lock upgrades."
         faqs={[
           {

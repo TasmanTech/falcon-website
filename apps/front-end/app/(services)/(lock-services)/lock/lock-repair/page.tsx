@@ -126,17 +126,17 @@ export default function LockRepairPage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>,
-            title: 'Auckland Hardware & Lock Repair',
+            title: 'Strike Plate Realignment',
             description: "Often caused by building settlement or sagging doors, preventing the latch from properly securing into the frame."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
-            title: 'Auckland Hardware & Lock Repair',
+            title: 'Internal Mechanism Repair',
             description: "Broken springs, seized cylinders, or snapped tailpieces that prevent smooth operation."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" /></svg>,
-            title: 'Auckland Hardware & Lock Repair',
+            title: 'Friction & Sticking Resolution',
             description: "Hardware that requires excessive force to turn or pull, often remedied through proper cleaning and lubrication."
           }
         ]}
@@ -146,7 +146,7 @@ export default function LockRepairPage() {
       <CTASection theme="catchy" />
 
       <FAQSection
-        title="Frequently Asked Questions"
+        title="Lock Mechanism Repair FAQs"
         subtitle="Common questions about our repair services."
         faqs={[
           {
