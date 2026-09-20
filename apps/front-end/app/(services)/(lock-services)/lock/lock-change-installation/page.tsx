@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/lock/lock-change-installation',
+    canonical: "/lock/lock-change-installation",
   },
   title: 'Auckland Door Hardware & Lock Replacement',
   description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Auckland Door Hardware & Lock Replacement',
     description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
-    url: 'https://falconaccess.co.nz/lock-change',
+    url: "/lock/lock-change-installation",
   }
 };
 

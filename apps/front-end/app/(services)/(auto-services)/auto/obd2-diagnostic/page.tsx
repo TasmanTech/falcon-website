@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/auto/obd2-diagnostic',
+    canonical: "/auto/obd2-diagnostic",
   },
   title: 'Mobile Auto Electrical Diagnostics Auckland',
   description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mobile Auto Electrical Diagnostics Auckland',
     description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
-    url: 'https://falconaccess.co.nz/auto/obd2-diagnostic',
+    url: "/auto/obd2-diagnostic",
   }
 };
 

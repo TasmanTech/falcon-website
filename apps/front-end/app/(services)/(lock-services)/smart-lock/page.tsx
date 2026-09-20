@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/smart-lock',
+    canonical: "/smart-lock",
   },
   title: 'Smart Lock Installation Auckland',
   description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming for residential and commercial properties.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Smart Lock Installation Auckland',
     description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming.',
-    url: 'https://falconaccess.co.nz/smart-lock',
+    url: "/smart-lock",
   }
 };
 

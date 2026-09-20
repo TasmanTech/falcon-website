@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/auto',
+    canonical: "/auto",
   },
   title: 'Mobile Auto Locksmith Auckland',
   description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts 24/7.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mobile Auto Locksmith Auckland',
     description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts 24/7.',
-    url: 'https://falconaccess.co.nz/auto',
+    url: "/auto",
   }
 };
 
