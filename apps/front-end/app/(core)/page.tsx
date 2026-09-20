@@ -171,7 +171,7 @@ export default function Home() {
         imageTitle="Auckland Mobile Services"
         imageDescription="Our fully-equipped mobile service vehicles ready to dispatch across the greater Auckland region."
         ctaText="View Lock Services"
-        ctaHref="/lockout"
+        ctaHref="/lock"
         photoPosition="right"
         theme="light"
       />

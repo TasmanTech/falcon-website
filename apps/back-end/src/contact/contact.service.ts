@@ -3,6 +3,7 @@ import {
   Logger,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { CreateContactDto } from './dto/create-contact.dto';
 import * as nodemailer from 'nodemailer';
 
@@ -13,16 +14,16 @@ import * as nodemailer from 'nodemailer';
 export class ContactService {
   private transporter: nodemailer.Transporter;
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp-relay.gmail.com',
-      port: Number(process.env.SMTP_PORT) || 465,
+      host: this.configService.get<string>('SMTP_HOST') || 'smtp-relay.gmail.com',
+      port: Number(this.configService.get<number>('SMTP_PORT')) || 465,
       secure: true,
       auth: {
         type: 'OAuth2',
-        user: process.env.SMTP_FROM,
-        serviceClient: process.env.SERVICE_ACCOUNT_CLIENT_ID,
-        privateKey: process.env.SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        user: this.configService.get<string>('SMTP_FROM'),
+        serviceClient: this.configService.get<string>('SERVICE_ACCOUNT_CLIENT_ID'),
+        privateKey: this.configService.get<string>('SERVICE_ACCOUNT_PRIVATE_KEY')?.replace(/\\n/g, '\n'),
       },
     });
   }
@@ -84,15 +85,15 @@ export class ContactService {
       await Promise.all([
         // Email to the company
         this.transporter.sendMail({
-          from: process.env.SMTP_FROM,
-          to: process.env.SMTP_FROM, // Send to the company's email
+          from: this.configService.get<string>('SMTP_FROM'),
+          to: this.configService.get<string>('SMTP_FROM'), // Send to the company's email
           subject: `New Inquiry: ${createContactDto.name}`,
           text: `Name: ${createContactDto.name}\nEmail: ${createContactDto.email}\n\nMessage:\n${createContactDto.message}`,
           html: companyEmailHtml,
         }),
         // Auto-reply to the sender
         this.transporter.sendMail({
-          from: process.env.SMTP_FROM,
+          from: this.configService.get<string>('SMTP_FROM'),
           to: createContactDto.email,
           subject: 'We received your inquiry - Falcon Access',
           text: `Hello ${createContactDto.name},\n\nThank you for reaching out. We have received your message and will respond shortly.\n\nYour message:\n${createContactDto.message}\n\nBest regards,\nThe Falcon Access Team`,
