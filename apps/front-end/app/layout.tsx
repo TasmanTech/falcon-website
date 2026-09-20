@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FloatingCTA from "../components/FloatingCTA";
+import AnalyticsWrapper from "@/components/AnalyticsWrapper";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import JsonLd from '@/components/JsonLd';
 
 const inter = Inter({
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
     default: "Falcon Access | High Quality Locksmithing in NZ",
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
-    openGraph: { title: "Falcon Access", description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.", url: "/" },
-    alternates: { canonical: "/" }
+  openGraph: { title: "Falcon Access", description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.", url: "/" },
+  alternates: { canonical: "/" }
 };
 
 export default function RootLayout({
@@ -89,6 +91,11 @@ export default function RootLayout({
         </main>
         <FloatingCTA />
         <Footer />
+        {process.env.NODE_ENV === "production" ? (
+          <AnalyticsWrapper>
+            <GoogleAnalytics gaId="G-2BELF6S2L5" />
+          </AnalyticsWrapper>
+        ) : null}
       </body>
     </html>
   );
