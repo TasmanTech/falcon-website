@@ -5,7 +5,11 @@ import Navbar from './Navbar';
 
 vi.mock('next/image', () => ({
   /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
-  default: ({ priority, ...props }: any) => <img {...props} />
+  default: (props: { priority?: boolean; src?: string; alt?: string; [key: string]: unknown }) => {
+    const imgProps = { ...props };
+    delete imgProps.priority;
+    return <img {...(imgProps as React.ImgHTMLAttributes<HTMLImageElement>)} />;
+  }
 }));
 
 vi.mock('next/link', () => ({

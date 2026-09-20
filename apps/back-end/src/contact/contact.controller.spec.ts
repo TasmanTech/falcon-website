@@ -41,8 +41,9 @@ describe('ContactController', () => {
       service: 'general',
     };
 
+    const submitContactFormSpy = jest.spyOn(service, 'submitContactForm');
     const result = await controller.submitContactForm(dto);
-    expect(service.submitContactForm).toHaveBeenCalledWith(dto);
+    expect(submitContactFormSpy).toHaveBeenCalledWith(dto);
     expect(result).toEqual({ success: true, message: 'Message sent successfully.' });
   });
 });
