@@ -84,8 +84,10 @@ export default function obd2Page() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/obd2-diagnostic/content-1.webp"
+        imageSrc="/images/services/auto/obd2-diagnostic/obd2-vehicle-diagnostic-auckland.webp"
         imageAlt="Professional OBDII diagnostic scanner tool"
+        imageTitle="OBD2 Vehicle Diagnostics"
+        imageDescription="Comprehensive OBD2 electronic diagnostics to identify engine fault codes and dashboard warnings."
         title="Understand Your Vehicle's Faults"
         content={[
           <p key="1">A sudden <em>Check Engine</em> light can be incredibly alarming. Instead of taking expensive guesses at what might be wrong, our mobile OBDII diagnostic scanning provides clear, accurate data directly from your vehicle&apos;s computer. We travel Auckland wide to deliver this service quickly.</p>,
@@ -105,8 +107,10 @@ export default function obd2Page() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/obd2-diagnostic/content-2.webp"
+        imageSrc="/images/services/auto/obd2-diagnostic/car-code-reader-diagnostics.webp"
         imageAlt="Reading diagnostic trouble codes from a vehicle"
+        imageTitle="Car Code Reader Services"
+        imageDescription="Using professional-grade OBD2 scan tools to accurately diagnose vehicle computer issues."
         title="Empowering Repair Decisions"
         content={[
           <p key="1">Whether the issue is a loose petrol cap, a faulty oxygen sensor, or a severe cylinder misfire, knowing the exact error code lets you make smart, informed decisions about your vehicle&apos;s maintenance and repair programme.</p>,

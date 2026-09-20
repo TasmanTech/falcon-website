@@ -89,8 +89,10 @@ export default function RekeyPage() {
           <p key="1">When you critically need to restrict access to a building, you don&apos;t necessarily have to replace all the hardware. Rekeying is a practical commercial and residential property maintenance solution that expertly alters the internal components of your existing mechanisms.</p>,
           <p key="2">This service entirely renders all previously issued keys useless and quickly provides you with a fresh set, granting you immediate peace of mind at a fraction of the cost of full hardware replacement.</p>
         ]}
-        imageSrc="/images/services/lock/rekey/content-1.webp"
+        imageSrc="/images/services/lock/rekey/lock-rekeying-service-auckland.webp"
         imageAlt="Internal pins and springs of a door lock"
+        imageTitle="Lock Rekeying Service"
+        imageDescription="Cost-effective lock rekeying for new homeowners and businesses needing fresh keys."
         photoPosition="left"
         theme="light"
       />
@@ -110,8 +112,10 @@ export default function RekeyPage() {
           <p key="1">Our mobile units carry all the necessary precision tools to efficiently rekey your property on-site. We are highly trained in working with a vast array of major lock brands and intricate commercial systems.</p>,
           <p key="2">Take total control of your building&apos;s access today. Reach out to our maintenance team for a simple, completely transparent <strong>$20 flat call-out fee</strong> to your location.</p>
         ]}
-        imageSrc="/images/services/lock/rekey/content-2.webp"
+        imageSrc="/images/services/lock/rekey/residential-lock-rekey-technician.webp"
         imageAlt="Rekeying a commercial hardware cylinder"
+        imageTitle="Professional Lock Rekeying"
+        imageDescription="Adjusting lock cylinder pins to work with a new set of keys without replacing the hardware."
         photoPosition="right"
         theme="light"
       />

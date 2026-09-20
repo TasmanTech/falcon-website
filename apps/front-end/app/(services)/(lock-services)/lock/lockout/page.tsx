@@ -86,8 +86,10 @@ export default function LockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lockout/content-1.webp"
+        imageSrc="/images/services/lock/lockout/residential-lockout-service-auckland.webp"
         imageAlt="Professional lock bypass tools on a commercial door"
+        imageTitle="Residential Lockout Service"
+        imageDescription="Emergency door unlocking services for homes and apartments using non-destructive methods."
         title="Rapid Response When It Matters Most"
         content={[
           <p key="1">Being locked out of your commercial facility or residential home is far more than a minor inconvenience. It significantly disrupts your schedule and can compromise your safety. Our property maintenance team specialises in swift, effective lockout resolution across Auckland.</p>,
@@ -107,8 +109,10 @@ export default function LockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lockout/content-2.webp"
+        imageSrc="/images/services/lock/lockout/emergency-door-unlocking-tools.webp"
         imageAlt="Non-destructive entry techniques used by professionals"
+        imageTitle="Emergency Unlocking Tools"
+        imageDescription="Precision lock picking and bypassing techniques to safely grant access to your property."
         title="Non-Destructive Techniques"
         content={[
           <p key="1">We always prioritise non-destructive entry methods to significantly minimise the cost and hassle of replacing expensive hardware. Your property&apos;s physical defence is important to us, and we firmly strive to keep it entirely intact.</p>,

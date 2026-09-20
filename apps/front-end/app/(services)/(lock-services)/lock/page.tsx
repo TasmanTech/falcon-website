@@ -102,8 +102,10 @@ export default function LockServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/content-1.webp"
+        imageSrc="/images/services/lock/residential-commercial-locksmith-auckland.webp"
         imageAlt="Professional lock installation and repair"
+        imageTitle="Locksmith Services Auckland"
+        imageDescription="Full-service residential and commercial lock installation, repair, and emergency unlocking."
         title="Secure Your Property with Expert Lock Services"
         content={[
           <p key="1">Proper security begins with robust locks. Our commercial and residential repair and maintenance team provides top-quality lock installation and repair. We ensure your property remains safe and secure at all times.</p>

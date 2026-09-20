@@ -97,8 +97,10 @@ export default function AutoServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/content-1.webp"
+        imageSrc="/images/services/auto/auto-locksmith-services-auckland.webp"
         imageAlt="Auto lock and key repair services"
+        imageTitle="Auto Locksmith Services"
+        imageDescription="Professional automotive services spanning from vehicle lockouts to dead battery jump starts."
         title="Comprehensive Auto Lock and Key Services"
         content={[
           <p key="1">Your vehicle&apos;s security is essential. As part of our commercial and residential repair and maintenance services, we offer complete auto lock solutions. We handle everything from key duplication to complex ignition repairs.</p>
