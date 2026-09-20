@@ -41,9 +41,9 @@ export default function Navbar() {
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-160 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div className="bg-brand-dark border border-brand-light/10 rounded-lg shadow-lg overflow-hidden grid grid-cols-3 p-6 gap-6">
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                  <div className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
                     <Link href="/lock" className="hover:text-white transition-colors">Lock Services</Link>
-                  </h4>
+                  </div>
                   <div className="flex flex-col space-y-2">
                     <Link href="/lock/lockout" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Lockout</Link>
                     <Link href="/lock/rekey" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Rekey</Link>
@@ -52,9 +52,9 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                  <div className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
                     <Link href="/smart-lock" className="hover:text-white transition-colors">Smart Locks</Link>
-                  </h4>
+                  </div>
                   <div className="flex flex-col space-y-2">
                     <Link href="/smart-lock/smart-lock-installation" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Installation</Link>
                     <Link href="/smart-lock/smart-lock-change" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Change</Link>
@@ -62,9 +62,9 @@ export default function Navbar() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
+                  <div className="font-bold text-brand-accent mb-3 text-sm uppercase tracking-wider">
                     <Link href="/auto" className="hover:text-white transition-colors">Auto</Link>
-                  </h4>
+                  </div>
                   <div className="flex flex-col space-y-2">
                     <Link href="/auto/obd2-diagnostic" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">OBDII Diagnostic</Link>
                     <Link href="/auto/dead-battery-assistance" className="text-sm text-brand-light/80 hover:text-brand-accent transition-colors">Dead Battery Assist</Link>

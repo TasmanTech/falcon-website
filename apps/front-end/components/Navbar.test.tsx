@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 vi.mock('next/image', () => ({
   /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
-  default: (props: Record<string, unknown>) => <img {...props} />
+  default: ({ priority, ...props }: any) => <img {...props} />
 }));
 
 vi.mock('next/link', () => ({

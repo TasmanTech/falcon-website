@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/auto/obd2-diagnostic',
+  },
   title: 'Mobile Auto Electrical Diagnostics Auckland',
   description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
   keywords: 'OBDII diagnostic, auto repair, check engine light, Auckland, web design, web development, Falcon Access',
@@ -90,7 +93,7 @@ export default function obd2Page() {
         imageDescription="Comprehensive OBD2 electronic diagnostics to identify engine fault codes and dashboard warnings."
         title="Understand Your Vehicle's Faults"
         content={[
-          <p key="1">A sudden <em>Check Engine</em> light can be incredibly alarming. Instead of taking expensive guesses at what might be wrong, our mobile OBDII diagnostic scanning provides clear, accurate data directly from your vehicle&apos;s computer. We travel Auckland wide to deliver this service quickly.</p>,
+          <p key="1">A sudden <em>Check Engine</em> light is scary. Do not take expensive guesses. Our mobile OBDII scan gives clear data from your car. We travel all over Auckland to do this fast.</p>,
           <p key="2">We operate with a simple and completely transparent <strong>$20 flat call-out fee</strong> to come directly to your location. Contact us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.</p>
         ]}
         photoPosition="left"
@@ -100,8 +103,8 @@ export default function obd2Page() {
       <TextContentSection
         title="Detailed Reports & Knowledge"
         content={[
-          <p key="1">Taking your car to a mechanic without knowing the underlying issue can often lead to overcharging or unnecessary repairs. A preliminary scan arms you with the specific diagnostic trouble code (DTC), putting you firmly in control.</p>,
-          <p key="2">We provide detailed, readable reports. Think of it like an expert web developer debugging a broken piece of web design; we find the exact line of code causing the issue so it can be fixed properly in your vehicle&apos;s system.</p>
+          <p key="1">Going to a shop without knowing the fault is risky. You might pay too much. A quick scan gives you the exact error code. This puts you in control.</p>,
+          <p key="2">We give clear reports. Think of it like a web team fixing bad web design. We find the exact code causing the issue. Then you can fix the car properly.</p>
         ]}
         theme="white"
       />
@@ -113,8 +116,8 @@ export default function obd2Page() {
         imageDescription="Using professional-grade OBD2 scan tools to accurately diagnose vehicle computer issues."
         title="Empowering Repair Decisions"
         content={[
-          <p key="1">Whether the issue is a loose petrol cap, a faulty oxygen sensor, or a severe cylinder misfire, knowing the exact error code lets you make smart, informed decisions about your vehicle&apos;s maintenance and repair programme.</p>,
-          <p key="2">We plug in our state-of-the-art diagnostic scanner and tell you exactly what the trouble code means in plain English, ensuring you are well-prepared for any necessary repairs.</p>
+          <p key="1">The issue might be a loose gas cap or a bad sensor. Knowing the exact code is smart. It helps you make good choices about your car.</p>,
+          <p key="2">We plug in our great scan tool. We tell you what the code means in plain words. This ensures you are ready for any repairs.</p>
         ]}
         photoPosition="right"
         theme="light"

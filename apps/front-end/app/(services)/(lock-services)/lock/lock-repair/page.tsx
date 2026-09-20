@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/lock/lock-repair',
+  },
   title: 'Auckland Hardware & Lock Repair',
   description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
   keywords: 'Lock Repair, Hardware Repair, Commercial Maintenance, Residential Repair, web design, web development, Falcon Access',
@@ -86,8 +89,8 @@ export default function LockRepairPage() {
       <PhotoContentSection
         title="Restoring Functionality"
         content={[
-          <p key="1">A sticking or broken mechanism isn&apos;t just frustrating; it can severely compromise the security of your entire building. As a vital part of our comprehensive commercial and residential property maintenance services, we specialise in accurately diagnosing and fixing faulty hardware.</p>,
-          <p key="2">From residential deadbolts to heavy-duty commercial latches, our ultimate goal is always to quickly identify the root cause of the issue and immediately implement a lasting, highly reliable repair to secure your premises.</p>
+          <p key="1">A broken lock is very bad. It can leave your whole building unsafe. We are experts at finding and fixing broken locks fast.</p>,
+          <p key="2">We fix home deadbolts and heavy shop locks. Our main goal is to find the fault fast. We give a lasting repair to keep your place safe.</p>
         ]}
         imageSrc="/images/services/lock/lock-repair/lock-repair-service-auckland.webp"
         imageAlt="Expert hardware and lock repair tools"
@@ -100,8 +103,8 @@ export default function LockRepairPage() {
       <TextContentSection
         title="Repair First, Replace Only When Necessary"
         content={[
-          <p key="1">We believe in honest, practical hard work over simply upselling you unnecessary replacements. Many hardware issues actually stem from very simple misalignment, deep dirt buildup, or minor internal component failure that can be quickly rectified.</p>,
-          <p key="2">Similar to how a skilled web developer troubleshoots complex web design code to fix a bug rather than completely starting over, our technicians carefully disassemble and assess your mechanism. If a repair or adjustment can reliably solve the problem, that is precisely the route we take, saving you time and money.</p>
+          <p key="1">We do honest hard work. We do not try to sell you parts you do not need. Many lock issues are just bad alignment or dirt. These can be fixed fast.</p>,
+          <p key="2">Our team works like a web developer fixing web design code. We carefully take apart your lock. If a fix can solve the issue, we do that. This saves you time and cash.</p>
         ]}
         theme="white"
       />
@@ -109,8 +112,8 @@ export default function LockRepairPage() {
       <PhotoContentSection
         title="Reliable, Long-Lasting Fixes"
         content={[
-          <p key="1">Most standard hardware repairs are successfully completed within an hour of our arrival, greatly depending on the severity of the structural damage or frame misalignment. We bring all the necessary tools to perform these vital fixes directly on-site.</p>,
-          <p key="2">We expertly handle a wide range of commercial and residential hardware, including specialised mortise locks and intricate glass door hardware. Reach out today for an honest assessment and an affordable <strong>$20 flat call-out fee</strong>.</p>
+          <p key="1">Most lock fixes are done in under an hour. We bring all the needed tools to do these fixes right on-site.</p>,
+          <p key="2">We handle many types of shop and home locks. We even fix glass door locks. Reach out today for an honest check and a <strong>$20 flat call-out fee</strong>.</p>
         ]}
         imageSrc="/images/services/lock/lock-repair/broken-lock-mechanism-repair.webp"
         imageAlt="Fixing a damaged residential deadbolt"

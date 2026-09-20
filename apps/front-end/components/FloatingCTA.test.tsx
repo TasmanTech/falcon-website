@@ -8,9 +8,9 @@ describe('FloatingCTA', () => {
   });
 
   afterEach(() => {
+    cleanup();
     vi.runOnlyPendingTimers();
     vi.useRealTimers();
-    cleanup();
   });
 
   it('renders correctly', () => {

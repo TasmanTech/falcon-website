@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/smart-lock/smart-lock-repair-programming',
+  },
   title: 'Auckland Smart System Diagnostics',
   description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
   keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, web design, web development, Falcon Access',
@@ -86,8 +89,8 @@ export default function SmartLockRepairPage() {
       <PhotoContentSection
         title="Restoring Digital Access"
         content={[
-          <p key="1">When a smart lock or electronic access system suddenly fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These highly modern systems require specialised knowledge that goes far beyond traditional mechanical hardware.</p>,
-          <p key="2">Our dedicated property maintenance experts are fully equipped to troubleshoot both the physical mechanisms and the electronic components of your smart hardware, providing incredibly comprehensive diagnostics to get your system back online quickly.</p>
+          <p key="1">A broken smart lock can stop your work or leave your home at risk. These new systems need special skills. They are not like old locks.</p>,
+          <p key="2">Our team is ready to fix both the lock parts and the digital parts. We find the issue fast to get your system back online.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-repair-programming-auckland.webp"
         imageAlt="Troubleshooting an electronic lock keypad"
@@ -100,8 +103,8 @@ export default function SmartLockRepairPage() {
       <TextContentSection
         title="Identifying the Root Cause"
         content={[
-          <p key="1">Smart hardware issues incredibly often present as electronic failures, like a dead keypad or lost Wi-Fi connection, when the underlying cause is actually mechanical. A slightly misaligned door can severely force the lock&apos;s motor to work overtime, rapidly draining batteries and eventually burning out the mechanism entirely.</p>,
-          <p key="2">We firmly take a practical, holistic approach to repair. Much like how advanced web design is completely useless without the structured logic of good web development, an electronic lock is useless without perfect mechanical alignment. We ensure the physical structure is perfect before addressing the network.</p>
+          <p key="1">Many smart lock faults look like digital bugs. But the real cause is often physical. A bad door fit makes the lock motor work too hard. This drains the power and breaks the lock.</p>,
+          <p key="2">We take a real, full look at the repair. Good web design needs good code. A smart lock needs a good door fit. We make sure the door is right before we fix the tech.</p>
         ]}
         theme="white"
       />
@@ -109,8 +112,8 @@ export default function SmartLockRepairPage() {
       <PhotoContentSection
         title="Comprehensive Electronic Solutions"
         content={[
-          <p key="1">Instead of immediately jumping to replace expensive electronic boards, we meticulously assess the entire door structure. This thoughtful methodology often saves our clients significant time and costly replacement parts.</p>,
-          <p key="2">If you are currently experiencing issues with your digital access systems, contact us today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to expertly evaluate the problem directly on-site in Auckland.</p>
+          <p key="1">We look at the whole door first. We do not just buy new parts right away. This smart way saves our clients time and cash.</p>,
+          <p key="2">If you have issues with your smart locks, call us today. We charge a clear <strong>$20 flat call-out fee</strong> to look at the fault on-site in Auckland.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-integration-specialists.webp"
         imageAlt="Testing smart lock connectivity on a smartphone"

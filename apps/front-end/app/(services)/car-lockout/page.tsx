@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/car-lockout',
+  },
   title: 'Auckland Emergency Car Lockout Service',
   description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
   keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, web design, web development, Falcon Access',
@@ -89,7 +92,7 @@ export default function CarLockoutPage() {
         imageDescription="Mobile technician providing emergency, non-destructive car lockout assistance across Auckland."
         title="Fast & Reliable Car Lockout Services"
         content={[
-          <p key="1">Getting locked out of your vehicle is frustrating. Our commercial and residential repair and maintenance team provides fast and professional car lockout assistance. We use safe techniques to get you back on the road quickly.</p>
+          <p key="1">Being locked out of your car is bad. Our team gives fast car lockout help. We use safe ways to get you back on the road fast.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -98,7 +101,7 @@ export default function CarLockoutPage() {
       <TextContentSection
         title="Professional Solutions for Your Vehicle"
         content={[
-          <p key="1">Modern vehicles require specialized care. Our trained technicians understand the intricacies of auto locks and security systems. We deliver top-tier service alongside our web design and web development offerings. Your satisfaction and security are our highest priorities.</p>
+          <p key="1">New cars need special care. Our team knows auto locks well. We give top service like we do in web design. Your safety is our main goal.</p>
         ]}
         theme="white"
       />
@@ -110,7 +113,7 @@ export default function CarLockoutPage() {
         imageDescription="Specialized vehicle entry tools ensuring no damage to your car paint or weather stripping."
         title="Damage-Free Entry Guaranteed"
         content={[
-          <p key="1">We prioritize the safety of your vehicle. Using the latest tools, we guarantee a damage-free entry for all car models. Trust our comprehensive repair and maintenance experts to handle the job with precision.</p>
+          <p key="1">We care about the safety of your car. We use new tools to give safe entry for all cars. Trust our team to do the job right.</p>
         ]}
         photoPosition="right"
         theme="light"

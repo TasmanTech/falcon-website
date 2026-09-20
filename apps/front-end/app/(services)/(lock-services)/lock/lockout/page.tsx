@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/lock/lockout',
+  },
   title: 'Emergency Lockout Services Auckland Wide',
   description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods 24/7.',
   keywords: 'Lockout Services, Emergency Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
@@ -92,8 +95,8 @@ export default function LockoutPage() {
         imageDescription="Emergency door unlocking services for homes and apartments using non-destructive methods."
         title="Rapid Response When It Matters Most"
         content={[
-          <p key="1">Being locked out of your commercial facility or residential home is far more than a minor inconvenience. It significantly disrupts your schedule and can compromise your safety. Our property maintenance team specialises in swift, effective lockout resolution across Auckland.</p>,
-          <p key="2">We charge a brilliantly simple, incredibly affordable <strong>$20 flat call-out fee</strong> for everything. There are no quotes to wait for, no long delays, and absolutely no hidden costs. We treat emergency access as a vital priority component of our broader maintenance services.</p>
+          <p key="1">Being locked out of your home or shop is very bad. It stops your day and leaves you unsafe. Our team is great at fast lockout help across Auckland.</p>,
+          <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We treat emergency access as a top priority.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -102,8 +105,8 @@ export default function LockoutPage() {
       <TextContentSection
         title="Secure and Accessible"
         content={[
-          <p key="1">We know that a reliable business needs to be completely accessible in every practical way. Just as a highly skilled web developer ensures a website is always online through exceptionally robust web design, we ensure your physical doors are always open to you when you need them to be.</p>,
-          <p key="2">Our approach is deeply rooted in practical, honest work. We continually update our training programme to stay current with the absolute latest lock technologies, ensuring we can handle even the most advanced commercial access control systems with ease and total precision.</p>
+          <p key="1">We know a good business needs to be open. A web team keeps a site online with good web design. We make sure your real doors are open when you need them.</p>,
+          <p key="2">Our work is very honest and practical. We keep up with new lock tech. This helps us handle advanced access systems with ease.</p>
         ]}
         theme="white"
       />
@@ -115,8 +118,8 @@ export default function LockoutPage() {
         imageDescription="Precision lock picking and bypassing techniques to safely grant access to your property."
         title="Non-Destructive Techniques"
         content={[
-          <p key="1">We always prioritise non-destructive entry methods to significantly minimise the cost and hassle of replacing expensive hardware. Your property&apos;s physical defence is important to us, and we firmly strive to keep it entirely intact.</p>,
-          <p key="2">Rather than immediately resorting to drilling or breaking mechanisms, our highly experienced team utilises specialised tools to skillfully bypass locks safely. This preserves the structural integrity of your doors, saving you significant time and money.</p>
+          <p key="1">We use safe entry methods first. This saves you the cost of buying new parts. Your physical safety is key, and we strive to keep it intact.</p>,
+          <p key="2">We do not drill or break locks right away. Our team uses special tools to bypass locks safely. This keeps your doors safe, saving you time and cash.</p>
         ]}
         photoPosition="right"
         theme="light"

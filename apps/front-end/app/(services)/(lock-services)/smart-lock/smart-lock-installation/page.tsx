@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/smart-lock/smart-lock-installation',
+  },
   title: 'Auckland Fresh Smart Lock Installation',
   description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
   keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, web design, web development, Falcon Access',
@@ -86,8 +89,8 @@ export default function SmartLockInstallationPage() {
       <PhotoContentSection
         title="Starting From Scratch"
         content={[
-          <p key="1">Whether you are expertly fitting out a brand new commercial office, building a modern residential extension, or simply replacing an old, damaged door with a completely blank one, a fresh smart lock installation requires significant precision.</p>,
-          <p key="2">Our highly skilled property maintenance team is fully equipped to accurately drill, mortise, and align the door frame to perfectly accommodate modern digital and smart hardware, ensuring totally seamless operation right from day one.</p>
+          <p key="1">You might be fixing up a new office or home. Or you might be putting a lock on a new door. A new smart lock needs great care.</p>,
+          <p key="2">Our team has the tools to drill and fit the door frame. We make sure the new smart lock fits perfectly. It will work great from day one.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-installation/smart-lock-installation-auckland.webp"
         imageAlt="Drilling bore holes into a new door for a smart lock"
@@ -100,8 +103,8 @@ export default function SmartLockInstallationPage() {
       <TextContentSection
         title="The Importance of Precision"
         content={[
-          <p key="1">Smart locks naturally contain incredibly sensitive motorised components that have a extremely low tolerance for friction. If a bore hole is slightly off-centre or the strike plate is mildly misaligned, the motor will struggle, leading to rapid battery drain and premature mechanical failure.</p>,
-          <p key="2">This is exactly why professional installation is absolutely critical. We don&apos;t just screw the lock into the door; we ensure the physical foundation is flawlessly aligned. We approach this task with the exact same level of careful attention that a top-tier web developer applies to highly responsive web design.</p>
+          <p key="1">Smart locks have small motors inside. They do not work well if they rub. If a hole is off-center, the motor works too hard. This drains the power fast and breaks the lock.</p>,
+          <p key="2">This is why a pro fit is so key. We do not just screw the lock on. We make sure the door fit is perfect. We take care like a web team does for web design.</p>
         ]}
         theme="white"
       />
@@ -109,8 +112,8 @@ export default function SmartLockInstallationPage() {
       <PhotoContentSection
         title="Flawless Electronic Setup"
         content={[
-          <p key="1">After carefully prepping the door and physically mounting the hardware, we ensure all electronic components are correctly configured and thoroughly tested.</p>,
-          <p key="2">We charge a simple, incredibly clear <strong>$20 flat call-out fee</strong> to come to your location anywhere in Auckland and begin your comprehensive smart lock setup.</p>
+          <p key="1">We prep the door and mount the lock first. Then we make sure all the tech parts are set up and tested well.</p>,
+          <p key="2">We charge a simple, clear <strong>$20 flat call-out fee</strong>. We come to your place in Auckland and set up your smart lock.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-installation/residential-smart-lock-fitting.webp"
         imageAlt="Connecting internal wiring for a smart keypad"

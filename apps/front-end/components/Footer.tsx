@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold text-lg mb-4 font-montserrat">Services</h4>
+          <div className="font-bold text-lg mb-4 font-montserrat">Services</div>
           <ul className="space-y-2 font-inter">
             <li><Link href="/lock" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Services</Link></li>
             <li><Link href="/smart-lock" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Services</Link></li>
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold text-lg mb-4 font-montserrat">Company</h4>
+          <div className="font-bold text-lg mb-4 font-montserrat">Company</div>
           <ul className="space-y-2 font-inter">
             <li><Link href="/about" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">About Us</Link></li>
             <li><Link href="/contact" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Contact</Link></li>
@@ -53,13 +53,27 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold text-lg mb-4 font-montserrat">Contact Us</h4>
-          <ul className="space-y-2 font-inter text-brand-light/80">
-            <li>123 Business Street</li>
-            <li>Auckland, New Zealand</li>
+          <div className="font-bold text-lg mb-4 font-montserrat">Contact Us</div>
+          <ul className="space-y-2 font-inter text-brand-light/80 mb-4">
             <li>Phone: <a href="tel:+6492431404" className="hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
-            <li>Email: info@falconaccess.co.nz</li>
+            <li>Email: <a href="mailto:info@falconaccess.co.nz" className="hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
+            <li>
+              <a href="https://maps.app.goo.gl/Zt8DvcjBV5CNTsJH6" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
+                Falcon Access
+              </a>
+            </li>
           </ul>
+          <div className="mt-4 rounded-lg overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ad45978bd686e39%3A0x7277b36f7f430f6a!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1789884229600!5m2!1sen!2snz" 
+              width="200" 
+              height="200" 
+              style={{ border: 0 }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/50 font-inter text-sm">

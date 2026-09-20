@@ -44,9 +44,10 @@ export default function Hero({
         <Image
           src={imageSrc}
           alt={imageAlt}
-          fill
+          width={1920}
+          height={1080}
           sizes="(max-width: 768px) 100vw, 60vw"
-          className="object-cover"
+          className="object-cover w-full h-full"
           priority
         />
       </div>

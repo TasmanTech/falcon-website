@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  title: 'Website Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
   openGraph: {
-    title: 'Privacy Policy | Falcon Access',
+    title: 'Website Privacy Policy | Falcon Access',
     description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
     url: 'https://falconaccess.co.nz/privacy-policy',
   }
@@ -48,45 +51,37 @@ export default function PrivacyPolicyPage() {
         <div className="bg-white rounded-2xl shadow-sm border border-brand-dark/5 p-8 md:p-12 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
           <div className="prose prose-lg max-w-none font-inter text-brand-dark/80">
             <p className="mb-6">
-              At Falcon Access (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;), we are committed to protecting and respecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information when you use our services or visit our website. We comply with the New Zealand Privacy Act 2020.
+              At Falcon Access, we protect your privacy. This policy explains how we collect, use, and protect your data. We comply with the New Zealand Privacy Act 2020.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">1. Information We Collect</h2>
-            <p className="mb-4">We collect personal information from you, including information about your:</p>
+            <p className="mb-4">We collect your data, such as:</p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Name and contact information (email address, phone number).</li>
-              <li>Location (billing address and the physical address of the property requiring maintenance).</li>
-              <li>Interactions with us (service requests, communications, and billing history).</li>
+              <li>Name, email address, and phone number.</li>
+              <li>Your billing address and the address of the property.</li>
+              <li>Your past service requests and billing history.</li>
             </ul>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">2. How We Use Your Information</h2>
-            <p className="mb-4">We collect your personal information in order to:</p>
+            <p className="mb-4">We collect your data to:</p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Provide our commercial and residential repair and maintenance services.</li>
-              <li>Communicate with you regarding quotes, appointments, and service updates.</li>
-              <li>Process payments and manage invoicing.</li>
-              <li>Improve our website and customer service experience.</li>
+              <li>To give you our repair and maintenance services.</li>
+              <li>To talk to you about quotes and appointments.</li>
+              <li>To process payments and manage bills.</li>
+              <li>To improve our website and customer service.</li>
             </ul>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">3. Sharing Your Information</h2>
-            <p className="mb-6">
-              We do not sell, trade, or rent your personal information to others. We may share your information with trusted third-party service providers (such as payment processors or accounting software) only to the extent necessary to operate our business and provide our services.
-            </p>
+              We do not sell or trade your personal data. We may share your data with trusted partners to run our business.
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">4. Data Security</h2>
-            <p className="mb-6">
-              We take reasonable steps to ensure your personal information is protected against loss, unauthorised access, use, modification, or disclosure. We use secure servers and standard industry protocols to protect digital data.
-            </p>
+              We take steps to ensure your data is safe. We protect it against loss or bad access. We use secure servers.
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">5. Your Rights</h2>
-            <p className="mb-6">
-              You have the right to ask for a copy of any personal information we hold about you, and to ask for it to be corrected if you think it is wrong. If you&apos;d like to ask for a copy of your information, or to have it corrected, please contact us at <strong>info@falconaccess.co.nz</strong> or call us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.
-            </p>
+              You have the right to ask for a copy of your data. You can ask us to fix it if it is wrong. If you want to do this, please contact us at <a href="mailto:info@falconaccess.co.nz" className="font-bold text-brand-accent hover:underline">info@falconaccess.co.nz</a> or call us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">6. Changes to this Policy</h2>
-            <p className="mb-6">
-              We may update this Privacy Policy from time to time. Any changes will be posted on this page, and the &quot;Last updated&quot; date will be revised accordingly.
-            </p>
+              We may update this Privacy Policy from time to time. Changes will be posted on this page.
           </div>
         </div>
       </div>

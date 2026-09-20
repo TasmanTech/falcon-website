@@ -7,6 +7,9 @@ import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
+  alternates: {
+    canonical: '/auto/dead-battery-assistance',
+  },
   title: 'Auckland Jump Starts & Battery Help',
   description: 'Fast, professional 12V and 24V jump starts across Auckland. Our equipped response vehicles get your dead battery running safely and quickly.',
   keywords: 'Dead Battery Assistance, Jump Start Auckland, Mobile Battery Service, Auto Electric, Falcon Access',
@@ -90,7 +93,7 @@ export default function DeadBatteryPage() {
         imageDescription="Emergency mobile vehicle jump start assistance to get you back on the road quickly."
         title="Quick & Reliable Engine Starts"
         content={[
-          <p key="1">A dead battery can happen to absolutely anyone, often leaving you stranded at the worst possible time. As part of our comprehensive commercial and residential property maintenance, we provide fast, professional jump starts across Auckland with a brilliantly clear <strong>$20 flat call-out fee</strong>.</p>,
+          <p key="1">A dead battery can happen to anyone. It can leave you stuck at a bad time. We give fast jump starts across Auckland. We charge a clear <strong>$20 flat call-out fee</strong>.</p>,
           <p key="2">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
         ]}
         photoPosition="left"
@@ -100,8 +103,8 @@ export default function DeadBatteryPage() {
       <TextContentSection
         title="Safety First Diagnostics"
         content={[
-          <p key="1">Modern cars are essentially complex rolling computers. Improperly jump-starting a vehicle using cheap jumper cables can cause massive power surges. These surges can fry critical control modules and compromise the vehicle&apos;s defence systems, leading to incredibly expensive repairs.</p>,
-          <p key="2">Our specialised equipment strictly controls the voltage delivery to your vehicle. We are as meticulous about this technical process as a professional web developer is about flawless web design and complex web development. Delivering safe, reliable power is our priority.</p>
+          <p key="1">New cars are like big computers. A bad jump start can cause huge power spikes. These spikes can fry parts and hurt the car. This leads to high repair costs.</p>,
+          <p key="2">Our tools carefully control the power to your car. We care about this just like a good web team cares about web design. Safe power is our main goal.</p>
         ]}
         theme="white"
       />
@@ -113,8 +116,8 @@ export default function DeadBatteryPage() {
         imageDescription="Our equipped mobile response vehicles carry high-capacity jump packs for all engine sizes."
         title="Surge-Protected Equipment"
         content={[
-          <p key="1">We use heavy-duty, surge-protected equipment designed specifically to safely start both standard and high-performance modern vehicles. We do this without risking any damage to the vehicle&apos;s delicate onboard electronics.</p>,
-          <p key="2">If the battery is deeply discharged, our training programme ensures our technicians carefully monitor the electrical load, delivering a smooth and safe start every single time.</p>
+          <p key="1">We use strong, safe tools to start cars. We can start both standard and fast new cars. We do this without hurting the car parts.</p>,
+          <p key="2">If the battery is very low, our team will watch the power load. We give a smooth and safe start every single time.</p>
         ]}
         photoPosition="right"
         theme="light"
