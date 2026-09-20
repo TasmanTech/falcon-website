@@ -5,6 +5,7 @@ import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
@@ -78,7 +79,7 @@ export default function CarLockoutPage() {
 
   return (
     <div className="w-full">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd id="schema-car-lockout-page" schema={jsonLd} />
 
       <PageHeaderSection
         title="Auckland Emergency Car Lockout"

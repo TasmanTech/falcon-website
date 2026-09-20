@@ -5,6 +5,7 @@ import TextContentSection from '@/components/sections/TextContentSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
@@ -69,7 +70,7 @@ export default function SmartLockServicesPage() {
 
   return (
     <div className="w-full bg-brand-light">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd id="schema-smart-lock-page" schema={jsonLd} />
       <PageHeaderSection
         title="Smart Lock Installation Auckland"
         subtitle="Modernise your property access with professional smart lock services across Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."

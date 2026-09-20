@@ -5,6 +5,7 @@ import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
+import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
@@ -111,7 +112,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
         description="Comprehensive maintenance, general repair, and rapid-response 24/7 lockout assistance for your home and business across Auckland. Call us at +64 9 243 1404 for immediate help."
