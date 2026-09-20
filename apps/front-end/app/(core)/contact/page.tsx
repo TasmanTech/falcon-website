@@ -40,7 +40,7 @@ export default function ContactPage() {
   return (
     <div className="w-full pt-32 pb-24 bg-brand-light">
       <JsonLd id="schema-contact-page" schema={jsonLd} />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-text-blurb-ready animate-play-text">
           <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
@@ -55,7 +55,7 @@ export default function ContactPage() {
           <div className="w-full lg:w-1/2 space-y-8 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-brand-dark/5">
               <h2 className="text-2xl font-bold font-montserrat text-brand-dark mb-6">Contact Information</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent shrink-0">
@@ -64,7 +64,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Phone</h3>
                     <a href="tel:+6492431404" className="text-lg font-bold text-brand-dark hover:text-brand-accent transition-colors">+64 9 243 1404</a>
-                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We are open 7am to 6pm, Monday to Saturday.</p>
+                    <p className="text-sm text-brand-dark/70 font-inter mt-1">We are open 24/7 for fast help.</p>
                   </div>
                 </div>
 
