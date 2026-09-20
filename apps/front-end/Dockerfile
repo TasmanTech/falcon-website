@@ -35,6 +35,7 @@ COPY --from=builder --chown=node:node /app /app
 EXPOSE 8080
 
 ENV HOSTNAME="0.0.0.0"
+ENV NODE_ENV=production
 
 # Start the frontend workspace directly (the base image has ENTRYPOINT ["node"])
 CMD ["./node_modules/next/dist/bin/next", "start", "apps/front-end"]
