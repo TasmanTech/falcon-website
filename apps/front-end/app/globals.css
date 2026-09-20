@@ -11,6 +11,7 @@ html {
   --color-brand-accent: #FFAD05;
   --color-brand-highlight: #FCFF4B;
   --color-brand-light: #FAFAFA;
+  --color-brand-catchy: #FF477E;
 }
 
 @theme inline {

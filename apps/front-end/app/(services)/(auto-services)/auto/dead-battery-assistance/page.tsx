@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Dead Battery Assistance',
+  title: 'Auckland Mobile Jump Starts & Battery Assistance',
   description: 'Fast dead battery jump starts across Auckland. Our mobile fleet safely revives your vehicle battery using surge-protected equipment.',
-  keywords: 'dead battery, jump start, Auckland, car battery, web design',
+  keywords: 'dead battery, jump start, Auckland, car battery, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Dead Battery Assistance | Falcon Access',
+    title: 'Auckland Mobile Jump Starts & Battery Assistance',
     description: 'Fast dead battery jump starts across Auckland. Our mobile fleet safely revives your vehicle battery using surge-protected equipment.',
     url: 'https://falconaccess.co.nz/auto/dead-battery-assistance',
   }
@@ -73,30 +75,22 @@ export default function DeadBatteryPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Dead Battery Assistance
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Fast and highly reliable jump starts to get your vehicle moving again anywhere in Auckland.
-        </p>
-      </div>
+
+      <PageHeaderSection
+        title="Auckland Mobile Jump Starts"
+        subtitle="Fast and reliable mobile jump starts. Our mobile fleet services Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
-        imageSrc="/images/services/dead-battery_photo.webp"
-        imageAlt="Cartoonish illustration of a car battery with jumper cables attached"
-        imageTitle="Professional Jump Starts"
+        imageSrc="/images/services/auto/dead-battery-assistance/content-1.webp"
+        imageAlt="Professional car battery jump start service"
         title="Quick & Reliable Engine Starts"
         content={[
-          <p key="1">A dead battery can happen to absolutely anyone, often leaving you stranded at the worst possible time. Our mobile team provides fast, professional jump starts across Auckland with a brilliantly clear <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">We use heavy-duty, surge-protected equipment designed specifically to safely start both standard and high-performance modern vehicles. We do this without risking any damage to the vehicle&apos;s delicate onboard electronics. We are as meticulous about this technical process as a professional web developer is about flawless web design.</p>,
-          <p key="3">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
+          <p key="1">A dead battery can happen to absolutely anyone, often leaving you stranded at the worst possible time. As part of our comprehensive commercial and residential property maintenance, we provide fast, professional jump starts across Auckland with a brilliantly clear <strong>$20 flat call-out fee</strong>.</p>,
+          <p key="2">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
         ]}
-        ctaText="Request Jump Start"
-        ctaHref="/contact"
         photoPosition="left"
         theme="light"
       />
@@ -105,9 +99,21 @@ export default function DeadBatteryPage() {
         title="Safety First Diagnostics"
         content={[
           <p key="1">Modern cars are essentially complex rolling computers. Improperly jump-starting a vehicle using cheap jumper cables can cause massive power surges. These surges can fry critical control modules and compromise the vehicle&apos;s defence systems, leading to incredibly expensive repairs.</p>,
-          <p key="2">Our specialised equipment strictly controls the voltage delivery to your vehicle. If the battery is deeply discharged, our training programme ensures our technicians carefully monitor the electrical load, delivering a smooth and safe start every single time.</p>
+          <p key="2">Our specialised equipment strictly controls the voltage delivery to your vehicle. We are as meticulous about this technical process as a professional web developer is about flawless web design and complex web development. Delivering safe, reliable power is our priority.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/auto/dead-battery-assistance/content-2.webp"
+        imageAlt="Surge-protected jump starter packs"
+        title="Surge-Protected Equipment"
+        content={[
+          <p key="1">We use heavy-duty, surge-protected equipment designed specifically to safely start both standard and high-performance modern vehicles. We do this without risking any damage to the vehicle&apos;s delicate onboard electronics.</p>,
+          <p key="2">If the battery is deeply discharged, our training programme ensures our technicians carefully monitor the electrical load, delivering a smooth and safe start every single time.</p>
+        ]}
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -116,22 +122,24 @@ export default function DeadBatteryPage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-            title: "Rapid Dispatch",
+            title: 'Auckland Mobile Jump Starts & Battery Assistance',
             description: "We strictly prioritise emergency calls so you aren't left waiting by the side of the road. Our Auckland mobile fleet responds quickly."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Surge Protection",
+            title: 'Auckland Mobile Jump Starts & Battery Assistance',
             description: "We utilise advanced jump packs with built-in safeguards to completely protect your car's sensitive electronics during the jump start."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>,
-            title: "Battery Health Check",
+            title: 'Auckland Mobile Jump Starts & Battery Assistance',
             description: "After starting, we verify the alternator is successfully charging and assess if the battery simply needs to be replaced."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

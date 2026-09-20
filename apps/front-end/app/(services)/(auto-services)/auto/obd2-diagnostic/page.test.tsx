@@ -9,10 +9,10 @@ vi.mock('next/image', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...rest }: { children: React.ReactNode; href: string; [key: string]: unknown }) => <a href={href} {...rest}>{children}</a>
+  default: ({ children, href, ...rest }: { children: React.ReactNode; href: string;[key: string]: unknown }) => <a href={href} {...rest}>{children}</a>
 }));
 
-describe('Page Component: obdii-diagnostic', () => {
+describe('Page Component: obd2-diagnostic', () => {
   it('renders successfully', () => {
     // If it's an async component, this simple render might warn, but it usually passes structurally in JS DOM
     const { container } = render(<Page />);

@@ -39,6 +39,11 @@ The brand relies on a curated set of colors to maintain a premium aesthetic. The
 - **Role**: The primary light background / text color.
 - **Usage**: Use for text placed over dark backgrounds, or as the background color for light-mode sections and card components to keep the design feeling crisp and modern.
 
+### 7. Brand Catchy (`bg-brand-catchy`, `text-brand-catchy`)
+- **Hex**: `#FF477E` (Vibrant Rose/Pink)
+- **Role**: A highly vibrant, catchy accent color.
+- **Usage**: Use for special CTA sections, high-conversion buttons, or elements that need to break the mold and immediately grab the user's attention.
+
 ## Implementation Rules
 - **Avoid Generic Colors**: Do not use raw Tailwind colors like `bg-red-500` or `bg-green-500` for main thematic elements unless specifically for validation (errors/success). Always prioritize the branded colors.
 - **Opacity Modifiers**: Tailwind v4 allows opacity modifiers out of the box. Use them to create depth, e.g., `bg-brand-dark/80` with `backdrop-blur-md` for floating headers, or `hover:bg-brand-accent/90` for button hover states.

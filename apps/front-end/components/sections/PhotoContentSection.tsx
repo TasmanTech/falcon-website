@@ -4,7 +4,7 @@ import Link from 'next/link';
 interface PhotoContentSectionProps {
   imageSrc: string;
   imageAlt: string;
-  imageTitle: string;
+  imageTitle?: string;
   title: string;
   content: React.ReactNode[];
   ctaText?: string;
@@ -16,7 +16,7 @@ interface PhotoContentSectionProps {
 export default function PhotoContentSection({
   imageSrc,
   imageAlt,
-  imageTitle,
+  imageTitle = "",
   title,
   content,
   ctaText,
@@ -34,7 +34,7 @@ export default function PhotoContentSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-16 items-center`}>
           <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
-            <div className={`relative aspect-4/3 w-full rounded-2xl overflow-hidden ${bgClass}`}>
+            <div className={`relative aspect-square w-full rounded-2xl overflow-hidden ${bgClass}`}>
               <Image
                 src={imageSrc}
                 alt={imageAlt}

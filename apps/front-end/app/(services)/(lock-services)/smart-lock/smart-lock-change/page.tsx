@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Smart Lock Installation',
+  title: 'Auckland Smart System Upgrades',
   description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
-  keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, Falcon Access',
+  keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Smart Lock Installation | Falcon Access',
+    title: 'Auckland Smart System Upgrades',
     description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
     url: 'https://falconaccess.co.nz/smart-lock-change',
   }
@@ -30,8 +32,15 @@ export default function SmartLockChangePage() {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Smart Lock Installation", "item": "https://falconaccess.co.nz/smart-lock-change" }
+          { "@type": "ListItem", "position": 2, "name": "Smart Lock Services", "item": "https://falconaccess.co.nz/smart-lock" },
+          { "@type": "ListItem", "position": 3, "name": "Smart Lock Upgrades", "item": "https://falconaccess.co.nz/smart-lock/smart-lock-change" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Smart Lock Upgrade & Installation",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Professional upgrade and installation of smart locks for commercial and residential doors."
       },
       {
         "@type": "FAQPage",
@@ -66,38 +75,45 @@ export default function SmartLockChangePage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Smart System Upgrades
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Modernise your property access with professional electronic and smart lock installations.
-        </p>
-      </div>
+      <PageHeaderSection 
+        title="Auckland Smart System Upgrades"
+        subtitle="Professional electronic and smart lock installations. We service Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
         title="Intelligent Access Control"
         content={[
-          <p key="1">Upgrading to electronic and smart access systems is a vital step in modernising both commercial facilities and residential homes. We provide end-to-end installation services for a wide variety of digital hardware.</p>,
-          <p key="2">Transitioning away from traditional physical keys not only enhances convenience but allows for detailed tracking, temporary access codes, and immediate revocation of privileges without the need for hardware rekeying.</p>
+          <p key="1">Upgrading to electronic and smart access systems is a vital step in modernising both commercial facilities and residential homes. We provide robust, end-to-end installation services for a wide variety of digital hardware.</p>,
+          <p key="2">Transitioning away from traditional physical keys not only enhances your convenience but allows for detailed tracking, temporary access codes, and immediate revocation of privileges without the need for manual hardware rekeying.</p>
         ]}
-        imageSrc="/images/services/smart-lock-change_photo.webp"
-        imageAlt="Cartoonish illustration representing digital keypads and electronic access"
-        ctaText="Request an Upgrade ($20 Call Out)"
-        ctaHref="/contact"
+        imageSrc="/images/services/smart-lock/smart-lock-change/content-1.webp"
+        imageAlt="Modern smart lock installed on a front door"
         photoPosition="left"
-        theme="light" imageTitle={''} />
+        theme="light"
+      />
 
       <TextContentSection
         title="Professional Installation Matters"
         content={[
-          <p key="1">While many smart locks are marketed as DIY projects, improper installation can lead to binding mechanisms, reduced battery life, and compromised security.</p>,
-          <p key="2">Our property maintenance team ensures that the door frame, latch hole, and strike plate are perfectly aligned. We take the time to securely mount the hardware and assist with the initial network configuration, providing a truly reliable setup.</p>
+          <p key="1">While many smart locks are heavily marketed as simple DIY projects, improper installation can lead to binding mechanisms, heavily reduced battery life, and severely compromised security.</p>,
+          <p key="2">Our property maintenance team completely understands these complexities, much like a seasoned team handles complex web development and flawless web design. We ensure that the door frame, latch hole, and strike plate are perfectly aligned for a truly reliable setup.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        title="Seamless Digital Integration"
+        content={[
+          <p key="1">We don&apos;t just screw the hardware into the door; we take the necessary time to securely mount the system and actively assist you with the initial network configuration.</p>,
+          <p key="2">Experience the absolute convenience of keyless entry today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to evaluate and upgrade your property anywhere in Auckland.</p>
+        ]}
+        imageSrc="/images/services/smart-lock/smart-lock-change/content-2.webp"
+        imageAlt="Smartphone connecting to a smart lock"
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -106,22 +122,24 @@ export default function SmartLockChangePage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: "Keyless Convenience",
+            title: 'Auckland Smart System Upgrades',
             description: "Eliminate the hassle of lost physical keys. Enter using PIN codes, biometric scanners, or smartphone applications."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
-            title: "Audit Trails",
+            title: 'Auckland Smart System Upgrades',
             description: "Monitor exactly who enters your commercial facility and at what time, providing vital oversight for business managers."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-            title: "Temporary Access",
+            title: 'Auckland Smart System Upgrades',
             description: "Generate temporary codes for contractors, cleaners, or guests that automatically expire after a scheduled duration."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

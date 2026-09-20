@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Smart Lock Diagnostics & Repair',
+  title: 'Auckland Smart System Diagnostics',
   description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
-  keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, Falcon Access',
+  keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Smart Lock Diagnostics & Repair | Falcon Access',
+    title: 'Auckland Smart System Diagnostics',
     description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
     url: 'https://falconaccess.co.nz/smart-lock-repair',
   }
@@ -30,8 +32,15 @@ export default function SmartLockRepairPage() {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Smart Lock Repair", "item": "https://falconaccess.co.nz/smart-lock-repair" }
+          { "@type": "ListItem", "position": 2, "name": "Smart Lock Services", "item": "https://falconaccess.co.nz/smart-lock" },
+          { "@type": "ListItem", "position": 3, "name": "Diagnostics & Repair", "item": "https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Smart Lock Diagnostics & Repair",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Expert diagnostics and repair for smart locks and electronic access systems."
       },
       {
         "@type": "FAQPage",
@@ -66,38 +75,45 @@ export default function SmartLockRepairPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Smart System Diagnostics
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Expert troubleshooting and repair for electronic and smart access hardware.
-        </p>
-      </div>
+      <PageHeaderSection 
+        title="Auckland Smart System Diagnostics"
+        subtitle="Expert troubleshooting for electronic hardware. We service Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
         title="Restoring Digital Access"
         content={[
-          <p key="1">When a smart lock or electronic access system fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These modern systems require specialised knowledge that goes beyond traditional mechanical hardware.</p>,
-          <p key="2">Our property maintenance experts are equipped to troubleshoot both the physical mechanisms and the electronic components of your smart hardware, providing comprehensive diagnostics to get your system back online quickly.</p>
+          <p key="1">When a smart lock or electronic access system suddenly fails, it can completely disrupt the flow of your commercial facility or leave your home vulnerable. These highly modern systems require specialised knowledge that goes far beyond traditional mechanical hardware.</p>,
+          <p key="2">Our dedicated property maintenance experts are fully equipped to troubleshoot both the physical mechanisms and the electronic components of your smart hardware, providing incredibly comprehensive diagnostics to get your system back online quickly.</p>
         ]}
-        imageSrc="/images/services/smart-lock-repair-programming_photo.webp"
-        imageAlt="Cartoonish illustration representing electronic hardware diagnostics"
-        ctaText="Request a Diagnostic ($20 Call Out)"
-        ctaHref="/contact"
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/content-1.webp"
+        imageAlt="Troubleshooting an electronic lock keypad"
         photoPosition="left"
-        theme="light" imageTitle={''} />
+        theme="light"
+      />
 
       <TextContentSection
         title="Identifying the Root Cause"
         content={[
-          <p key="1">Smart hardware issues often present as electronic failures (like a dead keypad or lost Wi-Fi connection) when the underlying cause is actually mechanical. A slightly misaligned door can force the lock&apos;s motor to work overtime, rapidly draining batteries and eventually burning out the mechanism.</p>,
-          <p key="2">We take a practical, holistic approach to repair. Instead of immediately replacing expensive electronic boards, we assess the entire door structure to ensure the physical alignment is perfect before addressing network or power issues.</p>
+          <p key="1">Smart hardware issues incredibly often present as electronic failures, like a dead keypad or lost Wi-Fi connection, when the underlying cause is actually mechanical. A slightly misaligned door can severely force the lock&apos;s motor to work overtime, rapidly draining batteries and eventually burning out the mechanism entirely.</p>,
+          <p key="2">We firmly take a practical, holistic approach to repair. Much like how advanced web design is completely useless without the structured logic of good web development, an electronic lock is useless without perfect mechanical alignment. We ensure the physical structure is perfect before addressing the network.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        title="Comprehensive Electronic Solutions"
+        content={[
+          <p key="1">Instead of immediately jumping to replace expensive electronic boards, we meticulously assess the entire door structure. This thoughtful methodology often saves our clients significant time and costly replacement parts.</p>,
+          <p key="2">If you are currently experiencing issues with your digital access systems, contact us today. We charge a highly transparent <strong>$20 flat call-out fee</strong> to expertly evaluate the problem directly on-site in Auckland.</p>
+        ]}
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/content-2.webp"
+        imageAlt="Testing smart lock connectivity on a smartphone"
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -106,22 +122,24 @@ export default function SmartLockRepairPage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-            title: "Motor Fatigue",
+            title: 'Auckland Smart System Diagnostics',
             description: "Resolving mechanical friction and realigning strike plates so the internal motor can operate smoothly without draining power."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.906 14.142 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg>,
-            title: "Connectivity Drops",
+            title: 'Auckland Smart System Diagnostics',
             description: "Diagnosing unresponsive keypads and troubleshooting lost connections to your local Wi-Fi or smart home hub."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>,
-            title: "System Resets",
+            title: 'Auckland Smart System Diagnostics',
             description: "Performing hard factory resets for malfunctioning units and assisting with reprogramming access codes and network settings."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

@@ -21,9 +21,6 @@ export const metadata: Metadata = {
     default: "Falcon Access | High Quality Locksmithing in NZ",
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
-  icons: {
-    icon: '/favicon.jpg',
-  },
 };
 
 export default function RootLayout({

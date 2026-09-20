@@ -17,6 +17,7 @@ When writing or auditing copy for Falcon Access, ensure it meets the following s
 - Run `node audit-flesch.js` in the workspace root to automatically test all front-end files for their Flesch score.
 - Keep sentences concise. Avoid run-on sentences. 
 - A good rule of thumb is keeping most sentences under 20-25 words.
+- **No em-dashes (`—`)**: Do not use em-dashes in any copy. Use commas, parentheses, or separate sentences instead to ensure maximum readability and parser compatibility.
 
 ## 3. Voice and Tone
 - Use **Active Voice**. (e.g., "We build custom websites" instead of "Custom websites are built by us").

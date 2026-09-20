@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Vehicle Lockout Services',
+  title: 'Auckland Emergency Car Lockout Service',
   description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
-  keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, web design, Falcon Access',
+  keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Vehicle Lockout Services | Falcon Access',
+    title: 'Auckland Emergency Car Lockout Service',
     description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
     url: 'https://falconaccess.co.nz/car-lockout',
   }
@@ -23,20 +25,19 @@ export default function CarLockoutPage() {
         "@type": "WebPage",
         "@id": "https://falconaccess.co.nz/car-lockout/#webpage",
         "url": "https://falconaccess.co.nz/car-lockout",
-        "name": "Vehicle Lockout Services | Falcon Access",
+        "name": "Car Lockout Services | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Auto Services", "item": "https://falconaccess.co.nz/auto" },
-          { "@type": "ListItem", "position": 3, "name": "Vehicle Lockout", "item": "https://falconaccess.co.nz/car-lockout" }
+          { "@type": "ListItem", "position": 2, "name": "Vehicle Lockout", "item": "https://falconaccess.co.nz/car-lockout" }
         ]
       },
       {
         "@type": "Service",
-        "name": "Vehicle Lockout Services",
+        "name": "Car Lockout Services",
         "provider": { "@id": "https://falconaccess.co.nz/#organization" },
         "description": "Fast, non-destructive vehicle lockout assistance across Auckland."
       },
@@ -73,64 +74,67 @@ export default function CarLockoutPage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Vehicle Lockout Services
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Fast, non-destructive entry when you are locked out of your car anywhere in Auckland.
-        </p>
-      </div>
+
+      <PageHeaderSection
+        title="Auckland Emergency Car Lockout"
+        subtitle="Fast, non-destructive vehicle entry. Our mobile responders cover Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout_photo.webp"
-        imageAlt="Cartoonish illustration of an automotive wedge tool and car key fob"
-        imageTitle="Vehicle Lockout Assistance"
-        title="Back on the Road Safely and Quickly"
+        imageSrc="/images/services/car-lockout/content-1.webp"
+        imageAlt="Technician providing safe car lockout assistance"
+        title="Fast & Reliable Car Lockout Services"
         content={[
-          <p key="1">Locking your keys inside your vehicle or the boot is a stressful and incredibly common situation. Our mobile team provides rapid response vehicle lockout assistance across Auckland. We offer a transparent and incredibly affordable <strong>$20 flat call-out fee</strong> for everything—no quotes, no waiting, and no hidden costs.</p>,
-          <p key="2">We operate a 24/7 mobile fleet to ensure we can reach you exactly when you need us. Just as a top-tier web developer ensures a web design project launches smoothly without errors, we ensure your lockout is resolved swiftly and flawlessly. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.</p>
+          <p key="1">Getting locked out of your vehicle is frustrating. Our commercial and residential repair and maintenance team provides fast and professional car lockout assistance. We use safe techniques to get you back on the road quickly.</p>
         ]}
-        ctaText="Request Emergency Access"
-        ctaHref="/contact"
         photoPosition="left"
         theme="light"
       />
 
       <TextContentSection
-        title="A Practical, Honest Approach"
+        title="Professional Solutions for Your Vehicle"
         content={[
-          <p key="1">Modern vehicles feature highly complex security systems and tightly sealed cabins. We absolutely do not rely on outdated or damaging methods like coat hangers or excessive force. Such methods can bend your door frame, ruin weather stripping, or shatter glass, leading to extremely expensive repairs.</p>,
-          <p key="2">Instead, we specialise in non-destructive entry. Our approach is straightforward and highly professional: we arrive quickly at your location, verify ownership for your security, and use precise techniques to bypass the lock and safely recover your keys. Your vehicle&apos;s defence mechanisms remain completely intact.</p>
+          <p key="1">Modern vehicles require specialized care. Our trained technicians understand the intricacies of auto locks and security systems. We deliver top-tier service alongside our web design and web development offerings. Your satisfaction and security are our highest priorities.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/car-lockout/content-2.webp"
+        imageAlt="Damage-free vehicle entry tools"
+        title="Damage-Free Entry Guaranteed"
+        content={[
+          <p key="1">We prioritize the safety of your vehicle. Using the latest tools, we guarantee a damage-free entry for all car models. Trust our comprehensive repair and maintenance experts to handle the job with precision.</p>
+        ]}
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
-        title="Our Vehicle Service Promise"
-        subtitle="Reliable, damage-free assistance when you are stranded."
+        title="Why Choose Our Car Lockout Service"
         items={[
           {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "We are ready to help you at any time."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "Highly trained professionals for every job."
+          },
+          {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-            title: "Rapid Dispatch",
-            description: "We strictly prioritise vehicle lockouts. Our Auckland mobile fleet ensures you aren't left waiting by the side of the road or in an unfamiliar parking lot."
-          },
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Damage-Free",
-            description: "Protecting your vehicle's paint, glass, and internal wiring is our absolute top priority during the entire entry process. We use specialised protective tools."
-          },
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: "Universal Capability",
-            description: "We are fully equipped to handle a vast array of vehicle makes and models, from older mechanical locks to modern electronic security systems."
+            title: 'Auckland Emergency Car Lockout Service',
+            description: "We arrive promptly to get you moving again."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

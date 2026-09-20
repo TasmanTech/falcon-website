@@ -3,13 +3,15 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
+import PageHeaderSection from '@/components/sections/PageHeaderSection';
 
 export const metadata: Metadata = {
-  title: 'Hardware & Lock Replacement',
+  title: 'Auckland Door Hardware & Lock Replacement',
   description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
-  keywords: 'Lock Replacement, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, Falcon Access',
+  keywords: 'Lock Replacement, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, web design, web development, Falcon Access',
   openGraph: {
-    title: 'Hardware & Lock Replacement | Falcon Access',
+    title: 'Auckland Door Hardware & Lock Replacement',
     description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
     url: 'https://falconaccess.co.nz/lock-change',
   }
@@ -30,8 +32,15 @@ export default function LockChangePage() {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Lock Replacement", "item": "https://falconaccess.co.nz/lock-change" }
+          { "@type": "ListItem", "position": 2, "name": "Lock Services", "item": "https://falconaccess.co.nz/lock" },
+          { "@type": "ListItem", "position": 3, "name": "Lock Replacement", "item": "https://falconaccess.co.nz/lock/lock-change-installation" }
         ]
+      },
+      {
+        "@type": "Service",
+        "name": "Hardware & Lock Replacement",
+        "provider": { "@id": "https://falconaccess.co.nz/#organization" },
+        "description": "Professional hardware replacement for commercial and residential properties."
       },
       {
         "@type": "FAQPage",
@@ -66,29 +75,22 @@ export default function LockChangePage() {
   };
 
   return (
-    <div className="w-full pt-32">
+    <div className="w-full">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 animate-text-blurb-ready animate-play-text">
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold mb-6 text-brand-dark">
-          Hardware Replacement
-        </h1>
-        <p className="text-lg text-brand-dark/80 max-w-2xl mx-auto font-inter">
-          Professional installation of reliable hardware to upgrade and secure your property.
-        </p>
-      </div>
+
+      <PageHeaderSection 
+        title="Auckland Door Hardware Replacement"
+        subtitle="Professional installation of reliable hardware to upgrade your property. We service Auckland City, the North Shore, West Auckland, East Auckland, and South Auckland."
+      />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock-change_photo.webp"
-        imageAlt="Cartoonish illustration of a new brass lock cylinder and installation tools"
-        imageTitle="Hardware Installation"
+        imageSrc="/images/services/lock/lock-change-installation/content-1.webp"
+        imageAlt="Professional hardware replacement tools"
         title="Upgrading Your Security"
         content={[
           <p key="1">Whether you&apos;re moving into a new building, responding to a security breach, or simply replacing worn-out mechanisms, installing new hardware is a fundamental aspect of property maintenance. We operate on a transparent and highly affordable <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">Our team specialises in the precise installation of both standard and specialised hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly.</p>
+          <p key="2">Our team specialises in the precise installation of both standard and specialised hardware across commercial spaces and residential properties. We ensure everything fits perfectly and operates smoothly, keeping your assets strictly secure.</p>
         ]}
-        ctaText="Book Installation ($20 Call Out)"
-        ctaHref="/contact"
         photoPosition="left"
         theme="light"
       />
@@ -96,10 +98,22 @@ export default function LockChangePage() {
       <TextContentSection
         title="When to Consider Replacement"
         content={[
-          <p key="1">While we always attempt repairs first, there are scenarios where a full replacement is the most practical and cost-effective choice. If mechanisms are structurally damaged, severely corroded, or visibly compromised, a repair is only a temporary patch.</p>,
-          <p key="2">Upgrading is also a smart move if you want to modernise your facility with smart access control or if you&apos;ve recently experienced a turnover in staff or tenants and need absolute certainty about access rights.</p>
+          <p key="1">While we always attempt repairs first, there are scenarios where a full replacement is the most practical and cost-effective choice. If mechanisms are structurally damaged, severely corroded, or visibly compromised, a repair is only a temporary patch. Upgrading is a much smarter long-term solution.</p>,
+          <p key="2">Just as expert web development and robust web design form the secure, unshakeable foundation of a great digital presence, high-quality physical hardware forms the foundation of your property&apos;s security. If you&apos;ve recently experienced a turnover in staff or tenants, you need absolute certainty about access rights, making replacement the safest option.</p>
         ]}
-        theme="dark"
+        theme="white"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/lock/lock-change-installation/content-2.webp"
+        imageAlt="Modern hardware solutions installed correctly"
+        title="Precision Installation"
+        content={[
+          <p key="1">We provide professional installation for a wide range of reliable, high-quality hardware. Alternatively, if you have already purchased compatible hardware, we can step in to provide expert, flawless installation services.</p>,
+          <p key="2">For standard residential and commercial doors, a complete hardware swap typically takes less than an hour per door. This greatly minimises disruption to your home life or business operations.</p>
+        ]}
+        photoPosition="right"
+        theme="light"
       />
 
       <IconListSection
@@ -108,22 +122,24 @@ export default function LockChangePage() {
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
-            title: "Commercial Hardware",
+            title: 'Auckland Door Hardware & Lock Replacement',
             description: "Heavy-duty latches, push bars, mortise locks, and access control components designed for high traffic and durability."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
-            title: "Residential Hardware",
+            title: 'Auckland Door Hardware & Lock Replacement',
             description: "Standard deadbolts, knob sets, lever handles, and secure window latches to protect your home."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-            title: "Smart Systems",
+            title: 'Auckland Door Hardware & Lock Replacement',
             description: "Modern digital keypads and smart deadbolts that integrate with facility management or home automation systems."
           }
         ]}
-        theme="light"
+        theme="white"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"

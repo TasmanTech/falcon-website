@@ -41,13 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/auto/obdii-diagnostic`,
+      url: `${baseUrl}/auto/obd2-diagnostic`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/lock/lock-change-and-installation`,
+      url: `${baseUrl}/lock/lock-change-installation`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,

@@ -4,13 +4,14 @@ import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
+import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
-  title: "Commercial & Residential Repair",
+  title: 'Auckland Commercial & Residential Maintenance',
   description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
   keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Web Design, Web Developer, Auckland, New Zealand',
   openGraph: {
-    title: 'Commercial & Residential Repair | Falcon Access',
+    title: 'Auckland Commercial & Residential Maintenance',
     description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
     url: 'https://falconaccess.co.nz/',
   }
@@ -38,10 +39,10 @@ export default function Home() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What types of properties do you service in Auckland?",
+            "name": "What types of properties do you service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland and the wider New Zealand area."
+              "text": "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland and New Zealand."
             }
           },
           {
@@ -49,7 +50,7 @@ export default function Home() {
             "name": "Do you only provide lockout and locksmithing services?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, while emergency lockout assistance and security hardware are our highly specialised services, we provide comprehensive general repair, property maintenance, and even digital services like web design."
+              "text": "No, while emergency lockout assistance and security hardware are our highly specialised services, we provide comprehensive general repair, property maintenance, and digital solutions like web design."
             }
           },
           {
@@ -70,10 +71,34 @@ export default function Home() {
           },
           {
             "@type": "Question",
-            "name": "I'm locked out of my business or home, how fast can you arrive?",
+            "name": "Will my door or lock be damaged during a lockout service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We treat lockouts as high-priority emergencies. We aim for rapid deployment to get you safely back inside using non-destructive methods whenever possible."
+              "text": "No, whether you are locked out of your home or business, we prioritize non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I tell if my lock needs to be replaced?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If your lock is showing signs of wear, such as sticking, being difficult to turn, or if it’s becoming loose, it may be time to replace it. Our technicians can perform a comprehensive site inspection at your home or business to advise on the best, most practical course of action for your security needs in NZ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if my lock is damaged?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help me if I’m locked out of my house?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, we specialize in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across NZ with honest, reliable assistance."
             }
           }
         ]
@@ -94,11 +119,25 @@ export default function Home() {
         isMain={true}
       />
 
+      <section className="bg-brand-catchy text-white py-12 text-center px-4 w-full shadow-md relative z-10 animate-card-ready animate-play">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-montserrat font-black uppercase mb-3 tracking-wide">
+            24/7 Emergency Lockout Service Auckland Wide
+          </h2>
+          <p className="text-xl md:text-2xl font-inter font-bold uppercase mb-8 text-white/90">
+            $20 Flat Callout Fee. No charge if we don&apos;t help you get in.
+          </p>
+          <a href="tel:+6492431404" className="inline-block bg-brand-dark text-white font-black text-xl px-10 py-5 rounded-full hover:bg-brand-dark/90 transition-transform hover:scale-105 shadow-xl">
+            CALL +64 9 243 1404 NOW
+          </a>
+        </div>
+      </section>
+
       <PhotoContentSection
         title="Comprehensive Property Care"
         content={[
           <p key="1">Maintaining a commercial facility or a residential property requires attention to detail and a wide array of skills. We provide general repair and maintenance services designed to keep your spaces functional, secure, and looking their absolute best. We operate Auckland wide, ensuring that local homes and businesses receive the highest standard of care.</p>,
-          <p key="2">From routine checks to emergency fixes—including securing compromised access points—our dedicated team ensures your property remains in optimal condition. We also partner with a top-tier web developer to offer digital solutions, meaning we can help your business thrive both physically and online through expert web design.</p>,
+          <p key="2">From routine checks to emergency fixes, including securing compromised access points, our dedicated team ensures your property remains in optimal condition. We also partner with a top-tier web developer to offer digital solutions, meaning we can help your business thrive both physically and online through expert web design.</p>,
           <p key="3">Our team understands that property maintenance is an ongoing programme of work, not just a one-off job. We customise our approach to fit your specific schedule and budget, minimising disruption to your daily life or commercial operations.</p>
         ]}
         imageSrc="/images/content-1.webp"
@@ -136,27 +175,34 @@ export default function Home() {
       />
 
       <IconListSection
-        title="Why Choose Falcon Access?"
-        subtitle="We provide practical, efficient solutions for all your physical and digital maintenance needs."
+        title="Our Auckland Service Guarantees"
+        subtitle="We stand firmly behind our commercial and residential contracting work across the wider Auckland region."
         items={[
           {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-            title: "Prompt Response",
-            description: "We understand that maintenance issues and emergency lockouts can disrupt your day. We prioritise quick, efficient deployment to get you back inside and things back on track as swiftly as possible."
-          },
-          {
-            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
-            title: "Versatile Skillset",
-            description: "From basic property repairs and specialised hardware installations to expert web design consultations, our highly trained team is equipped to handle a surprisingly wide variety of tasks."
-          },
-          {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: "Honest Work",
-            description: "We believe in transparent communication and fair pricing. For lockouts, we always attempt non-destructive entry first, providing practical solutions without unnecessary upselling or hidden fees."
+            title: 'No Fix, No Fee Guarantee',
+            description: "If we can't complete the job or safely unlock your property, we won't charge you a cent. Our priority is providing authentic, reliable access solutions."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+            title: 'On-Time Mobile Arrival',
+            description: "We completely respect your busy schedule. Whether it's an emergency lockout or planned property maintenance, our Auckland mobile units arrive precisely when promised."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>,
+            title: 'Exceptional Workmanship',
+            description: "We take immense pride in our trade. We provide excellent, long-lasting residential repair and commercial security services, always striving to do our absolute best on every single job."
+          },
+          {
+            icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+            title: 'Transparent $20 Callout Fee',
+            description: "No hidden costs and absolutely no surprise surcharges. We operate with a brilliantly simple, highly affordable $20 flat call-out fee for all locksmithing and maintenance visits across NZ."
           }
         ]}
         theme="dark"
       />
+
+      <CTASection theme="catchy" />
 
       <FAQSection
         title="Frequently Asked Questions"
@@ -179,8 +225,20 @@ export default function Home() {
             answer: "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
           },
           {
-            question: "I'm locked out of my business or home, how fast can you arrive?",
-            answer: "We treat lockouts as high-priority emergencies. We aim for rapid deployment to get you safely back inside using non-destructive methods whenever possible."
+            question: "Will my door or lock be damaged during a lockout service?",
+            answer: "No, whether you are locked out of your home or business, we prioritize non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
+          },
+          {
+            question: "How can I tell if my lock needs to be replaced?",
+            answer: "If your lock is showing signs of wear, such as sticking, being difficult to turn, or if it’s becoming loose, it may be time to replace it. Our technicians can perform a comprehensive site inspection at your home or business to advise on the best, most practical course of action for your security needs in NZ."
+          },
+          {
+            question: "What should I do if my lock is damaged?",
+            answer: "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ."
+          },
+          {
+            question: "Can you help me if I’m locked out of my house?",
+            answer: "Yes, we specialize in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across NZ with honest, reliable assistance."
           }
         ]}
         theme="light"
