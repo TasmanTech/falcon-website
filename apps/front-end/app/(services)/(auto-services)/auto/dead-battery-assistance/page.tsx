@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/auto/dead-battery-assistance',
+    canonical: "/auto/dead-battery-assistance",
   },
   title: 'Auckland Jump Starts & Battery Help',
   description: 'Fast, professional 12V and 24V jump starts across Auckland. Our equipped response vehicles get your dead battery running safely and quickly.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Auckland Jump Starts & Battery Help',
     description: 'Fast dead battery jump starts across Auckland. Our mobile fleet safely revives your vehicle battery using surge-protected equipment.',
-    url: 'https://falconaccess.co.nz/auto/dead-battery-assistance',
+    url: "/auto/dead-battery-assistance",
   }
 };
 

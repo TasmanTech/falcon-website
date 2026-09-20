@@ -4,7 +4,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/contact',
+    canonical: "/contact",
   },
   title: 'Contact Our Auckland Team',
   description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Our Auckland Team | Falcon Access',
     description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
-    url: 'https://falconaccess.co.nz/contact',
+    url: "/contact",
   }
 };
 

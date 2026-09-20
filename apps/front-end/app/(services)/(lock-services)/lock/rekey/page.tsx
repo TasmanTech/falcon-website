@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/lock/rekey',
+    canonical: "/lock/rekey",
   },
   title: 'Auckland Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Auckland Hardware Rekeying Services',
     description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
-    url: 'https://falconaccess.co.nz/rekey',
+    url: "/lock/rekey",
   }
 };
 

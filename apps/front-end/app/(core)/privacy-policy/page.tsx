@@ -3,14 +3,14 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/privacy-policy',
+    canonical: "/privacy-policy",
   },
   title: 'Website Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
   openGraph: {
     title: 'Website Privacy Policy | Falcon Access',
     description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
-    url: 'https://falconaccess.co.nz/privacy-policy',
+    url: "/privacy-policy",
   }
 };
 

@@ -9,7 +9,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/car-lockout',
+    canonical: "/car-lockout",
   },
   title: 'Auckland Emergency Car Lockout Service',
   description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Auckland Emergency Car Lockout Service',
     description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our 24/7 mobile fleet gets you back on the road safely and quickly.',
-    url: 'https://falconaccess.co.nz/car-lockout',
+    url: "/car-lockout",
   }
 };
 

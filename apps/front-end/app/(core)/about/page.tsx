@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/about',
+    canonical: "/about",
   },
   title: 'About Our Commercial & Residential Services',
   description: 'Learn about Falcon Access. We provide honest, practical, and highly reliable commercial and residential repair and maintenance services across New Zealand.',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Our Commercial & Residential Services',
     description: 'Learn about Falcon Access. We provide honest, practical, and highly reliable commercial and residential repair and maintenance services across New Zealand.',
-    url: 'https://falconaccess.co.nz/about',
+    url: "/about",
   }
 };
 

@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     default: "Falcon Access | High Quality Locksmithing in NZ",
   },
   description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
+    openGraph: { title: "Falcon Access", description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.", url: "/" },
+    alternates: { canonical: "/" }
 };
 
 export default function RootLayout({
