@@ -3,8 +3,8 @@
 This is a full-stack monorepo for the Falcon Access web platform. It contains a Next.js front-end and a NestJS back-end API.
 
 ## Project Structure
-- `apps/front-end`: Next.js 15, React 19, Tailwind CSS v4, Jest.
-- `apps/back-end`: NestJS 11, TypeORM, SQLite (dev), Jest.
+- `apps/front-end`: Next.js 16 (Cache Components), React 19, Tailwind CSS v4, Vitest.
+- `apps/back-end`: NestJS 12, Nodemailer, Jest.
 
 ## Getting Started
 To run the entire platform locally, simply run:

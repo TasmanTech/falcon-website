@@ -31,4 +31,4 @@ COPY --from=builder --chown=node:node /app /app
 EXPOSE 8080
 
 # Start the backend workspace directly (the base image has ENTRYPOINT ["node"])
-CMD ["apps/back-end/dist/main.js"]
+CMD ["apps/back-end/dist/main.mjs"]
