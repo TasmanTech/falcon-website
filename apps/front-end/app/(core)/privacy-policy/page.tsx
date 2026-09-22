@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
               We take steps to ensure your data is safe. We protect it against loss or bad access. We use secure servers.
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">5. Your Rights</h2>
-              You have the right to ask for a copy of your data. You can ask us to fix it if it is wrong. If you want to do this, please contact us at <a href="mailto:info@falconaccess.co.nz" className="font-bold text-brand-accent hover:underline">info@falconaccess.co.nz</a> or call us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.
+              You have the right to ask for a copy of your data. You can ask us to fix it if it is wrong. If you want to do this, please contact us at <a href="mailto:info@falconaccess.co.nz" className="font-bold text-brand-accent underline hover:text-brand-accent/80 transition-colors">info@falconaccess.co.nz</a> or call us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">6. Changes to this Policy</h2>
               We may update this Privacy Policy from time to time. Changes will be posted on this page.

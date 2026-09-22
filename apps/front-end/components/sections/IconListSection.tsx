@@ -19,7 +19,7 @@ export default function IconListSection({
 }: IconListSectionProps) {
   const bgClass = theme === 'dark' ? 'bg-brand-dark' : theme === 'white' ? 'bg-white' : 'bg-brand-light';
   const textClass = theme === 'dark' ? 'text-brand-light' : 'text-brand-dark';
-  const mutedTextClass = theme === 'dark' ? 'text-brand-light/70' : 'text-brand-dark/70';
+  const mutedTextClass = theme === 'dark' ? 'text-brand-light/70' : 'text-brand-dark/90';
 
   const getGridCols = (count: number) => {
     if (count === 1) return 'md:grid-cols-1';
@@ -55,7 +55,7 @@ export default function IconListSection({
                 {item.icon}
               </div>
               <h3 className="text-xl font-bold font-montserrat mb-3">{item.title}</h3>
-              <p className="text-brand-dark/70 font-inter">
+              <p className="text-brand-dark/90 font-inter">
                 {item.description}
               </p>
             </div>

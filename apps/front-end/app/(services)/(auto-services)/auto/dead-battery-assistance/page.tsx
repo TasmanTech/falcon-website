@@ -95,7 +95,7 @@ export default function DeadBatteryPage() {
         title="Quick & Reliable Engine Starts"
         content={[
           <p key="1">A dead battery can happen to anyone. It can leave you stuck at a bad time. We give fast jump starts across Auckland. We charge a clear <strong>$20 flat call-out fee</strong>.</p>,
-          <p key="2">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
+          <p key="2">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
         ]}
         photoPosition="left"
         theme="light"
