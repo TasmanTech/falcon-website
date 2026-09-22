@@ -49,6 +49,7 @@ export default function Hero({
           sizes="(max-width: 768px) 100vw, 60vw"
           className="object-cover w-full h-full"
           priority
+          fetchPriority="high"
         />
       </div>
 

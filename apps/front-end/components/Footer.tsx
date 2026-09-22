@@ -55,8 +55,8 @@ export default function Footer() {
         <div>
           <div className="font-bold text-lg mb-4 font-montserrat">Contact Us</div>
           <ul className="space-y-2 font-inter text-brand-light/80 mb-4">
-            <li>Phone: <a href="tel:+6492431404" className="hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
-            <li>Email: <a href="mailto:info@falconaccess.co.nz" className="hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
+            <li>Phone: <a href="tel:+6492431404" className="underline hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
+            <li>Email: <a href="mailto:info@falconaccess.co.nz" className="underline hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
             <li>
               <a href="https://maps.app.goo.gl/Zt8DvcjBV5CNTsJH6" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
                 Falcon Access
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/50 font-inter text-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/70 font-inter text-sm">
         &copy; {new Date().getFullYear()} Falcon Access Limited. All rights reserved.
       </div>
     </footer>

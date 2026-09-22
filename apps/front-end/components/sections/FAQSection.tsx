@@ -18,7 +18,7 @@ export default function FAQSection({
 }: FAQSectionProps) {
   const bgClass = theme === 'light' ? 'bg-brand-light' : 'bg-brand-dark';
   const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
-  const mutedTextClass = theme === 'light' ? 'text-brand-dark/70' : 'text-brand-light/70';
+  const mutedTextClass = theme === 'light' ? 'text-brand-dark/90' : 'text-brand-light/70';
 
   return (
     <section className={`py-24 ${bgClass} ${textClass}`}>

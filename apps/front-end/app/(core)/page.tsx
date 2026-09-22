@@ -128,7 +128,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-montserrat font-black uppercase mb-3 tracking-wide">
             24/7 Emergency Lockout Service Auckland Wide
           </h2>
-          <p className="text-xl md:text-2xl font-inter font-bold uppercase mb-8 text-white/90">
+          <p className="text-xl md:text-2xl font-inter font-bold uppercase mb-8 text-white">
             $20 Flat Callout Fee. No charge if we don&apos;t help you get in.
           </p>
           <a href="tel:+6492431404" className="inline-block bg-brand-dark text-white font-black text-xl px-10 py-5 rounded-full hover:bg-brand-dark/90 transition-transform hover:scale-105 shadow-xl">
@@ -159,7 +159,7 @@ export default function Home() {
         content={[
           <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
           <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
-          <p key="2">We fix bad hinges and broken parts. We also get you in when locked out. We refer you for web design too. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.</p>
+          <p key="2">We fix bad hinges and broken parts. We also get you in when locked out. We refer you for web design too. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />

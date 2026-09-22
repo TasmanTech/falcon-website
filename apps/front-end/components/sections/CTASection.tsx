@@ -17,7 +17,7 @@ export default function CTASection({
 }: CTASectionProps) {
   const bgClass = theme === 'dark' ? 'bg-brand-dark' : theme === 'white' ? 'bg-white' : theme === 'catchy' ? 'bg-brand-catchy' : 'bg-brand-light';
   const textClass = (theme === 'dark' || theme === 'catchy') ? 'text-brand-light' : 'text-brand-dark';
-  const descClass = (theme === 'dark' || theme === 'catchy') ? 'text-brand-light/90' : 'text-brand-dark/80';
+  const descClass = (theme === 'dark' || theme === 'catchy') ? 'text-brand-light' : 'text-brand-dark/80';
   
   // High contrast button for the catchy theme
   const btnClass = theme === 'catchy' 

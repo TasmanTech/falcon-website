@@ -97,7 +97,7 @@ export default function obd2Page() {
         title="Understand Your Vehicle's Faults"
         content={[
           <p key="1">A sudden <em>Check Engine</em> light is scary. Do not take expensive guesses. Our mobile OBDII scan gives clear data from your car. We travel all over Auckland to do this fast.</p>,
-          <p key="2">We operate with a simple and completely transparent <strong>$20 flat call-out fee</strong> to come directly to your location. Contact us at <a href="tel:+6492431404" className="text-brand-accent hover:underline">+64 9 243 1404</a>.</p>
+          <p key="2">We operate with a simple and completely transparent <strong>$20 flat call-out fee</strong> to come directly to your location. Contact us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         photoPosition="left"
         theme="light"
