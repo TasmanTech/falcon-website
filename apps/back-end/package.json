@@ -6,12 +6,12 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "swc src -d dist --strip-leading-paths",
+    "build": "webpack --config webpack.config.cjs",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "node dist/main",
-    "start:dev": "nodemon --watch src --ext ts --exec \"swc src -d dist --strip-leading-paths && node dist/main\"",
-    "start:debug": "nodemon --watch src --ext ts --exec \"swc src -d dist --strip-leading-paths && node --inspect dist/main\"",
-    "start:prod": "node dist/main",
+    "start": "node dist/main.mjs",
+    "start:dev": "nodemon --watch src --ext ts --exec \"webpack --config webpack.config.cjs && node dist/main.mjs\"",
+    "start:debug": "nodemon --watch src --ext ts --exec \"webpack --config webpack.config.cjs && node --inspect dist/main.mjs\"",
+    "start:prod": "node dist/main.mjs",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -20,10 +20,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
-    "@nestjs/config": "^4.0.4",
-    "@nestjs/core": "^11.0.1",
-    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/common": "^12.0.4",
+    "@nestjs/config": "^12.0.1",
+    "@nestjs/core": "^12.0.4",
+    "@nestjs/platform-express": "^12.0.4",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
     "helmet": "^8.3.0",
@@ -37,7 +37,7 @@
     "@jest/globals": "^30.5.1",
     "@nestjs/cli": "^11.0.24",
     "@nestjs/schematics": "^11.1.0",
-    "@nestjs/testing": "^11.0.1",
+    "@nestjs/testing": "^12.0.4",
     "@swc/cli": "^0.8.1",
     "@swc/core": "^1.16.2",
     "@swc/jest": "^0.2.39",
@@ -55,12 +55,16 @@
     "prettier": "^3.4.2",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
+    "swc-loader": "^0.2.7",
     "ts-jest": "^29.2.5",
-    "ts-loader": "^9.5.2",
+    "ts-loader": "^9.6.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^7.0.2",
-    "typescript-eslint": "^8.20.0"
+    "typescript": "^6",
+    "typescript-eslint": "^8.20.0",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.2.3",
+    "webpack-node-externals": "^3.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -77,6 +81,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(@nestjs|@nestjs/.*)/)"
+    ]
   }
 }
