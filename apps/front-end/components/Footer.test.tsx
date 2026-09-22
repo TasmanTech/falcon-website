@@ -12,6 +12,10 @@ vi.mock('next/link', () => ({
   default: ({ children, href, ...rest }: { children: React.ReactNode; href: string; [key: string]: unknown }) => <a href={href} {...rest}>{children}</a>
 }));
 
+vi.mock('./CopyrightYear', () => ({
+  default: () => <>2026</>
+}));
+
 describe('Footer Component', () => {
   it('renders footer links and copyright', () => {
     render(<Footer />);

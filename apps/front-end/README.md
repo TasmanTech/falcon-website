@@ -3,7 +3,7 @@
 This is the front-end application for the Falcon Access website, built with [Next.js](https://nextjs.org) (App Router). It provides a responsive, high-performance, and SEO-optimised public face for Falcon Access, a premium locksmithing and property maintenance service operating in New Zealand.
 
 ## Features & Architecture
-- **Next.js 15+ (App Router)**: Uses React Server Components (RSCs) by default for optimal performance and SEO.
+- **Next.js 16 (App Router, Cache Components)**: Uses React Server Components (RSCs) by default for optimal performance and SEO.
 - **Tailwind CSS v4**: Strict adherence to a custom color palette (`brand-dark`, `brand-light`, `brand-accent`) and custom animations (`animate-play-card`, `animate-play-text`).
 - **Comprehensive Testing**: Fully tested using `Vitest` and `React Testing Library`, with automated structure checks for all primary routes.
 - **Strict Linting & Types**: Enforces strict TypeScript usage (`no-explicit-any`) and ESLint validation.
