@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Hardware & Lock Repair',
   description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
-  keywords: 'Lock Repair, Hardware Repair, Commercial Maintenance, Residential Repair, web design, web development, Falcon Access',
+  keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Hardware Repair, Commercial Maintenance, Residential Repair, web design, web development, Falcon Access',
   openGraph: {
     title: 'Auckland Hardware & Lock Repair',
     description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
@@ -90,8 +90,8 @@ export default function LockRepairPage() {
       <PhotoContentSection
         title="Restoring Functionality"
         content={[
-          <p key="1">A broken lock is very bad. It can leave your whole building unsafe. We are experts at finding and fixing broken locks fast.</p>,
-          <p key="2">We fix home deadbolts and heavy shop locks. Our main goal is to find the fault fast. We give a lasting repair to keep your place safe.</p>
+          <p key="1">A broken lock is a big risk. It can leave your whole building unsafe. Our door lock repair service finds and fixes the fault fast.</p>,
+          <p key="2">We fix home deadbolts and heavy shop locks. Think of us as your door lock mechanic. We give a lasting repair to keep your place safe.</p>
         ]}
         imageSrc="/images/services/lock/lock-repair/lock-repair-service-auckland.webp"
         imageAlt="Expert hardware and lock repair tools"
@@ -114,7 +114,7 @@ export default function LockRepairPage() {
         title="Reliable, Long-Lasting Fixes"
         content={[
           <p key="1">Most lock fixes are done in under an hour. We bring all the needed tools to do these fixes right on-site.</p>,
-          <p key="2">We handle many types of shop and home locks. We even fix glass door locks. Reach out today for an honest check and a <strong>$20 flat call-out fee</strong>.</p>
+          <p key="2">We handle many types of shop and home locks. We even fix glass door locks. Need lock repair near you? Reach out today for an honest check and a <strong>$20 flat call-out fee</strong>.</p>
         ]}
         imageSrc="/images/services/lock/lock-repair/broken-lock-mechanism-repair.webp"
         imageAlt="Fixing a damaged residential deadbolt"

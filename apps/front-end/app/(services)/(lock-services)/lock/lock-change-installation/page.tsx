@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Door Hardware & Lock Replacement',
   description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
-  keywords: 'Lock Replacement, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, web design, web development, Falcon Access',
+  keywords: 'Lock Replacement, Lock Installation, Lock Installation Service, Lock Changing Service, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, web design, web development, Falcon Access',
   openGraph: {
     title: 'Auckland Door Hardware & Lock Replacement',
     description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
@@ -95,7 +95,7 @@ export default function LockChangePage() {
         title="Upgrading Your Security"
         content={[
           <p key="1">You might be moving to a new place. Or maybe you need to fix old locks. Putting in new locks is a key part of keeping your property safe.</p>,
-          <p key="2">We are property care experts. We provide strong and reliable lock fit services tailored to your exact needs.</p>,
+          <p key="2">We are property care experts. Our lock installation service is built around your exact needs.</p>,
           <p key="3">Our team is great at putting in new hardware. We make sure all parts fit perfectly. We keep your assets safe and secure.</p>
         ]}
         photoPosition="left"
@@ -105,7 +105,7 @@ export default function LockChangePage() {
       <TextContentSection
         title="When to Consider Replacement"
         content={[
-          <p key="1">We try to fix locks first. But sometimes, buying a new lock is the best choice. If your lock is broken or badly rusted, a fix will not last long. A new lock is a smart choice for the long term.</p>,
+          <p key="1">We try to fix locks first. But sometimes, buying a new lock is the best choice. If your lock is broken or badly rusted, a fix will not last long. A lock replacement is a smart choice for the long term.</p>,
           <p key="2">Good web design keeps a site safe. Good locks keep your property safe. If you have new staff or tenants, you need to be sure about access. A new lock is the safest choice.</p>
         ]}
         theme="white"
@@ -118,7 +118,7 @@ export default function LockChangePage() {
         imageDescription="Professional mortising and fitting of fresh locks on wooden, aluminum, and composite doors."
         title="Precision Installation"
         content={[
-          <p key="1">We install a wide range of good hardware. If you already bought a lock, we can put it in for you. We give expert setup services.</p>,
+          <p key="1">We install a wide range of good hardware. If you already bought a lock, we can put it in for you. Our lock changing service is quick and tidy.</p>,
           <p key="2">For most doors, a hardware swap takes less than an hour per door. This means less disruption to your home or business.</p>
         ]}
         photoPosition="right"
