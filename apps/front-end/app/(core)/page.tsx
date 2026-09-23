@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Commercial & Residential Maintenance',
   description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
-  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Web Design, Web Developer, Auckland, New Zealand',
+  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, 24 Hour Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Web Design, Web Developer, Auckland, New Zealand',
   openGraph: {
     title: 'Commercial & Residential Maintenance',
     description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
@@ -71,6 +71,14 @@ export default function Home() {
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer 24 hour locksmith services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call +64 9 243 1404 at any hour and we will come to you fast."
             }
           },
           {
@@ -138,18 +146,17 @@ export default function Home() {
       </section>
 
       <PhotoContentSection
-        title="Comprehensive Property Care"
+        title="Specialised Lockout & Security Services"
         content={[
-          <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. Local places get the best care from us.</p>,
-          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape. We also know a great web team. They can build a great site for you.</p>,
-          <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
+          <p key="1">We do many fixes. But lockouts are what we do best. Being locked out is bad, so we get you in fast. Our door unlocking service is safe. We do not break your parts.</p>,
+          <p key="2">We do more than just let you in. We handle lock repair, lock replacement, and lock rekey jobs. We make sure all doors are secure. Need to get a locksmith fast? We are on call 24/7.</p>
         ]}
-        imageSrc="/images/falcon-access-locksmith-services.webp"
-        imageAlt="General Repair Tools"
-        imageTitle="Falcon Access Locksmith Services"
-        imageDescription="Your trusted partner for commercial and residential repair, maintenance, and locking solutions."
-        ctaText="Connect Now"
-        ctaHref="/contact"
+        imageSrc="/images/auckland-mobile-locksmith-van.webp"
+        imageAlt="Specialised Locksmith Tools"
+        imageTitle="Auckland Mobile Services"
+        imageDescription="Our fully-equipped mobile service vehicles ready to dispatch across the greater Auckland region."
+        ctaText="View Lock Services"
+        ctaHref="/lock"
         photoPosition="left"
         theme="light"
       />
@@ -159,23 +166,24 @@ export default function Home() {
         content={[
           <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
           <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
-          <p key="2">We fix bad hinges and broken parts. We also get you in when locked out. We refer you for web design too. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
+          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We refer you for web design too. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />
 
       <PhotoContentSection
-        title="Specialised Lockout & Security Services"
+        title="Comprehensive Property Care"
         content={[
-          <p key="1">We do many fixes. But we are very good at lockout jobs. Being locked out is bad. So we try to get you in fast. We open doors safely. We do not break your parts.</p>,
-          <p key="2">We do more than just let you in. We add new locks and change old keys. We make sure all doors are secure. We build a strong guard against bad access. Trust us with your safety.</p>
+          <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. If you need a locksmith near you, we are close by.</p>,
+          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape. We also know a great web team. They can build a great site for you.</p>,
+          <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
         ]}
-        imageSrc="/images/auckland-mobile-locksmith-van.webp"
-        imageAlt="Specialised Locksmith Tools"
-        imageTitle="Auckland Mobile Services"
-        imageDescription="Our fully-equipped mobile service vehicles ready to dispatch across the greater Auckland region."
-        ctaText="View Lock Services"
-        ctaHref="/lock"
+        imageSrc="/images/falcon-access-locksmith-services.webp"
+        imageAlt="General Repair Tools"
+        imageTitle="Falcon Access Locksmith Services"
+        imageDescription="Your trusted partner for commercial and residential repair, maintenance, and locking solutions."
+        ctaText="Connect Now"
+        ctaHref="/contact"
         photoPosition="right"
         theme="light"
       />
@@ -229,6 +237,10 @@ export default function Home() {
           {
             question: "Are your services guaranteed?",
             answer: "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
+          },
+          {
+            question: "Do you offer 24 hour locksmith services?",
+            answer: "Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call +64 9 243 1404 at any hour and we will come to you fast."
           },
           {
             question: "Will my door or lock be damaged during a lockout service?",

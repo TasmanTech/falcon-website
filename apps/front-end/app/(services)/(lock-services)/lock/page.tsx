@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Locksmith & Hardware Services',
   description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across New Zealand.',
-  keywords: 'Lock Services, Lockout, Rekey, Lock Repair, Lock Change, New Zealand, web design, web development, Falcon Access',
+  keywords: 'Lock Services, Locksmith Services, Locksmith Near Me, General Locksmith, Locksmith for Business, Lock Service Near Me, Lockout, Rekey, Lock Repair, Lock Change, Lock Replacement, Lock Installation, New Zealand, web design, web development, Falcon Access',
   openGraph: {
     title: 'Auckland Locksmith & Hardware Services',
     description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair.',
@@ -57,6 +57,14 @@ export default function LockServicesPage() {
           },
           {
             "@type": "Question",
+            "name": "Are you a locksmith for business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. We are a locksmith for business as well as homes. We look after shop locks, office doors, and master key systems. We also offer a fast commercial lockout service."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Do you provide emergency lockout assistance?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -81,25 +89,25 @@ export default function LockServicesPage() {
           <Link href="/lock/lockout" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play">
               <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Lockout</h2>
-              <p className="text-brand-dark/70 text-sm">Rapid, non-destructive entry when you are locked out of your home or business.</p>
+              <p className="text-brand-dark/70 text-sm">Fast, non-destructive door unlocking when you are locked out of your home or business.</p>
             </div>
           </Link>
           <Link href="/lock/rekey" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play" style={{ animationDelay: '100ms' }}>
               <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Rekey</h2>
-              <p className="text-brand-dark/70 text-sm">Update your existing locks to work with new keys, securing your premises efficiently.</p>
+              <p className="text-brand-dark/70 text-sm">A lock rekey makes your old locks work with new keys. Old keys stop working.</p>
             </div>
           </Link>
           <Link href="/lock/lock-change-installation" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play" style={{ animationDelay: '200ms' }}>
               <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Lock Change &amp; Install</h2>
-              <p className="text-brand-dark/70 text-sm">Complete replacement and installation of high-quality, durable locks.</p>
+              <p className="text-brand-dark/70 text-sm">Lock replacement and lock installation with strong, lasting hardware.</p>
             </div>
           </Link>
           <Link href="/lock/lock-repair" className="block group">
             <div className="bg-white border border-brand-dark/10 rounded-xl p-8 h-full hover:border-brand-accent transition-colors flex flex-col items-center text-center animate-card-ready animate-play" style={{ animationDelay: '300ms' }}>
               <h2 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">Lock Repair</h2>
-              <p className="text-brand-dark/70 text-sm">Specialised repair services to restore the functionality of your faulty mechanisms.</p>
+              <p className="text-brand-dark/70 text-sm">Door lock repair for stiff, stuck, or broken locks.</p>
             </div>
           </Link>
         </div>
@@ -112,7 +120,8 @@ export default function LockServicesPage() {
         imageDescription="Full-service residential and commercial lock installation, repair, and emergency unlocking."
         title="Secure Your Property with Expert Lock Services"
         content={[
-          <p key="1">Good security starts with strong locks. Our team gives top lock care. We keep your home and shop safe and secure.</p>
+          <p key="1">Good security starts with strong locks. Our locksmith services cover homes and shops. We keep your place safe and secure.</p>,
+          <p key="2">Need a locksmith near you? Our vans cover all of Auckland. We are on call 24 hours a day for lockouts.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -135,6 +144,10 @@ export default function LockServicesPage() {
           {
             question: "What type of lock services do you offer?",
             answer: "We offer a full range of lock services including emergency lockout assistance, professional rekeying, full lock replacements and installations, and meticulous lock repair."
+          },
+          {
+            question: "Are you a locksmith for business?",
+            answer: "Yes. We are a locksmith for business as well as homes. We look after shop locks, office doors, and master key systems. We also offer a fast commercial lockout service."
           },
           {
             question: "Do you provide emergency lockout assistance?",

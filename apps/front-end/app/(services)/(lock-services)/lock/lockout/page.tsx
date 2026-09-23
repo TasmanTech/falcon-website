@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Emergency Lockout Services Auckland Wide',
   description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods 24/7.',
-  keywords: 'Lockout Services, Emergency Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
+  keywords: 'Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, 24 Hour Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
   openGraph: {
     title: 'Emergency Lockout Services Auckland Wide',
     description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods 24/7.',
@@ -96,8 +96,8 @@ export default function LockoutPage() {
         imageDescription="Emergency door unlocking services for homes and apartments using non-destructive methods."
         title="Rapid Response When It Matters Most"
         content={[
-          <p key="1">Being locked out of your home or shop is very bad. It stops your day and leaves you unsafe. Our team is great at fast lockout help across Auckland.</p>,
-          <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We treat emergency access as a top priority.</p>
+          <p key="1">Being locked out of your home or shop is stressful. It stops your day and leaves you unsafe. We offer a fast residential lockout service and commercial lockout service across Auckland.</p>,
+          <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We are a 24 hour locksmith service, so you can call us day or night.</p>
         ]}
         photoPosition="left"
         theme="light"
@@ -120,7 +120,7 @@ export default function LockoutPage() {
         title="Non-Destructive Techniques"
         content={[
           <p key="1">We use safe entry methods first. This saves you the cost of buying new parts. Your physical safety is key, and we strive to keep it intact.</p>,
-          <p key="2">We do not drill or break locks right away. Our team uses special tools to bypass locks safely. This keeps your doors safe, saving you time and cash.</p>
+          <p key="2">We do not drill or break locks right away. Our door unlocking service uses special tools to open locks safely. This keeps your doors safe, saving you time and cash.</p>
         ]}
         photoPosition="right"
         theme="light"

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
-  keywords: 'Rekeying, Lock Rekey, Hardware Rekeying, Commercial Security, web design, web development, Falcon Access',
+  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Lock Changing Service, Hardware Rekeying, Commercial Security, web design, web development, Falcon Access',
   openGraph: {
     title: 'Auckland Hardware Rekeying Services',
     description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
@@ -90,7 +90,7 @@ export default function RekeyPage() {
       <PhotoContentSection
         title="Economical Access Control"
         content={[
-          <p key="1">You do not always have to buy new locks to stop access. Rekeying is a smart fix. We change the inside parts of your old locks.</p>,
+          <p key="1">You do not always have to buy new locks to stop access. A lock rekey is a smart fix. We change the inside parts of your old locks.</p>,
           <p key="2">This makes all old keys useless. We give you a fresh set of keys. This gives you peace of mind at a low cost.</p>
         ]}
         imageSrc="/images/services/lock/rekey/lock-rekeying-service-auckland.webp"
