@@ -67,6 +67,12 @@ describe('InvoiceService', () => {
     jest.clearAllMocks();
   });
 
+  it('greets the SMTP server with the business domain', () => {
+    expect(nodemailerModule.createTransport).toHaveBeenCalledWith(
+      expect.objectContaining({ name: 'falconaccess.co.nz' }),
+    );
+  });
+
   describe('generate', () => {
     it('calculates totals server-side and renders a PDF', async () => {
       const { invoice } = await service.generate(dto, 'DRAFT');
@@ -132,10 +138,24 @@ describe('InvoiceService', () => {
       expect(fs.existsSync(path.join(storageDir, fileName))).toBe(false);
     });
 
-    it('sends nothing when the record cannot be saved', async () => {
+    it('sends nothing and removes the PDF when the record cannot be saved', async () => {
       repository.save.mockRejectedValueOnce(new Error('DB down'));
-      await expect(service.send(dto)).rejects.toThrow(InternalServerErrorException);
+      await expect(service.send(dto)).rejects.toThrow('could not be saved to the database');
       expect(sendMail).not.toHaveBeenCalled();
+      const fileName = (repository.save.mock.calls[0][0]).fileName as string;
+      expect(fs.existsSync(path.join(storageDir, fileName))).toBe(false);
+    });
+
+    it('reports the storage error code and saves nothing when the PDF cannot be written', async () => {
+      const blocker = path.join(storageDir, 'not-a-directory');
+      fs.writeFileSync(blocker, '');
+      process.env.INVOICE_STORAGE_DIR = blocker;
+
+      await expect(service.send(dto)).rejects.toThrow(/could not be saved to storage \(E[A-Z]+\)/);
+      expect(repository.save).not.toHaveBeenCalled();
+      expect(sendMail).not.toHaveBeenCalled();
+
+      process.env.INVOICE_STORAGE_DIR = storageDir;
     });
   });
 

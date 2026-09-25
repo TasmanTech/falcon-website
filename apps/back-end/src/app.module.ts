@@ -7,9 +7,6 @@ import { ContactModule } from './contact/contact.module';
 import { AuthModule } from './auth/auth.module';
 import { InvoiceModule } from './invoice/invoice.module';
 
-/** The Falcon Access database on the shared Tasman Tech Cloud SQL instance. */
-export const DATABASE_NAME = 'falconaccess_prod';
-
 /**
  * Builds the Postgres connection options, following the Tasman Tech main website.
  *
@@ -18,7 +15,7 @@ export const DATABASE_NAME = 'falconaccess_prod';
  * - Locally: `DB_HOST` is either the instance's public IP (SSL on) or `127.0.0.1`
  *   when using the Cloud SQL Auth Proxy (SSL off; the proxy encrypts the connection).
  *
- * @param {ConfigService} config - Environment configuration (`DB_HOST`, `DB_USER`, `DB_PASS`).
+ * @param {ConfigService} config - Environment configuration (`DB_HOST`, `DB_NAME`, `DB_USER`, `DB_PASS`).
  * @returns {TypeOrmModuleOptions} TypeORM options.
  */
 export function buildDatabaseOptions(config: ConfigService): TypeOrmModuleOptions {
@@ -33,7 +30,7 @@ export function buildDatabaseOptions(config: ConfigService): TypeOrmModuleOption
     port: 5432,
     username: config.get<string>('DB_USER'),
     password: config.get<string>('DB_PASS'),
-    database: DATABASE_NAME,
+    database: config.get<string>('DB_NAME'),
     autoLoadEntities: true,
     synchronize: true,
     ssl: useSsl ? { rejectUnauthorized: false } : false,

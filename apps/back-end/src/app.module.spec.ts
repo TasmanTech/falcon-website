@@ -33,8 +33,8 @@ describe('buildDatabaseOptions', () => {
     ({ get: (key: string) => values[key] }) as unknown as ConfigService;
 
   it('connects through the Cloud SQL socket without SSL on Cloud Run', () => {
-    const options = buildDatabaseOptions(configWith({ K_SERVICE: 'falcon', DB_HOST: '/cloudsql/p:r:i' }));
-    expect(options).toMatchObject({ host: '/cloudsql/p:r:i', ssl: false, database: 'falconaccess_prod' });
+    const options = buildDatabaseOptions(configWith({ K_SERVICE: 'falcon', DB_HOST: '/cloudsql/p:r:i', DB_NAME: 'falcon_db' }));
+    expect(options).toMatchObject({ host: '/cloudsql/p:r:i', ssl: false, database: 'falcon_db' });
   });
 
   it('uses SSL for a remote host locally', () => {

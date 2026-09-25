@@ -1,7 +1,7 @@
 /**
  * Creates an admin portal account, or resets the password of an existing one.
  *
- * Run from `apps/back-end` (reads DB_HOST / DB_USER / DB_PASS from `.env`):
+ * Run from `apps/back-end` (reads DB_HOST / DB_NAME / DB_USER / DB_PASS from `.env`):
  *   node scripts/create-admin.mjs <email> '<password>'
  *
  * The `admin` table is created by TypeORM when the back-end first starts, so start it once
@@ -9,8 +9,6 @@
  */
 import bcrypt from 'bcryptjs';
 import pg from 'pg';
-
-const DATABASE_NAME = 'falconaccess_prod';
 
 const [email, password] = process.argv.slice(2);
 if (!email || !password) {
@@ -34,7 +32,7 @@ const client = new pg.Client({
   port: 5432,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: DATABASE_NAME,
+  database: process.env.DB_NAME,
   // SSL for the public IP; off for the local Cloud SQL Auth Proxy
   ssl: ['127.0.0.1', 'localhost'].includes(host) ? false : { rejectUnauthorized: false },
 });
