@@ -96,3 +96,24 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## Admin Portal & Invoices
+
+The `/admin` portal on the website logs in against this API and generates, emails and stores invoices.
+
+| Variable | Purpose |
+| --- | --- |
+| `JWT_SECRET` / `JWT_REFRESH_SECRET` | Two different long random strings: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
+| `DB_HOST` | Cloud Run: `/cloudsql/<project>:<region>:<instance>`. Locally: the instance's public IP (SSL), or `127.0.0.1` with the Cloud SQL Auth Proxy |
+| `DB_USER` / `DB_PASS` | Postgres credentials. The database name (`falconaccess_prod`) is set in `app.module.ts` |
+| `GST_NUMBER` | Optional. Printed on invoices and required before GST can be charged |
+| `INVOICE_STORAGE_DIR` | Optional. Where PDFs are kept. Defaults to `/app/data/invoices` on Cloud Run (the Cloud Storage volume mounted at `/app/data`) and `data/invoices` locally |
+
+Admins live in the `admin` table. Create one, or reset a password, after the back-end has started once (so the table exists):
+
+```bash
+node scripts/create-admin.mjs info@falconaccess.co.nz '<password>'
+```
+
+Changing an admin's password signs out their sessions; rotating `JWT_REFRESH_SECRET` signs out everyone.
+The invoice badge (`assets/invoice-badge.png`) is regenerated with `node scripts/generate-invoice-badge.mjs`.

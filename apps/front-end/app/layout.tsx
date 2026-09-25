@@ -7,6 +7,7 @@ import FloatingCTA from "../components/FloatingCTA";
 import AnalyticsWrapper from "@/components/AnalyticsWrapper";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import JsonLd from '@/components/JsonLd';
+import SiteChrome from "@/components/SiteChrome";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -84,17 +85,21 @@ export default function RootLayout({
         className={`${inter.variable} ${montserrat.variable} font-inter antialiased bg-brand-light text-brand-dark flex flex-col min-h-screen`}
       >
         <JsonLd id="schema-app-layout" schema={globalJsonLd} />
-        <Navbar />
+        <SiteChrome>
+          <Navbar />
+        </SiteChrome>
         <main className="grow">
           {children}
         </main>
-        <FloatingCTA />
-        <Footer />
-        {process.env.NODE_ENV === "production" ? (
-          <AnalyticsWrapper>
-            <GoogleAnalytics gaId="G-2BELF6S2L5" />
-          </AnalyticsWrapper>
-        ) : null}
+        <SiteChrome>
+          <FloatingCTA />
+          <Footer />
+          {process.env.NODE_ENV === "production" ? (
+            <AnalyticsWrapper>
+              <GoogleAnalytics gaId="G-2BELF6S2L5" />
+            </AnalyticsWrapper>
+          ) : null}
+        </SiteChrome>
       </body>
     </html>
   );

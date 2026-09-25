@@ -125,6 +125,15 @@ jobs:
           docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/falcon-backend:latest
 
       - name: Deploy Backend Image
+        # Passed through env (not inlined) so values containing "$" reach gcloud intact
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          JWT_REFRESH_SECRET: ${{ secrets.JWT_REFRESH_SECRET }}
+          GST_NUMBER: ${{ secrets.GST_NUMBER }}
+          INVOICE_STORAGE_DIR: ${{ vars.INVOICE_STORAGE_DIR }}
         run: |
           gcloud run deploy falcon-backend-service \
             --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/falcon-backend:latest \
@@ -132,7 +141,7 @@ jobs:
             --project ${{ env.PROJECT_ID }} \
             --allow-unauthenticated \
             --add-cloudsql-instances=${{ secrets.CLOUD_SQL_CONNECTION_NAME }} \
-            --set-env-vars="NODE_ENV=production,FRONTEND_URLS=${{ secrets.FRONTEND_URLS }},WEBSITE_URL=${{ secrets.WEBSITE_URL }},SMTP_HOST=${{ secrets.SMTP_HOST }},SMTP_PORT=${{ secrets.SMTP_PORT }},SERVICE_ACCOUNT_CLIENT_ID=${{ secrets.SERVICE_ACCOUNT_CLIENT_ID }},SERVICE_ACCOUNT_PRIVATE_KEY=${{ secrets.SERVICE_ACCOUNT_PRIVATE_KEY }},SMTP_FROM=${{ secrets.SMTP_FROM }}"
+            --set-env-vars="NODE_ENV=production,FRONTEND_URLS=${{ secrets.FRONTEND_URLS }},WEBSITE_URL=${{ secrets.WEBSITE_URL }},SMTP_HOST=${{ secrets.SMTP_HOST }},SMTP_PORT=${{ secrets.SMTP_PORT }},SERVICE_ACCOUNT_CLIENT_ID=${{ secrets.SERVICE_ACCOUNT_CLIENT_ID }},SERVICE_ACCOUNT_PRIVATE_KEY=${{ secrets.SERVICE_ACCOUNT_PRIVATE_KEY }},SMTP_FROM=${{ secrets.SMTP_FROM }},DB_HOST=${DB_HOST},DB_USER=${DB_USER},DB_PASS=${DB_PASS},JWT_SECRET=${JWT_SECRET},JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET},GST_NUMBER=${GST_NUMBER},INVOICE_STORAGE_DIR=${INVOICE_STORAGE_DIR}"
 
   # ==========================================
   # 4. FRONTEND DEPLOYMENT

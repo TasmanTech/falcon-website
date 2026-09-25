@@ -103,3 +103,5 @@ packages/back-end/src/**/*.js
 
 # File uploads
 apps/back-end/uploads/
+# Local invoice PDF storage (production uses the Cloud Storage volume mount)
+apps/back-end/data/

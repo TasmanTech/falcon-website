@@ -19,6 +19,10 @@ COPY . .
 # Build the backend workspace
 RUN npm run build:backend
 
+# The invoice PDF badge is baked into the read-only image. Fail the build rather than
+# ship invoices with silently downgraded branding.
+RUN test -s apps/back-end/assets/invoice-badge.png || { echo "Missing PDF asset: apps/back-end/assets/invoice-badge.png"; exit 1; }
+
 # Secure runtime stage (distroless)
 FROM cgr.dev/chainguard/node:latest
 
