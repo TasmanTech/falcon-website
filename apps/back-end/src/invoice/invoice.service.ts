@@ -14,7 +14,7 @@ import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { ListInvoicesDto } from './dto/list-invoices.dto';
 import { Invoice } from './invoice.entity';
 import { InvoiceDocument, formatMoney, renderInvoicePdf } from './invoice-pdf';
-import { deleteInvoiceFile, readInvoiceFile, writeInvoiceFile } from './invoice-storage';
+import { deleteInvoiceFile, getInvoiceStorageDir, readInvoiceFile, writeInvoiceFile } from './invoice-storage';
 import { BUSINESS, GST_RATE } from './invoice.constants';
 
 /** A rendered invoice PDF and the metadata the controller needs to serve it. */
@@ -79,6 +79,8 @@ export class InvoiceService {
     this.transporter = nodemailer.createTransport({
       host: this.configService.get<string>('SMTP_HOST') || 'smtp-relay.gmail.com',
       port: Number(this.configService.get<number>('SMTP_PORT')) || 465,
+      // Gmail rejects the EHLO greeting from Cloud Run's random container hostname (421 4.7.0)
+      name: 'falconaccess.co.nz',
       secure: true,
       auth: {
         type: 'OAuth2',
@@ -111,9 +113,21 @@ export class InvoiceService {
   async send(dto: CreateInvoiceDto): Promise<GeneratedInvoice> {
     const { invoice, document } = await this.generate(dto, await this.generateInvoiceNumber(dto.invoiceDate));
 
-    let record: Invoice;
     try {
       await writeInvoiceFile(invoice.fileName, invoice.pdf);
+    } catch (error) {
+      const { code, path } = error as NodeJS.ErrnoException;
+      this.logger.error(
+        `Failed to write invoice ${invoice.invoiceNumber} to storage at ${getInvoiceStorageDir()} (${code ?? 'unknown error'}${path ? ` on ${path}` : ''})`,
+        error,
+      );
+      throw new InternalServerErrorException(
+        `The invoice PDF could not be saved to storage${code ? ` (${code})` : ''}. Nothing was sent.`,
+      );
+    }
+
+    let record: Invoice;
+    try {
       record = await this.invoiceRepository.save(
         this.invoiceRepository.create({
           invoiceNumber: document.invoiceNumber,
@@ -134,9 +148,9 @@ export class InvoiceService {
         }),
       );
     } catch (error) {
-      this.logger.error(`Failed to store invoice ${invoice.invoiceNumber}`, error);
+      this.logger.error(`Failed to save invoice ${invoice.invoiceNumber} to the database`, error);
       await deleteInvoiceFile(invoice.fileName).catch(() => undefined);
-      throw new InternalServerErrorException('The invoice could not be saved. Nothing was sent; please try again.');
+      throw new InternalServerErrorException('The invoice could not be saved to the database. Nothing was sent.');
     }
 
     try {

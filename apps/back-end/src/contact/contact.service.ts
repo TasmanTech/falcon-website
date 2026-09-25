@@ -18,6 +18,8 @@ export class ContactService {
     this.transporter = nodemailer.createTransport({
       host: this.configService.get<string>('SMTP_HOST') || 'smtp-relay.gmail.com',
       port: Number(this.configService.get<number>('SMTP_PORT')) || 465,
+      // Gmail rejects the EHLO greeting from Cloud Run's random container hostname (421 4.7.0)
+      name: 'falconaccess.co.nz',
       secure: true,
       auth: {
         type: 'OAuth2',

@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  // Don't inherit the homepage canonical and Open Graph tags from the root layout
+  alternates: { canonical: null },
+  openGraph: null,
 };
 
 /**
