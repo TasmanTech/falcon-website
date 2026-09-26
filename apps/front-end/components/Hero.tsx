@@ -6,7 +6,7 @@ import Link from 'next/link';
  */
 interface HeroProps {
   title: string;
-  description: string;
+  description: React.ReactNode;
   imageSrc: string;
   imageAlt: string;
   ctaText?: string;
@@ -19,7 +19,7 @@ interface HeroProps {
  *
  * @param {HeroProps} props - The properties for the Hero component.
  * @param {string} props.title - The main heading text.
- * @param {string} props.description - The sub-heading or description text.
+ * @param {React.ReactNode} props.description - The sub-heading or description text.
  * @param {string} props.imageSrc - The source path for the background image.
  * @param {string} props.imageAlt - The alt text for the background image.
  * @param {string} [props.ctaText] - Optional text for the call-to-action button.

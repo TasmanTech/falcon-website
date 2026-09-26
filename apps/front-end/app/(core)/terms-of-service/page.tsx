@@ -80,7 +80,7 @@ export default function TermsOfServicePage() {
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">6. Contact Us</h2>
             <p className="mb-6">
-              If you have any questions about these Terms of Service, please <Link href="/contact" className="text-brand-accent hover:underline">contact us</Link> or call us at <strong>+64 9 243 1404</strong>.
+              If you have any questions about these Terms of Service, please <Link href="/contact" className="text-brand-accent hover:underline">contact us</Link> or call us at <a href="tel:+6492431404" className="font-bold text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.
             </p>
           </div>
         </div>

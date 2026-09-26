@@ -123,7 +123,7 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description="Comprehensive maintenance, general repair, and rapid-response 24/7 lockout assistance for your home and business across Auckland. Call us at +64 9 243 1404 for immediate help."
+        description={<>Comprehensive maintenance, general repair, and rapid-response 24/7 lockout assistance for your home and business across Auckland. Call us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
         imageSrc="/hero/new-hero.webp"
         imageAlt="Repair and Maintenance Tools"
         ctaText="Get a Quote"
@@ -240,7 +240,7 @@ export default function Home() {
           },
           {
             question: "Do you offer 24 hour locksmith services?",
-            answer: "Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call +64 9 243 1404 at any hour and we will come to you fast."
+            answer: <>Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> at any hour and we will come to you fast.</>
           },
           {
             question: "Will my door or lock be damaged during a lockout service?",
@@ -252,7 +252,7 @@ export default function Home() {
           },
           {
             question: "What should I do if my lock is damaged?",
-            answer: "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ."
+            answer: <>A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ.</>
           },
           {
             question: "Can you help me if I’m locked out of my house?",
