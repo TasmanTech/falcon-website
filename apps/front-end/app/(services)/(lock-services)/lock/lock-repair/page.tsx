@@ -93,11 +93,11 @@ export default function LockRepairPage() {
           <p key="1">A broken lock is a big risk. It can leave your whole building unsafe. Our door lock repair service finds and fixes the fault fast.</p>,
           <p key="2">We fix home deadbolts and heavy shop locks. Think of us as your door lock mechanic. We give a lasting repair to keep your place safe.</p>
         ]}
-        imageSrc="/images/services/lock/lock-repair/lock-repair-service-auckland.webp"
-        imageAlt="Expert hardware and lock repair tools"
-        imageTitle="Lock Repair Service"
-        imageDescription="Fixing jammed, stiff, or broken door locks to restore security and functionality."
-        photoPosition="left"
+        imageSrc="/images/services/lock/lock-repair/lock-mechanism-repair-screwdriver-springs.webp"
+        imageAlt="Open mortice lock body showing its gears and springs, with a screwdriver and spare springs"
+        imageTitle="Lock Repair Service Auckland"
+        imageDescription="Stiff, sticking or worn locks opened up and repaired on site across Auckland."
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,6 +108,7 @@ export default function LockRepairPage() {
           <p key="2">Our team works like a web developer fixing web design code. We carefully take apart your lock. If a fix can solve the issue, we do that. This saves you time and cash.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
@@ -116,13 +117,15 @@ export default function LockRepairPage() {
           <p key="1">Most lock fixes are done in under an hour. We bring all the needed tools to do these fixes right on-site.</p>,
           <p key="2">We handle many types of shop and home locks. We even fix glass door locks. Need lock repair near you? Reach out today for an honest check and a <strong>$20 flat call-out fee</strong>.</p>
         ]}
-        imageSrc="/images/services/lock/lock-repair/broken-lock-mechanism-repair.webp"
-        imageAlt="Fixing a damaged residential deadbolt"
-        imageTitle="Lock Mechanism Repair"
-        imageDescription="Internal lock mechanism diagnostics and repair to extend the life of your existing hardware."
-        photoPosition="right"
+        imageSrc="/images/services/lock/lock-repair/brass-lever-lock-cylinder-key-tag.webp"
+        imageAlt="Brass lever handle and lock cylinder with a key and numbered key tag"
+        imageTitle="Broken Lock Mechanism Repair"
+        imageDescription="We fix broken lock mechanisms and worn cylinders so keys turn smoothly again."
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Common Issues We Fix"
@@ -146,8 +149,6 @@ export default function LockRepairPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Lock Mechanism Repair FAQs"

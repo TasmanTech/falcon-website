@@ -90,16 +90,16 @@ export default function LockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lockout/residential-lockout-service-auckland.webp"
-        imageAlt="Professional lock bypass tools on a commercial door"
-        imageTitle="Residential Lockout Service"
-        imageDescription="Emergency door unlocking services for homes and apartments using non-destructive methods."
+        imageSrc="/images/services/lock/lockout/key-in-stainless-door-lock-lockout-auckland.webp"
+        imageAlt="Key inserted in a square stainless steel door lock"
+        imageTitle="Residential Lockout Service Auckland"
+        imageDescription="Back inside and turning your own key again after our Auckland lockout service."
         title="Rapid Response When It Matters Most"
         content={[
           <p key="1">Being locked out of your home or shop is stressful. It stops your day and leaves you unsafe. We offer a fast residential lockout service and commercial lockout service across Auckland.</p>,
           <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We are a 24 hour locksmith service, so you can call us day or night.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -110,21 +110,24 @@ export default function LockoutPage() {
           <p key="2">Our work is very honest and practical. We keep up with new lock tech. This helps us handle advanced access systems with ease.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lockout/emergency-door-unlocking-tools.webp"
-        imageAlt="Non-destructive entry techniques used by professionals"
-        imageTitle="Emergency Unlocking Tools"
-        imageDescription="Precision lock picking and bypassing techniques to safely grant access to your property."
+        imageSrc="/images/services/lock/lockout/locksmith-picks-emergency-door-unlocking.webp"
+        imageAlt="Two stainless steel locksmith picks for non-destructive door unlocking"
+        imageTitle="Emergency Door Unlocking Tools"
+        imageDescription="Precision picks that open a lock without drilling, so your lock and door stay intact."
         title="Non-Destructive Techniques"
         content={[
           <p key="1">We use safe entry methods first. This saves you the cost of buying new parts. Your physical safety is key, and we strive to keep it intact.</p>,
           <p key="2">We do not drill or break locks right away. Our door unlocking service uses special tools to open locks safely. This keeps your doors safe, saving you time and cash.</p>
         ]}
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Our Lockout Process"
@@ -148,8 +151,6 @@ export default function LockoutPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Residential Lockout FAQs"

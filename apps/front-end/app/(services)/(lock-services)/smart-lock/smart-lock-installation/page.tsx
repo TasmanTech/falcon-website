@@ -94,10 +94,10 @@ export default function SmartLockInstallationPage() {
           <p key="2">Our team has the tools to drill and fit the door frame. We make sure the new smart lock fits perfectly. It will work great from day one.</p>
         ]}
         imageSrc="/images/services/smart-lock/smart-lock-installation/smart-lock-installation-auckland.webp"
-        imageAlt="Drilling bore holes into a new door for a smart lock"
-        imageTitle="Smart Lock Installation"
-        imageDescription="Professional installation of digital and biometric smart locks for modern home security."
-        photoPosition="left"
+        imageAlt="Brushed steel smart lock with lever handle and thumb-turn"
+        imageTitle="Smart Lock Installation Auckland"
+        imageDescription="A smart lock with lever handle and thumb-turn, installed and set up ready to use."
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,6 +108,7 @@ export default function SmartLockInstallationPage() {
           <p key="2">This is why a pro fit is so key. We do not just screw the lock on. We make sure the door fit is perfect. We take care like a web team does for web design.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
@@ -116,13 +117,15 @@ export default function SmartLockInstallationPage() {
           <p key="1">We prep the door and mount the lock first. Then we make sure all the tech parts are set up and tested well.</p>,
           <p key="2">We charge a simple, clear <strong>$20 flat call-out fee</strong>. We come to your place in Auckland and set up your smart lock.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-installation/residential-smart-lock-fitting.webp"
-        imageAlt="Connecting internal wiring for a smart keypad"
-        imageTitle="Seamless Smart Lock Fitting"
-        imageDescription="Clean and precise fitting of electronic locks into existing wooden or metal doors."
-        photoPosition="right"
+        imageSrc="/images/services/smart-lock/smart-lock-installation/keypad-smart-lock-home-fitting.webp"
+        imageAlt="Bronze keypad smart lock with lever handle and a screwdriver"
+        imageTitle="Residential Smart Lock Fitting"
+        imageDescription="A keypad smart lock ready to fit for fast, keyless access at home."
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Our Fresh Install Process"
@@ -146,8 +149,6 @@ export default function SmartLockInstallationPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Smart Lock Installation FAQs"

@@ -88,17 +88,17 @@ export default function LockChangePage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lock-change-installation/lock-installation-service-auckland.webp"
-        imageAlt="Professional hardware replacement tools"
-        imageTitle="Lock Installation Service"
-        imageDescription="Installing new, high-security deadbolts and handle sets for improved property defense."
+        imageSrc="/images/services/lock/lock-change-installation/lever-handle-deadbolt-lock-installation-auckland.webp"
+        imageAlt="Brushed steel lever handle and matching round deadbolt"
+        imageTitle="Lock Installation Service Auckland"
+        imageDescription="A new lever handle and deadbolt set, installed by our Auckland team."
         title="Upgrading Your Security"
         content={[
           <p key="1">You might be moving to a new place. Or maybe you need to fix old locks. Putting in new locks is a key part of keeping your property safe.</p>,
           <p key="2">We are property care experts. Our lock installation service is built around your exact needs.</p>,
           <p key="3">Our team is great at putting in new hardware. We make sure all parts fit perfectly. We keep your assets safe and secure.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -109,21 +109,24 @@ export default function LockChangePage() {
           <p key="2">Good web design keeps a site safe. Good locks keep your property safe. If you have new staff or tenants, you need to be sure about access. A new lock is the safest choice.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/lock-change-installation/new-door-lock-fitting.webp"
-        imageAlt="Modern hardware solutions installed correctly"
+        imageSrc="/images/services/lock/lock-change-installation/multipoint-door-lock-replacement.webp"
+        imageAlt="Multipoint door lock with lever handle and five steel locking bolts"
         imageTitle="New Door Lock Fitting"
-        imageDescription="Professional mortising and fitting of fresh locks on wooden, aluminum, and composite doors."
+        imageDescription="A multipoint lock replacement with extra bolts for stronger front door security."
         title="Precision Installation"
         content={[
           <p key="1">We install a wide range of good hardware. If you already bought a lock, we can put it in for you. Our lock changing service is quick and tidy.</p>,
           <p key="2">For most doors, a hardware swap takes less than an hour per door. This means less disruption to your home or business.</p>
         ]}
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Hardware Types We Install"
@@ -147,8 +150,6 @@ export default function LockChangePage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Lock Installation & Change FAQs"

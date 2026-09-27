@@ -101,15 +101,15 @@ export default function AutoServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/auto-locksmith-services-auckland.webp"
-        imageAlt="Auto lock and key repair services"
-        imageTitle="Auto Locksmith Services"
-        imageDescription="Professional automotive services spanning from vehicle lockouts to dead battery jump starts."
+        imageSrc="/images/services/auto/car-rev-counter-gauge-auto-services.webp"
+        imageAlt="Round car rev counter gauge with a chrome bezel and red needle"
+        imageTitle="Mobile Auto Services Auckland"
+        imageDescription="Mobile auto services across Auckland, from car lockouts and flat batteries to OBD2 diagnostic scans."
         title="Comprehensive Auto Lock and Key Services"
         content={[
           <p key="1">Your car security is very important. We offer full auto lock care. We cut new keys and we fix hard ignition faults.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -119,6 +119,23 @@ export default function AutoServicesPage() {
           <p key="1">We keep up with new car security trends. We cut keys and code chips. Our team is ready to help you. Our good work mirrors our high standards in web design.</p>
         ]}
         theme="dark"
+        align="left"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/auto/car-key-remote-fob-auto-locksmith.webp"
+        imageAlt="Black flip car key with a remote fob on a key ring"
+        imageTitle="Auto Locksmith Help"
+        imageDescription="Our auto locksmith service helps Auckland drivers get back into their car and back on the road."
+        title="Roadside Help When You Need It"
+        content={[
+          <p key="1">Keys locked in the car? Our <Link href="/car-lockout" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">emergency car lockout service</Link> gets you back in with no damage to the paint or seals.</p>,
+          <p key="2">Car will not start? We offer <Link href="/auto/dead-battery-assistance" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">mobile jump starts and battery checks</Link>. A warning light on the dash? Our <Link href="/auto/obd2-diagnostic" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">OBD2 diagnostic scan</Link> finds the fault fast.</p>
+        ]}
+        ctaText="Call for Help"
+        ctaHref="tel:+6492431404"
+        photoPosition="left"
+        theme="light"
       />
 
       <CTASection theme="catchy" />

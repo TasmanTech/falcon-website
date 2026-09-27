@@ -114,16 +114,16 @@ export default function LockServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/lock/residential-commercial-locksmith-auckland.webp"
-        imageAlt="Professional lock installation and repair"
-        imageTitle="Locksmith Services Auckland"
-        imageDescription="Full-service residential and commercial lock installation, repair, and emergency unlocking."
+        imageSrc="/images/services/lock/key-in-lock-cylinder-locksmith-auckland.webp"
+        imageAlt="Silver key inserted in a lock cylinder showing its brass pins"
+        imageTitle="Residential & Commercial Locksmith"
+        imageDescription="Lock cylinders and keys for residential and commercial locksmith work across Auckland."
         title="Secure Your Property with Expert Lock Services"
         content={[
           <p key="1">Good security starts with strong locks. Our locksmith services cover homes and shops. We keep your place safe and secure.</p>,
           <p key="2">Need a locksmith near you? Our vans cover all of Auckland. We are on call 24 hours a day for lockouts.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -133,6 +133,23 @@ export default function LockServicesPage() {
           <p key="1">Each home and shop is different. We look at what you need. We suggest the best locks. We give complete help, much like our custom web design.</p>
         ]}
         theme="dark"
+        align="left"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/lock/deadbolt-and-knob-door-set.webp"
+        imageAlt="Matching stainless steel deadbolt and round door knob set"
+        imageTitle="Door Lock Installation"
+        imageDescription="A matching deadbolt and knob set, fitted as a pair for a secure front door."
+        title="From New Locks to Quick Fixes"
+        content={[
+          <p key="1">We fit strong new deadbolts and door sets. Our <Link href="/lock/lock-change-installation" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">lock change and installation service</Link> suits homes, rentals and shops.</p>,
+          <p key="2">Lock feels stiff? Try our <Link href="/lock/lock-repair" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">door lock repair</Link>. Moved house or lost a key? A <Link href="/lock/rekey" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">lock rekey</Link> stops old keys working. Locked out? Our <Link href="/lock/lockout" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">residential lockout service</Link> runs 24/7.</p>
+        ]}
+        ctaText="Book a Locksmith"
+        ctaHref="/contact"
+        photoPosition="left"
+        theme="light"
       />
 
       <CTASection theme="catchy" />

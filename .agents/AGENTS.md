@@ -42,10 +42,12 @@ When working within the `apps/back-end` directory:
 - **Responsive Text Alignment**: For textual content blocks (like service capabilities) that stack with images on mobile screens, use `text-center lg:text-left` to ensure the text is centered on small devices but naturally left-aligned on desktop.
 
 ## Image & Asset Guidelines
-- **Never Use the Same Image Twice**: Do not duplicate or reuse the same image file across multiple distinct sections of a page or different pages to cut corners. Every section that requires an image must have a unique, contextually appropriate image.
-- **Image Subject Constraints**: When generating or selecting illustrative graphics, use cartoonish vectors of **tools or objects only**. Strictly avoid including characters, people, or animals in the images.
-- **Format & Sizing**: Use `.webp` format at `1024x720` resolution whenever possible.
+- **Manifest First**: Every hero and content image is defined in `.agents/skills/image_generation/manifest.json` (source, crop, SEO filename, alt, title, description, AI prompt) and built with `build_images.cjs`. Follow the `image_generation` skill; never hand-drop images into `public/`.
+- **Never Use the Same Image Twice**: Do not duplicate or reuse the same image file across multiple distinct sections of a page or different pages to cut corners. Every section that requires an image must have a unique, contextually appropriate image. An original photo and its AI-restyled version count as the same image.
+- **Image Subject Constraints**: Use clean, photorealistic AI studio shots of **tools, locks, keys, vehicles and hardware** on a seamless `#FAFAFA` background (generated with Nano Banana Pro from the originals in `Content/`). No faces or identifiable people and no animals. A hand is acceptable only when it shows the service being carried out. Never publish an image with a visible watermark, logo or text overlay.
+- **Format & Sizing**: Use `.webp`. Content images are square `1024x1024` (the photo frame is `aspect-square`); the homepage hero is `1600x900`.
 - **Strict File Size Limits**: All content images must strictly be under **100KB**. Hero images can be slightly larger, but must remain under **~175KB**.
+- **SEO Attributes**: Filenames are descriptive kebab-case (what is in the image + service + `auckland` where natural). Always pass `imageAlt`, `imageTitle` and `imageDescription` from the manifest.
 
 ## Copywriting & SEO Vocabulary
 - **Prioritize High-Traffic Keywords**: Always use terms like **"web design"** and **"web developer"** (or "web development") when describing services on public-facing pages.

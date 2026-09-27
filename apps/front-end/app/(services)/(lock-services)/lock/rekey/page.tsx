@@ -93,11 +93,11 @@ export default function RekeyPage() {
           <p key="1">You do not always have to buy new locks to stop access. A lock rekey is a smart fix. We change the inside parts of your old locks.</p>,
           <p key="2">This makes all old keys useless. We give you a fresh set of keys. This gives you peace of mind at a low cost.</p>
         ]}
-        imageSrc="/images/services/lock/rekey/lock-rekeying-service-auckland.webp"
-        imageAlt="Internal pins and springs of a door lock"
-        imageTitle="Lock Rekeying Service"
-        imageDescription="Cost-effective lock rekeying for new homeowners and businesses needing fresh keys."
-        photoPosition="left"
+        imageSrc="/images/services/lock/rekey/chrome-lever-lock-keys-rekeying-auckland.webp"
+        imageAlt="Chrome lever handles and lock cylinder with a set of keys"
+        imageTitle="Lock Rekeying Service Auckland"
+        imageDescription="Rekeying your existing locks so old keys stop working, without replacing the hardware."
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,6 +108,7 @@ export default function RekeyPage() {
           <p key="2">If your locks are physically sound, rekeying is the honest choice to stay safe. Much like good web design relies on good code, good security relies on good lock parts.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
@@ -116,13 +117,15 @@ export default function RekeyPage() {
           <p key="1">Our mobile units carry all the tools to rekey your property on-site. We are trained to work with many major lock brands and shop systems.</p>,
           <p key="2">Take total control of your access today. Reach out to our team for a simple, clear <strong>$20 flat call-out fee</strong> to your place.</p>
         ]}
-        imageSrc="/images/services/lock/rekey/residential-lock-rekey-technician.webp"
-        imageAlt="Rekeying a commercial hardware cylinder"
-        imageTitle="Professional Lock Rekeying"
-        imageDescription="Adjusting lock cylinder pins to work with a new set of keys without replacing the hardware."
-        photoPosition="right"
+        imageSrc="/images/services/lock/rekey/euro-cylinder-new-keys-rekey.webp"
+        imageAlt="Brass euro lock cylinder with a set of newly cut keys"
+        imageTitle="Residential Lock Rekey"
+        imageDescription="A rekeyed cylinder and a fresh set of keys for your home."
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Benefits of Rekeying"
@@ -146,8 +149,6 @@ export default function RekeyPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Lock Rekeying Service FAQs"

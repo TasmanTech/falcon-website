@@ -90,16 +90,16 @@ export default function obd2Page() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/obd2-diagnostic/obd2-vehicle-diagnostic-auckland.webp"
-        imageAlt="Professional OBDII diagnostic scanner tool"
-        imageTitle="OBD2 Vehicle Diagnostics"
-        imageDescription="Comprehensive OBD2 electronic diagnostics to identify engine fault codes and dashboard warnings."
+        imageSrc="/images/services/auto/obd2-diagnostic/obd2-diagnostic-scan-tablet-auckland.webp"
+        imageAlt="Handheld OBD2 diagnostic scan tablet with an orange connector cable"
+        imageTitle="OBD2 Vehicle Diagnostics Auckland"
+        imageDescription="A professional OBD2 scan tablet that reads live fault codes from your car's computer on site."
         title="Understand Your Vehicle's Faults"
         content={[
           <p key="1">A sudden <em>Check Engine</em> light is scary. Do not take expensive guesses. Our mobile OBDII scan gives clear data from your car. We travel all over Auckland to do this fast.</p>,
           <p key="2">We operate with a simple and completely transparent <strong>$20 flat call-out fee</strong> to come directly to your location. Contact us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -110,21 +110,24 @@ export default function obd2Page() {
           <p key="2">We give clear reports. Think of it like a web team fixing bad web design. We find the exact code causing the issue. Then you can fix the car properly.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/obd2-diagnostic/car-code-reader-diagnostics.webp"
-        imageAlt="Reading diagnostic trouble codes from a vehicle"
-        imageTitle="Car Code Reader Services"
-        imageDescription="Using professional-grade OBD2 scan tools to accurately diagnose vehicle computer issues."
+        imageSrc="/images/services/auto/obd2-diagnostic/handheld-obd2-car-code-reader.webp"
+        imageAlt="Handheld OBD2 car code reader with a 16-pin connector cable"
+        imageTitle="Car Code Reader"
+        imageDescription="A handheld code reader for quick checks when a warning light comes on."
         title="Empowering Repair Decisions"
         content={[
           <p key="1">The issue might be a loose gas cap or a bad sensor. Knowing the exact code is smart. It helps you make good choices about your car.</p>,
           <p key="2">We plug in our great scan tool. We tell you what the code means in plain words. This ensures you are ready for any repairs.</p>
         ]}
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="What We Scan For"
@@ -148,8 +151,6 @@ export default function obd2Page() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="OBD2 Diagnostic Code FAQs"

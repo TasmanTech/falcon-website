@@ -123,9 +123,10 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description={<>Comprehensive maintenance, general repair, and rapid-response 24/7 lockout assistance for your home and business across Auckland. Call us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
-        imageSrc="/hero/new-hero.webp"
-        imageAlt="Repair and Maintenance Tools"
+        description={<>Rapid response 24/7 lockout assistance for your home or business across Auckland. 15 minute ETA available. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
+        imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
+        imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
+        imageTitle="Commercial & Residential Repair Tools"
         ctaText="Get a Quote"
         ctaLink="/contact"
         isMain={true}
@@ -151,13 +152,13 @@ export default function Home() {
           <p key="1">We do many fixes. But lockouts are what we do best. Being locked out is bad, so we get you in fast. Our door unlocking service is safe. We do not break your parts.</p>,
           <p key="2">We do more than just let you in. We handle lock repair, lock replacement, and lock rekey jobs. We make sure all doors are secure. Need to get a locksmith fast? We are on call 24/7.</p>
         ]}
-        imageSrc="/images/auckland-mobile-locksmith-van.webp"
-        imageAlt="Specialised Locksmith Tools"
-        imageTitle="Auckland Mobile Services"
-        imageDescription="Our fully-equipped mobile service vehicles ready to dispatch across the greater Auckland region."
+        imageSrc="/images/home/locksmith-lock-pick-set-auckland.webp"
+        imageAlt="Locksmith lock pick set with tension wrenches and brass lock cylinders"
+        imageTitle="Auckland Locksmith Tools"
+        imageDescription="Lock picks and tension tools we use to open doors without damaging the lock or frame."
         ctaText="View Lock Services"
         ctaHref="/lock"
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -178,13 +179,13 @@ export default function Home() {
           <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape. We also know a great web team. They can build a great site for you.</p>,
           <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
         ]}
-        imageSrc="/images/falcon-access-locksmith-services.webp"
-        imageAlt="General Repair Tools"
-        imageTitle="Falcon Access Locksmith Services"
-        imageDescription="Your trusted partner for commercial and residential repair, maintenance, and locking solutions."
+        imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
+        imageAlt="Orange cordless drill and impact driver with pliers, screwdrivers and a pipe wrench"
+        imageTitle="Property Maintenance Tools"
+        imageDescription="Cordless power tools and hand tools for commercial and residential property maintenance in Auckland."
         ctaText="Connect Now"
         ctaHref="/contact"
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
 

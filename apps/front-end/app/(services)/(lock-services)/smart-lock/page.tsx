@@ -100,15 +100,15 @@ export default function SmartLockServicesPage() {
       </div>
 
       <PhotoContentSection
-        imageSrc="/images/services/smart-lock/smart-lock-services-auckland.webp"
-        imageAlt="Smart lock installation on a door"
-        imageTitle="Smart Lock Specialists"
-        imageDescription="Comprehensive smart lock services including installation, repair, and programming in Auckland."
+        imageSrc="/images/services/smart-lock/fingerprint-keypad-smart-lock-auckland.webp"
+        imageAlt="Black smart lock with fingerprint sensor and illuminated keypad"
+        imageTitle="Smart Lock Services Auckland"
+        imageDescription="Keyless smart locks with fingerprint and PIN entry, supplied and fitted across Auckland."
         title="Modern Convenience with Smart Lock Systems"
         content={[
           <p key="1">Update your property with smart security. Smart locks let you in without keys. Our team will set them up perfectly.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -118,6 +118,23 @@ export default function SmartLockServicesPage() {
           <p key="1">We connect your new smart locks to your Wi-Fi network. Our team makes sure it works smoothly. We do this well, just like our web design.</p>
         ]}
         theme="dark"
+        align="left"
+      />
+
+      <PhotoContentSection
+        imageSrc="/images/services/smart-lock/digital-smart-lock-lever-handle.webp"
+        imageAlt="Slim black digital smart lock with an integrated lever handle"
+        imageTitle="Digital Smart Locks"
+        imageDescription="A slim digital smart lock with lever handle, a popular choice for Auckland front doors."
+        title="Fitted, Set Up and Looked After"
+        content={[
+          <p key="1">This smart lock is one of our real jobs in Auckland. Our <Link href="/smart-lock/smart-lock-installation" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">smart lock installation</Link> covers fitting, codes and app set-up.</p>,
+          <p key="2">Old lock playing up? We handle <Link href="/smart-lock/smart-lock-change" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">smart lock replacement</Link> and <Link href="/smart-lock/smart-lock-repair-programming" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">smart lock repair and programming</Link> for homes and businesses.</p>
+        ]}
+        ctaText="Get a Quote"
+        ctaHref="/contact"
+        photoPosition="left"
+        theme="light"
       />
 
       <CTASection theme="catchy" />

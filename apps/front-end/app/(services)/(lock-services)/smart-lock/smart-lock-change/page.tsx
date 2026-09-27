@@ -93,11 +93,11 @@ export default function SmartLockChangePage() {
           <p key="1">Moving to smart locks is a key step to update your home or shop. We give strong setup services for many types of digital locks.</p>,
           <p key="2">Moving away from metal keys is easy. It lets you track who comes in. You can give short-term codes. You can stop access fast without changing the lock.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-change/smart-lock-replacement-auckland.webp"
-        imageAlt="Modern smart lock installed on a front door"
-        imageTitle="Smart Lock Replacement"
-        imageDescription="Upgrading outdated mechanical locks to high-security electronic smart lock systems."
-        photoPosition="left"
+        imageSrc="/images/services/smart-lock/smart-lock-change/push-pull-smart-lock-replacement-auckland.webp"
+        imageAlt="Champagne gold push-pull smart lock with fingerprint reader"
+        imageTitle="Smart Lock Replacement Auckland"
+        imageDescription="Swapping a worn or outdated smart lock for a newer, more reliable model."
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,6 +108,7 @@ export default function SmartLockChangePage() {
           <p key="2">Our team knows these hard tasks well. We work like a good web team doing web design. We make sure the door frame and holes are lined up for a safe fit.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
@@ -116,13 +117,15 @@ export default function SmartLockChangePage() {
           <p key="1">We do not just screw the lock to the door. We take time to mount it right. We also help you set up the Wi-Fi link.</p>,
           <p key="2">Try the ease of keyless entry today. We charge a clear <strong>$20 flat call-out fee</strong> to check and upgrade your home in Auckland.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-change/commercial-smart-lock-upgrade.webp"
-        imageAlt="Smartphone connecting to a smart lock"
-        imageTitle="Commercial Smart Lock Upgrades"
-        imageDescription="Securing commercial premises with robust, modern keyless entry replacements."
-        photoPosition="right"
+        imageSrc="/images/services/smart-lock/smart-lock-change/keycard-smart-lock-commercial-upgrade.webp"
+        imageAlt="Stainless steel keycard smart lock with lever handle and access card"
+        imageTitle="Commercial Smart Lock Upgrade"
+        imageDescription="Keycard smart lock upgrades for offices, rentals and commercial doors."
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Advantages of Smart Hardware"
@@ -146,8 +149,6 @@ export default function SmartLockChangePage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Smart Lock Upgrade FAQs"
