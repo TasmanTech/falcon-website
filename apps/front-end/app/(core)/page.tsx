@@ -123,7 +123,7 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description={<>Comprehensive maintenance, general repair, and rapid-response 24/7 lockout assistance for your home and business across Auckland. Call us at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
+        description={<>Rapid response 24/7 lockout assistance for your home or business across Auckland. 15 minute ETA available. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
         imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
         imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
         imageTitle="Commercial & Residential Repair Tools"
