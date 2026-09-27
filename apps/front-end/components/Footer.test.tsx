@@ -23,4 +23,14 @@ describe('Footer Component', () => {
     expect(screen.getByText('Car Lockout')).toBeInTheDocument();
     expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
   });
+
+  it('links to the Facebook and Instagram profiles and not Twitter', () => {
+    render(<Footer />);
+    const facebook = screen.getByRole('link', { name: 'Falcon Access on Facebook' });
+    const instagram = screen.getByRole('link', { name: 'Falcon Access on Instagram' });
+    expect(facebook).toHaveAttribute('href', 'https://www.facebook.com/falconaccessnz');
+    expect(instagram).toHaveAttribute('href', 'https://www.instagram.com/falconaccess/');
+    expect(facebook).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(screen.queryByText(/Twitter/)).toBeNull();
+  });
 });

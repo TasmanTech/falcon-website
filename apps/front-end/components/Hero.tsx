@@ -9,6 +9,7 @@ interface HeroProps {
   description: React.ReactNode;
   imageSrc: string;
   imageAlt: string;
+  imageTitle?: string;
   ctaText?: string;
   ctaLink?: string;
   isMain?: boolean;
@@ -22,6 +23,7 @@ interface HeroProps {
  * @param {React.ReactNode} props.description - The sub-heading or description text.
  * @param {string} props.imageSrc - The source path for the background image.
  * @param {string} props.imageAlt - The alt text for the background image.
+ * @param {string} [props.imageTitle] - Optional title attribute for the background image.
  * @param {string} [props.ctaText] - Optional text for the call-to-action button.
  * @param {string} [props.ctaLink] - Optional URL for the call-to-action button.
  * @param {boolean} [props.isMain=false] - If true, styles the hero for the main landing page.
@@ -32,6 +34,7 @@ export default function Hero({
   description,
   imageSrc,
   imageAlt,
+  imageTitle,
   ctaText,
   ctaLink,
   isMain = false,
@@ -44,6 +47,7 @@ export default function Hero({
         <Image
           src={imageSrc}
           alt={imageAlt}
+          title={imageTitle}
           width={1920}
           height={1080}
           sizes="(max-width: 768px) 100vw, 60vw"

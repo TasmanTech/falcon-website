@@ -88,16 +88,16 @@ export default function DeadBatteryPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/dead-battery-assistance/dead-battery-jump-start-auckland.webp"
-        imageAlt="Professional car battery jump start service"
-        imageTitle="Dead Battery Jump Start"
-        imageDescription="Emergency mobile vehicle jump start assistance to get you back on the road quickly."
+        imageSrc="/images/services/auto/dead-battery-assistance/jump-leads-on-car-battery-auckland.webp"
+        imageAlt="Car battery with red and black jump leads clamped to its terminals"
+        imageTitle="Dead Battery Jump Start Auckland"
+        imageDescription="Jump leads connected to a flat 12-volt car battery for a fast mobile jump start."
         title="Quick & Reliable Engine Starts"
         content={[
           <p key="1">A dead battery can happen to anyone. It can leave you stuck at a bad time. We give fast jump starts across Auckland. We charge a clear <strong>$20 flat call-out fee</strong>.</p>,
           <p key="2">Don&apos;t wait for hours for a tow truck. Call us directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> and we will dispatch a technician immediately.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,21 +108,24 @@ export default function DeadBatteryPage() {
           <p key="2">Our tools carefully control the power to your car. We care about this just like a good web team cares about web design. Safe power is our main goal.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/auto/dead-battery-assistance/mobile-battery-assistance-vehicle.webp"
-        imageAlt="Surge-protected jump starter packs"
+        imageSrc="/images/services/auto/dead-battery-assistance/portable-jump-starter-pack-clamps.webp"
+        imageAlt="Portable jump starter pack with red and black battery clamps"
         imageTitle="Mobile Battery Assistance"
-        imageDescription="Our equipped mobile response vehicles carry high-capacity jump packs for all engine sizes."
+        imageDescription="The portable jump starter we bring to get your car running again at home, work or the roadside."
         title="Surge-Protected Equipment"
         content={[
           <p key="1">We use strong, safe tools to start cars. We can start both standard and fast new cars. We do this without hurting the car parts.</p>,
           <p key="2">If the battery is very low, our team will watch the power load. We give a smooth and safe start every single time.</p>
         ]}
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Our Jump Start Process"
@@ -146,8 +149,6 @@ export default function DeadBatteryPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Jump Start & Dead Battery FAQs"

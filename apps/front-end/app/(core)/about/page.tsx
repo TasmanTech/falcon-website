@@ -63,7 +63,7 @@ export default function AboutPage() {
         imageDescription="The official logo of Falcon Access, a trusted New Zealand commercial and residential repair service."
         ctaText="View Lock Services"
         ctaHref="/lock"
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -75,17 +75,25 @@ export default function AboutPage() {
           <p key="3">Our callout fee is a flat $20. If we can&apos;t get you in, you don&apos;t pay.</p>
         ]}
         theme="dark"
+        align="left"
       />
 
-      <TextContentSection
+      <PhotoContentSection
+        imageSrc="/images/about/stainless-steel-deadbolt-and-keys.webp"
+        imageAlt="Stainless steel deadbolt lock with two keys on a key ring"
+        imageTitle="Deadbolt Installation"
+        imageDescription="A stainless steel deadbolt and keys, the kind of hardware we fit for Auckland homes and businesses."
         title="Where We Work"
         content={[
           <p key="1">Our vans cover all of Auckland. That includes Auckland City, the North Shore, and West, East, and South Auckland. If you need a locksmith near you, we are not far away.</p>,
           <p key="2">We carry our tools with us, so most jobs are done in one visit. We are a locksmith for business as well as homes. Shops, offices, and rentals all get the same care.</p>,
           <p key="3">Locked out? Our emergency locksmith service runs 24/7. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> at any hour.</p>
         ]}
-        theme="white"
+        photoPosition="left"
+        theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="What You Can Expect"
@@ -114,9 +122,6 @@ export default function AboutPage() {
         ]}
         theme="light"
       />
-
-      <CTASection theme="catchy" />
-
     </div>
   );
 }

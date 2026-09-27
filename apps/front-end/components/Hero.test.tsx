@@ -13,4 +13,8 @@ describe('Hero Component', () => {
     const link = screen.getByRole('link', { name: 'Click Me' });
     expect(link).toHaveAttribute('href', '/go');
   });
+  it('passes the image title through to the hero image', () => {
+    render(<Hero title="A" description="B" imageSrc="/i.webp" imageAlt="Hero alt" imageTitle="Hero Title" />);
+    expect(screen.getByAltText('Hero alt')).toHaveAttribute('title', 'Hero Title');
+  });
 });

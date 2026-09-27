@@ -25,7 +25,7 @@ export default function CTASection({
     : 'bg-brand-primary text-white hover:bg-brand-primary/90';
 
   return (
-    <section className={`w-full py-16 ${bgClass}`}>
+    <section className={`w-full py-24 md:py-32 ${bgClass}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-card-ready animate-play">
         <h2 className={`text-3xl md:text-4xl font-bold font-montserrat mb-4 ${textClass}`}>
           {title}

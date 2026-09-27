@@ -93,11 +93,11 @@ export default function SmartLockRepairPage() {
           <p key="1">A broken smart lock can stop your work or leave your home at risk. These new systems need special skills. They are not like old locks.</p>,
           <p key="2">Our team is ready to fix both the lock parts and the digital parts. We find the issue fast to get your system back online.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-repair-programming-auckland.webp"
-        imageAlt="Troubleshooting an electronic lock keypad"
-        imageTitle="Smart Lock Repair Auckland"
-        imageDescription="Expert diagnostic and repair services for commercial and residential smart lock systems."
-        photoPosition="left"
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/access-control-reader-programming-auckland.webp"
+        imageAlt="Black access control card reader with a green status light and key fob"
+        imageTitle="Smart Lock Repair & Programming"
+        imageDescription="Access control readers and fobs repaired and reprogrammed on site in Auckland."
+        photoPosition="right"
         theme="light"
       />
 
@@ -108,6 +108,7 @@ export default function SmartLockRepairPage() {
           <p key="2">We take a real, full look at the repair. Good web design needs good code. A smart lock needs a good door fit. We make sure the door is right before we fix the tech.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
@@ -116,13 +117,15 @@ export default function SmartLockRepairPage() {
           <p key="1">We look at the whole door first. We do not just buy new parts right away. This smart way saves our clients time and cash.</p>,
           <p key="2">If you have issues with your smart locks, call us today. We charge a clear <strong>$20 flat call-out fee</strong> to look at the fault on-site in Auckland.</p>
         ]}
-        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/smart-lock-integration-specialists.webp"
-        imageAlt="Testing smart lock connectivity on a smartphone"
-        imageTitle="Smart Lock Programming"
-        imageDescription="Reprogramming and system integration for keyless entry and access control systems."
-        photoPosition="right"
+        imageSrc="/images/services/smart-lock/smart-lock-repair-programming/digital-keypad-lock-repair.webp"
+        imageAlt="Satin steel digital keypad lock with lever handle"
+        imageTitle="Digital Lock Repair"
+        imageDescription="Keypad and digital lock repairs for apartments, rentals and commercial buildings."
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Common Electronic Issues"
@@ -146,8 +149,6 @@ export default function SmartLockRepairPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Smart Lock Repair & Sync FAQs"

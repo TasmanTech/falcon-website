@@ -87,15 +87,15 @@ export default function CarLockoutPage() {
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout/auckland-emergency-car-lockout-technician.webp"
-        imageAlt="Technician providing safe car lockout assistance"
+        imageSrc="/images/services/car-lockout/car-door-handle-lock-pick-tool.webp"
+        imageAlt="Stainless steel lock pick tool beside a black car door handle"
         imageTitle="Auckland Car Lockout Service"
-        imageDescription="Mobile technician providing emergency, non-destructive car lockout assistance across Auckland."
+        imageDescription="Precision tools that open a car door lock without damaging the paint, seals or lock."
         title="Fast & Reliable Car Lockout Services"
         content={[
           <p key="1">Being locked out of your car is bad. Our team gives fast car lockout help. We use safe ways to get you back on the road fast.</p>
         ]}
-        photoPosition="left"
+        photoPosition="right"
         theme="light"
       />
 
@@ -105,20 +105,23 @@ export default function CarLockoutPage() {
           <p key="1">New cars need special care. Our team knows auto locks well. We give top service like we do in web design. Your safety is our main goal.</p>
         ]}
         theme="white"
+        align="left"
       />
 
       <PhotoContentSection
-        imageSrc="/images/services/car-lockout/damage-free-vehicle-entry-tools.webp"
-        imageAlt="Damage-free vehicle entry tools"
+        imageSrc="/images/services/car-lockout/car-lockout-kit-air-wedge-reach-tool.webp"
+        imageAlt="Car lockout kit with a long-reach tool, blue inflatable air wedge and door wedge"
         imageTitle="Damage-Free Vehicle Entry"
-        imageDescription="Specialized vehicle entry tools ensuring no damage to your car paint or weather stripping."
+        imageDescription="The air wedge and long-reach tool we use to open locked cars without scratches or torn weather seals."
         title="Damage-Free Entry Guaranteed"
         content={[
           <p key="1">We care about the safety of your car. We use new tools to give safe entry for all cars. Trust our team to do the job right.</p>
         ]}
-        photoPosition="right"
+        photoPosition="left"
         theme="light"
       />
+
+      <CTASection theme="catchy" />
 
       <IconListSection
         title="Why Choose Our Car Lockout Service"
@@ -141,8 +144,6 @@ export default function CarLockoutPage() {
         ]}
         theme="white"
       />
-
-      <CTASection theme="catchy" />
 
       <FAQSection
         title="Emergency Car Lockout FAQs"
