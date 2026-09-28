@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import FloatingCTA from "../components/FloatingCTA";
 import AnalyticsWrapper from "@/components/AnalyticsWrapper";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import GoogleAdsTag from "@/components/GoogleAdsTag";
 import JsonLd from '@/components/JsonLd';
 import SiteChrome from "@/components/SiteChrome";
 
@@ -99,9 +100,12 @@ export default function RootLayout({
           <FloatingCTA />
           <Footer />
           {process.env.NODE_ENV === "production" ? (
-            <AnalyticsWrapper>
-              <GoogleAnalytics gaId="G-2BELF6S2L5" />
-            </AnalyticsWrapper>
+            <>
+              <GoogleAdsTag />
+              <AnalyticsWrapper>
+                <GoogleAnalytics gaId="G-2BELF6S2L5" />
+              </AnalyticsWrapper>
+            </>
           ) : null}
         </SiteChrome>
       </body>
