@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 const TABS = [
   { href: "/admin", label: "New Invoice" },
   { href: "/admin/invoices", label: "History" },
+  { href: "/admin/leads", label: "Lead" },
 ];
 
 /**
- * Two-tab switcher between creating an invoice and browsing sent invoices.
+ * Tab switcher between creating an invoice, browsing sent invoices and writing a lead message.
  * Sized for thumbs on mobile; highlights the current page.
  *
  * @returns {JSX.Element} The tab bar.
@@ -19,7 +20,7 @@ export default function PortalNav() {
 
   return (
     <nav aria-label="Admin sections" className="mx-auto max-w-2xl px-4 pt-4">
-      <div className="grid grid-cols-2 gap-1 rounded-full bg-slate-200 p-1">
+      <div className="grid grid-cols-3 gap-1 rounded-full bg-slate-200 p-1">
         {TABS.map((tab) => {
           const active = pathname === tab.href;
           return (
