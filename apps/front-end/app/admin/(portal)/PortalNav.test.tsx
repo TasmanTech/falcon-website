@@ -17,5 +17,6 @@ describe('PortalNav', () => {
     render(<PortalNav />);
     expect(screen.getByRole('link', { name: 'History' })).toHaveAttribute('aria-current', 'page');
     expect(screen.getByRole('link', { name: 'New Invoice' })).not.toHaveAttribute('aria-current');
+    expect(screen.getByRole('link', { name: 'Lead' })).toHaveAttribute('href', '/admin/leads');
   });
 });
