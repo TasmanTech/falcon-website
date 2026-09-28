@@ -5,6 +5,7 @@ import { getDataSourceToken, getRepositoryToken } from '@nestjs/typeorm';
 import { AppModule, buildDatabaseOptions } from './app.module';
 import { Invoice } from './invoice/invoice.entity';
 import { Admin } from './admin/admin.entity';
+import { Lead } from './lead/lead.entity';
 
 describe('AppModule', () => {
   let module: TestingModule;
@@ -19,6 +20,8 @@ describe('AppModule', () => {
       .overrideProvider(getRepositoryToken(Invoice))
       .useValue({})
       .overrideProvider(getRepositoryToken(Admin))
+      .useValue({})
+      .overrideProvider(getRepositoryToken(Lead))
       .useValue({})
       .compile();
   });

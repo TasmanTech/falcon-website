@@ -14,7 +14,13 @@ import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { ListInvoicesDto } from './dto/list-invoices.dto';
 import { Invoice } from './invoice.entity';
 import { InvoiceDocument, formatMoney, renderInvoicePdf } from './invoice-pdf';
-import { deleteInvoiceFile, getInvoiceStorageDir, readInvoiceFile, writeInvoiceFile } from './invoice-storage';
+import {
+  deleteInvoiceFile,
+  getInvoiceStorageDir,
+  invoiceFileExists,
+  readInvoiceFile,
+  writeInvoiceFile,
+} from './invoice-storage';
 import { BUSINESS, GST_RATE } from './invoice.constants';
 
 /** A rendered invoice PDF and the metadata the controller needs to serve it. */
@@ -28,7 +34,7 @@ export interface GeneratedInvoice {
 /** One row in the invoice history list. */
 export type InvoiceSummary = Pick<
   Invoice,
-  'id' | 'invoiceNumber' | 'clientName' | 'clientEmail' | 'invoiceDate' | 'total' | 'emailedAt' | 'createdAt'
+  'id' | 'invoiceNumber' | 'clientName' | 'clientEmail' | 'invoiceDate' | 'dueDate' | 'total' | 'paid' | 'emailedAt' | 'createdAt'
 >;
 
 /** A page of invoice history. */
@@ -111,7 +117,12 @@ export class InvoiceService {
    * @throws {InternalServerErrorException} If the invoice cannot be stored or emailed.
    */
   async send(dto: CreateInvoiceDto): Promise<GeneratedInvoice> {
-    const { invoice, document } = await this.generate(dto, await this.generateInvoiceNumber(dto.invoiceDate));
+    let generated = await this.generate(dto, await this.generateInvoiceNumber(dto.invoiceDate));
+    // PDFs of deleted invoices stay in storage; never overwrite one with a reused number
+    for (let attempt = 0; attempt < 5 && (await invoiceFileExists(generated.invoice.fileName)); attempt++) {
+      generated = await this.generate(dto, await this.generateInvoiceNumber(dto.invoiceDate));
+    }
+    const { invoice, document } = generated;
 
     try {
       await writeInvoiceFile(invoice.fileName, invoice.pdf);
@@ -143,6 +154,7 @@ export class InvoiceService {
           gst: document.gst,
           total: document.total,
           notes: document.notes ?? null,
+          paid: document.paid ?? false,
           fileName: invoice.fileName,
           emailedAt: null,
         }),
@@ -165,7 +177,7 @@ export class InvoiceService {
     }
 
     await this.invoiceRepository.update(record.id, { emailedAt: new Date() });
-    this.logger.log(`Invoice ${invoice.invoiceNumber} sent to ${dto.clientEmail}`);
+    this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} sent to ${dto.clientEmail}`);
     return invoice;
   }
 
@@ -188,7 +200,9 @@ export class InvoiceService {
         clientName: true,
         clientEmail: true,
         invoiceDate: true,
+        dueDate: true,
         total: true,
+        paid: true,
         emailedAt: true,
         createdAt: true,
       },
@@ -201,6 +215,77 @@ export class InvoiceService {
     });
 
     return { items, total, page, pageSize };
+  }
+
+  /**
+   * Marks a sent invoice as paid or unpaid and re-renders its stored PDF to match,
+   * so a later download shows the current status. The customer is not emailed again.
+   *
+   * @param {string} id - The invoice ID.
+   * @param {boolean} paid - The new status.
+   * @returns {Promise<InvoiceSummary>} The updated history row.
+   * @throws {NotFoundException} If the invoice does not exist.
+   * @throws {InternalServerErrorException} If the updated PDF cannot be saved.
+   */
+  async updateStatus(id: string, paid: boolean): Promise<InvoiceSummary> {
+    const record = await this.invoiceRepository.findOne({ where: { id } });
+    if (!record) throw new NotFoundException('Invoice not found');
+
+    if (record.paid !== paid) {
+      const pdf = await renderInvoicePdf({
+        invoiceNumber: record.invoiceNumber,
+        invoiceDate: record.invoiceDate,
+        dueDate: record.dueDate,
+        clientName: record.clientName,
+        clientEmail: record.clientEmail,
+        clientPhone: record.clientPhone ?? undefined,
+        jobAddress: record.jobAddress ?? undefined,
+        technicianName: record.technicianName ?? undefined,
+        notes: record.notes ?? undefined,
+        gstNumber: record.gst > 0 ? this.configService.get<string>('GST_NUMBER')?.trim() || undefined : undefined,
+        paid,
+        items: record.items,
+        subtotal: record.subtotal,
+        gst: record.gst,
+        total: record.total,
+      });
+      try {
+        await writeInvoiceFile(record.fileName, pdf);
+      } catch (error) {
+        this.logger.error(`Failed to rewrite invoice ${record.invoiceNumber} in storage`, error);
+        throw new InternalServerErrorException('The invoice PDF could not be updated. The status was not changed.');
+      }
+      await this.invoiceRepository.update(record.id, { paid });
+      this.logger.log(`Invoice ${record.invoiceNumber} marked ${paid ? 'paid' : 'unpaid'}`);
+    }
+
+    return {
+      id: record.id,
+      invoiceNumber: record.invoiceNumber,
+      clientName: record.clientName,
+      clientEmail: record.clientEmail,
+      invoiceDate: record.invoiceDate,
+      dueDate: record.dueDate,
+      total: record.total,
+      paid,
+      emailedAt: record.emailedAt,
+      createdAt: record.createdAt,
+    };
+  }
+
+  /**
+   * Removes an invoice from history. The PDF is deliberately left in storage as an archive copy.
+   *
+   * @param {string} id - The invoice ID.
+   * @returns {Promise<void>}
+   * @throws {NotFoundException} If the invoice does not exist.
+   */
+  async remove(id: string): Promise<void> {
+    const record = await this.invoiceRepository.findOne({ where: { id } });
+    if (!record) throw new NotFoundException('Invoice not found');
+
+    await this.invoiceRepository.delete(record.id);
+    this.logger.log(`Invoice ${record.invoiceNumber} deleted from history (PDF ${record.fileName} kept in storage)`);
   }
 
   /**
@@ -259,6 +344,7 @@ export class InvoiceService {
       technicianName: dto.technicianName?.trim() || undefined,
       notes: dto.notes?.trim() || undefined,
       gstNumber,
+      paid: dto.paid ?? false,
       items,
       subtotal,
       gst,
@@ -284,16 +370,24 @@ export class InvoiceService {
       from: from ? `"${BUSINESS.tradingName}" <${from}>` : undefined,
       to: dto.clientEmail,
       bcc: from,
-      subject: `Invoice ${invoice.invoiceNumber} from ${BUSINESS.tradingName}`,
+      subject: `${dto.paid ? 'Paid invoice' : 'Invoice'} ${invoice.invoiceNumber} from ${BUSINESS.tradingName}`,
       text: [
         `Hi ${dto.clientName},`,
         '',
-        `Thank you for choosing ${BUSINESS.tradingName}. Please find attached invoice ${invoice.invoiceNumber} for ${formatMoney(invoice.total)}.`,
-        '',
-        'Payment can be made by bank transfer:',
-        `Account name: ${BUSINESS.accountName}`,
-        `Account number: ${BUSINESS.accountNumber}`,
-        `Reference: ${invoice.invoiceNumber}`,
+        ...(dto.paid
+          ? [
+              `Thank you for choosing ${BUSINESS.tradingName}. Please find attached invoice ${invoice.invoiceNumber} for ${formatMoney(invoice.total)}, which has been paid in full.`,
+              '',
+              'No further payment is required. Please keep this invoice as your receipt.',
+            ]
+          : [
+              `Thank you for choosing ${BUSINESS.tradingName}. Please find attached invoice ${invoice.invoiceNumber} for ${formatMoney(invoice.total)}.`,
+              '',
+              'Payment can be made by bank transfer:',
+              `Account name: ${BUSINESS.accountName}`,
+              `Account number: ${BUSINESS.accountNumber}`,
+              `Reference: ${invoice.invoiceNumber}`,
+            ]),
         '',
         `If you have any questions, call us on ${BUSINESS.phone}.`,
         '',

@@ -26,4 +26,5 @@ export const COLOURS = {
   tint: '#EEF4FD',
   text: '#1F2937',
   muted: '#6B7280',
+  paid: '#15803D',
 } as const;

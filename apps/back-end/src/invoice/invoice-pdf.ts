@@ -29,6 +29,8 @@ export interface InvoiceDocument {
   technicianName?: string;
   notes?: string;
   gstNumber?: string;
+  /** Already paid in full: prints a PAID stamp and a zero balance due. */
+  paid?: boolean;
   items: InvoiceLine[];
   subtotal: number;
   gst: number;
@@ -118,6 +120,14 @@ export function renderInvoicePdf(invoice: InvoiceDocument): Promise<Buffer> {
       .fillColor(COLOURS.muted)
       .fontSize(12)
       .text(`# ${invoice.invoiceNumber}`, 300, 78, { width: RIGHT - 300, align: 'right' });
+    if (invoice.paid) {
+      doc.roundedRect(RIGHT - 62, 98, 62, 22, 4).lineWidth(1.5).strokeColor(COLOURS.paid).stroke();
+      doc
+        .fillColor(COLOURS.paid)
+        .font('Helvetica-Bold')
+        .fontSize(12)
+        .text('PAID', RIGHT - 62, 103, { width: 62, align: 'center', characterSpacing: 2, lineBreak: false });
+    }
 
     // --- Business and bank details (left) ---
     doc.fillColor(COLOURS.text).font('Helvetica-Bold').fontSize(10);
@@ -143,7 +153,7 @@ export function renderInvoicePdf(invoice: InvoiceDocument): Promise<Buffer> {
     doc.roundedRect(320, 182, RIGHT + 5 - 320, 26, 4).fill(COLOURS.tint);
     doc.fillColor(COLOURS.brandDark).font('Helvetica-Bold').fontSize(12);
     doc.text('Balance Due:', 330, 190, { width: 110, align: 'right' });
-    doc.text(formatMoney(invoice.total), 440, 190, { width: 100, align: 'right' });
+    doc.text(formatMoney(invoice.paid ? 0 : invoice.total), 440, 190, { width: 100, align: 'right' });
 
     // --- Bill to / job address ---
     const partiesTop = Math.max(businessBottom, 215) + 18;
@@ -214,7 +224,7 @@ export function renderInvoicePdf(invoice: InvoiceDocument): Promise<Buffer> {
     const totalRows: [string, string][] = [['Subtotal:', formatMoney(invoice.subtotal)]];
     if (invoice.gst > 0) totalRows.push([`GST (${GST_RATE * 100}%):`, formatMoney(invoice.gst)]);
 
-    if (y + 30 + totalRows.length * 22 + 26 > PAGE_BOTTOM) {
+    if (y + 30 + totalRows.length * 22 + 26 + (invoice.paid ? 44 : 0) > PAGE_BOTTOM) {
       doc.addPage();
       y = 50;
     }
@@ -227,6 +237,14 @@ export function renderInvoicePdf(invoice: InvoiceDocument): Promise<Buffer> {
     doc.fillColor(COLOURS.brandDark).font('Helvetica-Bold').fontSize(12);
     doc.text('Total:', 330, y, { width: 110, align: 'right' });
     doc.text(formatMoney(invoice.total), 440, y, { width: 100, align: 'right' });
+    if (invoice.paid) {
+      y += 22;
+      summaryRow('Amount Paid:', `-${formatMoney(invoice.total)}`, y);
+      y += 22;
+      doc.fillColor(COLOURS.brandDark).font('Helvetica-Bold').fontSize(12);
+      doc.text('Balance Due:', 330, y, { width: 110, align: 'right' });
+      doc.text(formatMoney(0), 440, y, { width: 100, align: 'right' });
+    }
     y += 50;
 
     // --- Notes ---

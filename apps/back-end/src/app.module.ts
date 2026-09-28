@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { ContactModule } from './contact/contact.module';
 import { AuthModule } from './auth/auth.module';
 import { InvoiceModule } from './invoice/invoice.module';
+import { LeadModule } from './lead/lead.module';
 
 /**
  * Builds the Postgres connection options, following the Tasman Tech main website.
@@ -47,6 +48,7 @@ export function buildDatabaseOptions(config: ConfigService): TypeOrmModuleOption
     ContactModule,
     AuthModule,
     InvoiceModule,
+    LeadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

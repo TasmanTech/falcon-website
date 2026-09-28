@@ -65,6 +65,22 @@ export async function readInvoiceFile(fileName: string): Promise<Buffer | null> 
 }
 
 /**
+ * Checks whether a PDF with this name is already in storage (including PDFs kept
+ * from deleted invoices), so a new invoice never overwrites one.
+ *
+ * @param {string} fileName - The filename to check.
+ * @returns {Promise<boolean>} True if the file exists.
+ */
+export async function invoiceFileExists(fileName: string): Promise<boolean> {
+  try {
+    await fs.promises.access(resolveInvoiceFile(fileName));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Deletes an invoice PDF, ignoring a file that is already gone.
  *
  * @param {string} fileName - The stored filename.

@@ -65,6 +65,10 @@ export class Invoice {
   @Column({ type: 'text', nullable: true })
   notes?: string | null;
 
+  /** True when the invoice was sent as already paid in full. */
+  @Column({ type: 'boolean', default: false })
+  paid!: boolean;
+
   /** PDF filename inside invoice storage; also the download filename. */
   @Column({ type: 'varchar', length: 200 })
   fileName!: string;

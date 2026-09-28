@@ -25,12 +25,16 @@ const cookieGet = vi.fn();
 vi.mock('next/headers', () => ({ cookies: async () => ({ get: cookieGet }) }));
 vi.mock('./(portal)/InvoiceForm', () => ({ default: ({ token }: { token: string }) => <p>form:{token}</p> }));
 vi.mock('./(portal)/invoices/InvoiceHistory', () => ({ default: ({ token }: { token: string }) => <p>history:{token}</p> }));
+vi.mock('./(portal)/leads/LeadMessage', () => ({ default: ({ token }: { token: string }) => <p>lead:{token}</p> }));
+vi.mock('./(portal)/leads/history/LeadHistory', () => ({ default: ({ token }: { token: string }) => <p>leads:{token}</p> }));
 
 const { default: AdminLayout, metadata: adminMetadata } = await import('./layout');
 const { default: AdminLoginPage } = await import('./login/page');
 const { default: PortalLayout } = await import('./(portal)/layout');
 const { default: AdminInvoicePage, metadata: invoiceMetadata } = await import('./(portal)/page');
 const { default: InvoiceHistoryPage } = await import('./(portal)/invoices/page');
+const { default: LeadMessagePage } = await import('./(portal)/leads/page');
+const { default: LeadHistoryPage } = await import('./(portal)/leads/history/page');
 
 /** Resolves the async server component a page wraps in Suspense, so it can be rendered in jsdom. */
 async function resolveSuspenseChild(page: React.ReactElement): Promise<React.ReactElement> {
@@ -63,7 +67,7 @@ describe('admin pages', () => {
   it('renders the portal header with sign out and tabs', () => {
     render(<PortalLayout><p>page</p></PortalLayout>);
     expect(screen.getByRole('button', { name: /Sign Out/ })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'History' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Invoices' })).toBeInTheDocument();
   });
 
   it('passes the access token to the invoice form', async () => {
@@ -76,6 +80,14 @@ describe('admin pages', () => {
     cookieGet.mockReturnValue({ value: 'access' });
     render(await resolveSuspenseChild(InvoiceHistoryPage()));
     expect(screen.getByText('history:access')).toBeInTheDocument();
+  });
+
+  it('passes the access token to the lead form and lead history', async () => {
+    cookieGet.mockReturnValue({ value: 'access' });
+    render(await resolveSuspenseChild(LeadMessagePage()));
+    render(await resolveSuspenseChild(LeadHistoryPage()));
+    expect(screen.getByText('lead:access')).toBeInTheDocument();
+    expect(screen.getByText('leads:access')).toBeInTheDocument();
   });
 
   it('sends visitors without an access token to login', async () => {

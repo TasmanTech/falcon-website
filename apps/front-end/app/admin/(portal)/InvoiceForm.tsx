@@ -87,7 +87,7 @@ export default function InvoiceForm({ token }: { token: string }) {
   const [pending, setPending] = useState<"preview" | "send" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sessionExpired, setSessionExpired] = useState(false);
-  const [sent, setSent] = useState<(InvoicePdf & { total: number; email: string }) | null>(null);
+  const [sent, setSent] = useState<(InvoicePdf & { total: number; email: string; paid: boolean }) | null>(null);
   const [restoreDismissed, setRestoreDismissed] = useState(false);
 
   const savedDraft = useSyncExternalStore(subscribeToNothing, readSavedDraft, () => null);
@@ -152,7 +152,7 @@ export default function InvoiceForm({ token }: { token: string }) {
       if (mode === "preview") {
         downloadBlob(result.blob, result.fileName);
       } else {
-        setSent({ ...result, total, email: draft.clientEmail.trim() });
+        setSent({ ...result, total, email: draft.clientEmail.trim(), paid: draft.paid });
         writeSavedDraft(null);
         setStep("sent");
         window.scrollTo({ top: 0 });
@@ -192,7 +192,7 @@ export default function InvoiceForm({ token }: { token: string }) {
           <h1 className="mt-3 font-montserrat text-xl font-bold text-brand-dark">Invoice sent</h1>
           <p className="mt-1 text-sm text-slate-600">
             <span className="font-semibold text-slate-900">{sent.invoiceNumber}</span> for{" "}
-            {formatMoney(sent.total)} was emailed to <span className="break-all">{sent.email}</span>. It&apos;s saved in{" "}
+            {formatMoney(sent.total)}{sent.paid ? " (paid)" : ""} was emailed to <span className="break-all">{sent.email}</span>. It&apos;s saved in{" "}
             <Link href="/admin/invoices" className="font-semibold text-brand-dark underline">
               History
             </Link>{" "}
@@ -269,6 +269,12 @@ export default function InvoiceForm({ token }: { token: string }) {
               <dt>Total</dt>
               <dd>{formatMoney(total)}</dd>
             </div>
+            {draft.paid && (
+              <div className="flex justify-between font-semibold text-green-700">
+                <dt>Paid in full</dt>
+                <dd>Balance due {formatMoney(0)}</dd>
+              </div>
+            )}
           </dl>
         </Section>
 
@@ -306,7 +312,7 @@ export default function InvoiceForm({ token }: { token: string }) {
             disabled={pending !== null}
             className="flex h-12 items-center justify-center gap-2 rounded-full bg-brand-accent font-bold text-brand-dark hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <FiSend aria-hidden /> {pending === "send" ? "Sending…" : "Send Invoice"}
+            <FiSend aria-hidden /> {pending === "send" ? "Sending…" : draft.paid ? "Send Paid Invoice" : "Send Invoice"}
           </button>
           <div className="grid grid-cols-2 gap-3">
             <button
@@ -499,6 +505,13 @@ export default function InvoiceForm({ token }: { token: string }) {
               </span>
               <input id="addGst" type="checkbox" checked={draft.addGst} onChange={(e) => update("addGst", e.target.checked)} className="h-6 w-6 accent-brand-dark" />
             </label>
+            <label htmlFor="paid" className="flex min-h-12 cursor-pointer items-center justify-between gap-3 rounded-xl border border-slate-200 px-4 py-3">
+              <span>
+                <span className="block text-[15px] font-semibold text-slate-800">Mark as paid</span>
+                <span className="block text-xs text-slate-500">The customer has already paid in full; no balance due</span>
+              </span>
+              <input id="paid" type="checkbox" checked={draft.paid} onChange={(e) => update("paid", e.target.checked)} className="h-6 w-6 accent-brand-dark" />
+            </label>
           </div>
         </Section>
 
@@ -507,7 +520,9 @@ export default function InvoiceForm({ token }: { token: string }) {
         <div className="fixed inset-x-0 bottom-0 z-20 border-t border-slate-200 bg-white">
           <div className="mx-auto flex max-w-2xl items-center justify-between gap-4 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Total{draft.addGst ? " incl. GST" : ""}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                Total{draft.addGst ? " incl. GST" : ""}{draft.paid ? " · Paid" : ""}
+              </p>
               <p className="font-montserrat text-xl font-bold text-brand-dark">{formatMoney(total)}</p>
             </div>
             <button type="submit" className="h-12 rounded-full bg-brand-accent px-7 font-bold text-brand-dark hover:opacity-90">

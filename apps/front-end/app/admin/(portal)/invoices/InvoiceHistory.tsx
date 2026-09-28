@@ -2,20 +2,30 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { FiDownload, FiSearch } from "react-icons/fi";
+import { FiDownload, FiSearch, FiTrash2 } from "react-icons/fi";
 import { refreshAccessTokenAction } from "@/app/actions/auth";
 import {
   SessionExpiredError,
+  deleteInvoice,
   downloadBlob,
   fetchInvoiceHistory,
   fetchStoredInvoicePdf,
   formatDisplayDate,
   formatMoney,
+  getInvoiceStatus,
+  updateInvoiceStatus,
+  type InvoiceStatus,
   type InvoiceSummary,
 } from "@/lib/invoice";
 
 /** Delay before a search is sent, so typing doesn't fire a request per keystroke. */
 const SEARCH_DEBOUNCE_MS = 300;
+
+const STATUS_BADGE: Record<InvoiceStatus, { label: string; className: string }> = {
+  paid: { label: "Paid", className: "bg-green-100 text-green-700" },
+  unpaid: { label: "Unpaid", className: "bg-slate-100 text-slate-600" },
+  overdue: { label: "Overdue", className: "bg-red-100 text-red-700" },
+};
 
 /** Results for one search, tagged with the query that produced them. */
 interface LoadedPage {
@@ -28,6 +38,8 @@ interface LoadedPage {
 /**
  * Mobile-first list of sent invoices. Searches by customer name, email or invoice
  * number, loads 20 at a time, and downloads the stored PDF when a row is tapped.
+ * Each row shows its payment status, can be marked paid or unpaid, and can be deleted
+ * from history (a second tap confirms; the stored PDF is kept).
  *
  * @param {object} props - The component props.
  * @param {string} props.token - The access token for back-end requests.
@@ -41,6 +53,8 @@ export default function InvoiceHistory({ token }: { token: string }) {
   const [error, setError] = useState<{ message: string; sessionExpired: boolean } | null>(null);
   const [loadingMore, setLoadingMore] = useState(false);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [confirmingDeleteId, setConfirmingDeleteId] = useState<string | null>(null);
 
   const isLoading = loaded?.query !== query && !error;
 
@@ -104,11 +118,53 @@ export default function InvoiceHistory({ token }: { token: string }) {
     }
   };
 
+  const toggleStatus = async (invoice: InvoiceSummary) => {
+    setUpdatingId(invoice.id);
+    setError(null);
+    try {
+      const { token: nextToken, ...updated } = await updateInvoiceStatus(
+        invoice.id,
+        !invoice.paid,
+        tokenRef.current,
+        refreshAccessTokenAction,
+      );
+      tokenRef.current = nextToken;
+      setLoaded((current) =>
+        current && {
+          ...current,
+          items: current.items.map((item) => (item.id === invoice.id ? { ...item, paid: updated.paid } : item)),
+        },
+      );
+    } catch (err) {
+      handleError(err);
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
+  const remove = async (invoice: InvoiceSummary) => {
+    setUpdatingId(invoice.id);
+    setError(null);
+    try {
+      const { token: nextToken } = await deleteInvoice(invoice.id, tokenRef.current, refreshAccessTokenAction);
+      tokenRef.current = nextToken;
+      setLoaded(
+        (current) =>
+          current && { ...current, items: current.items.filter((item) => item.id !== invoice.id), total: current.total - 1 },
+      );
+    } catch (err) {
+      handleError(err);
+    } finally {
+      setUpdatingId(null);
+      setConfirmingDeleteId(null);
+    }
+  };
+
   return (
     <div className="space-y-4 pb-10">
       <div>
         <h1 className="font-montserrat text-xl font-bold text-brand-dark">Invoice History</h1>
-        <p className="text-sm text-slate-600">Every invoice sent from the portal. Tap one to download it.</p>
+        <p className="text-sm text-slate-600">Every invoice sent from the portal. Tap one to download it, update its payment status or delete it.</p>
       </div>
 
       <div className="relative">
@@ -159,35 +215,88 @@ export default function InvoiceHistory({ token }: { token: string }) {
             {loaded.total} invoice{loaded.total === 1 ? "" : "s"}
           </p>
           <ul className="divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-200 bg-white">
-            {loaded.items.map((invoice) => (
-              <li key={invoice.id}>
-                <button
-                  type="button"
-                  onClick={() => download(invoice)}
-                  disabled={downloadingId !== null}
-                  aria-label={`Download ${invoice.invoiceNumber} for ${invoice.clientName}`}
-                  className="flex min-h-20 w-full items-center gap-3 px-4 py-3 text-left hover:bg-slate-50 active:bg-slate-100 disabled:cursor-not-allowed"
-                >
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="truncate font-semibold text-slate-900">{invoice.clientName}</span>
-                      <span className="shrink-0 font-bold text-brand-dark">{formatMoney(invoice.total)}</span>
+            {loaded.items.map((invoice) => {
+              const status = STATUS_BADGE[getInvoiceStatus(invoice)];
+              return (
+                <li key={invoice.id}>
+                  <button
+                    type="button"
+                    onClick={() => download(invoice)}
+                    disabled={downloadingId !== null}
+                    aria-label={`Download ${invoice.invoiceNumber} for ${invoice.clientName} (${status.label})`}
+                    className="flex min-h-20 w-full items-center gap-3 px-4 pt-3 pb-2 text-left hover:bg-slate-50 active:bg-slate-100 disabled:cursor-not-allowed"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-baseline justify-between gap-3">
+                        <span className="truncate font-semibold text-slate-900">{invoice.clientName}</span>
+                        <span className="shrink-0 font-bold text-brand-dark">{formatMoney(invoice.total)}</span>
+                      </div>
+                      <p className="flex items-center gap-2 text-sm text-slate-500">
+                        <span className="truncate">
+                          {invoice.invoiceNumber} · {formatDisplayDate(invoice.invoiceDate)}
+                        </span>
+                        <span className={`shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold ${status.className}`}>
+                          {status.label}
+                        </span>
+                      </p>
+                      <p className="truncate text-xs text-slate-400">{invoice.clientEmail}</p>
                     </div>
-                    <p className="truncate text-sm text-slate-500">
-                      {invoice.invoiceNumber} · {formatDisplayDate(invoice.invoiceDate)}
-                    </p>
-                    <p className="truncate text-xs text-slate-400">{invoice.clientEmail}</p>
-                  </div>
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-dark">
-                    {downloadingId === invoice.id ? (
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-dark border-t-transparent" aria-label="Downloading" />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-dark">
+                      {downloadingId === invoice.id ? (
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-dark border-t-transparent" aria-label="Downloading" />
+                      ) : (
+                        <FiDownload aria-hidden size={18} />
+                      )}
+                    </span>
+                  </button>
+                  <div className="flex items-center justify-end gap-2 px-4 pb-3">
+                    <button
+                      type="button"
+                      onClick={() => toggleStatus(invoice)}
+                      disabled={updatingId !== null}
+                      aria-label={`Mark ${invoice.invoiceNumber} as ${invoice.paid ? "unpaid" : "paid"}`}
+                      className="flex h-9 items-center rounded-full border border-slate-300 px-3 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {updatingId === invoice.id && confirmingDeleteId !== invoice.id
+                        ? "Saving…"
+                        : invoice.paid
+                          ? "Mark unpaid"
+                          : "Mark paid"}
+                    </button>
+                    {confirmingDeleteId === invoice.id ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => setConfirmingDeleteId(null)}
+                          disabled={updatingId !== null}
+                          className="flex h-9 items-center rounded-full px-3 text-xs font-semibold text-slate-600 hover:bg-slate-100"
+                        >
+                          Keep
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => remove(invoice)}
+                          disabled={updatingId !== null}
+                          className="flex h-9 items-center rounded-full bg-red-600 px-3 text-xs font-semibold text-white hover:bg-red-700 disabled:opacity-60"
+                        >
+                          {updatingId === invoice.id ? "Deleting…" : "Confirm delete"}
+                        </button>
+                      </>
                     ) : (
-                      <FiDownload aria-hidden size={18} />
+                      <button
+                        type="button"
+                        onClick={() => setConfirmingDeleteId(invoice.id)}
+                        disabled={updatingId !== null}
+                        aria-label={`Delete ${invoice.invoiceNumber}`}
+                        className="flex h-9 w-9 items-center justify-center rounded-full text-red-600 hover:bg-red-50 disabled:opacity-60"
+                      >
+                        <FiTrash2 aria-hidden size={16} />
+                      </button>
                     )}
-                  </span>
-                </button>
-              </li>
-            ))}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
           {loaded.items.length < loaded.total && (
             <button
