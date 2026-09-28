@@ -121,7 +121,7 @@ export default function LockServicesPage() {
         title="Secure Your Property with Expert Lock Services"
         content={[
           <p key="1">Good security starts with strong locks. Our locksmith services cover homes and shops. We keep your place safe and secure.</p>,
-          <p key="2">Need a locksmith near you? Our vans cover all of Auckland. We are on call 24 hours a day for lockouts.</p>
+          <p key="2">Need a locksmith near you? Our vans cover all of Auckland. We also offer after-hours support for lockouts.</p>
         ]}
         photoPosition="right"
         theme="light"
@@ -144,7 +144,7 @@ export default function LockServicesPage() {
         title="From New Locks to Quick Fixes"
         content={[
           <p key="1">We fit strong new deadbolts and door sets. Our <Link href="/lock/lock-change-installation" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">lock change and installation service</Link> suits homes, rentals and shops.</p>,
-          <p key="2">Lock feels stiff? Try our <Link href="/lock/lock-repair" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">door lock repair</Link>. Moved house or lost a key? A <Link href="/lock/rekey" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">lock rekey</Link> stops old keys working. Locked out? Our <Link href="/lock/lockout" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">residential lockout service</Link> runs 24/7.</p>
+          <p key="2">Lock feels stiff? Try our <Link href="/lock/lock-repair" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">door lock repair</Link>. Moved house or lost a key? A <Link href="/lock/rekey" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">lock rekey</Link> stops old keys working. Locked out? Our <Link href="/lock/lockout" className="font-semibold text-brand-dark underline hover:text-brand-primary transition-colors">residential lockout service</Link> offers after-hours support.</p>
         ]}
         ctaText="Book a Locksmith"
         ctaHref="/contact"

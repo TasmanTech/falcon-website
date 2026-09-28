@@ -26,7 +26,7 @@ describe('FloatingCTA', () => {
     render(<FloatingCTA />);
 
     // Bubble should be visible initially
-    expect(screen.getByText('24/7 Emergency Lockout Service')).toBeInTheDocument();
+    expect(screen.getByText('After-Hours Emergency Locksmith')).toBeInTheDocument();
 
     // Fast-forward time by 6 seconds
     act(() => {
@@ -34,6 +34,6 @@ describe('FloatingCTA', () => {
     });
 
     // Bubble should be hidden now
-    expect(screen.queryByText('24/7 Emergency Lockout Service')).not.toBeInTheDocument();
+    expect(screen.queryByText('After-Hours Emergency Locksmith')).not.toBeInTheDocument();
   });
 });

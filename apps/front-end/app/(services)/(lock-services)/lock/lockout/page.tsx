@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/lock/lockout",
   },
   title: 'Emergency Lockout Services Auckland Wide',
-  description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods 24/7.',
-  keywords: 'Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, 24 Hour Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
+  description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods, with after-hours support.',
+  keywords: 'Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, After-Hours Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
   openGraph: {
     title: 'Emergency Lockout Services Auckland Wide',
-    description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods 24/7.',
+    description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods, with after-hours support.',
     url: "/lock/lockout",
   }
 };
@@ -97,7 +97,7 @@ export default function LockoutPage() {
         title="Rapid Response When It Matters Most"
         content={[
           <p key="1">Being locked out of your home or shop is stressful. It stops your day and leaves you unsafe. We offer a fast residential lockout service and commercial lockout service across Auckland.</p>,
-          <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We are a 24 hour locksmith service, so you can call us day or night.</p>
+          <p key="2">We charge a clear and cheap <strong>$20 flat call-out fee</strong>. There are no long waits or hidden costs. We also offer after-hours support, so you are not left waiting outside.</p>
         ]}
         photoPosition="right"
         theme="light"

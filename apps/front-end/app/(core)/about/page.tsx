@@ -11,11 +11,11 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
   title: 'About Our Commercial & Residential Services',
-  description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest lock services, 24/7 lockout help, and a $20 flat callout fee for homes and businesses.',
-  keywords: 'About Falcon Access, Local Locksmith Auckland, General Locksmith, Locksmith Services, Locksmith for Business, 24 Hour Locksmith, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
+  description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest lock services, after-hours lockout help, and a $20 flat callout fee for homes and businesses.',
+  keywords: 'About Falcon Access, Local Locksmith Auckland, General Locksmith, Locksmith Services, Locksmith for Business, After-Hours Locksmith, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
   openGraph: {
     title: 'About Our Commercial & Residential Services',
-    description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest lock services, 24/7 lockout help, and a $20 flat callout fee for homes and businesses.',
+    description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest lock services, after-hours lockout help, and a $20 flat callout fee for homes and businesses.',
     url: "/about",
   }
 };
@@ -87,7 +87,7 @@ export default function AboutPage() {
         content={[
           <p key="1">Our vans cover all of Auckland. That includes Auckland City, the North Shore, and West, East, and South Auckland. If you need a locksmith near you, we are not far away.</p>,
           <p key="2">We carry our tools with us, so most jobs are done in one visit. We are a locksmith for business as well as homes. Shops, offices, and rentals all get the same care.</p>,
-          <p key="3">Locked out? Our emergency locksmith service runs 24/7. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> at any hour.</p>
+          <p key="3">Locked out? Our emergency locksmith service offers after-hours support. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> when you need us.</p>
         ]}
         photoPosition="left"
         theme="light"

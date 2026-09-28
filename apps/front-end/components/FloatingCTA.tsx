@@ -22,7 +22,7 @@ export default function FloatingCTA() {
     >
       {isBubbleVisible && (
         <span className="bg-brand-dark text-brand-light text-sm font-semibold px-4 py-2 rounded-2xl rounded-br-none shadow-lg animate-card-ready animate-play">
-          24/7 Emergency Lockout Service
+          After-Hours Emergency Locksmith
         </span>
       )}
       <span className="relative flex items-center">
