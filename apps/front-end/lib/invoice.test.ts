@@ -8,6 +8,7 @@ import {
   fetchInvoiceHistory,
   formatDisplayDate,
   getDownloadFileName,
+  getInvoiceStatus,
   submitInvoice,
   toInvoicePayload,
   type InvoiceDraft,
@@ -52,9 +53,15 @@ describe('lib/invoice', () => {
     expect(createItem(presets.find((p) => p.free)).rate).toBe('0');
   });
 
+  it('getInvoiceStatus flags unpaid invoices past their due date as overdue', () => {
+    expect(getInvoiceStatus({ paid: true, dueDate: '2026-01-01' }, '2026-09-29')).toBe('paid');
+    expect(getInvoiceStatus({ paid: false, dueDate: '2026-09-29' }, '2026-09-29')).toBe('unpaid');
+    expect(getInvoiceStatus({ paid: false, dueDate: '2026-09-28' }, '2026-09-29')).toBe('overdue');
+  });
+
   it('toInvoicePayload trims text, converts numbers and drops empty optionals', () => {
     const payload = toInvoicePayload(draft);
-    expect(payload).toMatchObject({ clientName: 'Jerry Li', clientPhone: undefined, addGst: false });
+    expect(payload).toMatchObject({ clientName: 'Jerry Li', clientPhone: undefined, addGst: false, paid: false });
     expect(payload.items[0]).toEqual({ title: 'Service Call', description: undefined, quantity: 1, rate: 20 });
   });
 

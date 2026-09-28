@@ -1,10 +1,12 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   ParseUUIDPipe,
   Post,
   Query,
@@ -16,7 +18,8 @@ import type { Response } from 'express';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { ListInvoicesDto } from './dto/list-invoices.dto';
-import { GeneratedInvoice, InvoicePage, InvoiceService } from './invoice.service';
+import { UpdateInvoiceStatusDto } from './dto/update-invoice-status.dto';
+import { GeneratedInvoice, InvoicePage, InvoiceService, InvoiceSummary } from './invoice.service';
 
 /**
  * Admin-only invoice routes. PDF responses expose the invoice number in the
@@ -51,6 +54,33 @@ export class InvoiceController {
     @Res({ passthrough: true }) res: Response,
   ): Promise<StreamableFile> {
     return this.toFile(await this.invoiceService.getPdf(id), res);
+  }
+
+  /**
+   * Marks a sent invoice as paid or unpaid; the stored PDF is updated to match.
+   *
+   * @param {string} id - The invoice ID.
+   * @param {UpdateInvoiceStatusDto} dto - The new status.
+   * @returns {Promise<InvoiceSummary>} The updated history row.
+   */
+  @Patch(':id/status')
+  async updateStatus(
+    @Param('id', new ParseUUIDPipe()) id: string,
+    @Body() dto: UpdateInvoiceStatusDto,
+  ): Promise<InvoiceSummary> {
+    return this.invoiceService.updateStatus(id, dto.paid);
+  }
+
+  /**
+   * Deletes an invoice from history. Its PDF stays in storage.
+   *
+   * @param {string} id - The invoice ID.
+   * @returns {Promise<void>}
+   */
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async remove(@Param('id', new ParseUUIDPipe()) id: string): Promise<void> {
+    await this.invoiceService.remove(id);
   }
 
   /**

@@ -85,6 +85,11 @@ export class CreateInvoiceDto {
   @IsOptional()
   addGst?: boolean;
 
+  /** Marks the invoice as already paid in full: the PDF shows a zero balance and the email skips payment details. */
+  @IsBoolean()
+  @IsOptional()
+  paid?: boolean;
+
   @IsString()
   @IsOptional()
   @MaxLength(2000)

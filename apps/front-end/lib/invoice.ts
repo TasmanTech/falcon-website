@@ -17,6 +17,8 @@ export interface InvoiceDraft {
   invoiceDate: string;
   dueDate: string;
   addGst: boolean;
+  /** Send as already paid in full (no balance due, no payment details in the email). */
+  paid: boolean;
   notes: string;
   items: InvoiceItemDraft[];
 }
@@ -186,6 +188,7 @@ export function createEmptyDraft(): InvoiceDraft {
     invoiceDate: todayInNz(),
     dueDate: "",
     addGst: false,
+    paid: false,
     notes: "",
     items: [],
   };
@@ -208,6 +211,7 @@ export function toInvoicePayload(draft: InvoiceDraft) {
     invoiceDate: optional(draft.invoiceDate),
     dueDate: optional(draft.dueDate),
     addGst: draft.addGst,
+    paid: draft.paid,
     notes: optional(draft.notes),
     items: draft.items.map((item) => ({
       title: item.title.trim(),
@@ -354,7 +358,9 @@ export interface InvoiceSummary {
   clientName: string;
   clientEmail: string;
   invoiceDate: string;
+  dueDate: string;
   total: number;
+  paid: boolean;
   emailedAt: string | null;
   createdAt: string;
 }
@@ -390,6 +396,71 @@ export async function fetchInvoiceHistory(
   );
   const data = (await res.json()) as InvoiceHistoryPage;
   return { ...data, items: data.items.map((item) => ({ ...item, total: Number(item.total) })), token: currentToken };
+}
+
+/** Payment status shown in the history list. */
+export type InvoiceStatus = "paid" | "unpaid" | "overdue";
+
+/**
+ * Works out an invoice's status: paid, overdue (unpaid and past its due date in NZ), or unpaid.
+ *
+ * @param {Pick<InvoiceSummary, "paid" | "dueDate">} invoice - The invoice.
+ * @param {string} [today] - Today as `YYYY-MM-DD`; defaults to today in NZ.
+ * @returns {InvoiceStatus} The status.
+ */
+export function getInvoiceStatus(
+  invoice: Pick<InvoiceSummary, "paid" | "dueDate">,
+  today: string = todayInNz(),
+): InvoiceStatus {
+  if (invoice.paid) return "paid";
+  return invoice.dueDate && invoice.dueDate.slice(0, 10) < today ? "overdue" : "unpaid";
+}
+
+/**
+ * Marks a sent invoice as paid or unpaid. The stored PDF is updated to match; the customer is not emailed.
+ *
+ * @param {string} id - The invoice ID.
+ * @param {boolean} paid - The new status.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<InvoiceSummary & { token: string }>} The updated invoice and the token that worked.
+ */
+export async function updateInvoiceStatus(
+  id: string,
+  paid: boolean,
+  token: string,
+  refreshToken: TokenRefresher,
+): Promise<InvoiceSummary & { token: string }> {
+  const { res, token: currentToken } = await authorisedFetch(
+    `/invoices/${encodeURIComponent(id)}/status`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ paid }),
+    },
+    token,
+    refreshToken,
+  );
+  const data = (await res.json()) as InvoiceSummary;
+  return { ...data, total: Number(data.total), token: currentToken };
+}
+
+/**
+ * Deletes an invoice from history. The back-end keeps its PDF in storage.
+ *
+ * @param {string} id - The invoice ID.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<{ token: string }>} The token that worked.
+ */
+export async function deleteInvoice(id: string, token: string, refreshToken: TokenRefresher): Promise<{ token: string }> {
+  const { token: currentToken } = await authorisedFetch(
+    `/invoices/${encodeURIComponent(id)}`,
+    { method: "DELETE" },
+    token,
+    refreshToken,
+  );
+  return { token: currentToken };
 }
 
 /**

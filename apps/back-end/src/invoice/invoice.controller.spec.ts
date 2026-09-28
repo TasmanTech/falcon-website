@@ -15,6 +15,8 @@ describe('InvoiceController', () => {
     send: jest.fn<(...args: unknown[]) => Promise<unknown>>(() => Promise.resolve(generated)),
     list: jest.fn<(...args: unknown[]) => Promise<unknown>>(() => Promise.resolve({ items: [], total: 0, page: 1, pageSize: 20 })),
     getPdf: jest.fn<(...args: unknown[]) => Promise<unknown>>(() => Promise.resolve(generated)),
+    updateStatus: jest.fn<(...args: unknown[]) => Promise<unknown>>(() => Promise.resolve({ id: 'id', paid: true })),
+    remove: jest.fn<(...args: unknown[]) => Promise<unknown>>(() => Promise.resolve()),
   };
   const set = jest.fn();
   const res = { set } as unknown as Response;
@@ -54,6 +56,16 @@ describe('InvoiceController', () => {
   it('list delegates the query to the service', async () => {
     await expect(controller.list({ search: 'jerry' })).resolves.toMatchObject({ total: 0 });
     expect(invoiceService.list).toHaveBeenCalledWith({ search: 'jerry' });
+  });
+
+  it('updateStatus passes the new status to the service', async () => {
+    await expect(controller.updateStatus('id', { paid: true })).resolves.toMatchObject({ paid: true });
+    expect(invoiceService.updateStatus).toHaveBeenCalledWith('id', true);
+  });
+
+  it('remove deletes the invoice', async () => {
+    await controller.remove('id');
+    expect(invoiceService.remove).toHaveBeenCalledWith('id');
   });
 
   it('download returns the stored PDF', async () => {

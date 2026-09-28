@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { ACCESS_COOKIE } from "@/lib/auth";
 import LeadMessage from "./LeadMessage";
 
 export const metadata: Metadata = {
   title: "Lead Message",
   robots: { index: false, follow: false },
 };
+
+/**
+ * Reads the access token (refreshed by the proxy for this request) and renders the form.
+ *
+ * @returns {Promise<JSX.Element>} The lead form.
+ */
+async function LeadMessageWithSession() {
+  const token = (await cookies()).get(ACCESS_COOKIE)?.value;
+  if (!token) redirect("/admin/login");
+  return <LeadMessage token={token} />;
+}
 
 /**
  * Placeholder shown until the form renders.
@@ -23,8 +37,7 @@ function LeadMessageSkeleton() {
 }
 
 /**
- * Builds a lead message to paste into Telegram. Runs entirely in the browser,
- * so it needs no access token; the proxy still requires a session to reach it.
+ * Builds a lead message to paste into Telegram and saves the lead to history.
  * Suspense keeps the form (which defaults to today's date) out of the prerender.
  *
  * @returns {JSX.Element} The page.
@@ -32,7 +45,7 @@ function LeadMessageSkeleton() {
 export default function LeadMessagePage() {
   return (
     <Suspense fallback={<LeadMessageSkeleton />}>
-      <LeadMessage />
+      <LeadMessageWithSession />
     </Suspense>
   );
 }

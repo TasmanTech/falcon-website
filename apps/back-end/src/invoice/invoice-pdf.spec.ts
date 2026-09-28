@@ -11,6 +11,22 @@ describe('invoice-pdf', () => {
     expect(formatInvoiceDate('2026-09-25')).toMatch(/^25 Sept? 2026$/);
   });
 
+  it('renders a paid invoice', async () => {
+    const pdf = await renderInvoicePdf({
+      invoiceNumber: 'FA-260925-PAD',
+      invoiceDate: '2026-09-25',
+      dueDate: '2026-09-25',
+      clientName: 'Jerry Li',
+      clientEmail: 'jerry@example.com',
+      paid: true,
+      items: [{ title: 'Service Call', quantity: 1, rate: 20, amount: 20 }],
+      subtotal: 20,
+      gst: 0,
+      total: 20,
+    });
+    expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  });
+
   it('renders a multi-page PDF when there are many items', async () => {
     const items = Array.from({ length: 30 }, (_, i) => ({
       title: `Item ${i + 1}`,

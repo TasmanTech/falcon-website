@@ -128,6 +128,16 @@ describe('InvoiceService', () => {
       expect(repository.update).toHaveBeenCalledWith('invoice-id', { emailedAt: expect.any(Date) });
     });
 
+    it('sends a paid invoice without bank details and records it as paid', async () => {
+      await service.send({ ...dto, paid: true });
+
+      expect(repository.save).toHaveBeenCalledWith(expect.objectContaining({ paid: true }));
+      const mail = sendMail.mock.calls[0][0] as Record<string, any>;
+      expect(mail.subject).toMatch(/^Paid invoice FA-/);
+      expect(mail.text).toContain('paid in full');
+      expect(mail.text).not.toContain('Account number');
+    });
+
     it('removes the record and PDF when the email fails', async () => {
       sendMail.mockRejectedValueOnce(new Error('SMTP down'));
 
@@ -168,6 +178,62 @@ describe('InvoiceService', () => {
       );
       const { where } = repository.findAndCount.mock.calls[0][0] as { where: unknown[] };
       expect(where).toHaveLength(3);
+    });
+  });
+
+  describe('updateStatus', () => {
+    const stored = {
+      id: 'id',
+      invoiceNumber: 'FA-3',
+      clientName: 'Jerry Li',
+      clientEmail: 'jerry@example.com',
+      invoiceDate: '2026-09-25',
+      dueDate: '2026-09-25',
+      items: [{ title: 'Service Call', quantity: 1, rate: 20, amount: 20 }],
+      subtotal: 20,
+      gst: 0,
+      total: 20,
+      fileName: 'status.pdf',
+      paid: false,
+    };
+
+    it('marks the invoice paid and re-renders the stored PDF', async () => {
+      fs.writeFileSync(path.join(storageDir, 'status.pdf'), 'old');
+      repository.findOne.mockResolvedValueOnce(stored);
+
+      const result = await service.updateStatus('id', true);
+
+      expect(result).toMatchObject({ id: 'id', paid: true, dueDate: '2026-09-25' });
+      expect(repository.update).toHaveBeenCalledWith('id', { paid: true });
+      expect(fs.readFileSync(path.join(storageDir, 'status.pdf')).subarray(0, 5).toString()).toBe('%PDF-');
+      expect(sendMail).not.toHaveBeenCalled();
+    });
+
+    it('does nothing when the status is unchanged', async () => {
+      repository.findOne.mockResolvedValueOnce(stored);
+      await service.updateStatus('id', false);
+      expect(repository.update).not.toHaveBeenCalled();
+    });
+
+    it('throws when the invoice does not exist', async () => {
+      await expect(service.updateStatus('missing', true)).rejects.toThrow(NotFoundException);
+    });
+  });
+
+  describe('remove', () => {
+    it('deletes the record but keeps the PDF in storage', async () => {
+      fs.writeFileSync(path.join(storageDir, 'kept.pdf'), '%PDF-kept');
+      repository.findOne.mockResolvedValueOnce({ id: 'id', invoiceNumber: 'FA-4', fileName: 'kept.pdf' });
+
+      await service.remove('id');
+
+      expect(repository.delete).toHaveBeenCalledWith('id');
+      expect(fs.existsSync(path.join(storageDir, 'kept.pdf'))).toBe(true);
+    });
+
+    it('throws when the invoice does not exist', async () => {
+      await expect(service.remove('missing')).rejects.toThrow(NotFoundException);
+      expect(repository.delete).not.toHaveBeenCalled();
     });
   });
 

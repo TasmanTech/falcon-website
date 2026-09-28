@@ -1,3 +1,5 @@
+import { authorisedFetch, type TokenRefresher } from "./invoice";
+
 /**
  * Builds the lead message the team pastes into Telegram. The layout mirrors the
  * lead template: a non-breaking space follows each emoji, and the starred lines at
@@ -17,14 +19,23 @@ export interface LeadDraft {
 /** Suggestions for the job type field, matching the services on the site. */
 export const JOB_TYPES = [
   "House lockout",
+  "Bedroom lockout",
   "Car lockout",
   "Lock change",
   "Lock repair",
+  "Key jammed",
+  "Barrel stuck",
+  "Door handle / knob",
+  "Ranch slider",
+  "Handle fitting (customer supplied)",
   "Rekey",
+  "Key cutting",
   "Lock installation",
   "Smart lock installation",
   "Car key replacement",
   "Safe opening",
+  "Box opening (no drilling)",
+  "Other",
 ];
 
 const NBSP = " ";
@@ -113,4 +124,162 @@ export function buildLeadMessage(lead: LeadDraft): string {
     `*💰${NBSP}Payment Method:`,
     `*🧩${NBSP}Parts:`,
   ].join("\n");
+}
+
+/** Where a lead is up to. New leads start as pending. */
+export type LeadStatus = "pending" | "closed" | "cancelled";
+
+/** Status options in display order, with their labels and badge colours. */
+export const LEAD_STATUSES: { value: LeadStatus; label: string; badgeClass: string }[] = [
+  { value: "pending", label: "Pending", badgeClass: "bg-amber-100 text-amber-800" },
+  { value: "closed", label: "Closed", badgeClass: "bg-green-100 text-green-700" },
+  { value: "cancelled", label: "Cancelled", badgeClass: "bg-slate-200 text-slate-600" },
+];
+
+/** A lead saved in history, as returned by the back-end. */
+export interface SavedLead {
+  id: string;
+  date: string;
+  time: string | null;
+  name: string | null;
+  phone: string | null;
+  address: string | null;
+  jobType: string | null;
+  notes: string | null;
+  status: LeadStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/** A page of lead history. */
+export interface LeadHistoryPage {
+  items: SavedLead[];
+  total: number;
+  page: number;
+  pageSize: number;
+}
+
+/**
+ * Converts a saved lead back into form state, for editing.
+ *
+ * @param {SavedLead} lead - The saved lead.
+ * @returns {LeadDraft} The form values.
+ */
+export function toLeadDraft(lead: SavedLead): LeadDraft {
+  return {
+    date: lead.date.slice(0, 10),
+    time: lead.time ?? "",
+    name: lead.name ?? "",
+    phone: lead.phone ?? "",
+    address: lead.address ?? "",
+    jobType: lead.jobType ?? "",
+    notes: lead.notes ?? "",
+  };
+}
+
+/**
+ * Saves a lead: creates it, or replaces an existing one when `id` is given.
+ *
+ * @param {LeadDraft} lead - The form values.
+ * @param {LeadStatus} status - The lead's status.
+ * @param {string | undefined} id - The lead to update, or undefined to create one.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<SavedLead & { token: string }>} The saved lead and the token that worked.
+ */
+export async function saveLead(
+  lead: LeadDraft,
+  status: LeadStatus,
+  id: string | undefined,
+  token: string,
+  refreshToken: TokenRefresher,
+): Promise<SavedLead & { token: string }> {
+  const optional = (value: string) => value.trim() || undefined;
+  const { res, token: currentToken } = await authorisedFetch(
+    id ? `/leads/${encodeURIComponent(id)}` : "/leads",
+    {
+      method: id ? "PUT" : "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        date: lead.date,
+        time: optional(lead.time),
+        name: optional(lead.name),
+        phone: optional(lead.phone) && formatLeadPhone(lead.phone),
+        address: optional(lead.address),
+        jobType: optional(lead.jobType),
+        notes: optional(lead.notes),
+        status,
+      }),
+    },
+    token,
+    refreshToken,
+  );
+  return { ...((await res.json()) as SavedLead), token: currentToken };
+}
+
+/**
+ * Loads a page of leads, newest job date first.
+ *
+ * @param {{ search?: string; status?: LeadStatus; page?: number }} query - Optional filters and page number.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<LeadHistoryPage & { token: string }>} The page and the token that worked.
+ */
+export async function fetchLeads(
+  query: { search?: string; status?: LeadStatus; page?: number },
+  token: string,
+  refreshToken: TokenRefresher,
+): Promise<LeadHistoryPage & { token: string }> {
+  const params = new URLSearchParams({ page: String(query.page ?? 1), pageSize: "20" });
+  if (query.search?.trim()) params.set("search", query.search.trim());
+  if (query.status) params.set("status", query.status);
+  const { res, token: currentToken } = await authorisedFetch(
+    `/leads?${params.toString()}`,
+    { method: "GET" },
+    token,
+    refreshToken,
+  );
+  return { ...((await res.json()) as LeadHistoryPage), token: currentToken };
+}
+
+/**
+ * Changes a lead's status.
+ *
+ * @param {string} id - The lead ID.
+ * @param {LeadStatus} status - The new status.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<SavedLead & { token: string }>} The updated lead and the token that worked.
+ */
+export async function updateLeadStatus(
+  id: string,
+  status: LeadStatus,
+  token: string,
+  refreshToken: TokenRefresher,
+): Promise<SavedLead & { token: string }> {
+  const { res, token: currentToken } = await authorisedFetch(
+    `/leads/${encodeURIComponent(id)}/status`,
+    { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) },
+    token,
+    refreshToken,
+  );
+  return { ...((await res.json()) as SavedLead), token: currentToken };
+}
+
+/**
+ * Deletes a lead permanently.
+ *
+ * @param {string} id - The lead ID.
+ * @param {string} token - The current access token.
+ * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
+ * @returns {Promise<{ token: string }>} The token that worked.
+ */
+export async function deleteLead(id: string, token: string, refreshToken: TokenRefresher): Promise<{ token: string }> {
+  const { token: currentToken } = await authorisedFetch(
+    `/leads/${encodeURIComponent(id)}`,
+    { method: "DELETE" },
+    token,
+    refreshToken,
+  );
+  return { token: currentToken };
 }

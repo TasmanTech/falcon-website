@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   title: 'Commercial & Residential Maintenance',
-  description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
-  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, 24 Hour Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Web Design, Web Developer, Auckland, New Zealand',
+  description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and after-hours emergency services.',
+  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Web Design, Web Developer, Auckland, New Zealand',
   openGraph: {
     title: 'Commercial & Residential Maintenance',
-    description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and emergency services 24/7.',
+    description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and after-hours emergency services.',
     url: "/",
   }
 };
@@ -75,10 +75,10 @@ export default function Home() {
           },
           {
             "@type": "Question",
-            "name": "Do you offer 24 hour locksmith services?",
+            "name": "Do you offer after-hours locksmith services?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call +64 9 243 1404 at any hour and we will come to you fast."
+              "text": "Yes. Our emergency locksmiths offer after-hours support across Auckland. Call +64 9 243 1404 when you are locked out and we will come to you fast."
             }
           },
           {
@@ -123,7 +123,7 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description={<>Rapid response 24/7 lockout assistance for your home or business across Auckland. 15 minute ETA available. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
+        description={<>Rapid response lockout assistance, including after-hours support, for your home or business across Auckland. 15 minute ETA available. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
         imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
         imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
         imageTitle="Commercial & Residential Repair Tools"
@@ -135,7 +135,7 @@ export default function Home() {
       <section className="bg-brand-catchy text-white py-12 text-center px-4 w-full shadow-md relative z-10 animate-card-ready animate-play">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-montserrat font-black uppercase mb-3 tracking-wide">
-            24/7 Emergency Lockout Service Auckland Wide
+            After-Hours Emergency Locksmith Auckland Wide
           </h2>
           <p className="text-xl md:text-2xl font-inter font-bold uppercase mb-8 text-white">
             $20 Flat Callout Fee. No charge if we don&apos;t help you get in.
@@ -150,7 +150,7 @@ export default function Home() {
         title="Specialised Lockout & Security Services"
         content={[
           <p key="1">We do many fixes. But lockouts are what we do best. Being locked out is bad, so we get you in fast. Our door unlocking service is safe. We do not break your parts.</p>,
-          <p key="2">We do more than just let you in. We handle lock repair, lock replacement, and lock rekey jobs. We make sure all doors are secure. Need to get a locksmith fast? We are on call 24/7.</p>
+          <p key="2">We do more than just let you in. We handle lock repair, lock replacement, and lock rekey jobs. We make sure all doors are secure. Need to get a locksmith fast? We offer after-hours support too.</p>
         ]}
         imageSrc="/images/home/locksmith-lock-pick-set-auckland.webp"
         imageAlt="Locksmith lock pick set with tension wrenches and brass lock cylinders"
@@ -240,8 +240,8 @@ export default function Home() {
             answer: "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
           },
           {
-            question: "Do you offer 24 hour locksmith services?",
-            answer: <>Yes. Our emergency locksmith services run 24 hours a day across Auckland. Call <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> at any hour and we will come to you fast.</>
+            question: "Do you offer after-hours locksmith services?",
+            answer: <>Yes. Our emergency locksmiths offer after-hours support across Auckland. Call <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> when you are locked out and we will come to you fast.</>
           },
           {
             question: "Will my door or lock be damaged during a lockout service?",
