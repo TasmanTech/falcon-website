@@ -3,20 +3,20 @@ import { buildLeadMessage, formatLeadDate, formatLeadPhone, formatLeadTime, maps
 
 describe('formatLeadPhone', () => {
   it.each([
-    ['021 123 4567', '+64 21 123 4567'],
-    ['0211234567', '+64 21 123 4567'],
-    ['022 1234 5678', '+64 22 1234 5678'],
-    ['027-123-456', '+64 27 123 456'],
-    ['09 555 1234', '+64 9 555 1234'],
-    ['+64 21 123 4567', '+64 21 123 4567'],
-    ['64211234567', '+64 21 123 4567'],
-  ])('puts %s in +64 form', (input, expected) => {
+    ['021 123 4567', '+64211234567'],
+    ['0211234567', '+64211234567'],
+    ['022 1234 5678', '+642212345678'],
+    ['027-123-456', '+6427123456'],
+    ['09 555 1234', '+6495551234'],
+    ['+64 21 123 4567', '+64211234567'],
+    ['64211234567', '+64211234567'],
+  ])('puts %s in +64 form with no spaces', (input, expected) => {
     expect(formatLeadPhone(input)).toBe(expected);
   });
 
-  it('leaves 0800 and unrecognised numbers as typed', () => {
-    expect(formatLeadPhone('0800 123 456')).toBe('0800 123 456');
-    expect(formatLeadPhone(' +61 412 345 678 ')).toBe('+61 412 345 678');
+  it('strips spaces from 0800 and unrecognised numbers', () => {
+    expect(formatLeadPhone('0800 123 456')).toBe('0800123456');
+    expect(formatLeadPhone(' +61 412-345 678 ')).toBe('+61412345678');
   });
 });
 
@@ -61,7 +61,7 @@ describe('buildLeadMessage', () => {
         '',
         '',
         '📞 Name: Jerry Li',
-        '📱 Phone: +64 21 123 4567',
+        '📱 Phone: +64211234567',
         '📍 Address: 12 Queen Street, Auckland',
         '🔧 Job Type: House lockout',
         '📝 Notes: Keys inside',

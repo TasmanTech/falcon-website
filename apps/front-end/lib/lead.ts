@@ -67,24 +67,19 @@ export function formatLeadTime(time: string): string {
 }
 
 /**
- * Rewrites NZ mobile and landline numbers in +64 form so Telegram reliably makes
- * them tap-to-call, e.g. `021 123 4567` → `+64 21 123 4567`. Anything else
- * (0800 numbers, overseas numbers, typos) is returned as typed.
+ * Rewrites NZ mobile and landline numbers in +64 form with no spaces so Telegram
+ * makes the whole number tap-to-call, e.g. `021 123 4567` → `+64211234567`.
+ * Anything else (0800 numbers, overseas numbers, typos) just has its spaces,
+ * dashes, dots and brackets removed.
  *
  * @param {string} raw - The number as entered.
  * @returns {string} The formatted number.
  */
 export function formatLeadPhone(raw: string): string {
-  const digits = raw.replace(/[^\d+]/g, "");
-  let local: string;
-  if (/^0[234679]\d{6,9}$/.test(digits)) local = digits.slice(1);
-  else if (/^\+?64[234679]\d{6,9}$/.test(digits)) local = digits.replace(/^\+?64/, "");
-  else return raw.trim();
-
-  const area = local.startsWith("2") ? local.slice(0, 2) : local.slice(0, 1);
-  const rest = local.slice(area.length);
-  const split = rest.length > 7 ? 4 : 3;
-  return `+64 ${area} ${rest.slice(0, split)} ${rest.slice(split)}`;
+  const compact = raw.replace(/[\s\-.()]/g, "");
+  if (/^0[234679]\d{6,9}$/.test(compact)) return `+64${compact.slice(1)}`;
+  if (/^\+?64[234679]\d{6,9}$/.test(compact)) return compact.replace(/^\+?64/, "+64");
+  return compact;
 }
 
 /**
