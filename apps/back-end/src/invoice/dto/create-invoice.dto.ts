@@ -13,6 +13,7 @@ import {
   Max,
   MaxLength,
   Min,
+  ValidateIf,
   ValidateNested,
 } from 'class-validator';
 
@@ -50,9 +51,11 @@ export class CreateInvoiceDto {
   @MaxLength(120)
   clientName!: string;
 
+  /** Optional; without it the invoice is saved to history but not emailed to the customer. */
+  @ValidateIf((dto: CreateInvoiceDto) => dto.clientEmail !== undefined && dto.clientEmail !== null && dto.clientEmail !== '')
   @IsEmail()
   @MaxLength(254)
-  clientEmail!: string;
+  clientEmail?: string;
 
   @IsString()
   @IsOptional()

@@ -65,6 +65,10 @@ describe('lib/invoice', () => {
     expect(payload.items[0]).toEqual({ title: 'Service Call', description: undefined, quantity: 1, rate: 20 });
   });
 
+  it('toInvoicePayload omits a blank email', () => {
+    expect(toInvoicePayload({ ...draft, clientEmail: '  ' }).clientEmail).toBeUndefined();
+  });
+
   it('formatDisplayDate uses DD/MM/YYYY', () => {
     expect(formatDisplayDate('2026-09-25')).toBe('25/09/2026');
   });

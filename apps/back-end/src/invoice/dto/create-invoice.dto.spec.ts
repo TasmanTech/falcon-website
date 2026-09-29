@@ -29,6 +29,12 @@ describe('CreateInvoiceDto', () => {
     expect(await errorsFor({ ...valid, clientEmail: 'not-an-email' })).toContain('clientEmail');
   });
 
+  it('accepts a missing or empty email', async () => {
+    const { clientEmail: _omitted, ...withoutEmail } = valid;
+    expect(await errorsFor(withoutEmail)).toEqual([]);
+    expect(await errorsFor({ ...valid, clientEmail: '' })).toEqual([]);
+  });
+
   it('rejects negative rates inside items', async () => {
     expect(await errorsFor({ ...valid, items: [{ title: 'X', quantity: 1, rate: -5 }] })).toContain('items');
   });
