@@ -33,7 +33,7 @@ describe('LeadMessage', () => {
     const preview = screen.getByTestId('lead-preview');
     expect(preview).toHaveTextContent('Date: Mon 28/09/2026');
     expect(preview).toHaveTextContent('Name: Jerry Li');
-    expect(preview).toHaveTextContent('Phone: +64 21 123 4567');
+    expect(preview).toHaveTextContent('Phone: +64211234567');
     expect(screen.getByRole('link', { name: 'Check on Google Maps' })).toHaveAttribute(
       'href',
       'https://www.google.com/maps/search/?api=1&query=12%20Queen%20Street',
