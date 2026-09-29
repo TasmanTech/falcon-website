@@ -24,7 +24,7 @@ const { SessionExpiredError } = await import('@/lib/invoice');
 async function fillJerrysInvoice() {
   const user = userEvent.setup();
   await user.type(screen.getByLabelText('Name *'), 'Jerry Li');
-  await user.type(screen.getByLabelText('Email *'), 'jerrylee9922@gmail.com');
+  await user.type(screen.getByLabelText('Email'), 'jerrylee9922@gmail.com');
 
   await user.click(screen.getByRole('button', { name: /Price List/ }));
   await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: /Service Call/ }));
@@ -56,7 +56,7 @@ describe('InvoiceForm', () => {
     const user = userEvent.setup();
     render(<InvoiceForm token="token" />);
     await user.type(screen.getByLabelText('Name *'), 'Jerry Li');
-    await user.type(screen.getByLabelText('Email *'), 'jerry@example.com');
+    await user.type(screen.getByLabelText('Email'), 'jerry@example.com');
     await user.click(screen.getByRole('button', { name: 'Review' }));
 
     expect(screen.getByRole('alert')).toHaveTextContent('Add at least one item.');
@@ -84,6 +84,19 @@ describe('InvoiceForm', () => {
 
     await user.click(screen.getByRole('button', { name: /Download PDF/ }));
     expect(downloadBlob).toHaveBeenCalledWith(expect.any(Blob), 'Invoice.pdf');
+  });
+
+  it('saves an invoice without an email', async () => {
+    submitInvoice.mockResolvedValue({ blob: new Blob(['%PDF-']), fileName: 'Invoice.pdf', invoiceNumber: 'FA-260925-ABC', token: 'token' });
+    render(<InvoiceForm token="token" />);
+    const user = await fillJerrysInvoice();
+    await user.clear(screen.getByLabelText('Email'));
+
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await user.click(screen.getByRole('button', { name: /Save Invoice/ }));
+
+    await waitFor(() => expect(screen.getByText('Invoice saved')).toBeInTheDocument());
+    expect(screen.getByText(/No email was sent/)).toBeInTheDocument();
   });
 
   it('previews a draft PDF without sending', async () => {

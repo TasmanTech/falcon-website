@@ -110,6 +110,7 @@ export class InvoiceService {
 
   /**
    * Generates a numbered invoice, stores it, and emails it to the client (BCC to the business).
+   * Without a client email the invoice is only stored, and `emailedAt` stays null.
    * If the email fails, the stored record and PDF are removed so history only holds sent invoices.
    *
    * @param {CreateInvoiceDto} dto - The invoice details.
@@ -143,7 +144,7 @@ export class InvoiceService {
         this.invoiceRepository.create({
           invoiceNumber: document.invoiceNumber,
           clientName: document.clientName,
-          clientEmail: document.clientEmail,
+          clientEmail: document.clientEmail ?? '',
           clientPhone: document.clientPhone ?? null,
           jobAddress: document.jobAddress ?? null,
           technicianName: document.technicianName ?? null,
@@ -165,8 +166,13 @@ export class InvoiceService {
       throw new InternalServerErrorException('The invoice could not be saved to the database. Nothing was sent.');
     }
 
+    if (!document.clientEmail) {
+      this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} saved without emailing (no client email)`);
+      return invoice;
+    }
+
     try {
-      await this.transporter.sendMail(this.buildEmail(dto, invoice));
+      await this.transporter.sendMail(this.buildEmail(document.clientEmail, dto, invoice));
     } catch (error) {
       this.logger.error(`Failed to email invoice ${invoice.invoiceNumber}`, error);
       await this.invoiceRepository.delete(record.id).catch(() => undefined);
@@ -177,7 +183,7 @@ export class InvoiceService {
     }
 
     await this.invoiceRepository.update(record.id, { emailedAt: new Date() });
-    this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} sent to ${dto.clientEmail}`);
+    this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} sent to ${document.clientEmail}`);
     return invoice;
   }
 
@@ -237,7 +243,7 @@ export class InvoiceService {
         invoiceDate: record.invoiceDate,
         dueDate: record.dueDate,
         clientName: record.clientName,
-        clientEmail: record.clientEmail,
+        clientEmail: record.clientEmail || undefined,
         clientPhone: record.clientPhone ?? undefined,
         jobAddress: record.jobAddress ?? undefined,
         technicianName: record.technicianName ?? undefined,
@@ -338,7 +344,7 @@ export class InvoiceService {
       invoiceDate,
       dueDate: dto.dueDate?.slice(0, 10) ?? invoiceDate,
       clientName: dto.clientName.trim(),
-      clientEmail: dto.clientEmail.trim(),
+      clientEmail: dto.clientEmail?.trim() || undefined,
       clientPhone: dto.clientPhone?.trim() || undefined,
       jobAddress: dto.jobAddress?.trim() || undefined,
       technicianName: dto.technicianName?.trim() || undefined,
@@ -364,11 +370,11 @@ export class InvoiceService {
     };
   }
 
-  private buildEmail(dto: CreateInvoiceDto, invoice: GeneratedInvoice): nodemailer.SendMailOptions {
+  private buildEmail(to: string, dto: CreateInvoiceDto, invoice: GeneratedInvoice): nodemailer.SendMailOptions {
     const from = this.configService.get<string>('SMTP_FROM');
     return {
       from: from ? `"${BUSINESS.tradingName}" <${from}>` : undefined,
-      to: dto.clientEmail,
+      to,
       bcc: from,
       subject: `${dto.paid ? 'Paid invoice' : 'Invoice'} ${invoice.invoiceNumber} from ${BUSINESS.tradingName}`,
       text: [

@@ -239,7 +239,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
                           {status.label}
                         </span>
                       </p>
-                      <p className="truncate text-xs text-slate-400">{invoice.clientEmail}</p>
+                      {invoice.clientEmail && <p className="truncate text-xs text-slate-400">{invoice.clientEmail}</p>}
                     </div>
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-slate-100 text-brand-dark">
                       {downloadingId === invoice.id ? (

@@ -23,7 +23,7 @@ export interface InvoiceDocument {
   invoiceDate: string;
   dueDate: string;
   clientName: string;
-  clientEmail: string;
+  clientEmail?: string;
   clientPhone?: string;
   jobAddress?: string;
   technicianName?: string;
@@ -162,7 +162,7 @@ export function renderInvoicePdf(invoice: InvoiceDocument): Promise<Buffer> {
     doc.fillColor(COLOURS.text).font('Helvetica-Bold').text(invoice.clientName, LEFT, partiesTop + 16, { width: 220 });
     doc.font('Helvetica');
     if (invoice.clientPhone) doc.text(invoice.clientPhone, { width: 220 });
-    doc.text(invoice.clientEmail, { width: 220 });
+    if (invoice.clientEmail) doc.text(invoice.clientEmail, { width: 220 });
     let partiesBottom = doc.y;
 
     if (invoice.jobAddress) {

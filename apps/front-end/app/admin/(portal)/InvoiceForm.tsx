@@ -143,6 +143,8 @@ export default function InvoiceForm({ token }: { token: string }) {
     window.scrollTo({ top: 0 });
   };
 
+  const hasEmail = draft.clientEmail.trim() !== "";
+
   const submit = async (mode: "preview" | "send") => {
     setPending(mode);
     setError(null);
@@ -189,14 +191,27 @@ export default function InvoiceForm({ token }: { token: string }) {
       <div className="space-y-4 pb-10 animate-card-ready animate-play">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center">
           <FiCheckCircle className="mx-auto text-green-600" size={48} aria-hidden />
-          <h1 className="mt-3 font-montserrat text-xl font-bold text-brand-dark">Invoice sent</h1>
+          <h1 className="mt-3 font-montserrat text-xl font-bold text-brand-dark">{sent.email ? "Invoice sent" : "Invoice saved"}</h1>
           <p className="mt-1 text-sm text-slate-600">
             <span className="font-semibold text-slate-900">{sent.invoiceNumber}</span> for{" "}
-            {formatMoney(sent.total)}{sent.paid ? " (paid)" : ""} was emailed to <span className="break-all">{sent.email}</span>. It&apos;s saved in{" "}
-            <Link href="/admin/invoices" className="font-semibold text-brand-dark underline">
-              History
-            </Link>{" "}
-            and a copy went to the Falcon Access mailbox.
+            {formatMoney(sent.total)}{sent.paid ? " (paid)" : ""}{" "}
+            {sent.email ? (
+              <>
+                was emailed to <span className="break-all">{sent.email}</span>. It&apos;s saved in{" "}
+                <Link href="/admin/invoices" className="font-semibold text-brand-dark underline">
+                  History
+                </Link>{" "}
+                and a copy went to the Falcon Access mailbox.
+              </>
+            ) : (
+              <>
+                was saved in{" "}
+                <Link href="/admin/invoices" className="font-semibold text-brand-dark underline">
+                  History
+                </Link>
+                . No email was sent, so download the PDF to pass it on.
+              </>
+            )}
           </p>
           <div className="mt-5 grid gap-3">
             <button
@@ -231,7 +246,7 @@ export default function InvoiceForm({ token }: { token: string }) {
         <Section title="Customer">
           <div className="space-y-1 text-[15px]">
             <p className="font-semibold">{draft.clientName}</p>
-            <p className="break-all text-slate-700">{draft.clientEmail}</p>
+            {draft.clientEmail.trim() && <p className="break-all text-slate-700">{draft.clientEmail}</p>}
             {draft.clientPhone && <p className="text-slate-700">{draft.clientPhone}</p>}
             {draft.jobAddress && <p className="whitespace-pre-line text-slate-700">{draft.jobAddress}</p>}
           </div>
@@ -312,7 +327,7 @@ export default function InvoiceForm({ token }: { token: string }) {
             disabled={pending !== null}
             className="flex h-12 items-center justify-center gap-2 rounded-full bg-brand-accent font-bold text-brand-dark hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            <FiSend aria-hidden /> {pending === "send" ? "Sending…" : draft.paid ? "Send Paid Invoice" : "Send Invoice"}
+            <FiSend aria-hidden /> {pending === "send" ? (hasEmail ? "Sending…" : "Saving…") : `${hasEmail ? "Send" : "Save"} ${draft.paid ? "Paid Invoice" : "Invoice"}`}
           </button>
           <div className="grid grid-cols-2 gap-3">
             <button
@@ -367,8 +382,8 @@ export default function InvoiceForm({ token }: { token: string }) {
               <input id="clientName" required autoComplete="off" value={draft.clientName} onChange={(e) => update("clientName", e.target.value)} className={inputClass} />
             </div>
             <div>
-              <label htmlFor="clientEmail" className={labelClass}>Email *</label>
-              <input id="clientEmail" type="email" inputMode="email" required autoComplete="off" value={draft.clientEmail} onChange={(e) => update("clientEmail", e.target.value)} className={inputClass} />
+              <label htmlFor="clientEmail" className={labelClass}>Email</label>
+              <input id="clientEmail" type="email" inputMode="email" autoComplete="off" value={draft.clientEmail} onChange={(e) => update("clientEmail", e.target.value)} className={inputClass} />
             </div>
             <div>
               <label htmlFor="clientPhone" className={labelClass}>Phone</label>

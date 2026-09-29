@@ -138,6 +138,15 @@ describe('InvoiceService', () => {
       expect(mail.text).not.toContain('Account number');
     });
 
+    it('stores an invoice without a client email but does not email it', async () => {
+      const result = await service.send({ ...dto, clientEmail: undefined });
+
+      expect(fs.existsSync(path.join(storageDir, result.fileName))).toBe(true);
+      expect(repository.save).toHaveBeenCalledWith(expect.objectContaining({ clientEmail: '', emailedAt: null }));
+      expect(sendMail).not.toHaveBeenCalled();
+      expect(repository.update).not.toHaveBeenCalled();
+    });
+
     it('removes the record and PDF when the email fails', async () => {
       sendMail.mockRejectedValueOnce(new Error('SMTP down'));
 

@@ -204,7 +204,7 @@ export function toInvoicePayload(draft: InvoiceDraft) {
   const optional = (value: string) => value.trim() || undefined;
   return {
     clientName: draft.clientName.trim(),
-    clientEmail: draft.clientEmail.trim(),
+    clientEmail: optional(draft.clientEmail),
     clientPhone: optional(draft.clientPhone),
     jobAddress: optional(draft.jobAddress),
     technicianName: optional(draft.technicianName),
