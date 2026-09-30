@@ -33,4 +33,10 @@ describe('Footer Component', () => {
     expect(facebook).toHaveAttribute('rel', 'noopener noreferrer');
     expect(screen.queryByText(/Twitter/)).toBeNull();
   });
+
+  it('links and embeds the Google Business profile', () => {
+    render(<Footer />);
+    expect(screen.getByRole('link', { name: 'Falcon Access' })).toHaveAttribute('href', 'https://maps.app.goo.gl/cd1vP8439PMM4EXd9');
+    expect(screen.getByTitle('Falcon Access Location Map').getAttribute('src')).toContain('0x6528990332c1aad5%3A0xc704eb90193442ed');
+  });
 });

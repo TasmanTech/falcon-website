@@ -57,7 +57,9 @@ export default function RootLayout({
         "image": "https://falconaccess.co.nz/falcon_access_logo.webp",
         "description": "Premium commercial and residential repair, maintenance, and locksmith services in Auckland.",
         "telephone": "+64 9 243 1404",
+        "hasMap": "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",
         "sameAs": [
+          "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",
           "https://www.facebook.com/falconaccessnz",
           "https://www.instagram.com/falconaccess/"
         ],
