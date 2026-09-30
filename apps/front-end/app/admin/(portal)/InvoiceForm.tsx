@@ -15,6 +15,7 @@ import {
   roundCents,
   submitInvoice,
   toNumber,
+  toTitleCase,
   type InvoiceDraft,
   type InvoiceItemDraft,
   type InvoicePdf,
@@ -379,7 +380,7 @@ export default function InvoiceForm({ token }: { token: string }) {
           <div className="space-y-3">
             <div>
               <label htmlFor="clientName" className={labelClass}>Name *</label>
-              <input id="clientName" required autoComplete="off" value={draft.clientName} onChange={(e) => update("clientName", e.target.value)} className={inputClass} />
+              <input id="clientName" required autoComplete="off" value={draft.clientName} onChange={(e) => update("clientName", e.target.value)} onBlur={(e) => update("clientName", toTitleCase(e.target.value))} className={inputClass} />
             </div>
             <div>
               <label htmlFor="clientEmail" className={labelClass}>Email</label>
@@ -391,7 +392,7 @@ export default function InvoiceForm({ token }: { token: string }) {
             </div>
             <div>
               <label htmlFor="jobAddress" className={labelClass}>Job address</label>
-              <textarea id="jobAddress" rows={2} value={draft.jobAddress} onChange={(e) => update("jobAddress", e.target.value)} className={textareaClass} />
+              <textarea id="jobAddress" rows={2} value={draft.jobAddress} onChange={(e) => update("jobAddress", e.target.value)} onBlur={(e) => update("jobAddress", toTitleCase(e.target.value))} className={textareaClass} />
             </div>
           </div>
         </Section>
@@ -497,7 +498,7 @@ export default function InvoiceForm({ token }: { token: string }) {
           <div className="space-y-3">
             <div>
               <label htmlFor="technicianName" className={labelClass}>Technician</label>
-              <input id="technicianName" autoComplete="off" value={draft.technicianName} onChange={(e) => update("technicianName", e.target.value)} className={inputClass} />
+              <input id="technicianName" autoComplete="off" value={draft.technicianName} onChange={(e) => update("technicianName", e.target.value)} onBlur={(e) => update("technicianName", toTitleCase(e.target.value))} className={inputClass} />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>

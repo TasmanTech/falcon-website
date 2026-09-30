@@ -11,6 +11,7 @@ import {
   getInvoiceStatus,
   submitInvoice,
   toInvoicePayload,
+  toTitleCase,
   type InvoiceDraft,
 } from './invoice';
 
@@ -67,6 +68,19 @@ describe('lib/invoice', () => {
 
   it('toInvoicePayload omits a blank email', () => {
     expect(toInvoicePayload({ ...draft, clientEmail: '  ' }).clientEmail).toBeUndefined();
+  });
+
+  it('toTitleCase capitalises each word and keeps deliberate capitals', () => {
+    expect(toTitleCase('jerry li')).toBe('Jerry Li');
+    expect(toTitleCase('12 queen st, mount-eden\nauckland')).toBe('12 Queen St, Mount-Eden\nAuckland');
+    expect(toTitleCase('3/12a smith rd')).toBe('3/12a Smith Rd');
+    expect(toTitleCase('ian McDonald, RD 2')).toBe('Ian McDonald, RD 2');
+    expect(toTitleCase('JERRY LI')).toBe('Jerry Li');
+  });
+
+  it('toInvoicePayload title-cases the name, address and technician', () => {
+    const payload = toInvoicePayload({ ...draft, clientName: 'jerry li', jobAddress: '1 main rd', technicianName: 'ibrahim' });
+    expect(payload).toMatchObject({ clientName: 'Jerry Li', jobAddress: '1 Main Rd', technicianName: 'Ibrahim' });
   });
 
   it('formatDisplayDate uses DD/MM/YYYY', () => {

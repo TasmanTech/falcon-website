@@ -195,6 +195,21 @@ export function createEmptyDraft(): InvoiceDraft {
 }
 
 /**
+ * Capitalises the first letter of each word (after a space, hyphen, slash or bracket), e.g.
+ * "jerry li" → "Jerry Li", "12 queen st, mount-eden" → "12 Queen St, Mount-Eden". Other letters are
+ * left as typed so "McDonald" and "RD 2" survive, unless the whole value is in capitals (caps lock),
+ * in which case the rest of each word is lowercased.
+ *
+ * @param {string} value - A name or address.
+ * @returns {string} The title-cased value.
+ */
+export function toTitleCase(value: string): string {
+  const allCaps = value === value.toUpperCase() && value !== value.toLowerCase();
+  const text = allCaps ? value.toLowerCase() : value;
+  return text.replace(/(^|[\s\-/(])(\p{Ll})/gu, (_, separator: string, letter: string) => separator + letter.toUpperCase());
+}
+
+/**
  * Converts the form state into the back-end `CreateInvoiceDto` payload.
  *
  * @param {InvoiceDraft} draft - The form state.
@@ -203,11 +218,11 @@ export function createEmptyDraft(): InvoiceDraft {
 export function toInvoicePayload(draft: InvoiceDraft) {
   const optional = (value: string) => value.trim() || undefined;
   return {
-    clientName: draft.clientName.trim(),
+    clientName: toTitleCase(draft.clientName.trim()),
     clientEmail: optional(draft.clientEmail),
     clientPhone: optional(draft.clientPhone),
-    jobAddress: optional(draft.jobAddress),
-    technicianName: optional(draft.technicianName),
+    jobAddress: optional(toTitleCase(draft.jobAddress)),
+    technicianName: optional(toTitleCase(draft.technicianName)),
     invoiceDate: optional(draft.invoiceDate),
     dueDate: optional(draft.dueDate),
     addGst: draft.addGst,
