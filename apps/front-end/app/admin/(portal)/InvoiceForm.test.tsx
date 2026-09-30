@@ -99,6 +99,17 @@ describe('InvoiceForm', () => {
     expect(screen.getByText(/No email was sent/)).toBeInTheDocument();
   });
 
+  it('title-cases the name and address when leaving the field', async () => {
+    const user = userEvent.setup();
+    render(<InvoiceForm token="token" />);
+    await user.type(screen.getByLabelText('Name *'), 'jerry li');
+    await user.type(screen.getByLabelText('Job address'), '12 queen st');
+    await user.tab();
+
+    expect(screen.getByLabelText('Name *')).toHaveValue('Jerry Li');
+    expect(screen.getByLabelText('Job address')).toHaveValue('12 Queen St');
+  });
+
   it('previews a draft PDF without sending', async () => {
     submitInvoice.mockResolvedValue({ blob: new Blob(), fileName: 'Draft.pdf', invoiceNumber: 'DRAFT', token: 't' });
     render(<InvoiceForm token="token" />);
