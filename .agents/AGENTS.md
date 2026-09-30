@@ -63,4 +63,19 @@ When working within the `apps/back-end` directory:
 ## Company Information
 - **Phone Number**: The official phone number for Falcon Access is `+64 9 243 1404`. When creating new links, always use this number and format the link as `tel:+6492431404`.
 - **Company Focus**: The overarching framing of the business is **"Commercial & Residential Repair and Maintenance"**. Locksmithing should be presented as just *one* of the specialized services offered, not the entire identity of the business.
+- **No 24/7 Claims**: Never say the business is open "24/7", "24 hours" or "at any hour" in copy, metadata or keywords. Use "after-hours support", "after-hours emergency" or "after-hours locksmith" instead. The homepage hero offers a "15 minute ETA"; keep that wording rather than inventing other response-time promises.
+- **Conversion Tracking**: `components/GoogleAdsTag.tsx` reports a Google Ads "Phone call lead" conversion for every `tel:` link on the site. Just use a normal `tel:+6492431404` link; do not add per-link `onClick` tracking or a second gtag loader.
 - **No Invented Credentials**: Never invent certifications, licenses, or professional affiliations (e.g., claiming to be part of the "Master Locksmiths Association"). Maintain an authentic tone focused on practical, honest, and reliable hard work without relying on flashy, unsubstantiated credentials.
+
+## Admin Portal (`app/admin/(portal)`)
+- **Private Pages**: Everything under `/admin` is authenticated and must follow the private-page SEO rule (`robots: { index: false, follow: false }`, title only). Never add admin routes to `sitemap.ts`.
+- **Mobile First**: The team uses the portal on their phones on the job. Build every admin screen for a phone first, with large tap targets (`h-12` buttons) and no hover-only actions.
+- **Back-end Access**: Admin API calls go through `authorisedFetch` in `lib/invoice.ts`, which refreshes the access token on a 401. Every back-end admin controller uses `@UseGuards(JwtAuthGuard)`.
+- **Invoices**: Follow the `admin_portal` skill. In short: client email is optional (without one the invoice is saved to History but not emailed); names, the job address and the technician are title-cased with `toTitleCase`; History only holds invoices that were stored successfully (and emailed, if there was an address).
+- **Leads**: Lead messages are pasted into Telegram. Phone numbers in them use `formatLeadPhone`, which gives `+64211234567` with no spaces so Telegram links the whole number.
+
+## Git & Deployment
+- Follow the `deployment` skill. Work happens on `staging`; the remote is called `github` (`TasmanTech/falcon-website`).
+- Commits and pushes use the **TasmanTech** GitHub account (`Tasman Tech <admin@tasmantech.co.nz>`), never a personal account.
+- Deploying means opening a PR from `staging` to `master` and merging it. Merging to `master` runs the Cloud Run CI/CD. Pushing to `staging` alone does not deploy anything.
+- Changes that only touch `.agents/` (or other non-app files) are committed and pushed to `staging` but do not need a deploy.

@@ -25,6 +25,11 @@ A typical module directory should include the following core files, named accord
 ## 4. Supplementary Files
 If a module requires additional controllers or services (e.g., for specific secondary routes), name them descriptively but keep them within the same resource folder (e.g., `public-contact.controller.ts` or `cleanup.service.ts`).
 
+Plain helpers that are not Nest providers (rendering, file storage, constants) also live in the resource folder and are named `[module]-[purpose].ts` or `[module].constants.ts`, each with its own `.spec.ts` where it has logic. The `invoice/` module is the reference: `invoice-pdf.ts` (PDF rendering), `invoice-storage.ts` (PDF files on disk) and `invoice.constants.ts`.
+
+## 5. Current Modules
+Admin-facing modules (`invoice/`, `lead/`) are guarded by `JwtAuthGuard` at the controller level. Follow the `admin_portal` skill when changing them.
+
 ## Example Layout
 ```
 src/
