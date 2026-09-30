@@ -59,14 +59,14 @@ export default function Footer() {
             <li>Phone: <a href="tel:+6492431404" className="underline hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
             <li>Email: <a href="mailto:info@falconaccess.co.nz" className="underline hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
             <li>
-              <a href="https://maps.app.goo.gl/Zt8DvcjBV5CNTsJH6" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
+              <a href="https://maps.app.goo.gl/cd1vP8439PMM4EXd9" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
                 Falcon Access
               </a>
             </li>
           </ul>
           <div className="mt-4 rounded-lg overflow-hidden">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ad45978bd686e39%3A0x7277b36f7f430f6a!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1789884229600!5m2!1sen!2snz"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6528990332c1aad5%3A0xc704eb90193442ed!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1790732079856!5m2!1sen!2snz"
               width="200"
               height="200"
               style={{ border: 0 }}
