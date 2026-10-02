@@ -50,20 +50,22 @@ When working within the `apps/back-end` directory:
 - **SEO Attributes**: Filenames are descriptive kebab-case (what is in the image + service + `auckland` where natural). Always pass `imageAlt`, `imageTitle` and `imageDescription` from the manifest.
 
 ## Copywriting & SEO Vocabulary
-- **Prioritize High-Traffic Keywords**: Always use terms like **"web design"** and **"web developer"** (or "web development") when describing services on public-facing pages.
-- **Avoid Technical Jargon**: Avoid using overly technical terms like "engineering", "infrastructure", or "software architecture" unless specifically required for a deeply technical audience. Keep the copy accessible and aligned with what clients actually search for.
-- **Exception for Internal Links**: When writing anchor text for `<Link>` components, it is strongly encouraged to use specific, technical terminology (e.g., "React frontend architecture" instead of "custom websites") that accurately describes the target page to maximize SEO link equity.
-- **Punchy Call-to-Actions (CTAs)**: Keep CTA button text short, action-oriented, and contextually relevant to the page (e.g., "Discuss Your App", "Connect Now", "Get Started"). Strictly avoid long, generic, compound statements like "Book a Consultation / Connect With Tech Experts".
+- **Prioritise High-Traffic Keywords**: Use the terms customers actually search for, such as "locksmith Auckland", "emergency locksmith", "lockout service", "lock repair", "rekey", "smart lock installation" and "car lockout".
+- **No Web Design**: Falcon Access does not offer or refer web design. Never mention "web design", "web developer", "web development", "web team" or websites as a service, analogy or keyword anywhere: copy, metadata, keywords, JSON-LD schema or `public/llms.txt`.
+- **Avoid Technical Jargon**: Avoid overly technical terms unless the page needs them. Keep the copy accessible and aligned with what clients actually search for.
+- **Descriptive Internal Links**: When writing anchor text for `<Link>` components, use specific terms that describe the target page (e.g., "rekeying service" instead of "click here").
+- **Punchy Call-to-Actions (CTAs)**: Keep CTA button text short, action-oriented, and contextually relevant to the page (e.g., "Call Now", "Get a Quote", "Get Help Now"). Strictly avoid long, generic, compound statements.
 
 ## Routing & Links
 - **Promo Codes**: When linking a promotional code (e.g., in a hero offer), direct the user to the quoting flow using a URL parameter (`/quote?promo=CODE`) rather than the standard booking flow (`/book`).
-- **Sitemap Maintenance**: Whenever creating a new public-facing page in the Next.js front-end, always ensure it is added to `apps/front-end/app/sitemap.ts` to maintain accurate SEO indexing.
+- **Sitemap Maintenance**: Whenever creating a new public-facing page in the Next.js front-end, always ensure it is added to `apps/front-end/app/sitemap.ts` to maintain accurate SEO indexing, and to `apps/front-end/public/llms.txt` under the matching section with a one-line description. Keep the llms.txt key facts (phone, email, hours, call-out fee) in line with the LocalBusiness schema in `app/layout.tsx`.
 - **Internal Linking (Inlinks)**: Always add as many relevant internal links (inlinks) as possible to existing pages, without altering the readable copy. Make sure inlinks are consistently added when generating or modifying content to improve SEO and user navigation.
 
 ## Company Information
 - **Phone Number**: The official phone number for Falcon Access is `+64 9 243 1404`. When creating new links, always use this number and format the link as `tel:+6492431404`.
 - **Company Focus**: The overarching framing of the business is **"Commercial & Residential Repair and Maintenance"**. Locksmithing should be presented as just *one* of the specialized services offered, not the entire identity of the business.
-- **No 24/7 Claims**: Never say the business is open "24/7", "24 hours" or "at any hour" in copy, metadata or keywords. Use "after-hours support", "after-hours emergency" or "after-hours locksmith" instead. The homepage hero offers a "15 minute ETA"; keep that wording rather than inventing other response-time promises.
+- **No 24/7 Claims**: Never say the business is open "24/7", "24 hours" or "at any hour" in copy, metadata or keywords. Use "after-hours support", "after-hours emergency" or "after-hours locksmith" instead.
+- **No ETAs**: Never give arrival times or response-time estimates (e.g., "15 minute ETA", "within 30 minutes") in copy, metadata, schema or `public/llms.txt`. General wording like "fast", "prompt" or "rapid response" is fine.
 - **Conversion Tracking**: `components/GoogleAdsTag.tsx` reports a Google Ads "Phone call lead" conversion for every `tel:` link on the site. Just use a normal `tel:+6492431404` link; do not add per-link `onClick` tracking or a second gtag loader.
 - **No Invented Credentials**: Never invent certifications, licenses, or professional affiliations (e.g., claiming to be part of the "Master Locksmiths Association"). Maintain an authentic tone focused on practical, honest, and reliable hard work without relying on flashy, unsubstantiated credentials.
 

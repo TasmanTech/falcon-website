@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Hardware Rekeying Services',
   description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
-  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Lock Changing Service, Hardware Rekeying, Commercial Security, web design, web development, Falcon Access',
+  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Lock Changing Service, Hardware Rekeying, Commercial Security, Falcon Access',
   openGraph: {
     title: 'Auckland Hardware Rekeying Services',
     description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
@@ -105,7 +105,7 @@ export default function RekeyPage() {
         title="When Should You Rekey?"
         content={[
           <p key="1">We suggest rekeying when there is a big change in occupancy or a risk. This is very common for shops with staff changes or homes with new owners.</p>,
-          <p key="2">If your locks are physically sound, rekeying is the honest choice to stay safe. Much like good web design relies on good code, good security relies on good lock parts.</p>
+          <p key="2">If your locks are physically sound, rekeying is the honest choice to stay safe. Good security relies on good lock parts.</p>
         ]}
         theme="white"
         align="left"

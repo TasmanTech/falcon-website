@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Mobile Auto Electrical Diagnostics Auckland',
   description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
-  keywords: 'OBDII diagnostic, auto repair, check engine light, Auckland, web design, web development, Falcon Access',
+  keywords: 'OBDII diagnostic, auto repair, check engine light, Auckland, Falcon Access',
   openGraph: {
     title: 'Mobile Auto Electrical Diagnostics Auckland | Falcon Access',
     description: 'Professional OBDII diagnostic scanning in Auckland. We quickly identify engine error codes to help you make informed repair decisions.',
@@ -107,7 +107,7 @@ export default function obd2Page() {
         title="Detailed Reports & Knowledge"
         content={[
           <p key="1">Going to a shop without knowing the fault is risky. You might pay too much. A quick scan gives you the exact error code. This puts you in control.</p>,
-          <p key="2">We give clear reports. Think of it like a web team fixing bad web design. We find the exact code causing the issue. Then you can fix the car properly.</p>
+          <p key="2">We give clear reports. We find the exact code causing the issue. Then you can fix the car properly.</p>
         ]}
         theme="white"
         align="left"

@@ -105,7 +105,7 @@ export default function DeadBatteryPage() {
         title="Safety First Diagnostics"
         content={[
           <p key="1">New cars are like big computers. A bad jump start can cause huge power spikes. These spikes can fry parts and hurt the car. This leads to high repair costs.</p>,
-          <p key="2">Our tools carefully control the power to your car. We care about this just like a good web team cares about web design. Safe power is our main goal.</p>
+          <p key="2">Our tools carefully control the power to your car. Safe power is our main goal.</p>
         ]}
         theme="white"
         align="left"

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Locksmith & Hardware Services',
   description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across New Zealand.',
-  keywords: 'Lock Services, Locksmith Services, Locksmith Near Me, General Locksmith, Locksmith for Business, Lock Service Near Me, Lockout, Rekey, Lock Repair, Lock Change, Lock Replacement, Lock Installation, New Zealand, web design, web development, Falcon Access',
+  keywords: 'Lock Services, Locksmith Services, Locksmith Near Me, General Locksmith, Locksmith for Business, Lock Service Near Me, Lockout, Rekey, Lock Repair, Lock Change, Lock Replacement, Lock Installation, New Zealand, Falcon Access',
   openGraph: {
     title: 'Auckland Locksmith & Hardware Services',
     description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair.',
@@ -130,7 +130,7 @@ export default function LockServicesPage() {
       <TextContentSection
         title="Tailored Security for Every Need"
         content={[
-          <p key="1">Each home and shop is different. We look at what you need. We suggest the best locks. We give complete help, much like our custom web design.</p>
+          <p key="1">Each home and shop is different. We look at what you need. We suggest the best locks. We give complete help, from advice to fitting.</p>
         ]}
         theme="dark"
         align="left"

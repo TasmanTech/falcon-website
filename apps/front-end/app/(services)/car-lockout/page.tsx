@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Emergency Car Lockout Service',
   description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our mobile fleet offers after-hours support to get you back on the road safely and quickly.',
-  keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, web design, web development, Falcon Access',
+  keywords: 'Car Lockout, Auto Locksmith, Auckland, Vehicle Lockout, Falcon Access',
   openGraph: {
     title: 'Auckland Emergency Car Lockout Service',
     description: 'Fast, non-destructive vehicle lockout assistance across Auckland. Our mobile fleet offers after-hours support to get you back on the road safely and quickly.',
@@ -102,7 +102,7 @@ export default function CarLockoutPage() {
       <TextContentSection
         title="Professional Solutions for Your Vehicle"
         content={[
-          <p key="1">New cars need special care. Our team knows auto locks well. We give top service like we do in web design. Your safety is our main goal.</p>
+          <p key="1">New cars need special care. Our team knows auto locks well. Your safety is our main goal.</p>
         ]}
         theme="white"
         align="left"

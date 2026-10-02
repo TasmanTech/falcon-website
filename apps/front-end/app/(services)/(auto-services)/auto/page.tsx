@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Mobile Auto Locksmith Auckland',
   description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts, with after-hours support.',
-  keywords: 'Auto Services, Car Lockout, OBDII Diagnostic, Dead Battery Assistance, Auckland, web design, web development, Falcon Access',
+  keywords: 'Auto Services, Car Lockout, OBDII Diagnostic, Dead Battery Assistance, Auckland, Falcon Access',
   openGraph: {
     title: 'Mobile Auto Locksmith Auckland',
     description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts, with after-hours support.',
@@ -61,7 +61,7 @@ export default function AutoServicesPage() {
             "name": "What is an OBDII diagnostic?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "An OBDII diagnostic reads the error codes from your vehicle's onboard computer to quickly identify the root cause of engine or system faults, much like debugging a web design project."
+              "text": "An OBDII diagnostic reads the error codes from your vehicle's onboard computer to quickly identify the root cause of engine or system faults."
             }
           }
         ]
@@ -116,7 +116,7 @@ export default function AutoServicesPage() {
       <TextContentSection
         title="Advanced Technology and Reliable Service"
         content={[
-          <p key="1">We keep up with new car security trends. We cut keys and code chips. Our team is ready to help you. Our good work mirrors our high standards in web design.</p>
+          <p key="1">We keep up with new car security trends. We cut keys and code chips. Our team is ready to help you.</p>
         ]}
         theme="dark"
         align="left"
@@ -150,7 +150,7 @@ export default function AutoServicesPage() {
           },
           {
             question: "What is an OBDII diagnostic?",
-            answer: "An OBDII diagnostic reads the error codes from your vehicle's onboard computer to quickly identify the root cause of engine or system faults, much like debugging a web design project."
+            answer: "An OBDII diagnostic reads the error codes from your vehicle's onboard computer to quickly identify the root cause of engine or system faults."
           }
         ]}
         theme="light"

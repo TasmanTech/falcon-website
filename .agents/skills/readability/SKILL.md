@@ -26,11 +26,11 @@ When writing or auditing copy for Falcon Access, ensure it meets the following s
 ## 4. Scannability
 - Use clear, descriptive headings (`<h2>`, `<h3>`) to break up sections.
 - Use **bulleted lists** whenever listing 3 or more items, features, or benefits.
-- Use **bold text** sparingly to highlight the most critical keywords or phrases (like "web design").
+- Use **bold text** sparingly to highlight the most critical keywords or phrases (like "emergency locksmith").
 
 ## 5. Vocabulary
 - Refer to the `AGENTS.md` rules on Copywriting & SEO Vocabulary.
-- Avoid overly technical jargon when simpler terms ("web design", "web development") communicate the value proposition effectively.
+- Avoid overly technical jargon when simpler terms ("lock repair", "rekey", "car lockout") communicate the value proposition effectively.
 
 ## 6. Preserving Link Equity
 - **Never Remove Internal Links**: When rewriting or shortening copy for readability, you **MUST** retain all existing Next.js `<Link>` components. 

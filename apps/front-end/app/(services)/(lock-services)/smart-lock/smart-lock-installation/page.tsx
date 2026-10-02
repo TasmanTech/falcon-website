@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Fresh Smart Lock Installation',
   description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
-  keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, web design, web development, Falcon Access',
+  keywords: 'Smart Lock Installation, Fresh Installation, Door Prep, Electronic Locks, Falcon Access',
   openGraph: {
     title: 'Auckland Fresh Smart Lock Installation',
     description: 'Professional fresh installation of smart lock systems for commercial and residential properties. Get your doors correctly prepped and secured.',
@@ -105,7 +105,7 @@ export default function SmartLockInstallationPage() {
         title="The Importance of Precision"
         content={[
           <p key="1">Smart locks have small motors inside. They do not work well if they rub. If a hole is off-center, the motor works too hard. This drains the power fast and breaks the lock.</p>,
-          <p key="2">This is why a pro fit is so key. We do not just screw the lock on. We make sure the door fit is perfect. We take care like a web team does for web design.</p>
+          <p key="2">This is why a pro fit is so key. We do not just screw the lock on. We make sure the door fit is perfect. We take care with every step.</p>
         ]}
         theme="white"
         align="left"

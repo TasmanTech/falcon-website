@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Hardware & Lock Repair',
   description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
-  keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Hardware Repair, Commercial Maintenance, Residential Repair, web design, web development, Falcon Access',
+  keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Hardware Repair, Commercial Maintenance, Residential Repair, Falcon Access',
   openGraph: {
     title: 'Auckland Hardware & Lock Repair',
     description: 'Reliable hardware and lock repair for commercial and residential properties. We fix faulty mechanisms efficiently to restore your security.',
@@ -105,7 +105,7 @@ export default function LockRepairPage() {
         title="Repair First, Replace Only When Necessary"
         content={[
           <p key="1">We do honest hard work. We do not try to sell you parts you do not need. Many lock issues are just bad alignment or dirt. These can be fixed fast.</p>,
-          <p key="2">Our team works like a web developer fixing web design code. We carefully take apart your lock. If a fix can solve the issue, we do that. This saves you time and cash.</p>
+          <p key="2">We carefully take apart your lock. If a fix can solve the issue, we do that. This saves you time and cash.</p>
         ]}
         theme="white"
         align="left"
