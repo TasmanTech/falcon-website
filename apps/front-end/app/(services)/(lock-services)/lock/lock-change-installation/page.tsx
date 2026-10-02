@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Door Hardware & Lock Replacement',
   description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
-  keywords: 'Lock Replacement, Lock Installation, Lock Installation Service, Lock Changing Service, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, web design, web development, Falcon Access',
+  keywords: 'Lock Replacement, Lock Installation, Lock Installation Service, Lock Changing Service, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, Falcon Access',
   openGraph: {
     title: 'Auckland Door Hardware & Lock Replacement',
     description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
@@ -106,7 +106,7 @@ export default function LockChangePage() {
         title="When to Consider Replacement"
         content={[
           <p key="1">We try to fix locks first. But sometimes, buying a new lock is the best choice. If your lock is broken or badly rusted, a fix will not last long. A lock replacement is a smart choice for the long term.</p>,
-          <p key="2">Good web design keeps a site safe. Good locks keep your property safe. If you have new staff or tenants, you need to be sure about access. A new lock is the safest choice.</p>
+          <p key="2">Good locks keep your property safe. If you have new staff or tenants, you need to be sure about access. A new lock is the safest choice.</p>
         ]}
         theme="white"
         align="left"

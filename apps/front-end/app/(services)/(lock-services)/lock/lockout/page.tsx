@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Emergency Lockout Services Auckland Wide',
   description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods, with after-hours support.',
-  keywords: 'Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, After-Hours Locksmith, Auckland, Non-destructive entry, Commercial lockout, web design, web development, Falcon Access',
+  keywords: 'Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, After-Hours Locksmith, Auckland, Non-destructive entry, Commercial lockout, Falcon Access',
   openGraph: {
     title: 'Emergency Lockout Services Auckland Wide',
     description: 'Fast, reliable commercial and residential lockout assistance across Auckland. We prioritise practical, non-destructive entry methods, with after-hours support.',
@@ -106,7 +106,7 @@ export default function LockoutPage() {
       <TextContentSection
         title="Secure and Accessible"
         content={[
-          <p key="1">We know a good business needs to be open. A web team keeps a site online with good web design. We make sure your real doors are open when you need them.</p>,
+          <p key="1">We know a good business needs to be open. We make sure your doors are open when you need them.</p>,
           <p key="2">Our work is very honest and practical. We keep up with new lock tech. This helps us handle advanced access systems with ease.</p>
         ]}
         theme="white"

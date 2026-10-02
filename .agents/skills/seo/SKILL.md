@@ -48,33 +48,33 @@ import { Metadata } from 'next';
 import JsonLd from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Custom React Development', // Example length check needed based on Falcon Access length
-  description: 'Expert React and Next.js development services for scalable, high-performance applications. Build a custom web app tailored to your needs.', // 142 chars (Max 155)
-  keywords: 'React, Next.js, Web Development, Falcon Access',
+  title: 'Auckland Hardware Rekeying Services', // 35 chars, plus " | Falcon Access" stays under 60
+  description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.', // 136 chars (Max 155)
+  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Hardware Rekeying, Auckland, Falcon Access',
   openGraph: {
-    title: 'Custom React Development | Falcon Access', // Ensure max 60 chars
-    description: 'Expert React and Next.js development services for scalable, high-performance applications.', // 92 chars (Max 155)
-    url: '[Website URL]/services/react',
+    title: 'Auckland Hardware Rekeying Services | Falcon Access', // Ensure max 60 chars
+    description: 'Cost-effective hardware rekeying for commercial and residential properties across Auckland.', // Max 155 chars
+    url: 'https://falconaccess.co.nz/lock/rekey',
   }
 };
 
-export default function ReactServicePage() {
+export default function RekeyPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "[Website URL]/services/react/#webpage",
-        "url": "[Website URL]/services/react",
-        "name": "Custom React Development | Falcon Access",
-        "isPartOf": { "@id": "[Website URL]/#website" }
+        "@id": "https://falconaccess.co.nz/lock/rekey/#webpage",
+        "url": "https://falconaccess.co.nz/lock/rekey",
+        "name": "Auckland Hardware Rekeying Services | Falcon Access",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "[Website URL]/" },
-          { "@type": "ListItem", "position": 2, "name": "Services", "item": "[Website URL]/services/" },
-          { "@type": "ListItem", "position": 3, "name": "React Development", "item": "[Website URL]/services/react" }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
+          { "@type": "ListItem", "position": 2, "name": "Lock Services", "item": "https://falconaccess.co.nz/lock" },
+          { "@type": "ListItem", "position": 3, "name": "Rekeying", "item": "https://falconaccess.co.nz/lock/rekey" }
         ]
       }
     ]
@@ -82,7 +82,7 @@ export default function ReactServicePage() {
 
   return (
     <main>
-      <JsonLd id="schema-react-service" schema={jsonLd} />
+      <JsonLd id="schema-rekey" schema={jsonLd} />
       {/* Content */}
     </main>
   );

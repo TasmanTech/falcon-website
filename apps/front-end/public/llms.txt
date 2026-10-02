@@ -1,18 +1,53 @@
 # Falcon Access
 
-> Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care and after-hours emergency services.
+> Falcon Access is a mobile locksmith and property repair team based in Auckland, New Zealand. We help homes and businesses with lockouts, lock repair, rekeying, lock replacement, smart locks, and mobile auto services such as car lockouts, jump starts, and OBDII diagnostics. We charge a flat NZ$20 call-out fee and offer after-hours emergency support.
+
+Key facts:
+
+- Service area: Auckland, New Zealand. We are a mobile service and come to you.
+- Customers: residential and commercial properties, plus vehicle owners.
+- Phone: +64 9 243 1404 (call for urgent jobs and lockouts)
+- Email: info@falconaccess.co.nz
+- Hours: Monday to Saturday, 7:00 am to 6:00 pm (NZ time), with after-hours emergency support.
+- Pricing: flat NZ$20 call-out fee. Work is quoted on site.
+- Guarantee: no fix, no fee. If we cannot complete the job or safely get you in, we do not charge.
+- Approach: we use non-destructive entry methods first and only do the work you really need.
 
 ## Core Pages
-- [Home](https://falconaccess.co.nz/) - Main landing page.
-- [About Us](https://falconaccess.co.nz/about) - Learn about our honest, practical approach.
-- [Contact](https://falconaccess.co.nz/contact) - Get a quote or request fast emergency help.
 
-## Services
-- [Lock Services](https://falconaccess.co.nz/lock) - Professional lock repair, replacement, and rekeying.
-- [Smart Lock Services](https://falconaccess.co.nz/smart-lock) - Smart lock installation and programming.
-- [Auto Services](https://falconaccess.co.nz/auto) - Vehicle lockouts, dead battery assistance, and diagnostics.
-- [Car Lockout](https://falconaccess.co.nz/car-lockout) - After-hours emergency vehicle unlocking.
+- [Home](https://falconaccess.co.nz/): Overview of our lock, smart lock, repair, and auto services, with common questions answered.
+- [About Us](https://falconaccess.co.nz/about): Who we are and how we work: fast help, straight advice, and care for your property.
+- [Contact](https://falconaccess.co.nz/contact): Phone, email, and a form to request a quote or emergency help.
 
-## Legal
-- [Privacy Policy](https://falconaccess.co.nz/privacy-policy) - Data handling and privacy practices.
-- [Terms of Service](https://falconaccess.co.nz/terms-of-service) - Terms and conditions for using our services.
+## Lock Services
+
+- [Lock Services](https://falconaccess.co.nz/lock): Overview of our residential and commercial locksmith services.
+- [Emergency Lockout](https://falconaccess.co.nz/lock/lockout): Locked out of a home or business. Non-destructive entry with after-hours support.
+- [Lock Repair](https://falconaccess.co.nz/lock/lock-repair): Fixing stiff, broken, or faulty locks and door hardware.
+- [Lock Change and Installation](https://falconaccess.co.nz/lock/lock-change-installation): Replacing or upgrading locks and door hardware.
+- [Rekeying](https://falconaccess.co.nz/lock/rekey): Changing a lock to work with new keys without replacing the whole lock, for example after moving house or losing keys.
+
+## Smart Lock Services
+
+- [Smart Lock Services](https://falconaccess.co.nz/smart-lock): Overview of our smart lock and electronic access services.
+- [Smart Lock Installation](https://falconaccess.co.nz/smart-lock/smart-lock-installation): Fitting a smart lock to a door for the first time, including door preparation.
+- [Smart Lock Upgrade](https://falconaccess.co.nz/smart-lock/smart-lock-change): Swapping an existing lock or old smart lock for a newer system.
+- [Smart Lock Repair and Programming](https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming): Diagnosing, repairing, and programming smart locks and electronic access systems.
+
+## Auto Services
+
+- [Auto Services](https://falconaccess.co.nz/auto): Overview of our mobile vehicle services across Auckland.
+- [Car Lockout](https://falconaccess.co.nz/car-lockout): Keys locked in the car. Non-destructive vehicle entry with after-hours support.
+- [Dead Battery Assistance](https://falconaccess.co.nz/auto/dead-battery-assistance): 12V and 24V jump starts using surge-protected equipment, plus a battery and alternator check.
+- [OBDII Diagnostics](https://falconaccess.co.nz/auto/obd2-diagnostic): Reading and explaining check engine light fault codes, live data checks, and code clearing.
+
+## Profiles
+
+- [Google Business Profile](https://maps.app.goo.gl/cd1vP8439PMM4EXd9): Our listing, map location, and reviews.
+- [Facebook](https://www.facebook.com/falconaccessnz)
+- [Instagram](https://www.instagram.com/falconaccess/)
+
+## Optional
+
+- [Privacy Policy](https://falconaccess.co.nz/privacy-policy): What personal information we collect and how we handle it.
+- [Terms of Service](https://falconaccess.co.nz/terms-of-service): Terms and conditions for using our services.

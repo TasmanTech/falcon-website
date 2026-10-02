@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Smart Lock Installation Auckland',
   description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming for residential and commercial properties.',
-  keywords: 'Smart Locks, Smart Lock Installation, Smart Lock Repair, New Zealand, web design, web development, Falcon Access',
+  keywords: 'Smart Locks, Smart Lock Installation, Smart Lock Repair, New Zealand, Falcon Access',
   openGraph: {
     title: 'Smart Lock Installation Auckland',
     description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming.',
@@ -115,7 +115,7 @@ export default function SmartLockServicesPage() {
       <TextContentSection
         title="Seamless Integration and Support"
         content={[
-          <p key="1">We connect your new smart locks to your Wi-Fi network. Our team makes sure it works smoothly. We do this well, just like our web design.</p>
+          <p key="1">We connect your new smart locks to your Wi-Fi network. Our team makes sure it works smoothly.</p>
         ]}
         theme="dark"
         align="left"

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Smart System Diagnostics',
   description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
-  keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, web design, web development, Falcon Access',
+  keywords: 'Smart Lock Repair, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, Falcon Access',
   openGraph: {
     title: 'Auckland Smart System Diagnostics',
     description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
@@ -105,7 +105,7 @@ export default function SmartLockRepairPage() {
         title="Identifying the Root Cause"
         content={[
           <p key="1">Many smart lock faults look like digital bugs. But the real cause is often physical. A bad door fit makes the lock motor work too hard. This drains the power and breaks the lock.</p>,
-          <p key="2">We take a real, full look at the repair. Good web design needs good code. A smart lock needs a good door fit. We make sure the door is right before we fix the tech.</p>
+          <p key="2">We take a real, full look at the repair. A smart lock needs a good door fit. We make sure the door is right before we fix the tech.</p>
         ]}
         theme="white"
         align="left"

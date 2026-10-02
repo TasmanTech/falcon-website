@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   title: 'Commercial & Residential Maintenance',
-  description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and after-hours emergency services.',
-  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Web Design, Web Developer, Auckland, New Zealand',
+  description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide lock services, property care, and after-hours emergency help.',
+  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Auckland, New Zealand',
   openGraph: {
     title: 'Commercial & Residential Maintenance',
-    description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide property care, web design, and after-hours emergency services.',
+    description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide lock services, property care, and after-hours emergency help.',
     url: "/",
   }
 };
@@ -54,7 +54,7 @@ export default function Home() {
             "name": "Do you only provide lockout and locksmithing services?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, while emergency lockout assistance and security hardware are our highly specialised services, we provide comprehensive general repair, property maintenance, and digital solutions like web design."
+              "text": "No, while emergency lockout assistance and security hardware are our highly specialised services, we also provide general repair and property maintenance for homes and businesses."
             }
           },
           {
@@ -86,7 +86,7 @@ export default function Home() {
             "name": "Will my door or lock be damaged during a lockout service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No, whether you are locked out of your home or business, we prioritize non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
+              "text": "No, whether you are locked out of your home or business, we prioritise non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
             }
           },
           {
@@ -123,7 +123,7 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description={<>Rapid response lockout assistance, including after-hours support, for your home or business across Auckland. 15 minute ETA available. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
+        description={<>Rapid response lockout assistance, including after-hours support, for your home or business across Auckland. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
         imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
         imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
         imageTitle="Commercial & Residential Repair Tools"
@@ -167,7 +167,7 @@ export default function Home() {
         content={[
           <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
           <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
-          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We refer you for web design too. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
+          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />
@@ -176,7 +176,7 @@ export default function Home() {
         title="Comprehensive Property Care"
         content={[
           <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. If you need a locksmith near you, we are close by.</p>,
-          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape. We also know a great web team. They can build a great site for you.</p>,
+          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape.</p>,
           <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
         ]}
         imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
@@ -229,7 +229,7 @@ export default function Home() {
           },
           {
             question: "Do you only provide lockout and locksmithing services?",
-            answer: "No, while emergency lockout assistance and security hardware are our highly specialised services, we provide comprehensive general repair, property maintenance, and digital solutions like web design."
+            answer: "No, while emergency lockout assistance and security hardware are our highly specialised services, we also provide general repair and property maintenance for homes and businesses."
           },
           {
             question: "Do you offer emergency repairs?",
@@ -245,7 +245,7 @@ export default function Home() {
           },
           {
             question: "Will my door or lock be damaged during a lockout service?",
-            answer: "No, whether you are locked out of your home or business, we prioritize non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
+            answer: "No, whether you are locked out of your home or business, we prioritise non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
           },
           {
             question: "How can I tell if my lock needs to be replaced?",

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Smart System Upgrades',
   description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
-  keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, web design, web development, Falcon Access',
+  keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, Falcon Access',
   openGraph: {
     title: 'Auckland Smart System Upgrades',
     description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
@@ -105,7 +105,7 @@ export default function SmartLockChangePage() {
         title="Professional Installation Matters"
         content={[
           <p key="1">Many smart locks look like easy DIY jobs. But a bad fit can cause parts to stick. It can drain the power fast and leave your home unsafe.</p>,
-          <p key="2">Our team knows these hard tasks well. We work like a good web team doing web design. We make sure the door frame and holes are lined up for a safe fit.</p>
+          <p key="2">Our team knows these hard tasks well. We make sure the door frame and holes are lined up for a safe fit.</p>
         ]}
         theme="white"
         align="left"
