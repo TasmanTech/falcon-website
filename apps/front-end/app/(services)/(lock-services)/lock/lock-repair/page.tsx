@@ -27,8 +27,8 @@ export default function LockRepairPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/lock-repair/#webpage",
-        "url": "https://falconaccess.co.nz/lock-repair",
+        "@id": "https://falconaccess.co.nz/lock/lock-repair/#webpage",
+        "url": "https://falconaccess.co.nz/lock/lock-repair",
         "name": "Hardware & Lock Repair Services | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -88,6 +88,7 @@ export default function LockRepairPage() {
       />
 
       <PhotoContentSection
+        priority
         title="Restoring Functionality"
         content={[
           <p key="1">A broken lock is a big risk. It can leave your whole building unsafe. Our door lock repair service finds and fixes the fault fast.</p>,

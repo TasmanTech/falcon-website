@@ -16,12 +16,25 @@ describe('MetaPixel', () => {
     delete window._fbq;
     document.head.querySelectorAll('script').forEach((s) => s.remove());
     navigation.pathname = '/';
+    vi.useFakeTimers();
   });
 
-  afterEach(cleanup);
+  afterEach(() => {
+    cleanup();
+    vi.useRealTimers();
+  });
+
+  it('waits until the page is idle before loading the pixel', () => {
+    render(<MetaPixel />);
+    expect(window.fbq).toBeUndefined();
+    expect(document.head.querySelectorAll(`script[src="${META_PIXEL_SRC}"]`)).toHaveLength(0);
+    vi.runAllTimers();
+    expect(window.fbq).toBeDefined();
+  });
 
   it('initialises the pixel and tracks a page view on mount', () => {
     render(<MetaPixel />);
+    vi.runAllTimers();
     expect(commands()).toEqual([
       ['init', META_PIXEL_ID],
       ['track', 'PageView'],
@@ -30,6 +43,7 @@ describe('MetaPixel', () => {
 
   it('loads fbevents.js asynchronously via a script element', () => {
     render(<MetaPixel />);
+    vi.runAllTimers();
     const scripts = document.head.querySelectorAll(`script[src="${META_PIXEL_SRC}"]`);
     expect(scripts).toHaveLength(1);
     expect((scripts[0] as HTMLScriptElement).async).toBe(true);
@@ -37,6 +51,7 @@ describe('MetaPixel', () => {
 
   it('tracks another page view on client-side navigation without re-initialising', () => {
     const { rerender } = render(<MetaPixel />);
+    vi.runAllTimers();
     navigation.pathname = '/services';
     rerender(<MetaPixel />);
     expect(commands().filter((c) => c[0] === 'init')).toHaveLength(1);

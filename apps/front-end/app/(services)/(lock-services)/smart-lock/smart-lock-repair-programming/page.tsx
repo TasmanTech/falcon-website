@@ -27,8 +27,8 @@ export default function SmartLockRepairPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/smart-lock-repair/#webpage",
-        "url": "https://falconaccess.co.nz/smart-lock-repair",
+        "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming/#webpage",
+        "url": "https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming",
         "name": "Smart Lock Diagnostics & Repair | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -88,6 +88,7 @@ export default function SmartLockRepairPage() {
       />
 
       <PhotoContentSection
+        priority
         title="Restoring Digital Access"
         content={[
           <p key="1">A broken smart lock can stop your work or leave your home at risk. These new systems need special skills. They are not like old locks.</p>,

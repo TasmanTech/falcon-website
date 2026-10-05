@@ -100,6 +100,7 @@ export default function SmartLockServicesPage() {
       </div>
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/smart-lock/fingerprint-keypad-smart-lock-auckland.webp"
         imageAlt="Black smart lock with fingerprint sensor and illuminated keypad"
         imageTitle="Smart Lock Services Auckland"
@@ -137,7 +138,12 @@ export default function SmartLockServicesPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Thinking About a Smart Lock?"
+        description="Tell us about your door and we will recommend and fit a smart lock that suits it."
+        buttonText="Get a Quote"
+      />
 
       <FAQSection
         title="Smart Lock FAQs"

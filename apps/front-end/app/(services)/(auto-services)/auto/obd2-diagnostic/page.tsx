@@ -56,7 +56,7 @@ export default function obd2Page() {
             "name": "What does an OBDII scanner actually do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "An OBDII scanner plugs directly into your vehicle's computer port to read standardized diagnostic trouble codes (DTCs). This tells us exactly why a warning light has illuminated on your dashboard."
+              "text": "An OBDII scanner plugs directly into your vehicle's computer port to read standardised diagnostic trouble codes (DTCs). This tells us exactly why a warning light has illuminated on your dashboard."
             }
           },
           {
@@ -90,6 +90,7 @@ export default function obd2Page() {
       />
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/auto/obd2-diagnostic/obd2-diagnostic-scan-tablet-auckland.webp"
         imageAlt="Handheld OBD2 diagnostic scan tablet with an orange connector cable"
         imageTitle="OBD2 Vehicle Diagnostics Auckland"
@@ -127,7 +128,12 @@ export default function obd2Page() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Warning Light On?"
+        description="We come to you anywhere in Auckland to read the fault codes and explain what they mean."
+        buttonText="Book a Diagnostic"
+      />
 
       <IconListSection
         title="What We Scan For"
@@ -158,7 +164,7 @@ export default function obd2Page() {
         faqs={[
           {
             question: "What does an OBDII scanner actually do?",
-            answer: "An OBDII scanner plugs directly into your vehicle's computer port to read standardized diagnostic trouble codes (DTCs). This tells us exactly why a warning light has illuminated on your dashboard."
+            answer: "An OBDII scanner plugs directly into your vehicle's computer port to read standardised diagnostic trouble codes (DTCs). This tells us exactly why a warning light has illuminated on your dashboard."
           },
           {
             question: "Can you clear the check engine light?",

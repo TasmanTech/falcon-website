@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: 'Commercial & Residential Maintenance',
-  description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide lock services, property care, and after-hours emergency help.',
+  title: 'Auckland Locksmith, Smart Locks & Auto Help',
+  description: 'Mobile locksmith serving Auckland homes, businesses and vehicles. Lockouts, lock repairs, rekeying, smart locks and jump starts with a $20 call-out fee.',
   keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Auckland, New Zealand',
   openGraph: {
-    title: 'Commercial & Residential Maintenance',
-    description: 'Trusted commercial and residential repair and maintenance experts serving Auckland. We provide lock services, property care, and after-hours emergency help.',
+    title: 'Auckland Locksmith, Smart Locks & Auto Help',
+    description: 'Mobile locksmith serving Auckland homes, businesses and vehicles. Lockouts, lock repairs, rekeying, smart locks and jump starts with a $20 call-out fee.',
     url: "/",
   }
 };
@@ -46,7 +46,7 @@ export default function Home() {
             "name": "What types of properties do you service?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland and New Zealand."
+              "text": "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland."
             }
           },
           {
@@ -102,7 +102,7 @@ export default function Home() {
             "name": "What should I do if my lock is damaged?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ."
+              "text": "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across Auckland."
             }
           },
           {
@@ -110,7 +110,7 @@ export default function Home() {
             "name": "Can you help me if I’m locked out of my house?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we specialize in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across NZ with honest, reliable assistance."
+              "text": "Yes, we specialise in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across Auckland with honest, reliable assistance."
             }
           }
         ]
@@ -132,7 +132,7 @@ export default function Home() {
         isMain={true}
       />
 
-      <section className="bg-brand-catchy text-white py-12 text-center px-4 w-full shadow-md relative z-10 animate-card-ready animate-play">
+      <section className="bg-brand-catchy text-white py-12 text-center px-4 w-full shadow-md relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-montserrat font-black uppercase mb-3 tracking-wide">
             After-Hours Emergency Locksmith Auckland Wide
@@ -211,7 +211,7 @@ export default function Home() {
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
             title: 'Transparent $20 Callout Fee',
-            description: "No hidden costs and absolutely no surprise surcharges. We operate with a brilliantly simple, highly affordable $20 flat call-out fee for all locksmithing and maintenance visits across NZ."
+            description: "No hidden costs and absolutely no surprise surcharges. We operate with a brilliantly simple, highly affordable $20 flat call-out fee for all locksmithing and maintenance visits across Auckland."
           }
         ]}
         theme="dark"
@@ -225,7 +225,7 @@ export default function Home() {
         faqs={[
           {
             question: "What types of properties do you service?",
-            answer: "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland and New Zealand."
+            answer: "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland."
           },
           {
             question: "Do you only provide lockout and locksmithing services?",
@@ -253,11 +253,11 @@ export default function Home() {
           },
           {
             question: "What should I do if my lock is damaged?",
-            answer: <>A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across NZ.</>
+            answer: <>A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across Auckland.</>
           },
           {
             question: "Can you help me if I’m locked out of my house?",
-            answer: "Yes, we specialize in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across NZ with honest, reliable assistance."
+            answer: "Yes, we specialise in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across Auckland with honest, reliable assistance."
           }
         ]}
         theme="light"

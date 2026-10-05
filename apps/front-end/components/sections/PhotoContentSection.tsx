@@ -13,6 +13,8 @@ interface PhotoContentSectionProps {
   ctaHref?: string;
   photoPosition: 'left' | 'right';
   theme?: 'light' | 'dark';
+  /** Set on the first photo of a page: preloads the image and skips the fade-in, as it is usually the LCP element */
+  priority?: boolean;
 }
 
 export default function PhotoContentSection({
@@ -25,7 +27,8 @@ export default function PhotoContentSection({
   ctaText,
   ctaHref,
   photoPosition,
-  theme = 'light'
+  theme = 'light',
+  priority = false
 }: PhotoContentSectionProps) {
   const bgClass = theme === 'light' ? 'bg-brand-light' : 'bg-brand-dark';
   const textClass = theme === 'light' ? 'text-brand-dark' : 'text-brand-light';
@@ -37,7 +40,7 @@ export default function PhotoContentSection({
     <section className={`py-24 ${bgClass} ${textClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-16 items-center`}>
-          <div className="w-full md:w-1/2 animate-image-ready animate-play-img">
+          <div className={`w-full md:w-1/2 ${priority ? '' : 'animate-image-ready animate-play-img'}`}>
             <div className={`relative aspect-square w-full rounded-2xl overflow-hidden ${bgClass}`}>
               <Image
                 src={imageSrc}
@@ -48,6 +51,7 @@ export default function PhotoContentSection({
                 height={1024}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover w-full h-full"
+                priority={priority}
               />
               {imageDescription && (
                 <span id={descriptionId} className="sr-only">

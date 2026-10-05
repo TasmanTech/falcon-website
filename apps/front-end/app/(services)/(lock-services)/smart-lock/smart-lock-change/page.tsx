@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/smart-lock/smart-lock-change",
   },
   title: 'Auckland Smart System Upgrades',
-  description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
+  description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across Auckland.',
   keywords: 'Smart Lock Installation, Electronic Locks, Digital Keypad, Access Control Upgrade, Falcon Access',
   openGraph: {
     title: 'Auckland Smart System Upgrades',
-    description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across New Zealand.',
+    description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across Auckland.',
     url: "/smart-lock/smart-lock-change",
   }
 };
@@ -27,8 +27,8 @@ export default function SmartLockChangePage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/smart-lock-change/#webpage",
-        "url": "https://falconaccess.co.nz/smart-lock-change",
+        "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-change/#webpage",
+        "url": "https://falconaccess.co.nz/smart-lock/smart-lock-change",
         "name": "Smart Lock Installation | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -88,6 +88,7 @@ export default function SmartLockChangePage() {
       />
 
       <PhotoContentSection
+        priority
         title="Intelligent Access Control"
         content={[
           <p key="1">Moving to smart locks is a key step to update your home or shop. We give strong setup services for many types of digital locks.</p>,

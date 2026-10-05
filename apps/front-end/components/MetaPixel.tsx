@@ -52,8 +52,24 @@ function getFbq(): Fbq {
 }
 
 /**
+ * Runs a callback once the page has loaded and the main thread is idle, so third-party
+ * scripts don't compete with the first render.
+ *
+ * @param {() => void} callback - The work to defer.
+ */
+function whenIdleAfterLoad(callback: () => void): void {
+  const schedule = () => {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(callback, { timeout: 3000 });
+    else setTimeout(callback, 1);
+  };
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
+}
+
+/**
  * Loads the Meta (Facebook) Pixel and reports a PageView on the first load and on every
  * client-side navigation, which the stock snippet alone would miss in the App Router.
+ * The first load is deferred until the page is idle; later navigations track straight away.
  *
  * @returns {React.ReactNode} A `<noscript>` tracking image for visitors without JavaScript.
  */
@@ -61,7 +77,8 @@ export default function MetaPixel(): React.ReactNode {
   const pathname = usePathname();
 
   useEffect(() => {
-    getFbq()("track", "PageView");
+    if (window.fbq) window.fbq("track", "PageView");
+    else whenIdleAfterLoad(() => getFbq()("track", "PageView"));
   }, [pathname]);
 
   return (

@@ -10,7 +10,7 @@ interface CTASectionProps {
 
 export default function CTASection({
   title = "Ready to Secure Your Property?",
-  description = "Contact our expert commercial and residential repair team today to discuss your maintenance or security needs.",
+  description = "Talk to our Auckland locksmith team about your lock, smart lock or security needs.",
   buttonText = "Get in Touch",
   buttonHref = "/contact",
   theme = 'catchy'

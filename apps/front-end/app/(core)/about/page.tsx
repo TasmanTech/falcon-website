@@ -51,6 +51,7 @@ export default function AboutPage() {
       />
 
       <PhotoContentSection
+        priority
         title="Who We Are"
         content={[
           <p key="1">Falcon Access is a local Auckland team. We fit, fix, and look after locks and doors for homes and businesses.</p>,

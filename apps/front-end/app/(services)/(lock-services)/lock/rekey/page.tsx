@@ -27,8 +27,8 @@ export default function RekeyPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/rekey/#webpage",
-        "url": "https://falconaccess.co.nz/rekey",
+        "@id": "https://falconaccess.co.nz/lock/rekey/#webpage",
+        "url": "https://falconaccess.co.nz/lock/rekey",
         "name": "Hardware Rekeying Services | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -88,6 +88,7 @@ export default function RekeyPage() {
       />
 
       <PhotoContentSection
+        priority
         title="Economical Access Control"
         content={[
           <p key="1">You do not always have to buy new locks to stop access. A lock rekey is a smart fix. We change the inside parts of your old locks.</p>,
