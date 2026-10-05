@@ -88,6 +88,7 @@ export default function DeadBatteryPage() {
       />
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/auto/dead-battery-assistance/jump-leads-on-car-battery-auckland.webp"
         imageAlt="Car battery with red and black jump leads clamped to its terminals"
         imageTitle="Dead Battery Jump Start Auckland"
@@ -125,7 +126,13 @@ export default function DeadBatteryPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Flat Battery?"
+        description="Call us for a mobile jump start anywhere in Auckland. We charge a $20 call-out fee."
+        buttonText="Call +64 9 243 1404"
+        buttonHref="tel:+6492431404"
+      />
 
       <IconListSection
         title="Our Jump Start Process"

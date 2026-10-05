@@ -87,6 +87,7 @@ export default function CarLockoutPage() {
       />
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/car-lockout/car-door-handle-lock-pick-tool.webp"
         imageAlt="Stainless steel lock pick tool beside a black car door handle"
         imageTitle="Auckland Car Lockout Service"
@@ -121,7 +122,13 @@ export default function CarLockoutPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Locked Out of Your Car?"
+        description="Call us now. We come to you anywhere in Auckland, with a $20 call-out fee and no fix, no fee."
+        buttonText="Call +64 9 243 1404"
+        buttonHref="tel:+6492431404"
+      />
 
       <IconListSection
         title="Why Choose Our Car Lockout Service"

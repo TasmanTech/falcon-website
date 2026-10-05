@@ -27,9 +27,14 @@ export const metadata: Metadata = {
     template: "%s | Falcon Access",
     default: "Falcon Access | High Quality Locksmithing in NZ",
   },
-  description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.",
-  openGraph: { title: "Falcon Access", description: "Premium locksmith services in New Zealand. Reliable, secure, and professional.", url: "/" },
-  alternates: { canonical: "/" }
+  description: "Mobile locksmith, smart lock and auto services across Auckland. Lockouts, lock repairs, rekeying, jump starts and diagnostics with a $20 call-out fee.",
+  openGraph: {
+    title: "Falcon Access",
+    description: "Mobile locksmith, smart lock and auto services across Auckland. Lockouts, lock repairs, rekeying, jump starts and diagnostics with a $20 call-out fee.",
+    siteName: "Falcon Access",
+    locale: "en_NZ",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -53,11 +58,23 @@ export default function RootLayout({
         "@type": ["LocalBusiness", "Locksmith"],
         "@id": "https://falconaccess.co.nz/#organization",
         "name": "Falcon Access",
+        "legalName": "Falcon Access Limited",
         "url": "https://falconaccess.co.nz",
         "logo": "https://falconaccess.co.nz/falcon_access_logo.webp",
         "image": "https://falconaccess.co.nz/falcon_access_logo.webp",
-        "description": "Premium commercial and residential repair, maintenance, and locksmith services in Auckland.",
+        "description": "Mobile locksmith, smart lock and auto services for homes, businesses and vehicles across Auckland.",
         "telephone": "+64 9 243 1404",
+        "email": "info@falconaccess.co.nz",
+        "priceRange": "$20 call-out fee, work quoted on site",
+        "currenciesAccepted": "NZD",
+        "areaServed": [
+          { "@type": "City", "name": "Auckland", "sameAs": "https://en.wikipedia.org/wiki/Auckland" },
+          { "@type": "Place", "name": "Auckland City" },
+          { "@type": "Place", "name": "North Shore" },
+          { "@type": "Place", "name": "West Auckland" },
+          { "@type": "Place", "name": "East Auckland" },
+          { "@type": "Place", "name": "South Auckland" }
+        ],
         "hasMap": "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",
         "sameAs": [
           "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",

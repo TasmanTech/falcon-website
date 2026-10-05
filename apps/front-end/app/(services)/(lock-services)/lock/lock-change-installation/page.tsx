@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     canonical: "/lock/lock-change-installation",
   },
   title: 'Auckland Door Hardware & Lock Replacement',
-  description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
+  description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across Auckland.',
   keywords: 'Lock Replacement, Lock Installation, Lock Installation Service, Lock Changing Service, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, Falcon Access',
   openGraph: {
     title: 'Auckland Door Hardware & Lock Replacement',
-    description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across New Zealand.',
+    description: 'Upgrade the security of your commercial or residential property with our professional hardware and lock replacement services across Auckland.',
     url: "/lock/lock-change-installation",
   }
 };
@@ -27,8 +27,8 @@ export default function LockChangePage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/lock-change/#webpage",
-        "url": "https://falconaccess.co.nz/lock-change",
+        "@id": "https://falconaccess.co.nz/lock/lock-change-installation/#webpage",
+        "url": "https://falconaccess.co.nz/lock/lock-change-installation",
         "name": "Hardware & Lock Replacement | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -62,7 +62,7 @@ export default function LockChangePage() {
             "name": "How long does a typical hardware replacement take?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "For standard residential and commercial doors, a complete hardware swap usually takes less than an hour per door, minimizing disruption."
+              "text": "For standard residential and commercial doors, a complete hardware swap usually takes less than an hour per door, minimising disruption."
             }
           },
           {
@@ -88,6 +88,7 @@ export default function LockChangePage() {
       />
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/lock/lock-change-installation/lever-handle-deadbolt-lock-installation-auckland.webp"
         imageAlt="Brushed steel lever handle and matching round deadbolt"
         imageTitle="Lock Installation Service Auckland"
@@ -161,7 +162,7 @@ export default function LockChangePage() {
           },
           {
             question: "How long does a typical hardware replacement take?",
-            answer: "For standard residential and commercial doors, a complete hardware swap usually takes less than an hour per door, minimizing disruption."
+            answer: "For standard residential and commercial doors, a complete hardware swap usually takes less than an hour per door, minimising disruption."
           },
           {
             question: "Do you provide the replacement hardware?",

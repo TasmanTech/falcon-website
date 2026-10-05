@@ -27,8 +27,8 @@ export default function SmartLockInstallationPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/smart-lock-installation/#webpage",
-        "url": "https://falconaccess.co.nz/smart-lock-installation",
+        "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-installation/#webpage",
+        "url": "https://falconaccess.co.nz/smart-lock/smart-lock-installation",
         "name": "Fresh Smart Lock Installation | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -88,6 +88,7 @@ export default function SmartLockInstallationPage() {
       />
 
       <PhotoContentSection
+        priority
         title="Starting From Scratch"
         content={[
           <p key="1">You might be fixing up a new office or home. Or you might be putting a lock on a new door. A new smart lock needs great care.</p>,
@@ -104,7 +105,7 @@ export default function SmartLockInstallationPage() {
       <TextContentSection
         title="The Importance of Precision"
         content={[
-          <p key="1">Smart locks have small motors inside. They do not work well if they rub. If a hole is off-center, the motor works too hard. This drains the power fast and breaks the lock.</p>,
+          <p key="1">Smart locks have small motors inside. They do not work well if they rub. If a hole is off-centre, the motor works too hard. This drains the power fast and breaks the lock.</p>,
           <p key="2">This is why a pro fit is so key. We do not just screw the lock on. We make sure the door fit is perfect. We take care with every step.</p>
         ]}
         theme="white"
@@ -125,7 +126,12 @@ export default function SmartLockInstallationPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Ready for a Smart Lock?"
+        description="Tell us about your door and we will recommend and fit a smart lock that suits it."
+        buttonText="Get a Quote"
+      />
 
       <IconListSection
         title="Our Fresh Install Process"

@@ -27,8 +27,8 @@ export default function LockoutPage() {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/lockout/#webpage",
-        "url": "https://falconaccess.co.nz/lockout",
+        "@id": "https://falconaccess.co.nz/lock/lockout/#webpage",
+        "url": "https://falconaccess.co.nz/lock/lockout",
         "name": "Emergency Lockout Services | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
@@ -90,6 +90,7 @@ export default function LockoutPage() {
       />
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/lock/lockout/key-in-stainless-door-lock-lockout-auckland.webp"
         imageAlt="Key inserted in a square stainless steel door lock"
         imageTitle="Residential Lockout Service Auckland"
@@ -127,7 +128,13 @@ export default function LockoutPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Locked Out Right Now?"
+        description="Call us now. We come to you anywhere in Auckland and use non-destructive entry first."
+        buttonText="Call +64 9 243 1404"
+        buttonHref="tel:+6492431404"
+      />
 
       <IconListSection
         title="Our Lockout Process"
@@ -140,7 +147,7 @@ export default function LockoutPage() {
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-            title: 'Authorization Verification',
+            title: 'Authorisation Verification',
             description: "For optimal security, we quickly verify your authorisation to access the property before beginning any entry procedures. This protects you and your valuable assets."
           },
           {

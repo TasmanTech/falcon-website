@@ -50,7 +50,7 @@ export default function Hero({
           title={imageTitle}
           width={1920}
           height={1080}
-          sizes="(max-width: 768px) 100vw, 60vw"
+          sizes="60vw"
           className="object-cover w-full h-full"
           priority
           fetchPriority="high"

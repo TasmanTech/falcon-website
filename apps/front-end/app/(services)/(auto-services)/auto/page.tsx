@@ -101,6 +101,7 @@ export default function AutoServicesPage() {
       </div>
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/auto/car-rev-counter-gauge-auto-services.webp"
         imageAlt="Round car rev counter gauge with a chrome bezel and red needle"
         imageTitle="Mobile Auto Services Auckland"
@@ -138,7 +139,13 @@ export default function AutoServicesPage() {
         theme="light"
       />
 
-      <CTASection theme="catchy" />
+      <CTASection
+        theme="catchy"
+        title="Need Help With Your Vehicle?"
+        description="Car lockouts, jump starts and fault code checks across Auckland, with a $20 call-out fee."
+        buttonText="Call +64 9 243 1404"
+        buttonHref="tel:+6492431404"
+      />
 
       <FAQSection
         title="Auto Services FAQs"

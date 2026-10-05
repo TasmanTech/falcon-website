@@ -18,7 +18,7 @@ export default function Footer() {
             <Image src="/falcon_access_logo.webp" alt="Falcon Access Logo" width={300} height={64} className="h-14 md:h-16 w-auto rounded-xl p-1 bg-white" style={{ width: 'auto' }} />
           </div>
           <p className="text-brand-light/70 font-inter mb-6">
-            Providing high-quality professional services across New Zealand.
+            Mobile locksmith, smart lock and auto services across Auckland.
           </p>
           <div className="flex space-x-4">
             {/* Social Icons */}
@@ -58,6 +58,8 @@ export default function Footer() {
           <ul className="space-y-2 font-inter text-brand-light/80 mb-4">
             <li>Phone: <a href="tel:+6492431404" className="underline hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
             <li>Email: <a href="mailto:info@falconaccess.co.nz" className="underline hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
+            <li>Mon to Sat: 7 am to 9 pm</li>
+            <li>Sun: 7 am to 7 pm</li>
             <li>
               <a href="https://maps.app.goo.gl/cd1vP8439PMM4EXd9" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
                 Falcon Access

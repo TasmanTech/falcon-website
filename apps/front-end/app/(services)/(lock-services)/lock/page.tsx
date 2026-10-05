@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     canonical: "/lock",
   },
   title: 'Auckland Locksmith & Hardware Services',
-  description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across New Zealand.',
+  description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across Auckland.',
   keywords: 'Lock Services, Locksmith Services, Locksmith Near Me, General Locksmith, Locksmith for Business, Lock Service Near Me, Lockout, Rekey, Lock Repair, Lock Change, Lock Replacement, Lock Installation, New Zealand, Falcon Access',
   openGraph: {
     title: 'Auckland Locksmith & Hardware Services',
@@ -114,6 +114,7 @@ export default function LockServicesPage() {
       </div>
 
       <PhotoContentSection
+        priority
         imageSrc="/images/services/lock/key-in-lock-cylinder-locksmith-auckland.webp"
         imageAlt="Silver key inserted in a lock cylinder showing its brass pins"
         imageTitle="Residential & Commercial Locksmith"

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     canonical: "/contact",
   },
   title: 'Contact Our Auckland Team',
-  description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
+  description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
   keywords: 'Contact Falcon Access, Property Maintenance Contact, Repair Services New Zealand',
   openGraph: {
     title: 'Contact Our Auckland Team | Falcon Access',
-    description: 'Get in touch with Falcon Access for commercial and residential repair, maintenance, and emergency services across New Zealand.',
+    description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
     url: "/contact",
   }
 };
@@ -73,6 +73,18 @@ export default function ContactPage() {
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Email</h3>
                     <a href="mailto:info@falconaccess.co.nz" className="text-lg font-bold text-brand-dark hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a>
                     <p className="text-sm text-brand-dark/70 font-inter mt-1">We aim to reply within 24 hours.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent shrink-0">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Hours</h3>
+                    <p className="text-lg font-bold text-brand-dark">Mon to Sat: 7 am to 9 pm</p>
+                    <p className="text-lg font-bold text-brand-dark">Sun: 7 am to 7 pm</p>
+                    <p className="text-sm text-brand-dark/70 font-inter mt-1">Mobile service across Auckland City, the North Shore, and West, East, and South Auckland.</p>
                   </div>
                 </div>
               </div>
