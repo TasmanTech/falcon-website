@@ -162,33 +162,6 @@ export default function Home() {
         theme="light"
       />
 
-      <TextContentSection
-        title="Our Commitment to Quality"
-        content={[
-          <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
-          <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
-          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
-        ]}
-        theme="dark"
-      />
-
-      <PhotoContentSection
-        title="Comprehensive Property Care"
-        content={[
-          <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. If you need a locksmith near you, we are close by.</p>,
-          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape.</p>,
-          <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
-        ]}
-        imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
-        imageAlt="Orange cordless drill and impact driver with pliers, screwdrivers and a pipe wrench"
-        imageTitle="Property Maintenance Tools"
-        imageDescription="Cordless power tools and hand tools for commercial and residential property maintenance in Auckland."
-        ctaText="Connect Now"
-        ctaHref="/contact"
-        photoPosition="left"
-        theme="light"
-      />
-
       <IconListSection
         title="Our Auckland Service Guarantees"
         subtitle="We stand firmly behind our commercial and residential contracting work across the wider Auckland region."
@@ -213,6 +186,33 @@ export default function Home() {
             title: 'Transparent $20 Callout Fee',
             description: "No hidden costs and absolutely no surprise surcharges. We operate with a brilliantly simple, highly affordable $20 flat call-out fee for all locksmithing and maintenance visits across Auckland."
           }
+        ]}
+        theme="dark"
+      />
+
+      <PhotoContentSection
+        title="Comprehensive Property Care"
+        content={[
+          <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. If you need a locksmith near you, we are close by.</p>,
+          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape.</p>,
+          <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
+        ]}
+        imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
+        imageAlt="Orange cordless drill and impact driver with pliers, screwdrivers and a pipe wrench"
+        imageTitle="Property Maintenance Tools"
+        imageDescription="Cordless power tools and hand tools for commercial and residential property maintenance in Auckland."
+        ctaText="Connect Now"
+        ctaHref="/contact"
+        photoPosition="left"
+        theme="light"
+      />
+
+      <TextContentSection
+        title="Our Commitment to Quality"
+        content={[
+          <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
+          <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
+          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />
