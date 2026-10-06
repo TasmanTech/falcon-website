@@ -61,7 +61,7 @@ export default function Footer() {
             <li>Mon to Sat: 7 am to 9 pm</li>
             <li>Sun: 7 am to 7 pm</li>
             <li>
-              <a href="https://maps.app.goo.gl/cd1vP8439PMM4EXd9" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
+              <a href="https://www.google.com/maps?cid=14340846117585175277" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
                 Falcon Access
               </a>
             </li>
