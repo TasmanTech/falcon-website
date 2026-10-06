@@ -75,9 +75,9 @@ export default function RootLayout({
           { "@type": "Place", "name": "East Auckland" },
           { "@type": "Place", "name": "South Auckland" }
         ],
-        "hasMap": "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",
+        "hasMap": "https://www.google.com/maps?cid=14340846117585175277",
         "sameAs": [
-          "https://maps.app.goo.gl/cd1vP8439PMM4EXd9",
+          "https://www.google.com/maps?cid=14340846117585175277",
           "https://www.facebook.com/falconaccessnz",
           "https://www.instagram.com/falconaccess/"
         ],
