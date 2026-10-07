@@ -36,8 +36,8 @@ function getGtag(): Gtag {
  * Registers the Google Ads account with the Google tag and reports a "Phone call lead"
  * conversion whenever a visitor taps a `tel:` link anywhere on the site.
  *
- * gtag.js itself is loaded by the Google Analytics tag, which is deferred until the first
- * interaction; commands pushed before then are queued, so taps are never lost.
+ * gtag.js itself is loaded by the Google Analytics tag, which is deferred until the page is
+ * idle; commands pushed before then are queued, so taps are never lost.
  *
  * @returns {null} Renders nothing.
  */
