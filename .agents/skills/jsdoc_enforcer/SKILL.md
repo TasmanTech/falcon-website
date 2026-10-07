@@ -1,27 +1,24 @@
 ---
 name: jsdoc-enforcer
 description: >-
-  Agent instructions for ensuring all source code has comprehensive JSDoc comments.
-  Use this to systematically document classes, methods, components, and utilities.
+  Add or fix JSDoc comments across the front-end and back-end source. Use when asked to document code,
+  when adding new exported functions, components, classes or endpoints, or when reviewing code that
+  lacks documentation.
 ---
 
-# JSDoc Enforcer Agent
+# JSDoc Enforcer
 
-Your role is to ensure all front-end and back-end source code is fully documented using standard JSDoc notation.
+## Targets (skip test files)
+- Back-end: `apps/back-end/src/**/*.ts` and `apps/back-end/scripts/*.mjs`.
+- Front-end: `apps/front-end/app/**/*.tsx`, `app/actions/*.ts`, `components/**/*.tsx`, `lib/**/*.ts` and `proxy.ts`.
 
-## Execution Steps
+## Rules
+- Every exported class, interface, type, function, React component, controller handler and service method has a JSDoc block saying what it does and why, not restating its name.
+- Use `@param {Type} name - meaning` for each parameter (nested props as `props.name`) and `@returns {Type} meaning`; add `@throws` where it throws on purpose.
+- Components: describe the UI role, behaviour (client or server, side effects) and props.
+- Constants and fields: a one-line `/** ... */` when the purpose is not obvious.
+- Prose in comments uses UK / NZ English.
 
-1. **Target Files**:
-   - Focus on `apps/back-end/src/**/*.ts` (excluding `*.spec.ts`).
-   - Focus on `apps/front-end/app/**/*.tsx`, `apps/front-end/components/**/*.tsx`, `apps/front-end/hooks/**/*.ts`, and `apps/front-end/lib/**/*.ts` (excluding test files). Ensure ALL front-end logic, components, and pages are thoroughly documented.
+Good examples to copy: `lib/idle.ts`, `lib/invoice.ts` (`authorisedFetch`), `components/SiteChrome.tsx`, `apps/back-end/src/app.module.ts` (`buildDatabaseOptions`).
 
-2. **Rules for JSDoc**:
-   - Every `class`, `interface`, and `type` must have a top-level JSDoc comment explaining its purpose.
-   - Every public `method`, `controller endpoint`, and `service function` must have a JSDoc comment describing what it does.
-   - Use `@param` for all parameters and `@returns` for its return type.
-   - React components must be documented with a description of their UI role, behavior, and any accepted props.
-
-3. **Application**:
-   - Systematically read through the target files.
-   - Use code replacement tools to insert accurate, meaningful JSDoc comments above each relevant declaration.
-   - Avoid generic stubs; read the code to provide context-aware documentation.
+Read the code before writing; no generic stubs. Do not change behaviour while documenting.

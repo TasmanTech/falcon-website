@@ -1,45 +1,49 @@
 ---
-name: Back-end Module Layout
-description: Guidelines for structuring and laying out modules in the NestJS back-end.
+name: backend-layout
+description: >-
+  Folder layout, file naming and wiring for NestJS modules in apps/back-end/src. Use when creating a new
+  back-end module, adding a controller, service, entity, DTO or helper, or registering a module in
+  app.module.ts.
 ---
 
-# Back-end Module Layout Guidelines
+# Back-end Module Layout
 
-The back-end of this project is a **NestJS** application utilizing **TypeORM**. When creating or modifying back-end modules in `apps/back-end/src/`, strictly adhere to the following resource-based directory structure and naming conventions:
+The back-end is NestJS 12 with TypeORM on PostgreSQL, bundled by webpack (`webpack.config.cjs`) into `dist/main.mjs`. Relative imports are written **without** a file extension (`import { InvoiceService } from './invoice.service';`), matching the existing code.
 
-## 1. Resource-based Directory Structure
-Each logical resource should have its own directory (e.g., `offer/`, `user/`, `contact/`). All files related to that resource must be housed within its directory.
+## Current modules (`apps/back-end/src/`)
+| Folder | Contents | Notes |
+|---|---|---|
+| `admin/` | `admin.entity.ts` | Admin users, registered by `AuthModule`; managed with `scripts/create-admin.mjs` |
+| `auth/` | controller, service, module, `jwt-auth.guard.ts`, `auth.constants.ts`, `dto/login.dto.ts` | `/auth/login`, `/auth/refresh`, `/auth/logout`; JWT access + refresh tokens |
+| `contact/` | controller, service, module, `dto/create-contact.dto.ts` | Public `POST /contact`; emails the enquiry, no entity |
+| `invoice/` | controller, service, module, entity, DTOs, `invoice-pdf.ts`, `invoice-storage.ts`, `invoice.constants.ts` | Admin only (`JwtAuthGuard`), see `admin_portal` skill |
+| `lead/` | controller, service, module, entity, DTOs | Admin only (`JwtAuthGuard`), see `admin_portal` skill |
+| `common/assets/` | `assets.util.ts` | Resolves files in `apps/back-end/assets/` (e.g. the invoice badge) |
+| root | `main.ts`, `app.module.ts`, `app.controller.ts`, `app.service.ts`, `redirect.filter.ts` | Bootstrap, DB config, global 404 redirect filter |
 
-## 2. Standard Files per Module
-A typical module directory should include the following core files, named according to the `[module-name].[type].ts` convention:
-- **Module** (`[module].module.ts`): Configures and exports the module, controllers, and services.
-- **Controller** (`[module].controller.ts`): Handles incoming HTTP requests and routes them to services.
-- **Service** (`[module].service.ts`): Contains business logic and interacts with the repository/entities.
-- **Entity** (`[module].entity.ts`): Defines the TypeORM database schema for the resource.
+## Conventions
+- One folder per resource, files named `<resource>.<type>.ts`: `.module`, `.controller`, `.service`, `.entity`.
+- DTOs in `dto/`, named `<action>-<resource>.dto.ts` (`create-invoice.dto.ts`, `update-lead-status.dto.ts`, `list-invoices.dto.ts`), decorated with `class-validator` / `class-transformer`.
+- Plain helpers that are not providers live in the same folder as `<resource>-<purpose>.ts` or `<resource>.constants.ts` (see `invoice/`).
+- Every file with logic has a colocated `<name>.spec.ts` (`backend_testing` skill).
+- Admin-only controllers use `@UseGuards(JwtAuthGuard)` at class level.
+- Entities are picked up by `autoLoadEntities: true`; register each entity with `TypeOrmModule.forFeature([...])` in its module.
+- Add the module to `imports` in `app.module.ts`.
+- Files the runtime reads from disk go in `apps/back-end/assets/`, are committed, and are resolved through `common/assets/assets.util.ts`. If one is required, add a check to `apps/back-end/Dockerfile` like the existing `invoice-badge.png` check.
 
-## 3. DTOs (Data Transfer Objects)
-- Create a `dto/` subdirectory within the module folder for all data transfer objects.
-- Name DTO files using the `[purpose].dto.ts` convention (e.g., `create-[module].dto.ts`, `update-[module].dto.ts`).
-- Use `class-validator` and `class-transformer` decorators in DTOs for request validation.
-
-## 4. Supplementary Files
-If a module requires additional controllers or services (e.g., for specific secondary routes), name them descriptively but keep them within the same resource folder (e.g., `public-contact.controller.ts` or `cleanup.service.ts`).
-
-Plain helpers that are not Nest providers (rendering, file storage, constants) also live in the resource folder and are named `[module]-[purpose].ts` or `[module].constants.ts`, each with its own `.spec.ts` where it has logic. The `invoice/` module is the reference: `invoice-pdf.ts` (PDF rendering), `invoice-storage.ts` (PDF files on disk) and `invoice.constants.ts`.
-
-## 5. Current Modules
-Admin-facing modules (`invoice/`, `lead/`) are guarded by `JwtAuthGuard` at the controller level. Follow the `admin_portal` skill when changing them.
-
-## Example Layout
+## Example
 ```
-src/
-└── contact/
-    ├── dto/
-    │   ├── create-contact.dto.ts
-    │   └── update-contact.dto.ts
-    ├── contact.module.ts
-    ├── contact.controller.ts
-    ├── internal-contact.controller.ts
-    ├── contact.service.ts
-    └── contact.entity.ts
+src/invoice/
+├── dto/
+│   ├── create-invoice.dto.ts
+│   ├── create-invoice.dto.spec.ts
+│   ├── list-invoices.dto.ts
+│   └── update-invoice-status.dto.ts
+├── invoice.constants.ts
+├── invoice.controller.ts (+ .spec.ts)
+├── invoice.entity.ts
+├── invoice.module.ts (+ .spec.ts)
+├── invoice.service.ts (+ .spec.ts)
+├── invoice-pdf.ts (+ .spec.ts)
+└── invoice-storage.ts (+ .spec.ts)
 ```

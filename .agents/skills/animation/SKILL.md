@@ -1,51 +1,28 @@
 ---
-name: Core Animation Standards
-description: Guidelines for animating UI elements like cards, text blurbs, SVGs, and images using standard Tailwind classes.
+name: animation
+description: >-
+  Entrance animation and hover-motion classes defined in apps/front-end/app/globals.css. Use when
+  adding or changing animations, fade-ins, hover lifts or pulse effects on front-end elements.
 ---
 
-# Core Animation Standards
+# Animation
 
-When creating or updating UI elements, apply these specific animation classes to ensure consistent motion across the application. These animations are defined in `globals.css` and use a `[ready-class] [play-class]` format.
+Animations are defined in `apps/front-end/app/globals.css`: keyframes in an `@theme inline` block and the ready / play classes in `@layer utilities`. Each element gets a `*-ready` class (starts at `opacity: 0.01`) plus its play class.
 
-## Standard Classes
+| Element | Classes | Effect |
+|---|---|---|
+| Cards, panels, containers, large buttons | `animate-card-ready animate-play` | 0.25s slide up |
+| Standalone SVGs and icon wrappers | `animate-svg-ready animate-play-svg` | 0.35s slide up |
+| Headings, paragraphs, hero text, short messages | `animate-text-blurb-ready animate-play-text` | 0.5s fade in |
+| Images | `animate-image-ready animate-play-img` | 0.7s fade in |
 
-1. **Div Cards & Containers** (Fastest: 0.25s slide-up)
-   - Apply to: Parent `div` wrappers, panels, cards, and large form buttons.
-   - Classes: `animate-card-ready animate-play`
-   - Example:
-     ```tsx
-     <div className="bg-white rounded-lg p-6 animate-card-ready animate-play">
-       {/* Content */}
-     </div>
-     ```
-
-2. **SVGs & Icons** (Faster: 0.35s slide-up)
-   - Apply to: Standalone SVGs, icon wrappers.
-   - Classes: `animate-svg-ready animate-play-svg`
-   - Example:
-     ```tsx
-     <svg className="w-6 h-6 animate-svg-ready animate-play-svg" ...>
-     ```
-
-3. **Text Blurbs & Headers** (Slow: 0.5s fade-in)
-   - Apply to: Paragraphs, headings, hero text, and small error messages.
-   - Classes: `animate-text-blurb-ready animate-play-text`
-   - Example:
-     ```tsx
-     <p className="text-slate-500 animate-text-blurb-ready animate-play-text">
-       Description text goes here.
-     </p>
-     ```
-
-4. **Images** (Slowest: 0.7s fade-in)
-   - Apply to: `<Image>` components or `<img>` tags.
-   - Classes: `animate-image-ready animate-play-img`
-   - Example:
-     ```tsx
-     <Image src="..." className="animate-image-ready animate-play-img" ... />
-     ```
+```tsx
+<p className="text-brand-dark/80 animate-text-blurb-ready animate-play-text">Description text.</p>
+```
 
 ## Rules
-- **DO NOT** use default Tailwind animations (like `animate-fade`) unless specifically requested. Always use the custom ready/play class pairs.
-- Elements will start invisible (`opacity: 0`) thanks to the `*-ready` class, and will transition into view when the `*-play` class is applied.
-- **Feature Card Hover Effects**: Keep interactive hover states simple and lightweight. Instead of heavy shadows, use a subtle lift and border change (e.g., `-translate-y-1 hover:border-brand-accent transition-all duration-200`). Do not use expensive `shadow-2xl` or internal scaling effects that require complex repaints.
+- Use these pairs, not default Tailwind animations (`animate-bounce`, `animate-pulse` and so on).
+- **Never animate the LCP element.** The first `<PhotoContentSection>` on a page takes `priority`, which preloads its image and skips the fade. The hero image is not faded either.
+- `animate-cta-pulse` is the periodic ring behind the mobile call button in `FloatingCTA.tsx`. Always wrap it as `motion-safe:animate-cta-pulse` so reduced-motion users don't see it.
+- Hover states stay light: a small lift and colour change, e.g. `hover:-translate-y-1 hover:border-brand-accent transition-all duration-200`. No `shadow-2xl` or scale-on-hover effects that force heavy repaints.
+- New keyframes go in the `@theme inline` block in `globals.css` as `--animate-<name>`.

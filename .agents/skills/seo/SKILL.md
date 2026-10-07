@@ -1,90 +1,53 @@
 ---
-name: SEO and Metadata Guidelines
-description: Rules for setting Next.js Metadata tags, including title, description, keywords, OpenGraph, and Schema for public and auth pages.
+name: seo
+description: >-
+  Page metadata, OpenGraph, canonical URLs, JSON-LD schema, the sitemap, robots and llms.txt for the
+  Next.js front-end. Use when creating or editing any page.tsx or layout.tsx metadata, adding structured
+  data, adding or removing a public page, or changing business details that appear in schema.
 ---
 
-# SEO and Metadata Guidelines
+# SEO and Metadata
 
-When creating or modifying Next.js page components, ensure proper metadata is exported using the Next.js `Metadata` API while adhering strictly to Screaming Frog character and pixel length limits to prevent truncation.
+## Titles
+`app/layout.tsx` sets `title.template: "%s | Falcon Access"`. A page sets **only its own name**; never add `| Falcon Access` yourself or it appears twice.
 
-## 1. Title Template Rule & Length Limits
-**CRITICAL**: The `app/layout.tsx` should define a global title template (`"%s | Falcon Access"`). 
-- When setting the `title` in a child page, provide **ONLY the specific page name**.
-- **NEVER** include `| Falcon Access` in the title string you provide. If you do, it will result in duplicates (e.g., `"Contact Us | Falcon Access | Falcon Access"`).
+The full title must stay under about 60 characters. The suffix ` | Falcon Access` is 16, so a page `title` is **44 characters or fewer**.
 
-**Screaming Frog Title Length Rules**:
-- Google truncates titles around **60 characters** (or ~580 pixels).
-- Ensure the combined title (Page Name + `" | Falcon Access"`) remains under 60 characters. For example, if your brand name suffix takes up 20 characters, your page-specific `title` string MUST be 40 characters or less.
+## Public pages
+Export `metadata` with:
+- `title` (44 characters max).
+- `description`: 120 to 155 characters.
+- `keywords`: the search terms for this page (see the keyword list in `AGENTS.md`).
+- `alternates: { canonical: "/path" }`.
+- `openGraph: { title, description, url: "/path" }` (relative URLs resolve against `metadataBase`; the OG title has no brand suffix and stays under 60 characters).
 
-## 2. Meta Description Length Limits
-**Screaming Frog Description Length Rules**:
-- Google truncates descriptions around **155–160 characters** (or ~920 pixels on desktop).
-- The `description` property MUST be between **120 and 155 characters** to be fully visible and avoid Screaming Frog flags.
+Then render a JSON-LD `@graph` with `<JsonLd id="schema-<page>" schema={jsonLd} />` (`components/JsonLd.tsx` outputs a plain `<script>` so crawlers see it in the server HTML):
+- Always `WebPage` (with `@id` `<url>/#webpage` and `"isPartOf": { "@id": "https://falconaccess.co.nz/#website" }`) and `BreadcrumbList`.
+- `Service` on service pages; `FAQPage` whenever the page has a `<FAQSection>`, with the same questions and answers.
+- The site-wide `WebSite` and `LocalBusiness` / `Locksmith` entities live in `app/layout.tsx` only. Link to them by `@id`; never duplicate them.
 
-## 3. Public Pages
-For any public-facing page (e.g., Home, Services, Contact), the exported `metadata` object or component must include:
-- `title`: Page-specific title (Max 46 chars).
-- `description`: Compelling summary (120-155 chars).
-- `keywords`: Relevant keywords.
-- `openGraph`: OpenGraph data (`title`, `description`, `url`, etc.) for rich social sharing.
-  - **OG Title**: Max 60 characters total (if defining custom OG title, ensure it fits the limit).
-  - **OG Description**: Max 155 characters.
-- **Schema (Structured Data)**: EVERY page must include a `<script type="application/ld+json">` block utilizing the `@graph` array pattern. 
-  - **Minimum Requirement**: Include `WebPage` and `BreadcrumbList` schemas on all pages (even those that are `noindex`).
-  - **Dynamic Extensions**: Add `FAQPage` if the page has FAQs, and `Service` if it's a service offering.
-  - **Entity Linkage**: All schemas must link to the root context using `"isPartOf": { "@id": "[Website URL]/#website" }`.
-
-## 4. No-Index Pages
-For utility pages, forms, or internal pages that should not be indexed (e.g., `/thank-you`, `/internal-booking`):
-- Include the `title` (Max 46 chars), `description` (120-155 chars), and `openGraph` data.
-- Do NOT include `keywords`.
-- **DO** include foundational JSON-LD Schema (e.g., `WebPage`, `BreadcrumbList`) for accessibility and structural clarity, even though it won't be indexed.
-- Include `robots: { index: false, follow: true/false }` depending on whether links should be crawled.
-- **Why OpenGraph?** Even if a page is no-indexed by search engines, it can still be shared directly via messages, and OpenGraph tags ensure a rich preview is generated.
-
-## Example Usage (Public Page)
-```typescript
-import { Metadata } from 'next';
-import JsonLd from '@/components/JsonLd';
-
+Copy a current page as the template, e.g. `app/(services)/(lock-services)/lock/rekey/page.tsx`:
+```ts
 export const metadata: Metadata = {
-  title: 'Auckland Hardware Rekeying Services', // 35 chars, plus " | Falcon Access" stays under 60
-  description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.', // 136 chars (Max 155)
-  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Hardware Rekeying, Auckland, Falcon Access',
+  alternates: { canonical: "/lock/rekey" },
+  title: 'Auckland Hardware Rekeying Services',
+  description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
+  keywords: 'Rekeying, Lock Rekey, Lock Rekey Service, Hardware Rekeying, Falcon Access',
   openGraph: {
-    title: 'Auckland Hardware Rekeying Services | Falcon Access', // Ensure max 60 chars
-    description: 'Cost-effective hardware rekeying for commercial and residential properties across Auckland.', // Max 155 chars
-    url: 'https://falconaccess.co.nz/lock/rekey',
-  }
+    title: 'Auckland Hardware Rekeying Services',
+    description: 'Cost-effective hardware rekeying for commercial and residential properties. Secure your facility without replacing the entire mechanism.',
+    url: "/lock/rekey",
+  },
 };
-
-export default function RekeyPage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://falconaccess.co.nz/lock/rekey/#webpage",
-        "url": "https://falconaccess.co.nz/lock/rekey",
-        "name": "Auckland Hardware Rekeying Services | Falcon Access",
-        "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://falconaccess.co.nz/" },
-          { "@type": "ListItem", "position": 2, "name": "Lock Services", "item": "https://falconaccess.co.nz/lock" },
-          { "@type": "ListItem", "position": 3, "name": "Rekeying", "item": "https://falconaccess.co.nz/lock/rekey" }
-        ]
-      }
-    ]
-  };
-
-  return (
-    <main>
-      <JsonLd id="schema-rekey" schema={jsonLd} />
-      {/* Content */}
-    </main>
-  );
-}
 ```
+
+## Private pages (`/admin/**`)
+`robots: { index: false, follow: false }` and a `title` only: no description, keywords, OpenGraph or JSON-LD. `app/admin/layout.tsx` already sets this; `next.config.ts` adds `X-Robots-Tag: noindex` and `app/robots.ts` disallows `/admin`. Never add admin routes to the sitemap or `llms.txt`.
+
+## Discovery files
+- **`app/sitemap.ts`**: add every new public page (no `lastModified`; priority 0.9 for service pages, 0.8 for core pages, 0.5 for legal pages).
+- **`public/llms.txt`**: add every new public page under its section with a one-line plain description. Keep its key facts (phone, email, hours, call-out fee, Google Business Profile link) identical to the `LocalBusiness` schema in `app/layout.tsx` and the footer.
+- **`app/robots.ts`**: allows `/`, disallows `/admin`, points at `/sitemap.xml`.
+
+## Content rules
+No "24/7", no arrival times, no web design and no invented credentials in titles, descriptions, keywords or schema (`AGENTS.md`). UK / NZ spelling throughout.

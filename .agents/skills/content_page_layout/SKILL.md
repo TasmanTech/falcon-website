@@ -1,52 +1,49 @@
 ---
-name: Content Page Layout
-description: Strict structural guidelines for laying out sections on content and service pages.
+name: content-page-layout
+description: >-
+  Required section order and the reusable section components for service and content pages. Use when
+  building a new page, adding, removing or reordering sections, or choosing which section component
+  and props to use.
 ---
 
 # Content Page Layout
 
-When filling content pages (such as service pages, about pages, etc.) with content sections, you MUST adhere to the following alternating structural pattern:
+## Section order
+Every service and content page (About, hub pages such as `/lock`, every service page) follows:
 
-## The Section Sequence
-Every content and service page (anything below a `<PageHeaderSection>`) must contain **at least two Photo / Content sections**, laid out in this order:
+1. `<PageHeaderSection title subtitle />`
+2. `<PhotoContentSection photoPosition="right" priority />`: photo right, text left. `priority` preloads the image and skips the fade because it is usually the LCP element. Only the first photo section gets it.
+3. `<TextContentSection align="left" />`
+4. `<PhotoContentSection photoPosition="left" />`
+5. `<CTASection theme="catchy" />`: centred, `py-24 md:py-32`
+6. Optional `<IconListSection />`
+7. `<FAQSection />` (with a matching `FAQPage` in the JSON-LD)
 
-1. **Photo / Content Section**: photo on the **Right**, text on the left (`photoPosition="right"`)
-2. **h2 / Content Section**: text only, **left-aligned** (`<TextContentSection align="left">`)
-3. **Photo / Content Section**: photo on the **Left**, text on the right (`photoPosition="left"`)
-4. **CTA Section**: centred text in a contrasting colour with extra padding (`<CTASection theme="catchy" />`, which renders `py-24 md:py-32`, `text-center`)
+For more photo sections, keep alternating sides (right, left, right...) with a text or icon-list section between each pair.
 
-After the CTA, pages may continue with an **h2 / Icon-List / SVG Section** (`<IconListSection>`) and then the **FAQ Section**.
+**Homepage** (`app/(core)/page.tsx`): `<Hero isMain />`, photo section (right, "Commercial & Residential Repair"), `IconListSection` guarantees (dark), photo section (left), `TextContentSection` "Our Commitment to Quality" (dark), `CTASection`, `FAQSection`. Keep the first photo on the right and the second on the left. The hero image is the LCP element here, so no photo section takes `priority`.
 
-If a page needs more photo sections, keep alternating the photo side (right, left, right...) with a text or icon-list section between each pair.
+**Exempt**: `/contact` (header plus `<ContactForm>`), `/privacy-policy`, `/terms-of-service` and the admin portal.
 
-**Homepage exception**: the homepage keeps its own design (hero, emergency banner, photo sections, centred commitment text, guarantees, CTA, FAQ), but its first Photo / Content section must also have the photo on the **Right**, and the second on the **Left**.
+## Components (`apps/front-end/components/sections/`)
+Never write a raw `<section>` in a `page.tsx`. If a page needs a new layout, add a reusable component here (with a test).
 
-Utility pages (contact, privacy policy, terms of service) are exempt.
+| Component | Props (`?` = optional) |
+|---|---|
+| `PageHeaderSection` | `title`, `subtitle` |
+| `PhotoContentSection` | `title`, `content: ReactNode[]`, `imageSrc`, `imageAlt`, `imageTitle?`, `imageDescription?`, `ctaText?`, `ctaHref?`, `photoPosition: 'left' \| 'right'`, `theme?: 'light' \| 'dark'` (default light), `priority?` |
+| `TextContentSection` | `title`, `content: ReactNode[]`, `theme?: 'light' \| 'dark' \| 'white'`, `align?: 'center' \| 'left'` (default centre) |
+| `IconListSection` | `title`, `subtitle?`, `items: { icon, title, description }[]`, `theme?: 'light' \| 'dark' \| 'white'` |
+| `CTASection` | `title?`, `description?`, `buttonText?`, `buttonHref?`, `theme?: 'light' \| 'dark' \| 'white' \| 'catchy'` (default catchy) |
+| `FAQSection` | `title`, `subtitle` (required), `faqs: { question, answer }[]`, `theme?: 'light' \| 'dark'` |
 
-## Image Rules
-- Every image comes from the manifest in the `image_generation` skill. Follow that skill to pick sources, crop, compress and name images.
-- **Format & Size**: `.webp` at **1024x1024** (content) or **1600x900** (hero). The photo frame in `<PhotoContentSection>` is `aspect-square`, so a square image fills it with no cropping.
-- **CSS**: `object-cover` is applied inside the component. Do not override it.
-- **Attributes**: always pass `imageAlt`, `imageTitle` and `imageDescription`, copied from the image's manifest entry.
-- Never reuse an image on more than one section or page.
+The homepage hero is `components/Hero.tsx`: `title`, `description`, `imageSrc`, `imageAlt`, `imageTitle?`, `ctaText?`, `ctaLink?`, `isMain?`. Its image is hidden below `md` and always has `priority`.
 
-## Implementation Details
-- Ensure all sections use the standard container classes (e.g., `max-w-7xl mx-auto px-4...`).
-- Use the established Tailwind spacing and typography guidelines defined in the `style` skill.
+## Images
+- Every image comes from the `image_generation` manifest: 1024x1024 `.webp` for photo sections, 1600x900 for the hero.
+- Pass `imageAlt`, `imageTitle` and `imageDescription` exactly as in the manifest entry.
+- The frame is `aspect-square` with `object-cover`; don't override it.
+- Never reuse an image on another section or page.
 
-## Strict Componentization Rule
-**NEVER write raw HTML `<section>` blocks for page content.** You must strictly use the pre-built, reusable UI components located in `apps/front-end/components/sections/` to build pages. 
-
-The mapping is as follows:
-1. **Photo / Content Section** -> Use `<PhotoContentSection>`
-   - Props: `title`, `content` (ReactNode[]), `imageSrc`, `imageAlt`, `imageTitle`?, `imageDescription`?, `ctaText`?, `ctaHref`?, `photoPosition` ('left' | 'right'), `theme` ('light' | 'dark').
-2. **h2 / Content Section** -> Use `<TextContentSection>`
-   - Props: `title`, `content` (ReactNode[]), `theme` ('light' | 'dark' | 'white'), `align` ('center' | 'left', default 'center'). Use `align="left"` between photo sections.
-3. **h2 / Icon-List / SVG Section** -> Use `<IconListSection>`
-   - Props: `title`, `subtitle`?, `items` (Array of {icon, title, description}), `theme`.
-4. **CTA Section** -> Use `<CTASection>`
-   - Props: `title`?, `description`?, `buttonText`?, `buttonHref`?, `theme` ('light' | 'dark' | 'white' | 'catchy', default 'catchy').
-5. **FAQ Section** -> Use `<FAQSection>`
-   - Props: `title`, `subtitle`?, `faqs` (Array of {question, answer}), `theme`.
-
-If a page requires a new type of layout, you must abstract it into a new reusable component in `components/sections/` rather than hardcoding it in the `page.tsx` file.
+## Copy
+Section content is an array of paragraphs (`ReactNode[]`) so each item stays short (`readability` skill). Include descriptive internal `<Link>`s in them.

@@ -1,37 +1,26 @@
 ---
-name: Content Auditor
-description: Agent instructions for auditing and fixing low-content pages (pages with thin content) to improve SEO, readability, and user engagement.
+name: content-auditor
+description: >-
+  Find and fix thin pages on the public site. Use when asked to audit page content, when a page is
+  mostly a form or a few lines of text, or when a page needs more useful copy, FAQs or internal links
+  for SEO.
 ---
 
-# Content Auditor Guidelines
+# Content Auditor
 
-When asked to audit and fix low-content pages, follow these strict guidelines to enrich the content while maintaining the project's standards.
+## 1. Audit
+- A page is thin if it is mostly a form, a few lines of text or images without context. Hub pages (`/lock`, `/smart-lock`, `/auto`) and utility pages (`/contact`) are the usual candidates.
+- Check for: a clear `h2` structure, the search terms customers use (`AGENTS.md` keyword list), FAQs, "what happens next" steps, and internal links to related services.
+- Ask what a customer on this page would still want to know: price (flat NZ$20 call-out, quoted on site), service area (Auckland), opening hours, the non-destructive entry approach, and what to do in an emergency.
 
-## 1. Auditing a Page
-- **Identify Thin Content**: If a page only contains a form, a few lines of introductory text, or simple images without context, it is considered low-content.
-- **Assess SEO Value**: Search engines penalize thin pages. Check if the page lacks contextual keywords, headings (`<h2>`, `<h3>`), or related internal links.
-- **Identify Missing Value**: Determine what information a user would naturally seek on this page that is missing (e.g., FAQs, process steps, detailed descriptions).
+## 2. Fix
+Add one or two sections below the existing content, built only from `components/sections/` (`content_page_layout` skill). Never hand-write a raw `<section>`.
 
-## 2. Fixing Low-Content Pages
+- **FAQ** (`<FAQSection>`, 3 to 5 questions). Contact page examples: "What happens after I send a request?", "What are your opening hours?", "How much is the call-out fee?". Add the same questions to the page's `FAQPage` JSON-LD (`seo` skill).
+- **What to expect** (`<IconListSection>`, three steps), e.g. 1. Call or send a request, 2. We confirm the job and the call-out fee, 3. A technician comes to you and quotes on site.
+- **Context and links** (`<TextContentSection>`): one or two short paragraphs with descriptive `<Link>`s to related pages, e.g. `/lock/rekey`, `/smart-lock/smart-lock-installation`, `/car-lockout`, `/about`.
 
-To enrich the page, add 1 or 2 of the following sections natively below the main content area:
-
-### A. FAQ Section
-- Add an FAQ section with 3-5 relevant questions.
-- For a Contact page, answer: "What happens after I contact you?", "What are your business hours?", "How long does a quote take?".
-- For a Testimonials page, answer: "How do I submit a review?", "Can I speak with a past client?".
-
-### B. Process or "What to Expect" Section
-- Outline 3 simple steps explaining what happens next.
-- Example for Contact: 1. Send Inquiry, 2. Consultation, 3. Project Kickoff.
-
-### C. Internal Linking & Contextual Text
-- Write 1-2 short paragraphs explaining the value of the page.
-- Add descriptive Next.js `<Link>` components pointing to related core pages (e.g., `/services/custom-sites`, `/about`).
-- Ensure paragraph length and Flesch reading ease follow the `Content Readability Standards` skill.
-
-## 3. Styling Standards
-- **Containers**: Use `<div className="container mx-auto px-6 max-w-4xl mt-16">` to separate new sections from the hero area.
-- **Headings**: Use `<h2 className="text-3xl font-bold text-brand-dark mb-8 text-center">` for section titles.
-- **Animations**: Ensure all new sections or cards utilize the custom entrance animations: `animate-card-ready animate-play` for cards/boxes, and `animate-text-blurb-ready animate-play-text` for text.
-- **Colors**: Maintain the `bg-brand-light` or `bg-white` backgrounds for main areas, and `bg-brand-dark` for prominent cards.
+## 3. Check
+- Copy follows the `readability` skill and the `AGENTS.md` copy rules (no 24/7 claims, no ETAs, no web design, no invented credentials).
+- New images follow the `image_generation` skill and are unique on the site.
+- Update the page's test for any new headings, and `public/llms.txt` if the page's one-line description changes.

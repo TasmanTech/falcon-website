@@ -1,28 +1,32 @@
 ---
-name: Mobile-First Design Guidelines
-description: Guidelines for implementing mobile-first responsive design using Tailwind CSS in the front-end.
+name: mobile-design
+description: >-
+  Mobile-first responsive layout rules with Tailwind CSS breakpoints. Use when building or changing any
+  layout, grid, menu, form or tap target in the front-end, or fixing how a page looks on phones.
 ---
 
-# Mobile-First Design Guidelines
+# Mobile-First Design
 
-This project strictly follows a **Mobile-First** approach using Tailwind CSS. When building or modifying components in the Next.js front-end, adhere to the following rules:
+Most visitors arrive on a phone, often locked out, and the admin portal is used on phones on the job.
 
-## 1. Base Styles are Mobile Styles
-- All un-prefixed Tailwind utility classes (e.g., `flex`, `p-4`, `text-sm`) apply to **mobile devices** by default.
-- Never design for desktop first and then use `max-md:` or similar overrides to shrink it down. Always build the layout for mobile and scale up.
+## Base styles are mobile styles
+- Un-prefixed classes (`flex-col`, `p-4`, `text-lg`) are the phone layout. Scale up with `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px).
+- Never build desktop first and shrink with `max-md:` overrides.
 
-## 2. Breakpoint Usage
-Use Tailwind's standard `min-width` breakpoints to scale the design up for larger screens:
-- `sm:` (640px) - Large phones / small tablets
-- `md:` (768px) - Tablets (Use this to transition from mobile menus to desktop layouts)
-- `lg:` (1024px) - Laptops
-- `xl:` (1280px) - Desktops
+## Layout
+- Stack with `flex-col`, then switch at `md:` (`md:flex-row`, `md:grid-cols-2`, `lg:grid-cols-3`). The photo sections use `flex-col md:flex-row` / `md:flex-row-reverse`.
+- Fluid widths (`w-full`, `max-w-*`) rather than fixed pixel widths.
+- Containers: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
+- Text that stacks with an image on mobile: `text-center lg:text-left`.
+- Respect the iOS safe area for anything fixed to the bottom (`bottom-[calc(1rem+env(safe-area-inset-bottom))]`, as in `FloatingCTA.tsx`).
 
-## 3. Navigation and Menus
-- On mobile, navigation should be hidden behind a hamburger menu button (`md:hidden`).
-- Desktop navigation links should be hidden on mobile and only appear on tablet/desktop (`hidden md:flex`).
-- Ensure touch targets on mobile (buttons, links) have ample padding (at least `p-2` or `44px` minimum hit area) for accessibility.
+## Navigation
+- `md` is the switch point: the hamburger is `md:hidden`, the desktop nav is `hidden md:flex` (`navbar_footer` skill).
+- Hover-only menus exist only on desktop; on mobile everything is tap-to-open.
 
-## 4. Layout Constraints
-- On mobile, use `flex-col` for stacking items vertically. Transition to `md:flex-row` or CSS grid (`md:grid-cols-2`, `lg:grid-cols-3`) on larger screens.
-- Avoid fixed widths (`w-[500px]`); use fluid widths (`w-full`, `max-w-md`) and let padding/margins control the spacing.
+## Touch
+- Tap targets at least 44px (`py-3`/`py-4` on links and buttons; `h-12` buttons in the admin portal).
+- Phone numbers are always `tel:` links so they can be tapped.
+- No hover-only actions on anything a phone user needs.
+
+Check new layouts at 375px and 1280px wide before finishing.
