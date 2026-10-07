@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { whenIdleAfterLoad } from "@/lib/idle";
 
 export const META_PIXEL_ID = "2023735691616104";
 export const META_PIXEL_SRC = "https://connect.facebook.net/en_US/fbevents.js";
@@ -49,21 +50,6 @@ function getFbq(): Fbq {
 
   fbq("init", META_PIXEL_ID);
   return fbq;
-}
-
-/**
- * Runs a callback once the page has loaded and the main thread is idle, so third-party
- * scripts don't compete with the first render.
- *
- * @param {() => void} callback - The work to defer.
- */
-function whenIdleAfterLoad(callback: () => void): void {
-  const schedule = () => {
-    if ("requestIdleCallback" in window) window.requestIdleCallback(callback, { timeout: 3000 });
-    else setTimeout(callback, 1);
-  };
-  if (document.readyState === "complete") schedule();
-  else window.addEventListener("load", schedule, { once: true });
 }
 
 /**

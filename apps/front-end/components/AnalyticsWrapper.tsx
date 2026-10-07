@@ -1,44 +1,25 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { whenIdleAfterLoad } from "@/lib/idle";
 
 /**
- * *
- *  * React component that renders the Analytics Wrapper.
- *  * @param { children } - The { children } parameter.
- *  
+ * Loads analytics (children) once the page has loaded and the browser is idle. Every visitor
+ * is counted, including those who leave without interacting, and Google's tag checks can see
+ * the tag.
+ *
+ * @param {React.ReactNode} children - The analytics scripts to load.
+ * @returns {React.ReactNode} The children once the page is idle, otherwise nothing.
  */
 export default function AnalyticsWrapper({ children }: { children: React.ReactNode }) {
-  const [hasInteracted, setHasInteracted] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (hasInteracted) return;
+    if (ready) return;
+    return whenIdleAfterLoad(() => setReady(true));
+  }, [ready]);
 
-    const handleInteraction = () => {
-      setHasInteracted(true);
-      window.removeEventListener('scroll', handleInteraction);
-      window.removeEventListener('mousemove', handleInteraction);
-      window.removeEventListener('keydown', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('click', handleInteraction);
-    };
-
-    window.addEventListener('scroll', handleInteraction, { passive: true });
-    window.addEventListener('mousemove', handleInteraction, { passive: true });
-    window.addEventListener('keydown', handleInteraction, { passive: true });
-    window.addEventListener('touchstart', handleInteraction, { passive: true });
-    window.addEventListener('click', handleInteraction, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleInteraction);
-      window.removeEventListener('mousemove', handleInteraction);
-      window.removeEventListener('keydown', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('click', handleInteraction);
-    };
-  }, [hasInteracted]);
-
-  if (!hasInteracted) return null;
+  if (!ready) return null;
 
   return <>{children}</>;
 }
