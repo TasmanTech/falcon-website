@@ -1,38 +1,39 @@
 ---
-name: Styling Guidelines
-description: Guidelines for styling front-end components using Tailwind v4, custom colors, and animations.
+name: style
+description: >-
+  The brand colour palette, fonts, Tailwind CSS v4 theme tokens and visual style of the front-end. Use
+  when choosing colours or fonts, styling components or buttons, adding theme tokens to globals.css,
+  or checking contrast.
 ---
 
-# Styling Guidelines
+# Style
 
-This project uses Next.js with **Tailwind CSS v4**. When creating or modifying front-end components, adhere to the following styling rules:
+Tailwind CSS v4 is configured in CSS, not JavaScript: theme tokens live in `@theme inline` blocks in `apps/front-end/app/globals.css`. There is no `tailwind.config.ts`; add new tokens to `globals.css`.
 
-## 1. Custom Colors
-The following custom theme colors are defined in `app/globals.css` and must be used where appropriate:
-- **brand-dark** (`bg-brand-dark`, `text-brand-dark`): `#044389` (Steel Azure)
-- **brand-primary** (`bg-brand-primary`, `text-brand-primary`): `#5995ED` (Cornflower Blue)
-- **brand-secondary** (`bg-brand-secondary`, `text-brand-secondary`): `#7CAFC4` (Sky Reflection)
-- **brand-accent** (`bg-brand-accent`, `text-brand-accent`): `#FFAD05` (Orange)
-- **brand-highlight** (`bg-brand-highlight`, `text-brand-highlight`): `#FCFF4B` (Canary Yellow)
-- **brand-light** (`bg-brand-light`, `text-brand-light`): `#FAFAFA` (Crisp light background)
+## Colours (`--color-brand-*` in `globals.css`)
+| Token | Hex | Use |
+|---|---|---|
+| `brand-dark` | `#044389` | Steel blue. Navbar, footer, dark sections, body text on light backgrounds. |
+| `brand-light` | `#FAFAFA` | Page background (`body` is `bg-brand-light text-brand-dark`), light sections, text on dark. AI images are colour-matched to it. |
+| `brand-accent` | `#FFAD05` | Amber. Primary CTAs (`bg-brand-accent text-brand-dark`), link hovers, active states, highlights. Use sparingly. |
+| `brand-catchy` | `#D81B60` | Raspberry. Background of `<CTASection theme="catchy">` (the default theme), with `text-brand-light`. |
+| `brand-primary` | `#5995ED` | Cornflower blue. Secondary accents and supporting graphics. |
+| `brand-secondary` | `#7CAFC4` | Muted sky blue. Subtle tints and secondary accents. |
+| `brand-highlight` | `#FCFF4B` | Bright yellow. Rare badges or alerts only. |
 
-## 2. Typography
-- **Headings**: Use `font-montserrat` for all `h1`, `h2`, and `h3` tags to convey a strong, robust, and premium feel.
-- **Body Text**: Use `font-inter` for all paragraph and supporting text for maximum legibility.
+- Prefer brand tokens over raw palette colours. Raw colours (`bg-white`, `border-gray-200`, `text-red-600` for errors, `text-green-600` for success) are fine for neutrals and validation states.
+- Use opacity modifiers for depth and muted text: `text-brand-light/80`, `border-brand-light/10`, `hover:bg-brand-accent/90`, `bg-brand-dark/90`.
+- Contrast: `brand-accent` and `brand-highlight` backgrounds take `text-brand-dark`; `brand-dark` and `brand-catchy` backgrounds take `text-brand-light`. Never put amber text on the light background for body copy.
 
-## 3. Animations
-Custom animations are defined in `app/globals.css` using the `@theme inline` block and CSS classes. Use them to add subtle entrance effects:
-- **Div Cards (Fastest: 0.25s)**: Use `.animate-card-ready` and add `.animate-play` to trigger `slide-up-subtle`.
-- **SVGs (Faster: 0.35s)**: Use `.animate-svg-ready` and add `.animate-play-svg` to trigger `slide-up-subtle`.
-- **Text Blurbs (Slow: 0.5s)**: Use `.animate-text-blurb-ready` and add `.animate-play-text` to trigger `fade-in-subtle`.
-- **Images (Slowest: 0.7s)**: Use `.animate-image-ready` and add `.animate-play-img` to trigger `fade-in-subtle`.
-- **Marquee**: Use `animate-marquee` for continuous scrolling effects.
+## Typography
+Fonts load through `next/font/google` in `app/layout.tsx` (Inter and Montserrat as CSS variables).
+- Headings (`h1` to `h3`): `font-montserrat font-bold`.
+- Body: `font-inter` (set on `<body>`, so only repeat it where a parent overrides it).
 
-## 4. Tailwind v4 Specifics
-- Tailwind v4 configuration is primarily handled within the CSS itself using `@theme inline` in `globals.css` rather than a `tailwind.config.ts` file.
-- Do not attempt to modify or look for a `tailwind.config.ts` file; update `globals.css` if new theme variables are needed.
-
-## 5. UI/UX Principles
-- **Minimalism & Whitespace**: Lean heavily on padding and margins (e.g., `py-16` or `py-24` for sections) to let the content breathe. A modern aesthetic requires significant negative space.
-- **Lightweight Elements**: Avoid computationally expensive CSS like `backdrop-blur` unless absolutely necessary. Use solid color backgrounds with high opacity instead to maintain a lightweight DOM and fast rendering.
-- **Mobile-First Responsiveness**: Always design for mobile first, using Tailwind's default breakpoints. Do not write complex desktop layouts that scale down poorly. Keep it simple on small screens.
+## Visual style
+- Simple, modern, lightweight and mobile-first; generous section spacing (`py-24`, `py-24 md:py-32` for CTAs).
+- Containers: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8` (`max-w-4xl` for text-only sections).
+- Buttons: `rounded-full` or `rounded-lg`, `font-bold`, `px-8 py-4` for large CTAs, `transition-colors` or `transition-all duration-200`. No forced uppercase.
+- Cards and panels: flat with a light border (`border border-gray-200` or `border-brand-light/10` on dark), `rounded-lg` to `rounded-2xl`. Avoid `shadow-xl`/`shadow-2xl` except on floating elements such as `FloatingCTA`.
+- `backdrop-blur` only on the translucent navbar (`bg-brand-dark/90 backdrop-blur-md`); elsewhere use solid backgrounds.
+- Animations: `animation` skill. Responsive rules: `mobile_design` skill. Section components: `content_page_layout` skill.

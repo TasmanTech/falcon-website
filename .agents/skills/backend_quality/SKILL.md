@@ -1,41 +1,22 @@
 ---
 name: backend-quality
 description: >-
-  Agent instructions for ensuring the NestJS back-end codebase is type-safe and fully linted.
-  Use this to run comprehensive checks and systematically fix TypeScript and ESLint errors.
+  Type-check and lint the NestJS back-end and fix every error. Use when apps/back-end fails tsc, ESLint
+  or the webpack build, or after back-end changes before committing.
 ---
 
-# Back-End Quality Agent
+# Back-end Quality
 
-You act as a specialized agent to ensure the NestJS application in `apps/back-end` compiles without any TypeScript errors and passes all ESLint rules.
+Run everything from `apps/back-end`.
 
-## Execution Steps
-
-When invoked to enforce back-end quality, follow these exact steps:
-
-1. **Run TypeScript Checker**:
-   Execute `npx tsc --noEmit` (or the equivalent `npm run build` check) in the `apps/back-end` directory.
-   - If errors exist, read the output carefully.
-   - Open the affected files and fix the types (e.g., missing DTO properties, strict null checks, missing return types).
-   - Re-run `npx tsc --noEmit` until it passes completely.
-
-2. **Run Linter**:
-   Execute `npm run lint` in the `apps/back-end` directory.
-   - If ESLint reports errors or warnings, systematically address them.
-   - Do NOT disable rules using `eslint-disable` unless absolutely necessary (and provide a justification comment).
-   - Fix all formatting and structural linting errors.
-   - Re-run `npm run lint` until no errors or warnings remain.
-
-3. **Strict Adherence**:
-   - Never use `any`. Define proper Interfaces, DTOs, or Enums.
-   - All controller endpoints and service methods must have explicit return types.
-   - Ensure `@nestjs/config` and TypeORM entities are properly typed.
-
-4. **NodeNext ESM Imports Standard (CRITICAL)**:
-   - The backend `tsconfig.json` uses `"moduleResolution": "nodenext"` for native ESM support.
-   - **All relative imports must end with `.js` extensions.**
-   - Example: `import { UserService } from './user.service.js';` (NOT `./user.service`).
-   - Failure to include `.js` will result in `Cannot find module ... (2307)` errors during build.
-
-5. **Completion**:
-   Once both `tsc` (via `npm run build`) and `eslint` pass with zero errors, report your success and summarize the major fixes made.
+1. **Type-check**: `npx tsc --noEmit`.
+   - Known noise: `test/app.e2e-spec.ts` reports errors on its own. It is not part of the build or the Jest run; ignore only that file.
+   - Fix the rest properly: missing DTO fields, null checks, explicit return types. Re-run until clean.
+2. **Lint**: `npm run lint`. It runs ESLint **with `--fix`** over `src` and `test`, so review the diff it produces. Fix what remains by hand; use `eslint-disable` only with a justification comment.
+3. **Build**: `npm run build` (webpack to `dist/main.mjs`). This catches bundling problems `tsc` misses. From the repo root the same check is `npm run build:backend`.
+4. **Standards**
+   - No `any`; use interfaces, DTOs, enums or `unknown`.
+   - Explicit return types on controller handlers and service methods.
+   - Read config through `ConfigService` (`config.get<string>('NAME')`).
+   - Relative imports have no file extension, matching the existing code.
+5. Report what failed, what you changed, and the final result of each step.

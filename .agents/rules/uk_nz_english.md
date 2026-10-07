@@ -1,14 +1,18 @@
-# UK/NZ English Enforcement
+---
+trigger: always_on
+---
 
-When writing, generating, or modifying any text content (copywriting, documentation, comments, etc.), you MUST always use UK/NZ English spelling and phrasing conventions.
+# UK / NZ English
 
-**Key Rules:**
-- Use 's' instead of 'z' (e.g., organise, realise, specialise, prioritise).
-- Use 'our' instead of 'or' (e.g., colour, labour, behaviour).
-- Use 're' instead of 'er' (e.g., centre, theatre, metre).
-- Use 'ce' instead of 'se' for nouns (e.g., defence, offence, licence).
-- Use single quotation marks for primary quotes, and double for quotes within quotes (optional but preferred in UK/NZ).
-- Keep date formats to DD/MM/YYYY.
+All user-facing text uses UK / New Zealand English: page copy, headings, CTAs, metadata, alt text, form labels, error and success messages, emails, PDFs, `public/llms.txt` and documentation.
 
-**Constraint:**
-Never use US English spellings (e.g., organize, color, center) in any user-facing text, metadata, or documentation within this workspace.
+- `-ise` / `-isation`, not `-ize`: organise, optimise, specialise, prioritise.
+- `-our`, not `-or`: colour, behaviour, neighbour.
+- `-re`, not `-er`: centre, metre.
+- Double `l`: travelled, cancelled, labelled.
+- Nouns in `-ce`: licence, practice, defence (the verbs are license, practise).
+- Dates day first: 7 October 2026 or 07/10/2026. Money as `NZ$` where it could be ambiguous.
+
+Leave code identifiers, CSS properties and classes (`color`, `center`), HTML attributes, API fields and third-party names in their original US spelling.
+
+The `uk_nz_english` skill has the full word list and the audit procedure.

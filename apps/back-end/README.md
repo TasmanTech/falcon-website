@@ -1,119 +1,73 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Falcon Access Back-end
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+NestJS API for the Falcon Access website. It emails contact-form enquiries and powers the private `/admin` portal: admin login, invoices (PDF generation, storage and email) and leads.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Stack
+- NestJS 12 on Express, with Helmet, a global `ValidationPipe` (`class-validator`) and a login throttler.
+- TypeORM on PostgreSQL (Cloud SQL in production), `synchronize: true`, no migrations.
+- Nodemailer through a Google Workspace service account; pdfkit for invoice PDFs.
+- Bundled by webpack (`webpack.config.cjs`) to `dist/main.mjs`; tested with Jest + `@swc/jest`.
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
+## Getting started
+Create `apps/back-end/.env` (names below), then from the repo root:
 ```bash
-$ npm install
+npm install
+npm run dev:back-end      # or, in this folder: npm run start:dev
 ```
+The API listens on `PORT` (default 3001). It needs a reachable Postgres database to start.
 
-## Compile and run the project
+## Scripts (in this folder)
+| Script | Does |
+|---|---|
+| `npm run start:dev` | Rebuild with webpack and restart on changes (nodemon) |
+| `npm run build` | Webpack build to `dist/main.mjs` |
+| `npm start` / `npm run start:prod` | Run `dist/main.mjs` |
+| `npm run lint` | ESLint with `--fix` |
+| `npm test` / `npm run test:cov` | Jest unit tests (`src/**/*.spec.ts`) / with coverage |
+| `npm run test:e2e` | E2E tests (`test/jest-e2e.json`; not run in CI) |
 
-```bash
-# development
-$ npm run start
+## Modules and routes
+| Module | Routes | Access |
+|---|---|---|
+| `app` | `GET /` | Public |
+| `contact` | `POST /contact` | Public (emails the enquiry) |
+| `auth` | `POST /auth/login`, `/auth/refresh`, `/auth/logout` | Public (throttled login) |
+| `invoice` | `GET/POST /invoices`, `POST /invoices/preview`, `GET /invoices/:id/pdf`, `PATCH /invoices/:id/status`, `DELETE /invoices/:id` | `JwtAuthGuard` |
+| `lead` | `GET/POST /leads`, `PUT /leads/:id`, `PATCH /leads/:id/status`, `DELETE /leads/:id` | `JwtAuthGuard` |
 
-# watch mode
-$ npm run start:dev
+Unknown routes are redirected to the website by `redirect.filter.ts`.
 
-# production mode
-$ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-
-## Admin Portal & Invoices
-
-The `/admin` portal on the website logs in against this API and generates, emails and stores invoices.
+## Environment variables
+Names only; never commit values. In production they come from GitHub secrets via `.github/workflows/ci-cd.yml`.
 
 | Variable | Purpose |
-| --- | --- |
-| `JWT_SECRET` / `JWT_REFRESH_SECRET` | Two different long random strings: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
+|---|---|
+| `PORT` | Listen port (default 3001; Cloud Run sets 8080) |
+| `FRONTEND_URLS` | Allowed CORS origins, separated by `\|` |
+| `WEBSITE_URL` | Public site URL. Unknown API routes redirect here (defaults to `https://falconaccess.co.nz`) |
 | `DB_HOST` | Cloud Run: `/cloudsql/<project>:<region>:<instance>`. Locally: the instance's public IP (SSL), or `127.0.0.1` with the Cloud SQL Auth Proxy |
-| `DB_NAME` / `DB_USER` / `DB_PASS` | Postgres database and credentials |
+| `DB_NAME`, `DB_USER`, `DB_PASS` | Postgres database and credentials |
+| `JWT_SECRET`, `JWT_REFRESH_SECRET` | Two different long random strings: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_FROM` | Outgoing mail; `SMTP_FROM` is also BCC'd on every invoice email |
+| `SERVICE_ACCOUNT_CLIENT_ID`, `SERVICE_ACCOUNT_PRIVATE_KEY` | Google Workspace service account used to send mail |
 | `GST_NUMBER` | Optional. Printed on invoices and required before GST can be charged |
 | `INVOICE_STORAGE_DIR` | Optional. Where PDFs are kept. Defaults to `/app/data/invoices` on Cloud Run (the Cloud Storage volume mounted at `/app/data`) and `data/invoices` locally |
 
-Admins live in the `admin` table. Create one, or reset a password, after the back-end has started once (so the table exists):
+`NODE_ENV=production` scopes the refresh cookie to `.falconaccess.co.nz`; `K_SERVICE` (set by Cloud Run) turns off database SSL for the Cloud SQL socket.
+
+## Admin users
+Admins live in the `admin` table. Create one, or reset a password, after the back-end has started once (so the table exists). Run from this folder (it reads `.env`):
 
 ```bash
 node scripts/create-admin.mjs info@falconaccess.co.nz '<password>'
 ```
 
 Changing an admin's password signs out their sessions; rotating `JWT_REFRESH_SECRET` signs out everyone.
-The invoice badge (`assets/invoice-badge.png`) is regenerated with `node scripts/generate-invoice-badge.mjs`.
+
+The invoice badge (`assets/invoice-badge.png`) is regenerated with `node scripts/generate-invoice-badge.mjs`. The Dockerfile fails the build if it is missing.
+
+## Deployment
+Built from `apps/back-end/Dockerfile` and deployed to Cloud Run as `falcon-backend-service` (with the Cloud SQL instance attached) when a back-end change reaches `master`. A new env var must also be added to the workflow's `--set-env-vars`. See the root README.
+
+## Agent guidance
+See [`../../.agents/AGENTS.md`](../../.agents/AGENTS.md), especially the `backend_layout`, `backend_testing` and `admin_portal` skills.

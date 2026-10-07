@@ -1,83 +1,120 @@
-# Workspace Rules
+# Falcon Access Agent Guide (Antigravity)
 
-## Strict Type-Safety
-When writing or modifying TypeScript code (both in the Next.js front-end and NestJS back-end), adhere strictly to the following type-safety guidelines:
-- **No `any`**: Avoid the `any` type completely. Define proper interfaces, DTOs, or generic types instead.
-- **Strict Null Checks**: Explicitly handle `null` and `undefined` cases in components, services, and utility functions to avoid runtime errors.
-- **Explicit Return Types**: All exported functions, especially API controllers and complex custom hooks, must have explicitly defined return types.
-- **Avoid Implicit `any`**: Ensure all variables and parameters have types specified or are strictly inferred by the TypeScript compiler.
-- **Runtime Validation**: For incoming untyped data (e.g., API responses, environment variables, local storage), use a validation library like `zod` or `class-validator` (as used in the NestJS back-end) before assuming the data is safely typed.
+Falcon Access is a mobile locksmith, smart lock, auto and repair business in Auckland. This monorepo (npm workspaces, one root `package-lock.json`) holds its website and admin portal:
 
-## Next.js App Router Conventions
-When working within the `apps/front-end` directory:
-- **Server Components by Default**: Components are Server Components by default. Keep them that way unless they need client-side interactivity.
-- **Client Components (`use client`)**: Only add the `"use client"` directive at the top of files that absolutely require browser APIs, React state (`useState`, `useReducer`), or lifecycle hooks (`useEffect`).
-- **Data Fetching & Mutations**: Leverage Server Actions for mutations and standard `fetch` with Next.js caching rules for data retrieval whenever possible.
-- **File Conventions**: Use standard App Router file names strictly (`page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`).
-- **Testing**: Every new or modified Component, Page, Server Action, and Hook MUST have an accompanying `.test.tsx` or `.test.ts` test file. Refer to the `frontend-testing` skill for detailed testing guidelines.
-- **Image Optimization**: Whenever using the `<Image>` component from `next/image` with the `fill` property, you **must** provide a `sizes` prop (e.g., `sizes="(max-width: 768px) 100vw, 50vw"`). Failing to do so causes Next.js to default to `100vw`, which triggers console warnings and hurts performance.
+- `apps/front-end`: Next.js 16 App Router with `cacheComponents: true`, React 19, Tailwind CSS v4, Vitest.
+- `apps/back-end`: NestJS 12, TypeORM on PostgreSQL (Cloud SQL), Nodemailer, pdfkit, Jest, bundled with webpack to `dist/main.mjs`.
 
-## NestJS Architecture & Best Practices
-When working within the `apps/back-end` directory:
-- **Dependency Injection**: Always use NestJS's Dependency Injection system. Never instantiate services manually using `new`.
-- **ConfigService**: Use the `@nestjs/config` `ConfigService` to access environment variables. Avoid using `process.env` directly in services or controllers.
-- **Validation**: Ensure all DTOs are decorated properly for `class-validator` and `class-transformer` to enforce strict input validation at the controller level.
-- **Testing**: Every new or modified Entity, Controller, Service, and Module MUST have an accompanying `.spec.ts` test file. Refer to the `backend-testing` skill for detailed testing guidelines.
+This file holds the always-on workspace rules and indexes everything in `.agents/`. Rules load automatically, skills load when their description matches the task, and workflows are run as `/<name>`. To add or change any of them, follow the `agent_training` skill and update the index below.
 
-## Environment Variables
-- **Front-end**: Environment variables that need to be accessible in the browser must be strictly prefixed with `NEXT_PUBLIC_`. All others remain server-side only.
-- **Back-end**: Do not commit secrets. Back-end specific environment variables must be loaded into the `ConfigModule` and optionally validated at startup.
+Next.js 16 differs from older versions: before writing front-end code, read the matching guide in `apps/front-end/node_modules/next/dist/docs/` (see `apps/front-end/AGENTS.md`).
 
-## Date and Time Handling Across Stack
-- **Standardize on UTC**: When transmitting dates between the front-end and back-end, always use UTC ISO strings (`new Date().toISOString()`).
-- **No Manual Timezone Manipulation**: When receiving a UTC ISO string in the back-end (NestJS), **never** string-manipulate it to manually adjust timezones (e.g., do not split the string and forcefully append local offsets like `+12:00`). 
-- **Preserve Absolute Time**: Parse the ISO string directly (e.g., `new Date(dto.dateTime)`) to accurately preserve the absolute timestamp. Any timezone-specific formatting or manipulation should happen only when presenting data to the user, not when constructing internal Date objects.
+## Index
 
-## UI & Styling Standards
-- **Design Philosophy**: The core aesthetic is **Simple, Modern, Lightweight, and Mobile-First**. Prioritize ample whitespace, clean typography, and high contrast. Avoid heavy gradients, excessive backdrop blurs, or deeply nested shadows. Keep the UI flat and snappy.
-- **Primary Buttons/Links**: Keep buttons modern and simple. Use rounded corners (e.g., `rounded-full` or `rounded-lg`), bold text, and a simple color fill (`bg-brand-accent`). Avoid aggressive uppercase styling or heavy drop shadows.
-- **Native Smooth Scrolling**: Always rely on native CSS (`html { scroll-behavior: smooth; }` in `globals.css`) to handle in-page anchor link (hash) scrolling. Do not use JavaScript-based smooth scroll libraries.
-- **Subtle Animations Only**: Use very lightweight CSS animations for entrances. No elements should load abruptly, but animations must be fast (under 0.3s) and simple (e.g., opacity fades).
-- **Flat UI Elements**: Keep cards, comparison tables, and panels flat and clean. Use subtle borders (`border-gray-200` or `border-white/10`) instead of heavy outer drop shadows (`shadow-xl`).
-- **Responsive Text Alignment**: For textual content blocks (like service capabilities) that stack with images on mobile screens, use `text-center lg:text-left` to ensure the text is centered on small devices but naturally left-aligned on desktop.
+### Rules (`rules/`)
+| Rule | Loads | Covers |
+|---|---|---|
+| `uk_nz_english` | always | UK / NZ spelling essentials for all user-facing text |
 
-## Image & Asset Guidelines
-- **Manifest First**: Every hero and content image is defined in `.agents/skills/image_generation/manifest.json` (source, crop, SEO filename, alt, title, description, AI prompt) and built with `build_images.cjs`. Follow the `image_generation` skill; never hand-drop images into `public/`.
-- **Never Use the Same Image Twice**: Do not duplicate or reuse the same image file across multiple distinct sections of a page or different pages to cut corners. Every section that requires an image must have a unique, contextually appropriate image. An original photo and its AI-restyled version count as the same image.
-- **Image Subject Constraints**: Use clean, photorealistic AI studio shots of **tools, locks, keys, vehicles and hardware** on a seamless `#FAFAFA` background (generated with Nano Banana Pro from the originals in `Content/`). No faces or identifiable people and no animals. A hand is acceptable only when it shows the service being carried out. Never publish an image with a visible watermark, logo or text overlay.
-- **Format & Sizing**: Use `.webp`. Content images are square `1024x1024` (the photo frame is `aspect-square`); the homepage hero is `1600x900`.
-- **Strict File Size Limits**: All content images must strictly be under **100KB**. Hero images can be slightly larger, but must remain under **~175KB**.
-- **SEO Attributes**: Filenames are descriptive kebab-case (what is in the image + service + `auckland` where natural). Always pass `imageAlt`, `imageTitle` and `imageDescription` from the manifest.
+### Skills (`skills/`)
+| Skill | Use when |
+|---|---|
+| `admin_portal` | Changing invoices, leads, PDFs or emails in the `/admin` portal and its back-end modules |
+| `agent_training` | Saving a correction, or creating or editing a rule, skill or workflow |
+| `animation` | Adding entrance animations or hover motion to front-end elements |
+| `backend_layout` | Creating or restructuring a NestJS module |
+| `backend_quality` | Fixing back-end `tsc` or ESLint errors |
+| `backend_testing` | Writing or reviewing back-end `.spec.ts` files |
+| `content_auditor` | Enriching a thin page |
+| `content_page_layout` | Building or reordering sections on a service or content page |
+| `dependency_auditor` | Upgrading packages, frameworks or the lock file |
+| `deployment` | Committing, pushing, opening the release PR or deploying |
+| `frontend_quality` | Fixing front-end `tsc` or ESLint errors |
+| `frontend_testing` | Writing or reviewing front-end `.test.tsx` / `.test.ts` files |
+| `image_generation` | Adding, replacing, generating or compressing site images |
+| `jsdoc_enforcer` | Documenting code with JSDoc |
+| `mobile_design` | Making layouts responsive and touch-friendly |
+| `navbar_footer` | Editing `Navbar.tsx`, `Footer.tsx`, `FloatingCTA.tsx` or the site chrome |
+| `readability` | Writing or rewriting copy |
+| `repo_maintenance` | Updating READMEs, `.agents/` docs or package version alignment |
+| `seo` | Setting page metadata, JSON-LD, the sitemap or `llms.txt` |
+| `style` | Colours, typography, Tailwind v4 theme tokens and visual style |
+| `uk_nz_english` | Auditing or converting text to UK / NZ English in detail |
 
-## Copywriting & SEO Vocabulary
-- **Prioritise High-Traffic Keywords**: Use the terms customers actually search for, such as "locksmith Auckland", "emergency locksmith", "lockout service", "lock repair", "rekey", "smart lock installation" and "car lockout".
-- **No Web Design**: Falcon Access does not offer or refer web design. Never mention "web design", "web developer", "web development", "web team" or websites as a service, analogy or keyword anywhere: copy, metadata, keywords, JSON-LD schema or `public/llms.txt`.
-- **Avoid Technical Jargon**: Avoid overly technical terms unless the page needs them. Keep the copy accessible and aligned with what clients actually search for.
-- **Descriptive Internal Links**: When writing anchor text for `<Link>` components, use specific terms that describe the target page (e.g., "rekeying service" instead of "click here").
-- **Punchy Call-to-Actions (CTAs)**: Keep CTA button text short, action-oriented, and contextually relevant to the page (e.g., "Call Now", "Get a Quote", "Get Help Now"). Strictly avoid long, generic, compound statements.
+### Workflows (`workflows/`)
+| Command | Does |
+|---|---|
+| `/quality-check` | Type-check, lint and test both apps, fixing failures |
+| `/new-page` | Scaffold a public service page with metadata, schema, sitemap, `llms.txt`, links and a test |
+| `/pre-deploy` | Go / no-go check before the `staging` to `master` release PR |
 
-## Routing & Links
-- **Promo Codes**: When linking a promotional code (e.g., in a hero offer), direct the user to the quoting flow using a URL parameter (`/quote?promo=CODE`) rather than the standard booking flow (`/book`).
-- **Sitemap Maintenance**: Whenever creating a new public-facing page in the Next.js front-end, always ensure it is added to `apps/front-end/app/sitemap.ts` to maintain accurate SEO indexing, and to `apps/front-end/public/llms.txt` under the matching section with a one-line description. Keep the llms.txt key facts (phone, email, hours, call-out fee) in line with the LocalBusiness schema in `app/layout.tsx`.
-- **Internal Linking (Inlinks)**: Always add as many relevant internal links (inlinks) as possible to existing pages, without altering the readable copy. Make sure inlinks are consistently added when generating or modifying content to improve SEO and user navigation.
+## Type Safety
+- **No `any`**, explicit or implicit. Define interfaces, DTOs or generics; use `unknown` and narrow it.
+- **Strict null checks**: handle `null` and `undefined` explicitly.
+- **Explicit return types** on exported functions, controllers and services.
+- **Validate untyped input**: `class-validator` DTOs on the back-end (the global `ValidationPipe` uses `whitelist` and `forbidNonWhitelisted`); type guards on the front-end.
 
-## Company Information
-- **Phone Number**: The official phone number for Falcon Access is `+64 9 243 1404`. When creating new links, always use this number and format the link as `tel:+6492431404`.
-- **Company Focus**: The overarching framing of the business is **"Commercial & Residential Repair and Maintenance"**. Locksmithing should be presented as just *one* of the specialized services offered, not the entire identity of the business.
-- **No 24/7 Claims**: Never say the business is open "24/7", "24 hours" or "at any hour" in copy, metadata or keywords. Use "after-hours support", "after-hours emergency" or "after-hours locksmith" instead.
-- **No ETAs**: Never give arrival times or response-time estimates (e.g., "15 minute ETA", "within 30 minutes") in copy, metadata, schema or `public/llms.txt`. General wording like "fast", "prompt" or "rapid response" is fine.
-- **Conversion Tracking**: `components/GoogleAdsTag.tsx` reports a Google Ads "Phone call lead" conversion for every `tel:` link on the site. Just use a normal `tel:+6492431404` link; do not add per-link `onClick` tracking or a second gtag loader.
-- **No Invented Credentials**: Never invent certifications, licenses, or professional affiliations (e.g., claiming to be part of the "Master Locksmiths Association"). Maintain an authentic tone focused on practical, honest, and reliable hard work without relying on flashy, unsubstantiated credentials.
+## Front-end (`apps/front-end`)
+- **Server Components by default.** Add `"use client"` only for browser APIs, state or effects.
+- **Cache Components**: `new Date()`, `Date.now()` or `Math.random()` in a server component breaks the `next build` prerender. Use a `"use cache"` component with `cacheLife` (see `components/CopyrightYear.tsx`), a client component, or `await connection()`.
+- **File conventions**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`. Route guarding lives in `proxy.ts` (Next 16 renamed middleware), which only matches `/admin/:path*`.
+- **Tests**: every new or changed component, page, server action and `lib/` helper gets a colocated `.test.tsx` / `.test.ts` (`frontend_testing` skill).
+- **`next/image` with `fill`** must have a `sizes` prop.
+- **Env vars**: only `NEXT_PUBLIC_*` reach the browser. The front-end uses one: `NEXT_PUBLIC_BACKEND_URL` (defaults to `http://localhost:3001`).
+- **Third-party tags** load in production only and never on `/admin` (`SiteChrome`). GA4 (`@next/third-parties`) sits inside `AnalyticsWrapper`, and the Meta Pixel (`MetaPixel.tsx`) defers its first load; both wait for `whenIdleAfterLoad` (`lib/idle.ts`), so do not gate tags on scroll or click. `GoogleAdsTag.tsx` queues commands on `dataLayer` and relies on the gtag.js that GA4 loads. Do not add a second gtag loader.
+- **CSP**: the `Content-Security-Policy` in `next.config.ts` lists every third-party origin. A new tag, embed or API needs its domain in the right directive (e.g. Meta's Conversions API gateway `capig.datah04.com` is in `connect-src`). `http://localhost:3001` is added in development only; keep it out of production.
 
-## Admin Portal (`app/admin/(portal)`)
-- **Private Pages**: Everything under `/admin` is authenticated and must follow the private-page SEO rule (`robots: { index: false, follow: false }`, title only). Never add admin routes to `sitemap.ts`.
-- **Mobile First**: The team uses the portal on their phones on the job. Build every admin screen for a phone first, with large tap targets (`h-12` buttons) and no hover-only actions.
-- **Back-end Access**: Admin API calls go through `authorisedFetch` in `lib/invoice.ts`, which refreshes the access token on a 401. Every back-end admin controller uses `@UseGuards(JwtAuthGuard)`.
-- **Invoices**: Follow the `admin_portal` skill. In short: client email is optional (without one the invoice is saved to History but not emailed); names, the job address and the technician are title-cased with `toTitleCase`; History only holds invoices that were stored successfully (and emailed, if there was an address).
-- **Leads**: Lead messages are pasted into Telegram. Phone numbers in them use `formatLeadPhone`, which gives `+64211234567` with no spaces so Telegram links the whole number.
+## Back-end (`apps/back-end`)
+- **Dependency injection** only; never `new` a provider.
+- **Config**: read env vars through `ConfigService`. Exceptions that already exist: `main.ts` (`PORT`, `FRONTEND_URLS`), `redirect.filter.ts`, `auth.constants.ts` and `invoice-storage.ts`.
+- **Schema**: TypeORM runs with `synchronize: true` and there are no migrations. Prefer additive changes; a rename or type change can drop data in production.
+- **Tests**: every new or changed entity, controller, service and module gets a `.spec.ts` (`backend_testing` skill).
+- **New env var**: add it to `.env` locally and to the `--set-env-vars` list in `.github/workflows/ci-cd.yml` (plus a GitHub secret), or it will be missing on Cloud Run.
 
-## Git & Deployment
-- Follow the `deployment` skill. Work happens on `staging`; the remote is called `github` (`TasmanTech/falcon-website`).
-- Commits and pushes use the **TasmanTech** GitHub account (`Tasman Tech <admin@tasmantech.co.nz>`), never a personal account.
-- Deploying means opening a PR from `staging` to `master` and merging it. Merging to `master` runs the Cloud Run CI/CD. Pushing to `staging` alone does not deploy anything.
-- Changes that only touch `.agents/` (or other non-app files) are committed and pushed to `staging` but do not need a deploy.
+## Dates and Times
+- Send dates between apps as UTC ISO strings (`toISOString()`), and parse them with `new Date(value)`. Never splice offsets such as `+12:00` into strings.
+- Format for people only at display time, in NZ time (the front-end container runs with `TZ=Pacific/Auckland`). Show dates as DD/MM/YYYY or "7 October 2026".
+
+## UI and Styling
+- **Simple, modern, lightweight, mobile-first**: whitespace, clear type, high contrast; no heavy gradients, stacked shadows or decorative blur.
+- **Buttons**: `rounded-full` or `rounded-lg`, bold text, `bg-brand-accent text-brand-dark`, no forced uppercase. Add `cursor-pointer` to custom clickable elements (Tailwind v4 buttons default to `cursor: default`) and `disabled:opacity-50 disabled:cursor-not-allowed` to disabled ones.
+- **Flat panels**: subtle borders (`border-gray-200`, `border-brand-light/10`) rather than large outer shadows.
+- **Smooth scrolling** is native CSS (`scroll-behavior: smooth` in `globals.css`). No JavaScript scroll libraries.
+- **Entrance animations** are short opacity / slide effects from the `animation` skill. Never fade in the LCP element.
+- Text that stacks with an image on mobile uses `text-center lg:text-left`.
+- Build pages from `components/sections/` (`content_page_layout` skill); colours and fonts come from the `style` skill.
+
+## Images
+Every hero and content image is a manifest entry built by the `image_generation` skill. Never hand-drop files into `public/`, never reuse an image on two sections or pages, and never publish faces, animals, watermarks, logos or text overlays. Content images are 1024x1024 `.webp` under 100 KB; the homepage hero is 1600x900 under 175 KB.
+
+## Copy and SEO
+- **Keywords** customers search for: "locksmith Auckland", "emergency locksmith", "lockout service", "lock repair", "rekey", "smart lock installation", "car lockout".
+- **Framing**: "Commercial & Residential Repair and Maintenance"; locksmithing is one service, not the whole identity.
+- **No web design**: never mention web design, web development or websites as a service, analogy or keyword (copy, metadata, schema or `llms.txt`).
+- **No 24/7 claims**: never "24/7", "24 hours" or "at any hour". Use "after-hours support" or "after-hours emergency locksmith".
+- **No ETAs**: never give arrival or response times ("15 minute ETA", "within 30 minutes"). "Fast" or "prompt" is fine.
+- **No invented credentials**, certifications, licences or affiliations.
+- **CTAs** are short and specific ("Call Now", "Get a Quote", "Get Help Now"). Anchor text describes the target page ("rekeying service", not "click here").
+- **Internal links**: add relevant links whenever you write or edit content, without rewriting the readable copy, and never remove existing ones.
+- **New public page**: add it to `app/sitemap.ts` and `public/llms.txt` (`/new-page` workflow). Metadata and schema follow the `seo` skill.
+- Readability (`readability` skill) and UK / NZ spelling (`uk_nz_english` rule) apply to all copy.
+
+## Business Facts (keep in sync)
+These appear in the LocalBusiness schema in `app/layout.tsx`, `components/Footer.tsx`, the contact page and `public/llms.txt`. Change all of them together.
+- **Phone**: `+64 9 243 1404`, linked as `tel:+6492431404`. `GoogleAdsTag.tsx` reports a "Phone call lead" conversion for every `tel:` link, so use a plain link with no per-link tracking.
+- **Email**: `info@falconaccess.co.nz`.
+- **Hours**: Monday to Saturday 7 am to 9 pm, Sunday 7 am to 7 pm, plus after-hours emergency support.
+- **Pricing**: flat NZ$20 call-out fee; work is quoted on site.
+- **Google Business Profile**: `https://www.google.com/maps?cid=14340846117585175277`. Use this CID link, never a `maps.app.goo.gl` short link (those reopen a stale map view).
+
+## Admin Portal (`app/admin`)
+- Private: every page sets `robots: { index: false, follow: false }` and a title only, and is never added to the sitemap or `llms.txt`. `next.config.ts` also sends `X-Robots-Tag: noindex` and `robots.ts` disallows `/admin`.
+- Phone-first: large tap targets (`h-12` buttons), no hover-only actions.
+- API calls go through `authorisedFetch` (`lib/invoice.ts`); back-end admin controllers use `@UseGuards(JwtAuthGuard)`.
+- Follow the `admin_portal` skill for invoices and leads.
+
+## Git and Deployment
+Follow the `deployment` skill. In short: work on `staging`, the remote is `github` (`TasmanTech/falcon-website`), commit as `Tasman Tech <admin@tasmantech.co.nz>`, and deploy by merging a `staging` to `master` PR. Pushing `staging` deploys nothing.
+
+## Temporary Files
+Put throwaway scripts in your scratch directory (Antigravity: `<appDataDir>\brain\<conversation-id>\scratch\`), not the repo. If one must run inside the workspace (to resolve `@/` aliases or local `node_modules`), delete it as soon as it has run. Before finishing, check the repo root and both apps for leftovers such as `fix-*.mjs`, `temp.js` or `scratch_*.js`, and never commit them.

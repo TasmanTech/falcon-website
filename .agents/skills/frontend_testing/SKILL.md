@@ -1,42 +1,27 @@
 ---
 name: frontend-testing
 description: >-
-  Use this skill when writing, reviewing, or generating tests for the Next.js front-end.
-  It provides guidelines on how to structure testing specs for React components, Server Actions, and hooks.
+  How to write and run Vitest + React Testing Library tests for the Next.js front-end. Use when writing,
+  reviewing or fixing .test.tsx / .test.ts files for pages, components, server actions, lib helpers or
+  proxy.ts.
 ---
 
-# Next.js Front-end Testing Guidelines
+# Front-end Testing
 
-This skill outlines the strict requirements and procedures for testing the Next.js frontend.
+- **Runner**: Vitest 4 with `jsdom`, globals on, `setupTests.ts` (loads `@testing-library/jest-dom`). Config: `apps/front-end/vitest.config.mts`, which maps the `@/` alias and replaces `@asamuzakjp/css-color` with `mock-css-color.js` to work around an ESM bug in jsdom.
+- **Libraries**: `@testing-library/react`, `@testing-library/user-event`.
+- **Location**: colocate `<name>.test.tsx` / `.test.ts` next to the file (`components/Footer.test.tsx`, `app/(core)/about/page.test.tsx`, `lib/invoice.test.ts`, `proxy.test.ts`).
+- **Run**: `npm --prefix apps/front-end run test` from the repo root (CI runs exactly this), or `npx vitest run <path>` in `apps/front-end` for one file.
 
-## General Requirements
+## What to test
+Every new or changed page, component, server action and `lib/` helper gets a test.
 
-1. **Test Every Layer**: Every Component, Page, Hook, and Server Action must have an accompanying `.test.tsx` or `.test.ts` file.
-2. **Frameworks**: Use `Vitest` or `Jest` alongside `@testing-library/react` and `@testing-library/jest-dom` for DOM testing.
-3. **Mocks and Spies**: Always mock external dependencies like `next/navigation`, `next/headers`, third-party APIs, and any backend fetches.
-4. **Coverage**: Aim for high test coverage, focusing on user interactions, conditional rendering, and edge cases.
+- **Pages**: render the page, then assert key headings, CTAs, internal links and that the JSON-LD `<script type="application/ld+json">` is present. Mock `next/image` and `next/link` as the existing page tests do.
+- **Client components**: drive them with `userEvent`, assert visible state (errors, loading, success). Mock `next/navigation` (`useRouter`, `usePathname`).
+- **Server actions** (`app/actions/`): call them as async functions with `fetch` and `next/headers` (`cookies()`) mocked.
+- **`lib/` helpers**: pure unit tests (e.g. `toTitleCase`, `formatLeadPhone`, `authorisedFetch`).
+- **Tags**: `GoogleAdsTag`, `MetaPixel` and `AnalyticsWrapper` tests delete `window.gtag` / `window.fbq` between tests and assert on the queued commands; never load real third-party scripts.
+- **Cached components**: async `"use cache"` components (e.g. `CopyrightYear`) cannot render in jsdom; mock them with `vi.mock`.
+- Query by role or exact label text so a wrong label or required marker fails the test.
 
-## Component-Specific Guidelines
-
-### 1. Client Components (`use client`)
-- Test user interactions (clicks, input changes) using `userEvent` from `@testing-library/user-event`.
-- Verify state changes and side effects (e.g., ensuring a loading spinner appears, or an error message displays).
-- Mock Next.js routing hooks like `useRouter`, `usePathname`, and `useSearchParams` from `next/navigation`.
-
-### 2. Server Components
-- Server components should be tested for their static or dynamic rendering output.
-- Since Server Components may be asynchronous, ensure the test environment awaits their resolution before making assertions.
-- Mock server-only modules such as `cookies()` or `headers()` from `next/headers`.
-
-### 3. Server Actions
-- Isolate the Server Action logic and test it as a standard async function.
-- Verify that it properly validates input, interacts with the backend (via fetch), and returns the expected result or throws the expected error.
-
-### 4. Custom Hooks
-- Use the `renderHook` utility from `@testing-library/react`.
-- Test the initial state, state transitions, and ensure side-effects occur appropriately when dependencies change.
-
-## Verification Step
-
-Before finalizing any front-end feature, run the tests to ensure everything passes:
-`npm run test` (or the equivalent test command for the workspace).
+Fix the code when it is wrong, not the assertion. Report real pass counts when you finish.

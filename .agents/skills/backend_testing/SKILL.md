@@ -1,42 +1,23 @@
 ---
 name: backend-testing
 description: >-
-  Use this skill when writing, reviewing, or generating tests for the NestJS back-end.
-  It provides guidelines on how to structure testing specs for entities, controllers, services, and modules.
+  How to write and run Jest specs for the NestJS back-end. Use when writing, reviewing or fixing
+  .spec.ts files for back-end entities, DTOs, controllers, services, modules or helpers.
 ---
 
-# NestJS Back-end Testing Guidelines
+# Back-end Testing
 
-This skill outlines the strict requirements and procedures for testing the NestJS backend.
+- **Runner**: Jest 30 with `@swc/jest`, configured in `apps/back-end/package.json` (`rootDir: src`, files matching `*.spec.ts`). Use `@nestjs/testing` for modules.
+- **Location**: colocate `<name>.spec.ts` next to the file it tests (e.g. `invoice/invoice.service.spec.ts`).
+- **Run**: `npm --prefix apps/back-end run test` from the repo root (CI runs exactly this), or `npm test` / `npm run test:cov` in `apps/back-end`. `npm run test:e2e` uses `test/jest-e2e.json` and needs a database, so it is not part of CI.
 
-## General Requirements
+## What to test
+Every new or changed entity, DTO, controller, service, module and helper with logic gets a spec.
 
-1. **Test Every Layer**: Every Entity, Controller, Service, and Module must have an accompanying `.spec.ts` file.
-2. **Frameworks**: Use `Jest` and `@nestjs/testing` for all unit and integration tests.
-3. **Mocks and Spies**: Always mock external dependencies (e.g., database repositories, third-party APIs, config services). Use `jest.mock()` and `jest.spyOn()` to isolate the unit under test.
-4. **Coverage**: Aim for high test coverage, specifically focusing on edge cases, validation failure states, and error handling.
+- **Services**: provide repositories and other dependencies as mocks in `Test.createTestingModule` (`getRepositoryToken(Entity)`). Cover success paths and thrown exceptions (`NotFoundException`, `BadRequestException`). Mock `ConfigService.get` and Nodemailer transports; never send real email or hit a real database.
+- **Controllers**: mock the service fully and check routing, status codes and that the work is delegated. No business logic in controller specs.
+- **DTOs**: validate edge-case payloads with `class-validator`'s `validate` (see `invoice/dto/create-invoice.dto.spec.ts`).
+- **Modules**: a smoke test that the module compiles with its providers resolved (see `invoice/invoice.module.spec.ts`).
+- **Helpers**: test pure functions directly (see `invoice/invoice-pdf.spec.ts`, `invoice/invoice-storage.spec.ts`).
 
-## Layer-Specific Guidelines
-
-### 1. Services
-- Services contain the core business logic.
-- Ensure all injected repositories or dependencies are provided as mocks in the `Test.createTestingModule` setup.
-- Test both successful operations and thrown exceptions (e.g., `NotFoundException`, `BadRequestException`).
-
-### 2. Controllers
-- Controllers handle HTTP routing and DTO validation.
-- Focus on testing routing, status codes, and whether the controller correctly delegates the workload to the underlying Service.
-- Mock the Service completely. Do not test business logic in the controller spec.
-
-### 3. Entities / DTOs
-- While entities and DTOs are mostly classes with decorators, ensure that custom methods, getters, or data transformations are unit tested.
-- If using `class-validator`, you can write tests to ensure validation rules work as expected for edge-case payloads.
-
-### 4. Modules
-- Ensure that the module is configured correctly.
-- A basic smoke test should be written to verify that the Module compiles and its dependencies are resolved successfully using `Test.createTestingModule`.
-
-## Verification Step
-
-Before finalizing any back-end feature, run the tests to ensure everything passes:
-`npm run test` (or the equivalent test command for the workspace).
+Mock with `jest.fn()`, `jest.spyOn()` and `jest.mock()`, and reset mocks between tests. Report real pass counts when you finish.

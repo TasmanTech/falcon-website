@@ -1,37 +1,62 @@
 ---
-name: Agent Skill Training
-description: Guidelines for dynamically creating and updating skills based on user feedback and new project patterns.
+name: agent-training
+description: >-
+  Create or update the Antigravity rules, skills and workflows in .agents/. Use when the user asks to
+  save a rule, remember a correction, extract a pattern, or create, rename, merge or delete a skill,
+  rule or workflow.
 ---
 
-# Agent Skill Training Guidelines
+# Agent Training
 
-When the user requests to create a new skill, extract a new pattern, or save a rule for future reference, follow these steps to "train" a new skill on the go:
+All agent configuration for this repo lives in `.agents/`. Do not create `.cursor/` or other tool-specific folders (the legacy `.cursorrules` and `apps/front-end/AGENTS.md` / `CLAUDE.md` already exist; keep them consistent but put new guidance here).
 
-## 1. Skill Directory Structure
-- Create a new directory within `.agents/skills/` (relative to the workspace root) named logically for the skill (e.g., `api_design/`).
-- Inside that directory, create a `SKILL.md` file.
-
-## 2. SKILL.md Format
-- The file MUST begin with YAML frontmatter containing `name` and `description`.
-- The `description` should be extremely clear, as the system uses it to automatically trigger and load the skill when relevant.
-- Follow the frontmatter with a detailed Markdown body (keep under 500 lines). 
-- Use clear headings, bullet points, and provide code examples.
-
-## Example Format
-```markdown
----
-name: [Human Readable Skill Name]
-description: [Brief explanation of what this skill does and when to use it]
----
-
-# [Skill Title]
-[Detailed instructions, context, constraints, and code snippets...]
+```
+.agents/
+├── AGENTS.md                    # always-on workspace rules + index of everything below
+├── rules/<snake_name>.md        # short constraints, loaded by trigger
+├── skills/<snake_name>/SKILL.md # on-demand know-how (plus optional scripts or data files)
+└── workflows/<kebab-name>.md    # step-by-step procedures the user runs as /<kebab-name>
 ```
 
-## 3. Rules vs. Skills
-- **Global Rules**: If the instruction is a universal constraint (e.g., "Never use `any` in TypeScript"), append it to the workspace `.agents/AGENTS.md` file instead of creating a standalone skill.
-- **Domain-Specific Skills**: If the instruction is a focused pattern (e.g., "How to design a dashboard widget" or "SEO guidelines"), create a new directory and `SKILL.md`.
+## 1. Pick the right home
+| The user wants... | Put it in |
+|---|---|
+| A short constraint for the whole repo | `AGENTS.md` (or an `always_on` rule if it is self-contained, like `uk_nz_english`) |
+| A constraint for certain files only | a rule with `trigger: glob` |
+| Detailed know-how for a type of task | a skill |
+| A repeatable procedure they will trigger | a workflow |
 
-## 4. On-the-Fly Updates
-- When the user corrects an agent's behavior, proactively ask if they would like to save the correction to an existing skill or create a new one.
-- Use file editing tools to refine existing `SKILL.md` files or `AGENTS.md` based on new insights during a conversation.
+Search `.agents/` first and extend the file that already covers the topic. Never create a near-duplicate; if two files overlap, merge them and keep one source of truth.
+
+## 2. Rules (`.agents/rules/<snake_name>.md`)
+```markdown
+---
+trigger: always_on            # or: glob (+ globs:), model_decision (+ description:), manual
+---
+```
+Keep rules short and imperative, with exact paths and class names.
+
+## 3. Skills (`.agents/skills/<snake_name>/SKILL.md`)
+```markdown
+---
+name: kebab-case-name
+description: >-
+  What the skill covers. Use when <the concrete tasks or files that should trigger it>.
+---
+```
+- The `description` decides when the skill loads, so it must say **when** to use it.
+- Body under ~300 lines: headings, bullets, real file paths, real commands, short examples.
+- Every path, class, prop, hex value and command must exist in the code today. Check before writing.
+
+## 4. Workflows (`.agents/workflows/<kebab-name>.md`)
+```markdown
+---
+description: One line saying what the workflow does.
+---
+```
+Numbered steps with real, runnable commands. Prefix a safe, read-only or test command with `// turbo` on the line above to let Antigravity auto-run it. Never auto-run commits, pushes or deploys.
+
+## 5. After any change
+- Update the index tables in `.agents/AGENTS.md` (no missing entries, no dead names).
+- Search `.agents/` for references to anything you renamed or deleted.
+- When the user corrects the agent's behaviour, offer to save the correction here.

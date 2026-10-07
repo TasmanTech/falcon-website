@@ -1,38 +1,26 @@
 ---
-name: Content Readability Standards
-description: Guidelines for ensuring copy across the website is accessible, scannable, and easy to read.
+name: readability
+description: >-
+  Copywriting and readability standards for the public site. Use when writing, rewriting, shortening or
+  reviewing any page copy, headings, FAQs, CTAs or link text.
 ---
 
-# Content Readability Standards
+# Readability
 
-When writing or auditing copy for Falcon Access, ensure it meets the following standards to maximize conversions and user engagement:
+## Length and structure
+- Paragraphs of **3 to 4 sentences at most**; each item in a section's `content` array is one paragraph.
+- Most sentences under 20 to 25 words. Aim for a Flesch Reading Ease above 60 (roughly year 8 to 10). If copy already scores above 60, leave it alone.
+- Clear `h2` / `h3` headings, bulleted lists for three or more items, and **bold** only for the most important phrase (e.g. "emergency locksmith").
+- **No em dashes (`—`)** in copy. Use commas, brackets or a new sentence.
 
-## 1. Paragraph Length
-- Keep paragraphs short: **Maximum 3-4 sentences** per paragraph.
-- Break up large walls of text. Users scan web pages rather than reading them word-for-word.
+There is no Flesch script in this repo. Check scores with any Flesch calculator, or estimate from sentence and word length.
 
-## 2. Sentence Structure & Reading Ease
-- Aim for an **8th to 10th-grade reading level**.
-- Maintain a **Flesch Reading Ease score above 60**. Do not over-simplify the language if it already scores above 60; leave it as is.
-- Run `node audit-flesch.js` in the workspace root to automatically test all front-end files for their Flesch score.
-- Keep sentences concise. Avoid run-on sentences. 
-- A good rule of thumb is keeping most sentences under 20-25 words.
-- **No em-dashes (`—`)**: Do not use em-dashes in any copy. Use commas, parentheses, or separate sentences instead to ensure maximum readability and parser compatibility.
+## Voice
+- Active voice, speaking to the reader: "We rekey your locks so old keys stop working", not "Locks are rekeyed by our team".
+- Plain words customers use ("lock repair", "rekey", "car lockout") over trade jargon.
+- Honest and practical. Follow the copy rules in `AGENTS.md`: no 24/7 claims, no arrival times, no web design, no invented credentials.
+- UK / NZ spelling (`uk_nz_english` rule).
 
-## 3. Voice and Tone
-- Use **Active Voice**. (e.g., "We build custom websites" instead of "Custom websites are built by us").
-- Speak directly to the user (use "You" and "Your business").
-
-## 4. Scannability
-- Use clear, descriptive headings (`<h2>`, `<h3>`) to break up sections.
-- Use **bulleted lists** whenever listing 3 or more items, features, or benefits.
-- Use **bold text** sparingly to highlight the most critical keywords or phrases (like "emergency locksmith").
-
-## 5. Vocabulary
-- Refer to the `AGENTS.md` rules on Copywriting & SEO Vocabulary.
-- Avoid overly technical jargon when simpler terms ("lock repair", "rekey", "car lockout") communicate the value proposition effectively.
-
-## 6. Preserving Link Equity
-- **Never Remove Internal Links**: When rewriting or shortening copy for readability, you **MUST** retain all existing Next.js `<Link>` components. 
-- **Informative Anchor Text**: Ensure the anchor text remains highly descriptive and relevant to the target page to maintain SEO link equity.
-- **Use Technical Jargon in Anchors**: Unlike general copywriting, it is encouraged to use specific, technical terminology in anchor text (e.g., "React frontend architecture" instead of "custom websites") if it accurately describes the target page.
+## Links
+- **Never remove an internal `<Link>`** when rewriting or shortening copy.
+- Anchor text names the target service specifically ("smart lock installation", "lockout service", "OBDII diagnostics"), never "click here" or "learn more".
