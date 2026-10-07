@@ -44,7 +44,7 @@ Names only; never commit values. In production they come from GitHub secrets via
 |---|---|
 | `PORT` | Listen port (default 3001; Cloud Run sets 8080) |
 | `FRONTEND_URLS` | Allowed CORS origins, separated by `\|` |
-| `FRONTEND_URL` | Optional. Where unknown routes redirect (defaults to `https://falconaccess.co.nz`) |
+| `WEBSITE_URL` | Public site URL. Unknown API routes redirect here (defaults to `https://falconaccess.co.nz`) |
 | `DB_HOST` | Cloud Run: `/cloudsql/<project>:<region>:<instance>`. Locally: the instance's public IP (SSL), or `127.0.0.1` with the Cloud SQL Auth Proxy |
 | `DB_NAME`, `DB_USER`, `DB_PASS` | Postgres database and credentials |
 | `JWT_SECRET`, `JWT_REFRESH_SECRET` | Two different long random strings: `node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"` |

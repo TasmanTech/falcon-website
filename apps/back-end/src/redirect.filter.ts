@@ -15,6 +15,6 @@ export class RedirectFilter implements ExceptionFilter {
     }
 
     // Redirect to the frontend for any unhandled routes (snoops)
-    response.redirect(302, process.env.FRONTEND_URL || 'https://falconaccess.co.nz');
+    response.redirect(302, process.env.WEBSITE_URL || 'https://falconaccess.co.nz');
   }
 }
