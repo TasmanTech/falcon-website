@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Website Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
   openGraph: {
-    title: 'Website Privacy Policy | Falcon Access',
+    title: 'Website Privacy Policy',
     description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
     url: "/privacy-policy",
   }

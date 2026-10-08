@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://falconaccess.co.nz'),
   title: {
     template: "%s | Falcon Access",
-    default: "Falcon Access | High Quality Locksmithing in NZ",
+    default: "High Quality Locksmithing in NZ | Falcon Access",
   },
   description: "Mobile locksmith, smart lock and auto services across Auckland. Lockouts, lock repairs, rekeying, jump starts and diagnostics with a $20 call-out fee.",
   openGraph: {

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
   keywords: 'Contact Falcon Access, Property Maintenance Contact, Repair Services New Zealand',
   openGraph: {
-    title: 'Contact Our Auckland Team | Falcon Access',
+    title: 'Contact Our Auckland Team',
     description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
     url: "/contact",
   }

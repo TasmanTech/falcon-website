@@ -14,6 +14,12 @@ description: >-
 
 The full title must stay under about 60 characters. The suffix ` | Falcon Access` is 16, so a page `title` is **44 characters or fewer**.
 
+**Separator**: every title reads `<Page name> | Falcon Access`, with the brand last.
+- `|` (with a space each side) is the only separator, and it appears once, before the brand. The admin template follows the same pattern (`%s | Falcon Access Admin`).
+- No other separator inside a page `title` or `openGraph.title`: no `:`, `-`, `–`, `—` or `·`, and no second `|`. Rephrase instead ("Lock Rekeying for Auckland Homes & Offices", not "Rekey Locks Auckland: Homes & Offices").
+- The `default` title in `app/layout.tsx` follows the same order: `High Quality Locksmithing in NZ | Falcon Access`, never brand first.
+- The JSON-LD `WebPage` `name` uses the same form (`"Lock Services | Falcon Access"`).
+
 ## Public pages
 Export `metadata` with:
 - `title` (44 characters max).
