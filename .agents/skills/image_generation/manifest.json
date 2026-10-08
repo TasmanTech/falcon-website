@@ -360,6 +360,248 @@
       "title": "Digital Lock Repair",
       "description": "Keypad and digital lock repairs for apartments, rentals and commercial buildings.",
       "prompt": "a satin steel digital keypad lock with a lever handle, shown as a stand-alone product"
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/yale-touchscreen-keypad-lever-lock-auckland.jpg",
+      "output": "images/home/gallery/yale-touchscreen-keypad-lever-lock-auckland.webp",
+      "crop": {
+        "left": 0.01,
+        "top": 0.0535,
+        "width": 0.8991,
+        "height": 0.7929
+      },
+      "alt": "Yale touchscreen keypad lever lock in satin nickel on a grey weatherboard door",
+      "title": "Keypad Smart Lock Auckland",
+      "description": "A Yale touchscreen keypad lever lock that opens with a PIN code instead of a key."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/rosslare-access-control-keypad-gate-auckland.jpg",
+      "output": "images/home/gallery/rosslare-access-control-keypad-gate-auckland.webp",
+      "crop": {
+        "left": 0.16,
+        "top": 0.02,
+        "width": 0.6799,
+        "height": 0.6798
+      },
+      "alt": "Rosslare stainless steel access control keypad mounted on a black gate post",
+      "title": "Access Control Keypad Auckland",
+      "description": "A Rosslare keypad on a gate post, part of a PIN-code access control system we service and programme."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/kwikset-deadbolt-and-handleset-auckland.jpg",
+      "output": "images/home/gallery/kwikset-deadbolt-and-handleset-auckland.webp",
+      "crop": {
+        "left": 0,
+        "top": 0.025,
+        "width": 0.95,
+        "height": 0.95
+      },
+      "alt": "Kwikset satin nickel deadbolt above a matching thumb-latch handleset on a yellow front door",
+      "title": "Kwikset Deadbolt and Handleset Auckland",
+      "description": "A Kwikset deadbolt and entrance handleset on a front door, ready for a rekey or lock change."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/legge-deadlock-and-lever-handle-auckland.jpg",
+      "output": "images/home/gallery/legge-deadlock-and-lever-handle-auckland.webp",
+      "crop": {
+        "left": 0.07,
+        "top": 0.07,
+        "width": 0.92,
+        "height": 0.9199
+      },
+      "alt": "Legge deadlock cylinder above a brushed stainless lever handle on a dark door",
+      "title": "Legge Lock Installation Auckland",
+      "description": "A Legge deadlock and square lever handle on a commercial-style entrance door."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/ikonic-deadbolt-with-new-keys-auckland.jpg",
+      "output": "images/home/gallery/ikonic-deadbolt-with-new-keys-auckland.webp",
+      "crop": {
+        "left": 0.15,
+        "top": 0.14,
+        "width": 0.5999,
+        "height": 0.6
+      },
+      "alt": "Ikonic stainless deadbolt with two new keys on a white painted door",
+      "title": "New Deadbolt Installation Auckland",
+      "description": "A new Ikonic deadbolt and keys fitted to an older white timber door."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/ikonic-deadbolt-key-close-up-auckland.jpg",
+      "output": "images/home/gallery/ikonic-deadbolt-key-close-up-auckland.webp",
+      "crop": {
+        "left": 0.225,
+        "top": 0.245,
+        "width": 0.75,
+        "height": 0.75
+      },
+      "alt": "Close-up of an Ikonic key turning in a stainless steel deadbolt",
+      "title": "Deadbolt Lock Change Auckland",
+      "description": "Testing the new keys in a freshly installed Ikonic deadbolt."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/deadbolt-thumb-turn-interior-door-auckland.jpg",
+      "output": "images/home/gallery/deadbolt-thumb-turn-interior-door-auckland.webp",
+      "crop": {
+        "left": 0.06,
+        "top": 0.16,
+        "width": 0.62,
+        "height": 0.62
+      },
+      "alt": "Stainless steel deadbolt thumb turn on the inside of a white door",
+      "title": "Deadbolt Thumb Turn Auckland",
+      "description": "The interior thumb turn of a deadbolt, letting you lock and unlock from inside without a key."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/brass-privacy-door-knob-auckland.jpg",
+      "output": "images/home/gallery/brass-privacy-door-knob-auckland.webp",
+      "crop": {
+        "left": 0.3125,
+        "top": 0,
+        "width": 0.5625,
+        "height": 1
+      },
+      "alt": "Polished brass privacy door knob with a push-button lock on a white interior door",
+      "title": "Door Knob Lock Repair Auckland",
+      "description": "A brass privacy knob on an interior door, a common lockout when the button locks behind you."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/lockwood-security-deadlock-timber-door-auckland.jpg",
+      "output": "images/home/gallery/lockwood-security-deadlock-timber-door-auckland.webp",
+      "crop": {
+        "left": 0.08,
+        "top": 0.2535,
+        "width": 0.7998,
+        "height": 0.4928
+      },
+      "alt": "Lockwood security deadlock cylinder on a black painted timber door stile",
+      "title": "Lockwood Deadlock Auckland",
+      "description": "A Lockwood security deadlock on a painted timber door, a common lock on older Auckland homes."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/keyed-lever-handle-interior-door-auckland.jpg",
+      "output": "images/home/gallery/keyed-lever-handle-interior-door-auckland.webp",
+      "crop": {
+        "left": 0.075,
+        "top": 0.145,
+        "width": 0.8499,
+        "height": 0.85
+      },
+      "alt": "Brushed stainless keyed lever handle set and latch on an open white door",
+      "title": "Lever Handle Lock Installation",
+      "description": "A keyed lever handle set and latch fitted to an interior door, with the keys still in the lock."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/black-sliding-door-handle-lock-auckland.jpg",
+      "output": "images/home/gallery/black-sliding-door-handle-lock-auckland.webp",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1,
+        "height": 1
+      },
+      "alt": "Black and chrome sliding door handle with locking button on aluminium joinery",
+      "title": "Sliding Door Lock Repair Auckland",
+      "description": "A sliding door handle and lock on aluminium joinery, a frequent repair and replacement job."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/sliding-door-mortice-lock-replacement-auckland.jpg",
+      "output": "images/home/gallery/sliding-door-mortice-lock-replacement-auckland.webp",
+      "crop": {
+        "left": 0.2,
+        "top": 0.13,
+        "width": 0.6,
+        "height": 0.6
+      },
+      "alt": "Sliding door mortice lock body exposed in a black aluminium door stile, with keys in the outside handle",
+      "title": "Sliding Door Lock Replacement Auckland",
+      "description": "A worn sliding door lock opened up mid-job so the mortice lock body can be replaced."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/new-sliding-door-handle-and-lock-auckland.jpg",
+      "output": "images/home/gallery/new-sliding-door-handle-and-lock-auckland.webp",
+      "crop": {
+        "left": 0.17,
+        "top": 0.24,
+        "width": 0.6,
+        "height": 0.6
+      },
+      "alt": "New black sliding door handle and lock fitted to a black aluminium glass door, with keys outside",
+      "title": "Sliding Door Handle Installation",
+      "description": "The same aluminium sliding door with its new handle and keyed lock fitted and working."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/glass-display-cabinet-lock-auckland.jpg",
+      "output": "images/home/gallery/glass-display-cabinet-lock-auckland.webp",
+      "crop": {
+        "left": 0.135,
+        "top": 0.0736,
+        "width": 0.8497,
+        "height": 0.8525
+      },
+      "alt": "Timber display cabinet with glass doors and a small lock, holding crystal glasses and teacups",
+      "title": "Cabinet Lock Service Auckland",
+      "description": "A display cabinet lock, one of the smaller furniture locks we open, repair and replace."
+    },
+    {
+      "page": "/contact",
+      "slot": "content-1",
+      "source": "Generated/smartphone-and-house-keys-contact-locksmith-auckland.png",
+      "output": "images/contact/smartphone-and-house-keys-contact-locksmith-auckland.webp",
+      "crop": {
+        "left": 0.15,
+        "top": 0.12,
+        "width": 0.72,
+        "height": 0.72
+      },
+      "alt": "Smartphone with a blank screen lying beside a ring of brass and silver house keys",
+      "title": "Contact an Auckland Locksmith",
+      "description": "Call or send us a message and we will confirm the job and the NZ$20 call-out before we head your way.",
+      "prompt": "a modern black smartphone lying face up with a plain dark blank screen, next to a ring of three brass and silver house keys"
+    },
+    {
+      "page": "/contact",
+      "slot": "content-2",
+      "source": "Generated/locksmith-service-case-locks-and-tools-auckland.png",
+      "output": "images/contact/locksmith-service-case-locks-and-tools-auckland.webp",
+      "crop": {
+        "left": 0.2,
+        "top": 0.2,
+        "width": 0.6,
+        "height": 0.6
+      },
+      "alt": "Open hard-shell service case holding screwdrivers, door latches and spare lock cylinders",
+      "title": "Mobile Locksmith Service Auckland",
+      "description": "The service case our technicians bring to every job, so most repairs and lock changes are done in one visit.",
+      "prompt": "an open black hard-shell tool case neatly holding screwdrivers, a few door latches, spare door lock cylinders and loose keys in foam compartments"
     }
   ]
 }

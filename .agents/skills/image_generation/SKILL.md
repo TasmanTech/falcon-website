@@ -1,8 +1,9 @@
 ---
 name: image-generation
 description: >-
-  Manifest-driven pipeline for every hero and content image: AI generation with Nano Banana Pro,
-  cropping, WebP compression and SEO filenames / alt text. Use when adding, replacing, regenerating,
+  Manifest-driven pipeline for every hero, content and gallery image: AI generation with Nano Banana Pro,
+  real job photos for the homepage gallery, cropping, WebP compression, embedded EXIF / XMP and SEO
+  filenames / alt text. Use when adding, replacing, regenerating,
   renaming or compressing any image under apps/front-end/public/images, or writing image alt text.
 ---
 
@@ -17,6 +18,7 @@ Every hero and content image on the site is an entry in [`manifest.json`](./mani
 - **`Content/<Service>/`**: the original stock photos (Pexels / Vecteezy) for each page. They are used as the `reference` sent to the model, not published directly.
 - **`Content/<Service>/AI/`**, `content-1.webp` / `content-2.webp`, **`Content/Homepage/`** and **`Content/AI/`**: earlier generations, kept for reference.
 - **`Content/Additional Images/`**: real Falcon Access job photos. Use one only when the owner asks; check it for faces, number plates and addresses first.
+- **`Content/Gallery/`**: real job photos for the homepage `<GallerySection>` (`slot: "gallery"`). Product brand names on the hardware are fine here; the data the page renders lives in `apps/front-end/lib/gallery.ts` and must match the manifest (src, alt, title, description, built width and height).
 
 ## Choosing a subject
 1. Clean, photorealistic studio shots of tools, locks, keys, vehicles and hardware on a seamless `#FAFAFA` background.
@@ -42,7 +44,7 @@ node .agents/skills/image_generation/generate_images.cjs /lock/rekey  # one page
 ```jsonc
 {
   "page": "/lock/rekey",
-  "slot": "content-1",                        // "hero", "content-1" (photo right) or "content-2" (photo left)
+  "slot": "content-1",                        // "hero", "content-1" (photo right), "content-2" (photo left) or "gallery"
   "reference": "Rekey/pexels-a-darmel-7641991.jpg",                     // photo sent to the model
   "source": "Generated/chrome-lever-lock-keys-rekeying-auckland.png",   // file the build reads
   "output": "images/services/lock/rekey/chrome-lever-lock-keys-rekeying-auckland.webp",
@@ -73,6 +75,8 @@ node .agents/skills/image_generation/build_images.cjs /lock/rekey # entries whos
 
 - Content images: **1024x1024** webp, **under 100KB**.
 - Hero image: **1600x900** webp, **under 175KB**.
+- Gallery images: keep their own aspect ratio, longest edge **1600** (never upscaled), **under 160KB**. `crop` is `"none"` or a box that trims phone-screenshot bars and anything private (stickers, signs, addresses).
+- Every encoded file embeds its `title`, `alt`, `description`, `Falcon Access` as creator and a copyright notice as EXIF and XMP. Source metadata (GPS, camera, timestamps) is stripped.
 - Entries with `"locked": true` are skipped so a committed image is never re-encoded. Remove `locked` only when deliberately replacing that image.
 - A `.webp` source that is already the target size and within budget is copied byte-for-byte.
 - Sources in `Content/Generated/` have their background colour-matched to exactly `#FAFAFA` so they blend into `bg-brand-light` sections with no visible edge.

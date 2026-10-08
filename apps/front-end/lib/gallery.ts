@@ -1,0 +1,121 @@
+import type { GalleryImage } from '@/components/sections/GallerySection';
+
+/**
+ * Real Falcon Access job photos shown in the homepage gallery, in display order.
+ * Built from the "gallery" entries in .agents/skills/image_generation/manifest.json; keep the
+ * src, alt, title, description and dimensions in sync with the manifest and the built files.
+ */
+export const homeGalleryImages: GalleryImage[] = [
+  {
+    src: '/images/home/gallery/yale-touchscreen-keypad-lever-lock-auckland.webp',
+    alt: 'Yale touchscreen keypad lever lock in satin nickel on a grey weatherboard door',
+    title: 'Keypad Smart Lock Auckland',
+    description: 'A Yale touchscreen keypad lever lock that opens with a PIN code instead of a key.',
+    width: 855,
+    height: 1141,
+  },
+  {
+    src: '/images/home/gallery/rosslare-access-control-keypad-gate-auckland.webp',
+    alt: 'Rosslare stainless steel access control keypad mounted on a black gate post',
+    title: 'Access Control Keypad Auckland',
+    description: 'A Rosslare keypad on a gate post, part of a PIN-code access control system we service and programme.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/kwikset-deadbolt-and-handleset-auckland.webp',
+    alt: 'Kwikset satin nickel deadbolt above a matching thumb-latch handleset on a yellow front door',
+    title: 'Kwikset Deadbolt and Handleset Auckland',
+    description: 'A Kwikset deadbolt and entrance handleset on a front door, ready for a rekey or lock change.',
+    width: 1140,
+    height: 1520,
+  },
+  {
+    src: '/images/home/gallery/legge-deadlock-and-lever-handle-auckland.webp',
+    alt: 'Legge deadlock cylinder above a brushed stainless lever handle on a dark door',
+    title: 'Legge Lock Installation Auckland',
+    description: 'A Legge deadlock and square lever handle on a commercial-style entrance door.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/ikonic-deadbolt-with-new-keys-auckland.webp',
+    alt: 'Ikonic stainless deadbolt with two new keys on a white painted door',
+    title: 'New Deadbolt Installation Auckland',
+    description: 'A new Ikonic deadbolt and keys fitted to an older white timber door.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/ikonic-deadbolt-key-close-up-auckland.webp',
+    alt: 'Close-up of an Ikonic key turning in a stainless steel deadbolt',
+    title: 'Deadbolt Lock Change Auckland',
+    description: 'Testing the new keys in a freshly installed Ikonic deadbolt.',
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: '/images/home/gallery/deadbolt-thumb-turn-interior-door-auckland.webp',
+    alt: 'Stainless steel deadbolt thumb turn on the inside of a white door',
+    title: 'Deadbolt Thumb Turn Auckland',
+    description: 'The interior thumb turn of a deadbolt, letting you lock and unlock from inside without a key.',
+    width: 744,
+    height: 992,
+  },
+  {
+    src: '/images/home/gallery/brass-privacy-door-knob-auckland.webp',
+    alt: 'Polished brass privacy door knob with a push-button lock on a white interior door',
+    title: 'Door Knob Lock Repair Auckland',
+    description: 'A brass privacy knob on an interior door, a common lockout when the button locks behind you.',
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: '/images/home/gallery/lockwood-security-deadlock-timber-door-auckland.webp',
+    alt: 'Lockwood security deadlock cylinder on a black painted timber door stile',
+    title: 'Lockwood Deadlock Auckland',
+    description: 'A Lockwood security deadlock on a painted timber door, a common lock on older Auckland homes.',
+    width: 1027,
+    height: 1369,
+  },
+  {
+    src: '/images/home/gallery/keyed-lever-handle-interior-door-auckland.webp',
+    alt: 'Brushed stainless keyed lever handle set and latch on an open white door',
+    title: 'Lever Handle Lock Installation',
+    description: 'A keyed lever handle set and latch fitted to an interior door, with the keys still in the lock.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/black-sliding-door-handle-lock-auckland.webp',
+    alt: 'Black and chrome sliding door handle with locking button on aluminium joinery',
+    title: 'Sliding Door Lock Repair Auckland',
+    description: 'A sliding door handle and lock on aluminium joinery, a frequent repair and replacement job.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/sliding-door-mortice-lock-replacement-auckland.webp',
+    alt: 'Sliding door mortice lock body exposed in a black aluminium door stile, with keys in the outside handle',
+    title: 'Sliding Door Lock Replacement Auckland',
+    description: 'A worn sliding door lock opened up mid-job so the mortice lock body can be replaced.',
+    width: 720,
+    height: 960,
+  },
+  {
+    src: '/images/home/gallery/new-sliding-door-handle-and-lock-auckland.webp',
+    alt: 'New black sliding door handle and lock fitted to a black aluminium glass door, with keys outside',
+    title: 'Sliding Door Handle Installation',
+    description: 'The same aluminium sliding door with its new handle and keyed lock fitted and working.',
+    width: 720,
+    height: 960,
+  },
+  {
+    src: '/images/home/gallery/glass-display-cabinet-lock-auckland.webp',
+    alt: 'Timber display cabinet with glass doors and a small lock, holding crystal glasses and teacups',
+    title: 'Cabinet Lock Service Auckland',
+    description: 'A display cabinet lock, one of the smaller furniture locks we open, repair and replace.',
+    width: 1023,
+    height: 1364,
+  },
+];
