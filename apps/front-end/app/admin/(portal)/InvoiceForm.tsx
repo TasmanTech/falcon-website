@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { FiCheckCircle, FiDownload, FiEdit2, FiEye, FiList, FiPlus, FiSend, FiTrash2 } from "react-icons/fi";
-import { refreshAccessTokenAction } from "@/app/actions/auth";
+import { refreshSession, useSessionToken } from "@/lib/session";
 import {
   SessionExpiredError,
   calculateTotals,
@@ -81,7 +81,7 @@ function Section({ title, action, children }: { title: string; action?: React.Re
  * @returns {JSX.Element} The invoice form.
  */
 export default function InvoiceForm({ token }: { token: string }) {
-  const tokenRef = useRef(token);
+  const tokenRef = useSessionToken(token);
   const [draft, setDraft] = useState<InvoiceDraft>(createEmptyDraft);
   const [step, setStep] = useState<"edit" | "review" | "sent">("edit");
   const [isPriceListOpen, setIsPriceListOpen] = useState(false);
@@ -150,7 +150,7 @@ export default function InvoiceForm({ token }: { token: string }) {
     setPending(mode);
     setError(null);
     try {
-      const result = await submitInvoice(mode, draft, tokenRef.current, refreshAccessTokenAction);
+      const result = await submitInvoice(mode, draft, tokenRef.current, refreshSession);
       tokenRef.current = result.token;
       if (mode === "preview") {
         downloadBlob(result.blob, result.fileName);

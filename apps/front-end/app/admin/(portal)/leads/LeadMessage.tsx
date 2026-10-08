@@ -1,9 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { FiCheck, FiCopy, FiRotateCcw, FiSave, FiX } from "react-icons/fi";
-import { refreshAccessTokenAction } from "@/app/actions/auth";
+import { refreshSession, useSessionToken } from "@/lib/session";
 import { SessionExpiredError, todayInNz } from "@/lib/invoice";
 import {
   JOB_TYPES,
@@ -75,7 +75,7 @@ export default function LeadMessage({
   onSaved?: (lead: SavedLead) => void;
   onCancel?: () => void;
 }) {
-  const tokenRef = useRef(token);
+  const tokenRef = useSessionToken(token);
   const [lead, setLead] = useState<LeadDraft>(() => (editing ? toLeadDraft(editing) : emptyLead()));
   const [status, setStatus] = useState<LeadStatus>(editing?.status ?? "pending");
   const [copied, setCopied] = useState(false);
@@ -110,7 +110,7 @@ export default function LeadMessage({
         status,
         editing?.id ?? savedId ?? undefined,
         tokenRef.current,
-        refreshAccessTokenAction,
+        refreshSession,
       );
       tokenRef.current = nextToken;
       setSavedId(saved.id);

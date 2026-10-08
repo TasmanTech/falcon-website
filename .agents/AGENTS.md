@@ -26,15 +26,15 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 | `backend_quality` | Fixing back-end `tsc` or ESLint errors |
 | `backend_testing` | Writing or reviewing back-end `.spec.ts` files |
 | `content_auditor` | Enriching a thin page |
-| `content_page_layout` | Building or reordering sections on a service or content page |
+| `content_page_layout` | Building or reordering sections on a service or content page, including the photo gallery |
 | `dependency_auditor` | Upgrading packages, frameworks or the lock file |
 | `deployment` | Committing, pushing, opening the release PR or deploying |
 | `frontend_quality` | Fixing front-end `tsc` or ESLint errors |
 | `frontend_testing` | Writing or reviewing front-end `.test.tsx` / `.test.ts` files |
-| `image_generation` | Adding, replacing, generating or compressing site images |
+| `image_generation` | Adding, replacing, generating or compressing site images, including real gallery photos |
 | `jsdoc_enforcer` | Documenting code with JSDoc |
 | `mobile_design` | Making layouts responsive and touch-friendly |
-| `navbar_footer` | Editing `Navbar.tsx`, `Footer.tsx`, `FloatingCTA.tsx` or the site chrome |
+| `navbar_footer` | Editing `Navbar.tsx`, `Footer.tsx` (incl. its `serviceLinks`), `FloatingCTA.tsx` or the site chrome |
 | `readability` | Writing or rewriting copy |
 | `repo_maintenance` | Updating READMEs, `.agents/` docs or package version alignment |
 | `seo` | Setting page metadata, JSON-LD, the sitemap or `llms.txt` |
@@ -57,7 +57,7 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 ## Front-end (`apps/front-end`)
 - **Server Components by default.** Add `"use client"` only for browser APIs, state or effects.
 - **Cache Components**: `new Date()`, `Date.now()` or `Math.random()` in a server component breaks the `next build` prerender. Use a `"use cache"` component with `cacheLife` (see `components/CopyrightYear.tsx`), a client component, or `await connection()`.
-- **File conventions**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`. Route guarding lives in `proxy.ts` (Next 16 renamed middleware), which only matches `/admin/:path*`.
+- **File conventions**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`. Route guarding lives in `proxy.ts` (Next 16 renamed middleware), which only matches `/admin/:path*`. The only route handler is `app/api/session/refresh/route.ts` (admin session renewal).
 - **Tests**: every new or changed component, page, server action and `lib/` helper gets a colocated `.test.tsx` / `.test.ts` (`frontend_testing` skill).
 - **`next/image` with `fill`** must have a `sizes` prop.
 - **Env vars**: only `NEXT_PUBLIC_*` reach the browser. The front-end uses one: `NEXT_PUBLIC_BACKEND_URL` (defaults to `http://localhost:3001`).
@@ -66,10 +66,11 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 
 ## Back-end (`apps/back-end`)
 - **Dependency injection** only; never `new` a provider.
-- **Config**: read env vars through `ConfigService`. Exceptions that already exist: `main.ts` (`PORT`, `FRONTEND_URLS`), `redirect.filter.ts`, `auth.constants.ts` and `invoice-storage.ts`.
+- **Config**: read env vars through `ConfigService`. Exceptions that already exist: `main.ts` (`PORT`, `FRONTEND_URLS`), `redirect.filter.ts` (`WEBSITE_URL`), `auth.constants.ts` (`NODE_ENV`) and `invoice-storage.ts` (`INVOICE_STORAGE_DIR`).
 - **Schema**: TypeORM runs with `synchronize: true` and there are no migrations. Prefer additive changes; a rename or type change can drop data in production.
 - **Tests**: every new or changed entity, controller, service and module gets a `.spec.ts` (`backend_testing` skill).
-- **New env var**: add it to `.env` locally and to the `--set-env-vars` list in `.github/workflows/ci-cd.yml` (plus a GitHub secret), or it will be missing on Cloud Run.
+- **New env var**: add it to `.env` locally, to the `--set-env-vars` list in `.github/workflows/ci-cd.yml` (plus a GitHub secret) and to the env table in `apps/back-end/README.md`, or it will be missing on Cloud Run.
+- **Env var names must match the deploy exactly.** A `process.env.X || 'fallback'` hides a name the deploy never sets: the redirect filter read `FRONTEND_URL` for months while `ci-cd.yml` only sets `WEBSITE_URL`. When you read or rename a var, grep `ci-cd.yml` for the same name.
 
 ## Dates and Times
 - Send dates between apps as UTC ISO strings (`toISOString()`), and parse them with `new Date(value)`. Never splice offsets such as `+12:00` into strings.
@@ -85,7 +86,9 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 - Build pages from `components/sections/` (`content_page_layout` skill); colours and fonts come from the `style` skill.
 
 ## Images
-Every hero and content image is a manifest entry built by the `image_generation` skill. Never hand-drop files into `public/`, never reuse an image on two sections or pages, and never publish faces, animals, watermarks, logos or text overlays. Content images are 1024x1024 `.webp` under 100 KB; the homepage hero is 1600x900 under 175 KB.
+Every hero, content and gallery image is a manifest entry built by the `image_generation` skill. Never hand-drop files into `public/`, never reuse an image on two sections or pages, and never publish faces, animals, watermarks, logos or text overlays. Content images are 1024x1024 `.webp` under 100 KB; the homepage hero is 1600x900 under 175 KB.
+
+The homepage gallery is the one exception to the stock / AI rule: it shows real job photos (`Content/Gallery/`), keeps each photo's aspect ratio (longest edge 1600, under 160 KB), and may show product brand names on the hardware. Still crop out faces, number plates, addresses, signs and stickers. Its data lives in `lib/gallery.ts` and must match the manifest.
 
 ## Copy and SEO
 - **Keywords** customers search for: "locksmith Auckland", "emergency locksmith", "lockout service", "lock repair", "rekey", "smart lock installation", "car lockout".
@@ -110,11 +113,14 @@ These appear in the LocalBusiness schema in `app/layout.tsx`, `components/Footer
 ## Admin Portal (`app/admin`)
 - Private: every page sets `robots: { index: false, follow: false }` and a title only, and is never added to the sitemap or `llms.txt`. `next.config.ts` also sends `X-Robots-Tag: noindex` and `robots.ts` disallows `/admin`.
 - Phone-first: large tap targets (`h-12` buttons), no hover-only actions.
-- API calls go through `authorisedFetch` (`lib/invoice.ts`); back-end admin controllers use `@UseGuards(JwtAuthGuard)`.
+- API calls go through `authorisedFetch` (`lib/invoice.ts`) with the token from `useSessionToken` and `refreshSession` (`lib/session.ts`); back-end admin controllers use `@UseGuards(JwtAuthGuard)`.
+- Sessions survive idling: the token renews in the background, and only a back-end 400 / 401 / 403 ends a session. A timeout, network error or 5xx keeps the cookies (`admin_portal` skill, Sessions).
 - Follow the `admin_portal` skill for invoices and leads.
 
 ## Git and Deployment
 Follow the `deployment` skill. In short: work on `staging`, the remote is `github` (`TasmanTech/falcon-website`), commit as `Tasman Tech <admin@tasmantech.co.nz>`, and deploy by merging a `staging` to `master` PR. Pushing `staging` deploys nothing.
 
 ## Temporary Files
-Put throwaway scripts in your scratch directory (Antigravity: `<appDataDir>\brain\<conversation-id>\scratch\`), not the repo. If one must run inside the workspace (to resolve `@/` aliases or local `node_modules`), delete it as soon as it has run. Before finishing, check the repo root and both apps for leftovers such as `fix-*.mjs`, `temp.js` or `scratch_*.js`, and never commit them.
+Put throwaway scripts and reports in your scratch directory (Antigravity: `<appDataDir>\brain\<conversation-id>\scratch\`), not the repo. If a script must run inside the workspace (to resolve `@/` aliases or local `node_modules`), delete it as soon as it has run. Write Lighthouse, coverage and audit output to the scratch directory too (`lighthouse <url> --output-path <scratch>/report.json`).
+
+Before finishing and before every commit, check `git status` in the repo root and both apps for leftovers such as `fix-*.mjs`, `temp.js`, `scratch_*.js` or `lighthouse-report.json`, and never commit them. Both `scratch_refactor.js` and an 11,000-line `apps/front-end/lighthouse-report.json` once reached `staging` this way and had to be removed in a follow-up commit.

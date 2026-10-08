@@ -3,7 +3,8 @@ name: seo
 description: >-
   Page metadata, OpenGraph, canonical URLs, JSON-LD schema, the sitemap, robots and llms.txt for the
   Next.js front-end. Use when creating or editing any page.tsx or layout.tsx metadata, adding structured
-  data, adding or removing a public page, or changing business details that appear in schema.
+  data (including ImageGallery for photo galleries), adding or removing a public page, or changing
+  business details that appear in schema.
 ---
 
 # SEO and Metadata
@@ -24,6 +25,7 @@ Export `metadata` with:
 Then render a JSON-LD `@graph` with `<JsonLd id="schema-<page>" schema={jsonLd} />` (`components/JsonLd.tsx` outputs a plain `<script>` so crawlers see it in the server HTML):
 - Always `WebPage` (with `@id` `<url>/#webpage` and `"isPartOf": { "@id": "https://falconaccess.co.nz/#website" }`) and `BreadcrumbList`.
 - `Service` on service pages; `FAQPage` whenever the page has a `<FAQSection>`, with the same questions and answers.
+- `ImageGallery` whenever the page has a `<GallerySection>` (the homepage has `@id` `https://falconaccess.co.nz/#gallery`). Build its `image` array by mapping the same `lib/gallery.ts` array the component renders, one `ImageObject` per photo with absolute `contentUrl` / `url`, `name` (title), `caption` (alt), `description`, `width`, `height`, `encodingFormat: "image/webp"`, `contentLocation` Auckland, and `creator` / `copyrightHolder` pointing at `#organization`. Never hand-copy the list into the schema.
 - The site-wide `WebSite` and `LocalBusiness` / `Locksmith` entities live in `app/layout.tsx` only. Link to them by `@id`; never duplicate them.
 
 Copy a current page as the template, e.g. `app/(services)/(lock-services)/lock/rekey/page.tsx`:

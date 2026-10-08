@@ -19,7 +19,7 @@ The back-end is NestJS 12 with TypeORM on PostgreSQL, bundled by webpack (`webpa
 | `invoice/` | controller, service, module, entity, DTOs, `invoice-pdf.ts`, `invoice-storage.ts`, `invoice.constants.ts` | Admin only (`JwtAuthGuard`), see `admin_portal` skill |
 | `lead/` | controller, service, module, entity, DTOs | Admin only (`JwtAuthGuard`), see `admin_portal` skill |
 | `common/assets/` | `assets.util.ts` | Resolves files in `apps/back-end/assets/` (e.g. the invoice badge) |
-| root | `main.ts`, `app.module.ts`, `app.controller.ts`, `app.service.ts`, `redirect.filter.ts` | Bootstrap, DB config, global 404 redirect filter |
+| root | `main.ts`, `app.module.ts`, `app.controller.ts`, `app.service.ts`, `redirect.filter.ts` | Bootstrap, DB config, global 404 filter that redirects unknown routes to `WEBSITE_URL` |
 
 ## Conventions
 - One folder per resource, files named `<resource>.<type>.ts`: `.module`, `.controller`, `.service`, `.entity`.

@@ -19,7 +19,7 @@ vi.mock('next/navigation', () => ({
     throw new Error(`REDIRECT:${path}`);
   },
 }));
-vi.mock('@/app/actions/auth', () => ({ logoutAction: vi.fn(), loginAction: vi.fn(), refreshAccessTokenAction: vi.fn() }));
+vi.mock('@/app/actions/auth', () => ({ logoutAction: vi.fn(), loginAction: vi.fn() }));
 
 const cookieGet = vi.fn();
 vi.mock('next/headers', () => ({ cookies: async () => ({ get: cookieGet }) }));
@@ -90,8 +90,9 @@ describe('admin pages', () => {
     expect(screen.getByText('leads:access')).toBeInTheDocument();
   });
 
-  it('sends visitors without an access token to login', async () => {
+  it('renders with an empty token when the proxy could not refresh, so the client renews it', async () => {
     cookieGet.mockReturnValue(undefined);
-    await expect(resolveSuspenseChild(AdminInvoicePage())).rejects.toThrow('REDIRECT:/admin/login');
+    render(await resolveSuspenseChild(AdminInvoicePage()));
+    expect(screen.getByText('form:')).toBeInTheDocument();
   });
 });

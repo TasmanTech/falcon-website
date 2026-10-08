@@ -9,14 +9,12 @@ const redirect = vi.fn((path: string) => {
 vi.mock('next/navigation', () => ({ redirect: (path: string) => redirect(path) }));
 
 const loginWithBackend = vi.fn();
-const refreshWithBackend = vi.fn();
 vi.mock('@/lib/auth', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/lib/auth')>()),
   loginWithBackend: (...args: unknown[]) => loginWithBackend(...args),
-  refreshWithBackend: (...args: unknown[]) => refreshWithBackend(...args),
 }));
 
-const { loginAction, logoutAction, refreshAccessTokenAction } = await import('./auth');
+const { loginAction, logoutAction } = await import('./auth');
 
 function form(values: Record<string, string>): FormData {
   const data = new FormData();
@@ -65,20 +63,5 @@ describe('auth actions', () => {
     await expect(logoutAction()).rejects.toThrow('REDIRECT:/admin/login');
     expect(cookieStore.delete).toHaveBeenCalledWith('accessToken');
     expect(cookieStore.delete).toHaveBeenCalledWith('refreshToken');
-  });
-
-  describe('refreshAccessTokenAction', () => {
-    it('returns null without a refresh cookie', async () => {
-      cookieStore.get.mockReturnValue(undefined);
-      await expect(refreshAccessTokenAction()).resolves.toBeNull();
-    });
-
-    it('returns and stores a fresh access token', async () => {
-      cookieStore.get.mockReturnValue({ value: 'refresh' });
-      refreshWithBackend.mockResolvedValue({ accessToken: 'fresh', refreshToken: 'rotated' });
-
-      await expect(refreshAccessTokenAction()).resolves.toBe('fresh');
-      expect(cookieStore.set).toHaveBeenCalledWith('refreshToken', 'rotated', expect.any(Object));
-    });
   });
 });

@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiEdit2, FiMapPin, FiPhone, FiPlus, FiSearch, FiTrash2 } from "react-icons/fi";
-import { refreshAccessTokenAction } from "@/app/actions/auth";
+import { refreshSession, useSessionToken } from "@/lib/session";
 import { SessionExpiredError, formatDisplayDate } from "@/lib/invoice";
 import {
   LEAD_STATUSES,
@@ -38,7 +38,7 @@ interface LoadedPage {
  * @returns {JSX.Element} The lead history.
  */
 export default function LeadHistory({ token }: { token: string }) {
-  const tokenRef = useRef(token);
+  const tokenRef = useSessionToken(token);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<LeadStatus | "">("");
@@ -66,7 +66,7 @@ export default function LeadHistory({ token }: { token: string }) {
   useEffect(() => {
     let cancelled = false;
     const currentKey = `${statusFilter}|${query}`;
-    fetchLeads({ search: query, status: statusFilter || undefined, page: 1 }, tokenRef.current, refreshAccessTokenAction)
+    fetchLeads({ search: query, status: statusFilter || undefined, page: 1 }, tokenRef.current, refreshSession)
       .then((result) => {
         if (cancelled) return;
         tokenRef.current = result.token;
@@ -79,7 +79,7 @@ export default function LeadHistory({ token }: { token: string }) {
     return () => {
       cancelled = true;
     };
-  }, [query, statusFilter]);
+  }, [query, statusFilter, tokenRef]);
 
   const loadMore = async () => {
     if (!loaded) return;
@@ -88,7 +88,7 @@ export default function LeadHistory({ token }: { token: string }) {
       const result = await fetchLeads(
         { search: query, status: statusFilter || undefined, page: loaded.page + 1 },
         tokenRef.current,
-        refreshAccessTokenAction,
+        refreshSession,
       );
       tokenRef.current = result.token;
       setLoaded({ ...loaded, items: [...loaded.items, ...result.items], total: result.total, page: loaded.page + 1 });
@@ -114,7 +114,7 @@ export default function LeadHistory({ token }: { token: string }) {
     setBusyId(lead.id);
     setError(null);
     try {
-      const { token: nextToken, ...updated } = await updateLeadStatus(lead.id, status, tokenRef.current, refreshAccessTokenAction);
+      const { token: nextToken, ...updated } = await updateLeadStatus(lead.id, status, tokenRef.current, refreshSession);
       tokenRef.current = nextToken;
       replaceLead(updated);
     } catch (err) {
@@ -128,7 +128,7 @@ export default function LeadHistory({ token }: { token: string }) {
     setBusyId(lead.id);
     setError(null);
     try {
-      const { token: nextToken } = await deleteLead(lead.id, tokenRef.current, refreshAccessTokenAction);
+      const { token: nextToken } = await deleteLead(lead.id, tokenRef.current, refreshSession);
       tokenRef.current = nextToken;
       setLoaded(
         (current) =>

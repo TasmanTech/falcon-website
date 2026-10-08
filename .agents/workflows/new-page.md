@@ -15,7 +15,7 @@ description: Scaffold a new public service or content page with metadata, JSON-L
 6. Internal links:
    - From the new page to at least three related pages, with descriptive anchor text.
    - From the parent hub page (e.g. `/lock`) and at least one related page back to the new page, without rewriting their copy.
-   - Add it to the navbar (desktop and mobile lists) and footer if it is a top-level service (`navbar_footer` skill).
+   - Add a service page to the navbar (desktop and mobile lists) and to `serviceLinks` in `Footer.tsx`, nested under its hub (`navbar_footer` skill). A new hub goes in all three at the top level.
 
 7. Add the route to `app/sitemap.ts` and a one-line entry under the right section of `public/llms.txt`.
 

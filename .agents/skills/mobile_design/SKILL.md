@@ -18,7 +18,8 @@ Most visitors arrive on a phone, often locked out, and the admin portal is used 
 - Fluid widths (`w-full`, `max-w-*`) rather than fixed pixel widths.
 - Containers: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`.
 - Text that stacks with an image on mobile: `text-center lg:text-left`.
-- Respect the iOS safe area for anything fixed to the bottom (`bottom-[calc(1rem+env(safe-area-inset-bottom))]`, as in `FloatingCTA.tsx`).
+- Horizontal carousels (`GallerySection`): `flex overflow-x-auto snap-x snap-mandatory` with `snap-start shrink-0` slides sized to show part of the next one on phones (`w-[88%]`), so it is obvious they scroll. Hide the scrollbar, keep arrow buttons at least `w-12 h-12`, and support swipe as well as taps.
+- Respect the iOS safe area for anything fixed to the bottom (`bottom-[calc(1rem+env(safe-area-inset-bottom))]`, as in `FloatingCTA.tsx`) and full-screen overlays at both ends (the `GallerySection` lightbox pads with `safe-area-inset-top` and `-bottom` and locks body scroll while open).
 
 ## Navigation
 - `md` is the switch point: the hamburger is `md:hidden`, the desktop nav is `hidden md:flex` (`navbar_footer` skill).

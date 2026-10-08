@@ -17,11 +17,31 @@ and the API in `apps/back-end/src/invoice/` and `src/lead/` (both guarded by `Jw
   Next.js server and stores the tokens as cookies.
 - Admins live in the `admin` table. Create one or reset a password with
   `node scripts/create-admin.mjs <email> <password>`, run from `apps/back-end` (it reads `.env`).
-- `proxy.ts` matches `/admin/:path*` and exchanges the refresh cookie (`POST /auth/refresh`) on every
-  request, so pages always get a fresh access token (15 min; refresh token 7 days). No session redirects
-  to `/admin/login`.
-- Client components call the API with `authorisedFetch` (`lib/invoice.ts`): on a 401 it gets a new token
-  from `refreshAccessTokenAction` and retries once, then throws `SessionExpiredError`.
+- Tokens: access 15 min, refresh 7 days. Refresh tokens are stateless JWTs rotated on every refresh, so
+  the 7 days slide forward with each use; only a password change, a rotated `JWT_REFRESH_SECRET` or
+  7 days with no request at all ends a session.
+- **An idle admin must never be logged out by a hiccup.** `refreshWithBackend` (`lib/auth.ts`) returns
+  `ok`, `rejected` (a 400 / 401 / 403 from the back-end: the session really ended) or `unavailable`
+  (timeout after 8 s, network error, 5xx: retried once). Only `rejected` clears the cookies. Keep that
+  distinction in any new code that refreshes; never treat a failed fetch as a logout.
+- `proxy.ts` matches `/admin/:path*` and refreshes on every request, so pages render with a fresh access
+  token. No session or `rejected` redirects to `/admin/login`; `unavailable` lets the page load with
+  the cookies untouched and an empty token, which the client renews itself.
+- **In the browser**, every portal component gets its token from `useSessionToken(token)` and passes
+  `refreshSession` to the API helpers (both `lib/session.ts`):
+  - `refreshSession` posts to the route handler `app/api/session/refresh/route.ts` (200 token, 401 ended,
+    503 unreachable). It is a route, not a server action, because server action IDs change with every
+    deploy and a tab left open across a deploy could no longer refresh. Concurrent calls share one
+    request, and every mounted `useSessionToken` receives the new token.
+  - `useSessionToken` renews in the background a minute before the token expires (timed from the
+    token's own `exp - iat`, so a wrong device clock cannot cause a renewal loop), and immediately when
+    the tab becomes visible, the window regains focus or the device comes back online. It does nothing
+    while the tab is hidden, retries an unreachable server after 30 s, and stays silent on failure.
+  - `authorisedFetch` (`lib/invoice.ts`) still retries once after a 401 using `refreshSession`. It throws
+    `SessionExpiredError` (show a "Log in again" link; the invoice draft stays in `localStorage`) only
+    when the session really ended, and `ServerUnreachableError` when the network or back-end is down.
+- A new portal component that calls the API uses `useSessionToken` + `refreshSession` the same way.
+  Never read the token from a prop directly or add another refresh path.
 - The public navbar, footer, floating CTA and tags are hidden on `/admin` by `SiteChrome`; the portal has
   its own `PortalNav`.
 
@@ -62,6 +82,9 @@ and the API in `apps/back-end/src/invoice/` and `src/lead/` (both guarded by `Jw
 - Saved leads appear in Leads → History with a status badge (`LEAD_STATUSES`) and can be deleted.
 
 ## Testing
+- Sessions: `lib/session.test.ts` (fake timers, `visibilitychange`), `lib/auth.test.ts`, `proxy.test.ts` and
+  `app/api/session/refresh/route.test.ts`. Component tests mock `@/lib/session` with a `useRef`-backed
+  `useSessionToken` (see `InvoiceForm.test.tsx`).
 - Front end: extend `InvoiceForm.test.tsx`, `PriceListSheet.test.tsx`, `PortalNav.test.tsx`, `LoginForm.test.tsx`, `InvoiceHistory.test.tsx`, `LeadMessage.test.tsx`,
   `LeadHistory.test.tsx` and `lib/*.test.ts`. Find inputs by their exact label text (e.g. `'Email'`,
   `'Name *'`) so a wrong required marker fails the test.

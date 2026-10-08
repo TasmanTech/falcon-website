@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import {
   PRESET_GROUPS,
+  ServerUnreachableError,
   SessionExpiredError,
   calculateTotals,
   createEmptyDraft,
@@ -121,6 +122,13 @@ describe('lib/invoice', () => {
       await expect(submitInvoice('send', draft, 'stale', vi.fn().mockResolvedValue(null))).rejects.toBeInstanceOf(
         SessionExpiredError,
       );
+    });
+
+    it('reports an unreachable back-end without ending the session', async () => {
+      vi.spyOn(global, 'fetch').mockRejectedValue(new TypeError('Failed to fetch'));
+      const refresh = vi.fn();
+      await expect(submitInvoice('send', draft, 't', refresh)).rejects.toBeInstanceOf(ServerUnreachableError);
+      expect(refresh).not.toHaveBeenCalled();
     });
 
     it('surfaces the back-end error message', async () => {

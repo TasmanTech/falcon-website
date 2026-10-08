@@ -252,6 +252,14 @@ export class SessionExpiredError extends Error {
   }
 }
 
+/** Thrown when the server cannot be reached; the session and any unsaved work are kept. */
+export class ServerUnreachableError extends Error {
+  constructor() {
+    super("Can't reach the server right now. Nothing has been lost; check your connection and try again.");
+    this.name = "ServerUnreachableError";
+  }
+}
+
 /**
  * Reads the filename from a Content-Disposition header, falling back when absent.
  *
@@ -294,6 +302,7 @@ export type TokenRefresher = () => Promise<string | null>;
  * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
  * @returns {Promise<{ res: Response; token: string }>} The successful response and the token that worked.
  * @throws {SessionExpiredError} If the session cannot be refreshed.
+ * @throws {ServerUnreachableError} If the back-end or the session refresh cannot be reached.
  * @throws {Error} With the back-end's message for any other failure.
  */
 export async function authorisedFetch(
@@ -303,11 +312,16 @@ export async function authorisedFetch(
   refreshToken: TokenRefresher,
 ): Promise<{ res: Response; token: string }> {
   const backendUrl = (process.env.NEXT_PUBLIC_BACKEND_URL?.trim() || "http://localhost:3001").replace(/\/$/, "");
-  const call = (accessToken: string) =>
-    fetch(`${backendUrl}${path}`, {
-      ...init,
-      headers: { ...init.headers, Authorization: `Bearer ${accessToken}` },
-    });
+  const call = async (accessToken: string): Promise<Response> => {
+    try {
+      return await fetch(`${backendUrl}${path}`, {
+        ...init,
+        headers: { ...init.headers, Authorization: `Bearer ${accessToken}` },
+      });
+    } catch {
+      throw new ServerUnreachableError();
+    }
+  };
 
   let currentToken = token;
   let res = await call(currentToken);

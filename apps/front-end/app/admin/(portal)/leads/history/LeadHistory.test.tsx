@@ -7,7 +7,10 @@ vi.mock('next/link', () => ({
     <a href={href} {...rest}>{children}</a>
   ),
 }));
-vi.mock('@/app/actions/auth', () => ({ refreshAccessTokenAction: vi.fn() }));
+vi.mock('@/lib/session', async () => {
+  const { useRef } = await import('react');
+  return { refreshSession: vi.fn(), useSessionToken: (token: string) => useRef(token) };
+});
 
 const fetchLeads = vi.fn();
 const updateLeadStatus = vi.fn();

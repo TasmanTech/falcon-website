@@ -8,7 +8,10 @@ vi.mock('next/link', () => ({
     <a href={href} {...rest}>{children}</a>
   ),
 }));
-vi.mock('@/app/actions/auth', () => ({ refreshAccessTokenAction: vi.fn() }));
+vi.mock('@/lib/session', async () => {
+  const { useRef } = await import('react');
+  return { refreshSession: vi.fn(), useSessionToken: (token: string) => useRef(token) };
+});
 vi.mock('@/lib/invoice', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/lib/invoice')>()),
   todayInNz: () => '2026-09-28',
