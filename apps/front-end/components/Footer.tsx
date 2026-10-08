@@ -2,6 +2,44 @@ import Link from "next/link";
 import Image from "next/image";
 import CopyrightYear from "./CopyrightYear";
 
+interface FooterLink {
+  href: string;
+  label: string;
+  children?: FooterLink[];
+}
+
+/** Hub service pages, each followed by its individual service pages (shown indented). */
+const serviceLinks: FooterLink[] = [
+  {
+    href: "/lock",
+    label: "Lock Services",
+    children: [
+      { href: "/lock/lockout", label: "Lockout" },
+      { href: "/lock/rekey", label: "Rekey" },
+      { href: "/lock/lock-change-installation", label: "Lock Change & Install" },
+      { href: "/lock/lock-repair", label: "Lock Repair" },
+    ],
+  },
+  {
+    href: "/smart-lock",
+    label: "Smart Lock Services",
+    children: [
+      { href: "/smart-lock/smart-lock-installation", label: "Smart Lock Installation" },
+      { href: "/smart-lock/smart-lock-change", label: "Smart Lock Change" },
+      { href: "/smart-lock/smart-lock-repair-programming", label: "Repair & Programming" },
+    ],
+  },
+  {
+    href: "/auto",
+    label: "Auto Services",
+    children: [
+      { href: "/auto/obd2-diagnostic", label: "OBDII Diagnostic" },
+      { href: "/auto/dead-battery-assistance", label: "Dead Battery Assistance" },
+    ],
+  },
+  { href: "/car-lockout", label: "Car Lockout" },
+];
+
 /**
  * Global footer component.
  * Displays company information, social links, and navigation links grouped by category.
@@ -36,10 +74,20 @@ export default function Footer() {
         <div>
           <div className="font-bold text-lg mb-4 font-montserrat">Services</div>
           <ul className="space-y-2 font-inter">
-            <li><Link href="/lock" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Lock Services</Link></li>
-            <li><Link href="/smart-lock" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Smart Lock Services</Link></li>
-            <li><Link href="/auto" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Auto Services</Link></li>
-            <li><Link href="/car-lockout" className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">Car Lockout</Link></li>
+            {serviceLinks.map((service) => (
+              <li key={service.href}>
+                <Link href={service.href} className="text-brand-light/80 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">{service.label}</Link>
+                {service.children && (
+                  <ul className="mt-2 ml-1 pl-4 space-y-1.5 border-l border-brand-light/20 text-sm">
+                    {service.children.map((child) => (
+                      <li key={child.href}>
+                        <Link href={child.href} className="text-brand-light/70 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">{child.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
 

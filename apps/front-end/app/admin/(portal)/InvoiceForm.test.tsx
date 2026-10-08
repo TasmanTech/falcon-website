@@ -8,7 +8,10 @@ vi.mock('next/link', () => ({
     <a href={href} {...rest}>{children}</a>
   ),
 }));
-vi.mock('@/app/actions/auth', () => ({ refreshAccessTokenAction: vi.fn().mockResolvedValue(null) }));
+vi.mock('@/lib/session', async () => {
+  const { useRef } = await import('react');
+  return { refreshSession: vi.fn().mockResolvedValue(null), useSessionToken: (token: string) => useRef(token) };
+});
 
 const submitInvoice = vi.fn();
 const downloadBlob = vi.fn();

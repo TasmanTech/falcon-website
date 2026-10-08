@@ -37,13 +37,14 @@ app/
     (auto-services)/      /auto/* hub and service pages
     car-lockout/          /car-lockout
   admin/                  Private portal: login, invoices, leads (noindex)
-  actions/auth.ts         Server actions for admin login, logout and token refresh
+  actions/auth.ts         Server actions for admin login and logout
+  api/session/refresh/    Route handler the portal calls to renew its session
   layout.tsx              Root layout: fonts, site-wide LocalBusiness JSON-LD, chrome, tags
   sitemap.ts, robots.ts   Discovery files
   globals.css             Tailwind theme tokens and animations
 components/               Navbar, Footer, FloatingCTA, Hero, ContactForm, tag loaders, JsonLd
-components/sections/      Reusable page sections (photo, text, icon list, CTA, FAQ, page header)
-lib/                      auth, invoice, lead and idle helpers
+components/sections/      Reusable page sections (photo, text, icon list, gallery, CTA, FAQ, page header)
+lib/                      auth, session (token renewal), invoice, lead, gallery and idle helpers
 proxy.ts                  Guards /admin and refreshes the session on every admin request
 public/                   Logo, generated WebP images, llms.txt
 ```

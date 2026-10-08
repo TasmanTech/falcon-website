@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiDownload, FiSearch, FiTrash2 } from "react-icons/fi";
-import { refreshAccessTokenAction } from "@/app/actions/auth";
+import { refreshSession, useSessionToken } from "@/lib/session";
 import {
   SessionExpiredError,
   deleteInvoice,
@@ -46,7 +46,7 @@ interface LoadedPage {
  * @returns {JSX.Element} The invoice history.
  */
 export default function InvoiceHistory({ token }: { token: string }) {
-  const tokenRef = useRef(token);
+  const tokenRef = useSessionToken(token);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [loaded, setLoaded] = useState<LoadedPage | null>(null);
@@ -71,7 +71,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetchInvoiceHistory({ search: query, page: 1 }, tokenRef.current, refreshAccessTokenAction)
+    fetchInvoiceHistory({ search: query, page: 1 }, tokenRef.current, refreshSession)
       .then((result) => {
         if (cancelled) return;
         tokenRef.current = result.token;
@@ -84,7 +84,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
     return () => {
       cancelled = true;
     };
-  }, [query]);
+  }, [query, tokenRef]);
 
   const loadMore = async () => {
     if (!loaded) return;
@@ -93,7 +93,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
       const result = await fetchInvoiceHistory(
         { search: loaded.query, page: loaded.page + 1 },
         tokenRef.current,
-        refreshAccessTokenAction,
+        refreshSession,
       );
       tokenRef.current = result.token;
       setLoaded({ ...loaded, items: [...loaded.items, ...result.items], total: result.total, page: loaded.page + 1 });
@@ -108,7 +108,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
     setDownloadingId(invoice.id);
     setError(null);
     try {
-      const result = await fetchStoredInvoicePdf(invoice.id, tokenRef.current, refreshAccessTokenAction);
+      const result = await fetchStoredInvoicePdf(invoice.id, tokenRef.current, refreshSession);
       tokenRef.current = result.token;
       downloadBlob(result.blob, result.fileName);
     } catch (err) {
@@ -126,7 +126,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
         invoice.id,
         !invoice.paid,
         tokenRef.current,
-        refreshAccessTokenAction,
+        refreshSession,
       );
       tokenRef.current = nextToken;
       setLoaded((current) =>
@@ -146,7 +146,7 @@ export default function InvoiceHistory({ token }: { token: string }) {
     setUpdatingId(invoice.id);
     setError(null);
     try {
-      const { token: nextToken } = await deleteInvoice(invoice.id, tokenRef.current, refreshAccessTokenAction);
+      const { token: nextToken } = await deleteInvoice(invoice.id, tokenRef.current, refreshSession);
       tokenRef.current = nextToken;
       setLoaded(
         (current) =>

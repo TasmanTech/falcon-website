@@ -31,21 +31,29 @@ describe('proxy', () => {
   });
 
   it('clears an invalid session and redirects to login', async () => {
-    refreshWithBackend.mockResolvedValue(null);
+    refreshWithBackend.mockResolvedValue({ status: 'rejected' });
     const res = await proxy(requestFor('/admin/invoices', 'bad'));
     expect(res.headers.get('location')).toBe('https://falconaccess.co.nz/admin/login');
     expect(res.cookies.get('refreshToken')?.value).toBe('');
   });
 
+  it('keeps the session and lets the page load when the back-end is unreachable', async () => {
+    refreshWithBackend.mockResolvedValue({ status: 'unavailable' });
+    const res = await proxy(requestFor('/admin/invoices', 'good'));
+    expect(res.headers.get('location')).toBeNull();
+    expect(res.cookies.get('refreshToken')).toBeUndefined();
+    expect(res.cookies.get('accessToken')).toBeUndefined();
+  });
+
   it('sends signed-in admins from the login page to the portal', async () => {
-    refreshWithBackend.mockResolvedValue({ accessToken: 'access', refreshToken: 'rotated' });
+    refreshWithBackend.mockResolvedValue({ status: 'ok', tokens: { accessToken: 'access', refreshToken: 'rotated' } });
     const res = await proxy(requestFor('/admin/login', 'good'));
     expect(res.headers.get('location')).toBe('https://falconaccess.co.nz/admin');
     expect(res.cookies.get('refreshToken')?.value).toBe('rotated');
   });
 
   it('refreshes the session and forwards the new access token to the page', async () => {
-    refreshWithBackend.mockResolvedValue({ accessToken: 'access', refreshToken: 'rotated' });
+    refreshWithBackend.mockResolvedValue({ status: 'ok', tokens: { accessToken: 'access', refreshToken: 'rotated' } });
     const res = await proxy(requestFor('/admin', 'good'));
 
     expect(res.headers.get('location')).toBeNull();

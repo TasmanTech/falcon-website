@@ -9,7 +9,6 @@ import {
   REFRESH_MAX_AGE_SECONDS,
   SessionTokens,
   loginWithBackend,
-  refreshWithBackend,
   sessionCookieOptions,
 } from "@/lib/auth";
 
@@ -69,22 +68,4 @@ export async function logoutAction(): Promise<never> {
   cookieStore.delete(ACCESS_COOKIE);
   cookieStore.delete(REFRESH_COOKIE);
   redirect("/admin/login");
-}
-
-/**
- * Issues a fresh access token from the refresh token cookie. The invoice form calls this
- * when the back-end rejects an expired token, so a long-open form is never lost.
- *
- * @returns {Promise<string | null>} The new access token, or null if the session has ended.
- */
-export async function refreshAccessTokenAction(): Promise<string | null> {
-  const cookieStore = await cookies();
-  const refreshToken = cookieStore.get(REFRESH_COOKIE)?.value;
-  if (!refreshToken) return null;
-
-  const tokens = await refreshWithBackend(refreshToken);
-  if (!tokens) return null;
-
-  await storeSession(tokens);
-  return tokens.accessToken;
 }

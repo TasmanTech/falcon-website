@@ -16,7 +16,7 @@ The repo is an npm workspace (`apps/*`) with one root `package-lock.json`. CI an
 
 ## 2. Audit code
 - Find deprecated APIs (flagged by TypeScript or ESLint) and unused exports or files (`npx knip` or ESLint `no-unused-vars`). Remove dead code.
-- Stray scripts at the repo root (e.g. `scratch_refactor.js`) are not part of the app; flag them to the user rather than deleting them unasked.
+- Stray scripts and reports (`scratch_*.js`, `fix-*.mjs`, `lighthouse-report.json`) are not part of the app. If one is tracked, flag it to the user rather than deleting it unasked; if it is untracked and yours, delete it (`AGENTS.md`, Temporary Files).
 
 ## 3. Framework upgrades
 - Target the **latest stable** release only (no `canary`, `rc`, `beta`, `next`). Check live with `npm view <pkg> dist-tags.latest`.

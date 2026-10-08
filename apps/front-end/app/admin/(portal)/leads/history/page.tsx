@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 import { ACCESS_COOKIE } from "@/lib/auth";
 import LeadHistory from "./LeadHistory";
 
@@ -16,8 +15,8 @@ export const metadata: Metadata = {
  * @returns {Promise<JSX.Element>} The lead history.
  */
 async function LeadHistoryWithSession() {
-  const token = (await cookies()).get(ACCESS_COOKIE)?.value;
-  if (!token) redirect("/admin/login");
+  // Empty only when the proxy could not reach the back-end; the client then renews it itself
+  const token = (await cookies()).get(ACCESS_COOKIE)?.value ?? "";
   return <LeadHistory token={token} />;
 }
 

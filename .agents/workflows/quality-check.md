@@ -27,6 +27,6 @@ description: Type-check, lint and test both apps, fixing failures until everythi
 
 10. If pages, layouts, `next.config.ts`, webpack config or dependencies changed, run `npm run build:frontend` and `npm run build:backend` from the repo root.
 
-11. Check every new or changed page, component, action, `lib/` helper, controller, service, entity and module has a colocated test, and that no temporary scripts were left in the repo (`AGENTS.md`, Temporary Files).
+11. Check every new or changed page, component, action, `lib/` helper, controller, service, entity and module has a colocated test, and that no temporary scripts or reports were left in the repo (`git status --short`; `AGENTS.md`, Temporary Files).
 
 12. Report what failed, what you changed and the final pass / fail of each step, with real test counts. Do not commit unless asked.

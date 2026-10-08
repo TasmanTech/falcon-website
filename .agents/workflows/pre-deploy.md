@@ -8,11 +8,11 @@ Merging `staging` into `master` triggers `.github/workflows/ci-cd.yml`, which de
 
 2. **Schema check**: TypeORM runs with `synchronize: true` and no migrations. For every changed `*.entity.ts`, flag any renamed, retyped or removed column, or a new non-nullable column without a default. These can lose data or fail on start in production. Treat as a blocker until the user confirms.
 
-3. **Env check**: search the diff for new `process.env.X` or `config.get('X')` keys. Each back-end key must be in the `--set-env-vars` list of `ci-cd.yml` (ask the user to confirm the GitHub secret exists). A new `NEXT_PUBLIC_*` key must be a `--build-arg` in the workflow and an `ARG` in `apps/front-end/Dockerfile`. A missing key is a blocker.
+3. **Env check**: search the diff for new `process.env.X` or `config.get('X')` keys. Each back-end key must be in the `--set-env-vars` list of `ci-cd.yml` (ask the user to confirm the GitHub secret exists). A new `NEXT_PUBLIC_*` key must be a `--build-arg` in the workflow and an `ARG` in `apps/front-end/Dockerfile`. Also check the reverse: a key the code reads with a `||` fallback but the workflow never sets fails silently in production. A missing key is a blocker.
 
 4. **CSP check**: if the diff adds a third-party script, embed, image or API origin, confirm `next.config.ts` allows it in the right directive and that `localhost` is still development-only.
 
-5. **Assets check**: new files the back-end reads at runtime must be committed under `apps/back-end/assets/`.
+5. **Assets check**: new files the back-end reads at runtime must be committed under `apps/back-end/assets/`. Nothing in the diff should be a stray script or report (`scratch_*.js`, `fix-*.mjs`, `temp.js`, `lighthouse-report.json`, coverage output); flag any as a blocker.
 
 6. **Content check**: grep the changed copy, metadata and `public/llms.txt` for "24/7", "24 hours", "web design", "web development" and minutes-based arrival times. Confirm new public pages are in `app/sitemap.ts` and `public/llms.txt`.
 

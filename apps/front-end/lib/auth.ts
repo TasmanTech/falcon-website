@@ -1,3 +1,5 @@
+import type { NextResponse } from "next/server";
+
 /** HttpOnly cookie holding the long-lived refresh token (7 days). */
 export const REFRESH_COOKIE = "refreshToken";
 
@@ -12,6 +14,22 @@ export interface SessionTokens {
   accessToken: string;
   refreshToken: string | null;
 }
+
+/**
+ * Outcome of a refresh. `rejected` means the session has really ended (log in again);
+ * `unavailable` means the back-end could not be reached or failed (cold start, outage,
+ * no signal), so the session is kept and the refresh can be tried again later.
+ */
+export type RefreshResult =
+  | { status: "ok"; tokens: SessionTokens }
+  | { status: "rejected" }
+  | { status: "unavailable" };
+
+/** How long one refresh attempt may take; covers a Cloud Run cold start. */
+const REFRESH_TIMEOUT_MS = 8000;
+
+/** Attempts before a refresh is reported as `unavailable`. */
+const REFRESH_ATTEMPTS = 2;
 
 /**
  * Returns the back-end base URL for server-side requests.
@@ -97,23 +115,58 @@ export async function loginWithBackend(email: string, password: string): Promise
 }
 
 /**
- * Exchanges a refresh token for a new token pair (server-side only).
+ * Exchanges a refresh token for a new token pair (server-side only). Only a 400, 401 or 403
+ * from the back-end ends the session; a timeout, network error or other failure is retried
+ * once and then reported as `unavailable`, so an idle admin is never logged out by a hiccup.
  *
  * @param {string} refreshToken - The current refresh token.
- * @returns {Promise<SessionTokens | null>} New tokens, or null if the session is no longer valid.
+ * @returns {Promise<RefreshResult>} New tokens, `rejected` or `unavailable`.
  */
-export async function refreshWithBackend(refreshToken: string): Promise<SessionTokens | null> {
-  try {
-    const res = await fetch(`${serverBackendUrl()}/auth/refresh`, {
-      method: "POST",
-      headers: { Cookie: `${REFRESH_COOKIE}=${refreshToken}` },
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    const accessToken = await readAccessToken(res);
-    return accessToken ? { accessToken, refreshToken: extractRefreshToken(res) } : null;
-  } catch (error) {
-    console.error("Session refresh failed", error);
-    return null;
+export async function refreshWithBackend(refreshToken: string): Promise<RefreshResult> {
+  for (let attempt = 1; attempt <= REFRESH_ATTEMPTS; attempt++) {
+    try {
+      const res = await fetch(`${serverBackendUrl()}/auth/refresh`, {
+        method: "POST",
+        headers: { Cookie: `${REFRESH_COOKIE}=${refreshToken}` },
+        cache: "no-store",
+        signal: AbortSignal.timeout(REFRESH_TIMEOUT_MS),
+      });
+      if (res.status === 400 || res.status === 401 || res.status === 403) return { status: "rejected" };
+      if (res.ok) {
+        const accessToken = await readAccessToken(res);
+        if (accessToken) return { status: "ok", tokens: { accessToken, refreshToken: extractRefreshToken(res) } };
+      }
+      console.error(`Session refresh attempt ${attempt} failed with status ${res.status}`);
+    } catch (error) {
+      console.error(`Session refresh attempt ${attempt} failed`, error);
+    }
   }
+  return { status: "unavailable" };
+}
+
+/**
+ * Stores a token pair in the session cookies of an outgoing response.
+ *
+ * @param {NextResponse} response - The response to add the cookies to.
+ * @param {SessionTokens} tokens - The new tokens.
+ * @returns {NextResponse} The same response.
+ */
+export function setSessionCookies<T extends NextResponse>(response: T, tokens: SessionTokens): T {
+  response.cookies.set(ACCESS_COOKIE, tokens.accessToken, sessionCookieOptions(ACCESS_MAX_AGE_SECONDS));
+  if (tokens.refreshToken) {
+    response.cookies.set(REFRESH_COOKIE, tokens.refreshToken, sessionCookieOptions(REFRESH_MAX_AGE_SECONDS));
+  }
+  return response;
+}
+
+/**
+ * Removes both session cookies from an outgoing response.
+ *
+ * @param {NextResponse} response - The response to clear the cookies on.
+ * @returns {NextResponse} The same response.
+ */
+export function clearSessionCookies<T extends NextResponse>(response: T): T {
+  response.cookies.delete(ACCESS_COOKIE);
+  response.cookies.delete(REFRESH_COOKIE);
+  return response;
 }

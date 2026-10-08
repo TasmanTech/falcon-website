@@ -49,18 +49,37 @@ describe('lib/auth', () => {
         .spyOn(global, 'fetch')
         .mockResolvedValue(jsonResponse({ accessToken: 'new' }, { setCookie: 'refreshToken=rotated; Path=/' }));
 
-      await expect(refreshWithBackend('old')).resolves.toEqual({ accessToken: 'new', refreshToken: 'rotated' });
+      await expect(refreshWithBackend('old')).resolves.toEqual({
+        status: 'ok',
+        tokens: { accessToken: 'new', refreshToken: 'rotated' },
+      });
       const init = fetchMock.mock.calls[0][1] as RequestInit;
       expect(init.headers).toEqual({ Cookie: 'refreshToken=old' });
+      expect(init.signal).toBeInstanceOf(AbortSignal);
     });
 
-    it('returns null when the session is invalid or the network fails', async () => {
-      vi.spyOn(global, 'fetch').mockResolvedValueOnce(jsonResponse({}, { status: 401 }));
-      await expect(refreshWithBackend('bad')).resolves.toBeNull();
+    it.each([400, 401, 403])('reports a %i as a rejected session without retrying', async (status) => {
+      const fetchMock = vi.spyOn(global, 'fetch').mockResolvedValue(jsonResponse({}, { status }));
+      await expect(refreshWithBackend('bad')).resolves.toEqual({ status: 'rejected' });
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+    });
 
+    it('retries a network failure once, then reports the back-end as unavailable (not a logout)', async () => {
       vi.spyOn(console, 'error').mockImplementation(() => undefined);
-      vi.spyOn(global, 'fetch').mockRejectedValueOnce(new Error('offline'));
-      await expect(refreshWithBackend('x')).resolves.toBeNull();
+      const fetchMock = vi.spyOn(global, 'fetch').mockRejectedValue(new Error('offline'));
+      await expect(refreshWithBackend('x')).resolves.toEqual({ status: 'unavailable' });
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+    });
+
+    it('treats a server error as unavailable and recovers on the retry', async () => {
+      vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      vi.spyOn(global, 'fetch')
+        .mockResolvedValueOnce(jsonResponse({}, { status: 503 }))
+        .mockResolvedValueOnce(jsonResponse({ accessToken: 'new' }));
+      await expect(refreshWithBackend('x')).resolves.toEqual({
+        status: 'ok',
+        tokens: { accessToken: 'new', refreshToken: null },
+      });
     });
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import Footer from './Footer';
 
 vi.mock('next/image', () => ({
@@ -22,6 +22,18 @@ describe('Footer Component', () => {
     expect(screen.getByText(/All rights reserved/)).toBeInTheDocument();
     expect(screen.getByText('Car Lockout')).toBeInTheDocument();
     expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
+  });
+
+  it('lists each service page indented under its hub page', () => {
+    render(<Footer />);
+    const lockHub = screen.getByRole('link', { name: 'Lock Services' }).closest('li') as HTMLElement;
+    const nested = within(lockHub).getByRole('list');
+    expect(within(nested).getByRole('link', { name: 'Rekey' })).toHaveAttribute('href', '/lock/rekey');
+    expect(within(nested).getByRole('link', { name: 'Lock Repair' })).toHaveAttribute('href', '/lock/lock-repair');
+    const smartHub = screen.getByRole('link', { name: 'Smart Lock Services' }).closest('li') as HTMLElement;
+    expect(within(smartHub).getByRole('link', { name: 'Smart Lock Installation' })).toHaveAttribute('href', '/smart-lock/smart-lock-installation');
+    const autoHub = screen.getByRole('link', { name: 'Auto Services' }).closest('li') as HTMLElement;
+    expect(within(autoHub).getByRole('link', { name: 'Dead Battery Assistance' })).toHaveAttribute('href', '/auto/dead-battery-assistance');
   });
 
   it('links to the Facebook and Instagram profiles and not Twitter', () => {
