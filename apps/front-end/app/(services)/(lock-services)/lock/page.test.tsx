@@ -12,16 +12,15 @@ vi.mock('next/link', () => ({
   default: ({ children, href, ...rest }: { children: React.ReactNode; href: string; [key: string]: unknown }) => <a href={href} {...rest}>{children}</a>
 }));
 
-describe('Page Component: lockout', () => {
+describe('Page Component: lock hub', () => {
   it('renders the main headings', () => {
     render(<Page />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Emergency Lockout Services Auckland Wide' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: "Auckland Locksmith & Hardware Services" })).toBeInTheDocument();
     for (const name of [
-      'The Lockouts We Get Called To Most',
-      'What Affects the Price of a Lockout',
-      'Non-Destructive Techniques',
-      'Lost Your Keys, Not Just Locked Out?',
-      'Residential Lockout FAQs',
+      "How to Choose the Right Lock Service",
+      "Tailored Security for Every Need",
+      "From New Locks to Quick Fixes",
+      "Lock Services FAQs",
     ]) {
       expect(screen.getByRole('heading', { level: 2, name })).toBeInTheDocument();
     }
@@ -30,7 +29,7 @@ describe('Page Component: lockout', () => {
   it('links to related services in the body copy', () => {
     const { container } = render(<Page />);
     const hrefs = new Set(Array.from(container.querySelectorAll('a[href^="/"]')).map((a) => a.getAttribute('href')));
-    const expected = ['/lock', '/lock/rekey', '/lock/lock-repair', '/lock/lock-change-installation', '/car-lockout', '/smart-lock/smart-lock-repair-programming'];
+    const expected = ["/lock/lockout", "/lock/rekey", "/lock/lock-repair", "/lock/lock-change-installation", "/smart-lock", "/car-lockout"];
     expected.forEach((href) => expect(hrefs.has(href)).toBe(true));
     const bodyLinks = Array.from(container.querySelectorAll('section p a[href^="/"], section li a[href^="/"]'))
       .map((a) => a.getAttribute('href'))

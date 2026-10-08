@@ -31,7 +31,7 @@ Key facts:
 
 - [Smart Lock Services](https://falconaccess.co.nz/smart-lock): Overview of our smart lock and electronic access services.
 - [Smart Lock Installation](https://falconaccess.co.nz/smart-lock/smart-lock-installation): Fitting a smart lock to a door for the first time, including door preparation.
-- [Smart Lock Upgrade](https://falconaccess.co.nz/smart-lock/smart-lock-change): Swapping an existing lock or old smart lock for a newer system.
+- [Smart Lock Change and Upgrade](https://falconaccess.co.nz/smart-lock/smart-lock-change): Swapping an existing lock or old smart lock for a newer system.
 - [Smart Lock Repair and Programming](https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming): Diagnosing, repairing, and programming smart locks and electronic access systems.
 
 ## Auto Services

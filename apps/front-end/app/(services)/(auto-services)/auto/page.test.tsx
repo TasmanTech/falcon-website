@@ -30,7 +30,7 @@ vi.mock('@/components/sections/TextContentSection', (importOriginal) => wrapSect
 vi.mock('@/components/sections/CTASection', (importOriginal) => wrapSection(importOriginal as never, 'cta-section'));
 vi.mock('@/components/sections/FAQSection', (importOriginal) => wrapSection(importOriginal as never, 'faq-section'));
 
-describe('Page Component: car-lockout', () => {
+describe('Page Component: auto', () => {
   it('renders successfully', () => {
     const { container } = render(<Page />);
     expect(container).toBeTruthy();
@@ -38,10 +38,11 @@ describe('Page Component: car-lockout', () => {
 
   it('renders the h1 and key h2 headings', () => {
     render(<Page />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Auckland Emergency Car Lockout' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Why Central Locking Stops Working' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'How We Open Your Car Without Damage' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'What to Have Ready When You Call' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Mobile Auto Locksmith Auckland' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: "Mobile Auto Help Across Auckland" })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: "Which Service Do You Need?" })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: "Roadside Help When You Need It" })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: "Pricing and Hours" })).toBeInTheDocument();
   });
 
   it('uses the required section counts', () => {
@@ -54,7 +55,7 @@ describe('Page Component: car-lockout', () => {
 
   it('links to at least four related pages', () => {
     const { container } = render(<Page />);
-    const targets = ['/auto', '/auto/dead-battery-assistance', '/auto/obd2-diagnostic', '/lock/lockout'];
+    const targets = ['/car-lockout', '/auto/dead-battery-assistance', '/auto/obd2-diagnostic', '/lock/lockout', '/lock', '/contact'];
     for (const href of targets) {
       expect(container.querySelector(`a[href="${href}"]`)).not.toBeNull();
     }

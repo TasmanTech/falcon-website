@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import Hero from '@/components/Hero';
 import PhotoContentSection from '@/components/sections/PhotoContentSection';
 import TextContentSection from '@/components/sections/TextContentSection';
 import IconListSection from '@/components/sections/IconListSection';
 import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
+import GallerySection from '@/components/sections/GallerySection';
 import JsonLd from '@/components/JsonLd';
+import { homeGalleryImages } from '@/lib/gallery';
 
 export const metadata: Metadata = {
   alternates: {
@@ -20,6 +23,49 @@ export const metadata: Metadata = {
     url: "/",
   }
 };
+
+const linkClass = 'font-semibold text-brand-dark underline hover:text-brand-primary transition-colors';
+const darkLinkClass = 'font-semibold text-brand-light underline hover:text-brand-accent transition-colors';
+
+/** Homepage FAQs, shared by the FAQSection and the FAQPage JSON-LD so they always match. */
+const homeFaqs: { question: string; answer: string }[] = [
+  {
+    question: "What types of properties do you service?",
+    answer: "Houses, flats and apartments, rentals, shops, offices and other commercial sites across Auckland. If it has a door, a lock or a gate keypad, we can usually help."
+  },
+  {
+    question: "Do you only provide lockout and locksmithing services?",
+    answer: "No. Lockouts and lock work are our speciality, but we also do general repair and maintenance for homes and businesses, such as sticking doors, loose hinges and worn hardware."
+  },
+  {
+    question: "Do you offer emergency repairs?",
+    answer: "Yes. Some problems can't wait, like a front door that won't lock or a broken sliding door lock. Call us and we'll get to you as promptly as we can to make the place secure again."
+  },
+  {
+    question: "Are your services guaranteed?",
+    answer: "Yes. Every installation comes with a 90-day workmanship warranty at no extra cost, and longer warranty options are available. If something we did isn't right, tell us and we'll come back and sort it."
+  },
+  {
+    question: "Do you offer after-hours locksmith services?",
+    answer: "Yes. We offer after-hours support across Auckland for emergencies such as lockouts. Call +64 9 243 1404. Work outside normal hours costs a bit more, and we'll tell you the price before we start."
+  },
+  {
+    question: "Will my door or lock be damaged during a lockout service?",
+    answer: "We always try non-destructive entry first, so in most cases there's no damage to the door, frame or lock. We look at the lock before we start, pick the safest way in, and check the lock still works once you're inside."
+  },
+  {
+    question: "How can I tell if my lock needs to be replaced?",
+    answer: "Watch for a key that sticks or is hard to turn, a lock that feels loose, or a latch that doesn't catch. Often a repair or rekey is enough. We'll look at it on site and tell you honestly whether it's worth fixing or replacing."
+  },
+  {
+    question: "What should I do if my lock is damaged?",
+    answer: "A damaged lock leaves your home or business less secure, so it's worth sorting quickly. Call us on +64 9 243 1404. We'll come out, make the door secure, and quote the repair or replacement on site."
+  },
+  {
+    question: "Can you help me if I'm locked out of my house?",
+    answer: "Yes, house lockouts are one of the most common calls we get. Ring us, tell us where you are and what kind of lock it is, and we'll come to you. We get you back inside using the gentlest method that works."
+  }
+];
 
 export default function Home() {
   const jsonLd = {
@@ -39,81 +85,36 @@ export default function Home() {
         ]
       },
       {
+        "@type": "ImageGallery",
+        "@id": "https://falconaccess.co.nz/#gallery",
+        "name": "Our Recent Locksmith Work in Auckland",
+        "description": "Photos of keypad locks, deadbolts, sliding door locks and cabinet locks Falcon Access has installed, repaired and opened for Auckland homes and businesses.",
+        "isPartOf": { "@id": "https://falconaccess.co.nz/#webpage" },
+        "about": { "@id": "https://falconaccess.co.nz/#organization" },
+        "image": homeGalleryImages.map((image) => ({
+          "@type": "ImageObject",
+          "contentUrl": `https://falconaccess.co.nz${image.src}`,
+          "url": `https://falconaccess.co.nz${image.src}`,
+          "name": image.title,
+          "caption": image.alt,
+          "description": image.description,
+          "width": image.width,
+          "height": image.height,
+          "encodingFormat": "image/webp",
+          "contentLocation": { "@type": "City", "name": "Auckland" },
+          "creator": { "@id": "https://falconaccess.co.nz/#organization" },
+          "copyrightHolder": { "@id": "https://falconaccess.co.nz/#organization" },
+          "creditText": "Falcon Access",
+          "copyrightNotice": "© Falcon Access"
+        }))
+      },
+      {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What types of properties do you service?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you only provide lockout and locksmithing services?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, while emergency lockout assistance and security hardware are our highly specialised services, we also provide general repair and property maintenance for homes and businesses."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you offer emergency repairs?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we understand that some maintenance issues simply cannot wait. We offer prompt responses for urgent repair needs to secure your property and restore functionality."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are your services guaranteed?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you offer after-hours locksmith services?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Our emergency locksmiths offer after-hours support across Auckland. Call +64 9 243 1404 when you are locked out and we will come to you fast."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Will my door or lock be damaged during a lockout service?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, whether you are locked out of your home or business, we prioritise non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How can I tell if my lock needs to be replaced?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "If your lock is showing signs of wear, such as sticking, being difficult to turn, or if it’s becoming loose, it may be time to replace it. Our technicians can perform a comprehensive site inspection at your home or business to advise on the best, most practical course of action for your security needs in NZ."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What should I do if my lock is damaged?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at +64 9 243 1404; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across Auckland."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can you help me if I’m locked out of my house?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we specialise in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across Auckland with honest, reliable assistance."
-            }
-          }
-        ]
+        "mainEntity": homeFaqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+        }))
       }
     ]
   };
@@ -123,7 +124,7 @@ export default function Home() {
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
         title="Commercial & Residential Repair"
-        description={<>Rapid response lockout assistance, including after-hours support, for your home or business across Auckland. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> for immediate help.</>}
+        description={<>Locked out, or a lock playing up? We come to you for lockouts, lock repairs and smart locks across Auckland, with after-hours support for emergencies. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> and we&apos;ll help you sort it.</>}
         imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
         imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
         imageTitle="Commercial & Residential Repair Tools"
@@ -149,8 +150,8 @@ export default function Home() {
       <PhotoContentSection
         title="Specialised Lockout & Security Services"
         content={[
-          <p key="1">We do many fixes. But lockouts are what we do best. Being locked out is bad, so we get you in fast. Our door unlocking service is safe. We do not break your parts.</p>,
-          <p key="2">We do more than just let you in. We handle lock repair, lock replacement, and lock rekey jobs. We make sure all doors are secure. Need to get a locksmith fast? We offer after-hours support too.</p>
+          <p key="1">We fix plenty of things around homes and businesses, but lockouts are what we do best. Being stuck outside your own door is stressful, so we come to you and get you back in promptly. We use non-destructive entry wherever we can, so your door, frame and lock are left as they were.</p>,
+          <p key="2">Once you&apos;re inside, we can also take care of lock repair, lock replacement and rekeying, so every door shuts and locks properly. If it happens late at night, we offer after-hours support too.</p>
         ]}
         imageSrc="/images/home/locksmith-lock-pick-set-auckland.webp"
         imageAlt="Locksmith lock pick set with tension wrenches and brass lock cylinders"
@@ -162,29 +163,47 @@ export default function Home() {
         theme="light"
       />
 
+      <GallerySection
+        title="Our Recent Locksmith Work in Auckland"
+        subtitle={<>Real jobs from around Auckland, from <Link href="/smart-lock/smart-lock-installation" className="font-semibold underline decoration-brand-dark decoration-2 underline-offset-4 hover:text-brand-dark/70 transition-colors">smart lock installation</Link> to deadbolts, <Link href="/lock/lock-repair" className="font-semibold underline decoration-brand-dark decoration-2 underline-offset-4 hover:text-brand-dark/70 transition-colors">lock repairs</Link> and cabinet locks. Tap any photo to see it up close.</>}
+        images={homeGalleryImages}
+        theme="accent"
+      />
+
+      <TextContentSection
+        title="The Kinds of Jobs We Do Every Week"
+        content={[
+          <p key="1">Those photos are a fair snapshot of a normal week. We fit keypad locks like the Yale touchscreen lever, which opens with a PIN instead of a key. Through our <Link href="/smart-lock/smart-lock-repair-programming" className={linkClass}>smart lock repair and programming</Link> service, we also look after gate keypads such as Rosslare access control.</p>,
+          <p key="2">Plenty of older Auckland homes still have timber doors with Lockwood deadlocks. We regularly work on brands such as Kwikset, Legge, Ikonic and Lockwood, whether that&apos;s a <Link href="/lock/lock-change-installation" className={linkClass}>new deadbolt installation</Link> or a <Link href="/lock/rekey" className={linkClass}>rekeying service</Link> so old keys stop working.</p>,
+          <p key="3">Then there are the everyday calls: a child who&apos;s pushed the button on a brass privacy knob and locked the bathroom, a worn ranch slider lock we replace mid-job, or a stuck display cabinet lock. For anything shut tight, our <Link href="/lock/lockout" className={linkClass}>lockout service</Link> is the place to start.</p>
+        ]}
+        theme="white"
+        align="left"
+      />
+
       <IconListSection
         title="Our Auckland Service Guarantees"
-        subtitle="We stand firmly behind our commercial and residential contracting work across the wider Auckland region."
+        subtitle="What you can count on when you book us, at home or at work, anywhere in Auckland."
         items={[
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
             title: 'No Fix, No Fee Guarantee',
-            description: "If we can't complete the job or safely unlock your property, we won't charge you a cent. Our priority is providing authentic, reliable access solutions."
+            description: "If we can't complete the job or can't safely get you in, you don't pay. Simple as that."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-            title: 'On-Time Mobile Arrival',
-            description: "We completely respect your busy schedule. Whether it's an emergency lockout or planned property maintenance, our Auckland mobile units arrive precisely when promised."
+            title: 'Honest Arrival Updates',
+            description: "We know your time matters. We'll give you a realistic idea of when we can get to you, and if traffic or another job holds us up, we'll let you know rather than leave you wondering."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>,
-            title: 'Exceptional Workmanship',
-            description: "We take immense pride in our trade. We provide excellent, long-lasting residential repair and commercial security services, always striving to do our absolute best on every single job."
+            title: 'Workmanship We Stand Behind',
+            description: "We test every lock before we leave. Every installation comes with a 90-day workmanship warranty at no extra cost, and if something isn't right, we'll come back and fix it."
           },
           {
             icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
             title: 'Transparent $20 Callout Fee',
-            description: "No hidden costs and absolutely no surprise surcharges. We operate with a brilliantly simple, highly affordable $20 flat call-out fee for all locksmithing and maintenance visits across Auckland."
+            description: "The call-out is a flat NZ$20. The job itself is quoted on site and agreed before we start. Work outside normal hours costs a bit more, and we'll always tell you first."
           }
         ]}
         theme="dark"
@@ -193,9 +212,9 @@ export default function Home() {
       <PhotoContentSection
         title="Comprehensive Property Care"
         content={[
-          <p key="1">Taking care of homes and shops takes skill. We fix and look after your space. We make sure it is safe and works well. We work all over Auckland. If you need a locksmith near you, we are close by.</p>,
-          <p key="2">We do normal checks. We also fix bad breaks fast. Our team keeps your space in top shape.</p>,
-          <p key="3">Upkeep is a clear plan of work. It is not just one job. We shape our work to fit your time and cash. We try not to get in your way.</p>
+          <p key="1">Locks are only part of what keeps a building working. We also look after the doors, frames and hardware around them, for homes, rentals, shops and offices all over Auckland.</p>,
+          <p key="2">That might be a door that drags on the floor, a hinge that&apos;s worked loose, or a latch that no longer lines up with the strike plate. Small fixes like these stop bigger problems later.</p>,
+          <p key="3">For ongoing upkeep, we can plan the work around your schedule and budget. We turn up with the tools for the job, work tidily and keep out of your way as much as we can.</p>
         ]}
         imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
         imageAlt="Orange cordless drill and impact driver with pliers, screwdrivers and a pipe wrench"
@@ -211,8 +230,8 @@ export default function Home() {
         title="Our Commitment to Quality"
         content={[
           <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
-          <p key="1">At Falcon Access, we do the job right on day one. We have years of real skills. We do not use fake titles. Our good work speaks for itself. We are clear and fair.</p>,
-          <p key="2">We fix bad hinges and broken parts. We do door and lock repair. We also get you in when locked out. We give strong fixes that last. Call our team at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
+          <p key="1">We&apos;d rather do a job once and do it properly. You&apos;ll get straight answers about what&apos;s wrong, what it will take to fix and what it costs, before any work starts. You can read more <Link href="/about" className={darkLinkClass}>about how we work</Link>.</p>,
+          <p key="2">Whether it&apos;s a sticking hinge, a broken lock or a lockout, we go for repairs that last rather than quick patches. Give us a call on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />
@@ -222,44 +241,7 @@ export default function Home() {
       <FAQSection
         title="General Maintenance & Locksmith FAQs"
         subtitle="Common questions about our repair and maintenance services."
-        faqs={[
-          {
-            question: "What types of properties do you service?",
-            answer: "We service a wide range of properties including residential homes, commercial offices, retail spaces, and industrial facilities across Auckland."
-          },
-          {
-            question: "Do you only provide lockout and locksmithing services?",
-            answer: "No, while emergency lockout assistance and security hardware are our highly specialised services, we also provide general repair and property maintenance for homes and businesses."
-          },
-          {
-            question: "Do you offer emergency repairs?",
-            answer: "Yes, we understand that some maintenance issues simply cannot wait. We offer prompt responses for urgent repair needs to secure your property and restore functionality."
-          },
-          {
-            question: "Are your services guaranteed?",
-            answer: "Absolutely. We pride ourselves on honest, authentic work. If something isn't right, we will make it right. We focus on delivering long-lasting, practical solutions."
-          },
-          {
-            question: "Do you offer after-hours locksmith services?",
-            answer: <>Yes. Our emergency locksmiths offer after-hours support across Auckland. Call <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> when you are locked out and we will come to you fast.</>
-          },
-          {
-            question: "Will my door or lock be damaged during a lockout service?",
-            answer: "No, whether you are locked out of your home or business, we prioritise non-destructive methods to regain access. We always start with a brief site inspection to determine the safest way in, ensuring we protect your existing property across our NZ service areas."
-          },
-          {
-            question: "How can I tell if my lock needs to be replaced?",
-            answer: "If your lock is showing signs of wear, such as sticking, being difficult to turn, or if it’s becoming loose, it may be time to replace it. Our technicians can perform a comprehensive site inspection at your home or business to advise on the best, most practical course of action for your security needs in NZ."
-          },
-          {
-            question: "What should I do if my lock is damaged?",
-            answer: <>A damaged lock compromises the security of your home or business and should be addressed immediately. Call our dispatch directly at <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>; we will arrive promptly to secure the property and conduct a site inspection to provide the most reliable repair solutions across Auckland.</>
-          },
-          {
-            question: "Can you help me if I’m locked out of my house?",
-            answer: "Yes, we specialise in rapid-response emergency lockout services for any home or business. Our experienced team will arrive quickly, conduct a rapid site inspection to choose the safest entry method, and safely get you back inside. We are proud to serve communities across Auckland with honest, reliable assistance."
-          }
-        ]}
+        faqs={homeFaqs}
         theme="light"
       />
     </div>

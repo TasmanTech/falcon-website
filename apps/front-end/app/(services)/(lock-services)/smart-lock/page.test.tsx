@@ -14,10 +14,10 @@ vi.mock('next/link', () => ({
   default: ({ children, href, ...rest }: { children: React.ReactNode; href: string; [key: string]: unknown }) => <a href={href} {...rest}>{children}</a>
 }));
 
-const source = fs.readFileSync(path.resolve(process.cwd(), 'app/(services)/(lock-services)/smart-lock/smart-lock-repair-programming/page.tsx'), 'utf8');
+const source = fs.readFileSync(path.resolve(process.cwd(), 'app/(services)/(lock-services)/smart-lock/page.tsx'), 'utf8');
 const countOf = (tag: string): number => source.split(`<${tag}`).length - 1;
 
-describe('Page Component: smart-lock-repair-programming', () => {
+describe('Page Component: smart-lock', () => {
   it('renders successfully', () => {
     const { container } = render(<Page />);
     expect(container).toBeTruthy();
@@ -25,23 +25,23 @@ describe('Page Component: smart-lock-repair-programming', () => {
 
   it('renders the h1 and key h2 headings', () => {
     render(<Page />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Auckland Smart Lock Repair & Programming' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'When a Smart Lock Lets You Down' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Finding the Real Cause' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Codes, Users and Resets' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Before You Call, and After We Leave' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: 'Smart Lock Repair & Sync FAQs' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Smart Lock Installation Auckland' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Choosing a Smart Lock for Your Door' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Fitted, Set Up and Looked After' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Batteries, Backup Keys and Staying With Keys' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Smart Lock FAQs' })).toBeInTheDocument();
   });
 
   it('links to related services in the body copy', () => {
     const { container } = render(<Page />);
     const hrefs = Array.from(container.querySelectorAll('a')).map((a) => a.getAttribute('href'));
     const expected = [
-      '/smart-lock',
       '/smart-lock/smart-lock-installation',
       '/smart-lock/smart-lock-change',
+      '/smart-lock/smart-lock-repair-programming',
+      '/lock/lock-change-installation',
+      '/lock/rekey',
       '/lock/lockout',
-      '/lock/lock-repair',
     ];
     for (const href of expected) {
       expect(hrefs).toContain(href);
