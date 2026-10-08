@@ -75,6 +75,22 @@ export default function RootLayout({
           { "@type": "Place", "name": "East Auckland" },
           { "@type": "Place", "name": "South Auckland" }
         ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Locksmith, Smart Lock and Auto Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/lock/lockout#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/lock/rekey#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/lock/lock-repair#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/lock/lock-change-installation#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-installation#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-change#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/smart-lock/smart-lock-repair-programming#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/car-lockout#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/auto/dead-battery-assistance#service" } },
+            { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/auto/obd2-diagnostic#service" } }
+          ]
+        },
         "hasMap": "https://www.google.com/maps?cid=14340846117585175277",
         "sameAs": [
           "https://www.google.com/maps?cid=14340846117585175277",
