@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/lock/rekey",
   },
-  title: 'Rekey Locks Auckland: Homes & Offices',
+  title: 'Lock Rekeying for Auckland Homes & Offices',
   description: 'Rekey locks across Auckland so old keys stop working. House, rental and office rekeying with new keys cut on site, plus a flat NZ$20 call-out.',
   keywords: 'Rekey Locks, Rekey House Locks, Rekey My House, Rekey Office Locks, Rekey Locks Auckland, Change Locks After Moving House, Landlord Lock Change, Rekeying, Lock Rekey, Lock Rekey Service, Lock Changing Service, Hardware Rekeying, Commercial Security, Falcon Access',
   openGraph: {
-    title: 'Rekey Locks Auckland: Homes & Offices',
+    title: 'Lock Rekeying for Auckland Homes & Offices',
     description: 'Rekey locks across Auckland so old keys stop working. House, rental and office rekeying with new keys cut on site, plus a flat NZ$20 call-out.',
     url: "/lock/rekey",
   }

@@ -99,6 +99,7 @@ The homepage gallery is the one exception to the stock / AI rule: it shows real 
 - **No invented credentials**, certifications, licences or affiliations.
 - **CTAs** are short and specific ("Call Now", "Get a Quote", "Get Help Now"). Anchor text describes the target page ("rekeying service", not "click here").
 - **Internal links**: add relevant links whenever you write or edit content, without rewriting the readable copy, and never remove existing ones.
+- **Meta titles** read `<Page name> | Falcon Access`: `|` is the only separator, used once before the brand (the layout template adds it). No `:`, `-` or `—` inside titles (`seo` skill, Titles).
 - **New public page**: add it to `app/sitemap.ts` and `public/llms.txt` (`/new-page` workflow). Metadata and schema follow the `seo` skill.
 - Readability (`readability` skill) and UK / NZ spelling (`uk_nz_english` rule) apply to all copy.
 
