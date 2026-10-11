@@ -27,6 +27,10 @@ and the API in `apps/back-end/src/invoice/` and `src/lead/` (both guarded by `Jw
 - `proxy.ts` matches `/admin/:path*` and refreshes on every request, so pages render with a fresh access
   token. No session or `rejected` redirects to `/admin/login`; `unavailable` lets the page load with
   the cookies untouched and an empty token, which the client renews itself.
+- **The proxy must stay fast**: every page load and tab prefetch waits on it. It reuses an access token
+  issued in the last 30 s (`isFreshAccessToken`) without calling the back-end, and otherwise makes one
+  2.5 s attempt (`PROXY_REFRESH`), since a cold back-end takes ~6 s to start. Never give the proxy the
+  default 2 × 8 s budget; slow refreshes belong in the browser (`/api/session/refresh`).
 - **In the browser**, every portal component gets its token from `useSessionToken(token)` and passes
   `refreshSession` to the API helpers (both `lib/session.ts`):
   - `refreshSession` posts to the route handler `app/api/session/refresh/route.ts` (200 token, 401 ended,

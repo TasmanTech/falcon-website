@@ -142,6 +142,7 @@ jobs:
             --project ${{ env.PROJECT_ID }} \
             --allow-unauthenticated \
             --add-cloudsql-instances=${{ secrets.CLOUD_SQL_CONNECTION_NAME }} \
+            --cpu-boost \
             --set-env-vars="NODE_ENV=production,FRONTEND_URLS=${{ secrets.FRONTEND_URLS }},WEBSITE_URL=${{ secrets.WEBSITE_URL }},SMTP_HOST=${{ secrets.SMTP_HOST }},SMTP_PORT=${{ secrets.SMTP_PORT }},SERVICE_ACCOUNT_CLIENT_ID=${{ secrets.SERVICE_ACCOUNT_CLIENT_ID }},SERVICE_ACCOUNT_PRIVATE_KEY=${{ secrets.SERVICE_ACCOUNT_PRIVATE_KEY }},SMTP_FROM=${{ secrets.SMTP_FROM }},DB_HOST=${DB_HOST},DB_NAME=${DB_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},JWT_SECRET=${JWT_SECRET},JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET},GST_NUMBER=${GST_NUMBER},INVOICE_STORAGE_DIR=${INVOICE_STORAGE_DIR}"
 
   # ==========================================
