@@ -1,5 +1,11 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { extractRefreshToken, loginWithBackend, refreshWithBackend, serverBackendUrl } from './auth';
+import {
+  extractRefreshToken,
+  isFreshAccessToken,
+  loginWithBackend,
+  refreshWithBackend,
+  serverBackendUrl,
+} from './auth';
 
 function jsonResponse(body: unknown, init: ResponseInit & { setCookie?: string } = {}): Response {
   const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -43,6 +49,24 @@ describe('lib/auth', () => {
     });
   });
 
+  describe('isFreshAccessToken', () => {
+    const now = 1_800_000_000_000;
+    const token = (iat: number, exp = iat + 900) =>
+      `h.${btoa(JSON.stringify({ iat, exp })).replace(/=+$/, '')}.s`;
+
+    it('accepts a token issued in the last 30 seconds', () => {
+      expect(isFreshAccessToken(token(now / 1000 - 10), now)).toBe(true);
+    });
+
+    it('rejects an older, expired, missing or malformed token', () => {
+      expect(isFreshAccessToken(token(now / 1000 - 60), now)).toBe(false);
+      expect(isFreshAccessToken(token(now / 1000 - 10, now / 1000 - 1), now)).toBe(false);
+      expect(isFreshAccessToken(undefined, now)).toBe(false);
+      expect(isFreshAccessToken('not-a-jwt', now)).toBe(false);
+      expect(isFreshAccessToken('h.!!!.s', now)).toBe(false);
+    });
+  });
+
   describe('refreshWithBackend', () => {
     it('sends the refresh cookie and returns new tokens', async () => {
       const fetchMock = vi
@@ -80,6 +104,17 @@ describe('lib/auth', () => {
         status: 'ok',
         tokens: { accessToken: 'new', refreshToken: null },
       });
+    });
+
+    it('honours a custom attempt count and timeout', async () => {
+      vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const timeout = vi.spyOn(AbortSignal, 'timeout');
+      const fetchMock = vi.spyOn(global, 'fetch').mockRejectedValue(new Error('timeout'));
+      await expect(refreshWithBackend('x', { attempts: 1, timeoutMs: 2500 })).resolves.toEqual({
+        status: 'unavailable',
+      });
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(timeout).toHaveBeenCalledWith(2500);
     });
   });
 });

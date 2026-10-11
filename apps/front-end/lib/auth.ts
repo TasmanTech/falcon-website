@@ -25,11 +25,54 @@ export type RefreshResult =
   | { status: "rejected" }
   | { status: "unavailable" };
 
-/** How long one refresh attempt may take; covers a Cloud Run cold start. */
+/** How long one refresh attempt may take by default; covers a Cloud Run cold start. */
 const REFRESH_TIMEOUT_MS = 8000;
 
 /** Attempts before a refresh is reported as `unavailable`. */
 const REFRESH_ATTEMPTS = 2;
+
+/** How a refresh may be retried: number of attempts and the timeout of each one. */
+export interface RefreshOptions {
+  attempts?: number;
+  timeoutMs?: number;
+}
+
+/**
+ * An access token issued this recently is reused instead of refreshed. The browser times its
+ * renewal from the token's full lifetime and renews a minute early, so a reused token must be
+ * younger than that minute for the renewal to still land before it expires.
+ */
+export const ACCESS_REUSE_WINDOW_SECONDS = 30;
+
+/**
+ * Whether an access token was issued within {@link ACCESS_REUSE_WINDOW_SECONDS} and has not
+ * expired. The token is only decoded, not verified: the back-end verifies it on every request.
+ *
+ * @param {string | undefined} token - The access token cookie.
+ * @param {number} [nowMs] - The current time in milliseconds.
+ * @returns {boolean} True if the token can be passed to the page as it is.
+ */
+export function isFreshAccessToken(token: string | undefined, nowMs: number = Date.now()): boolean {
+  const payload = token?.split(".")[1];
+  if (!payload) return false;
+  try {
+    const data: unknown = JSON.parse(atob(payload.replace(/-/g, "+").replace(/_/g, "/")));
+    if (
+      data &&
+      typeof data === "object" &&
+      "exp" in data &&
+      "iat" in data &&
+      typeof data.exp === "number" &&
+      typeof data.iat === "number"
+    ) {
+      const now = nowMs / 1000;
+      return now - data.iat <= ACCESS_REUSE_WINDOW_SECONDS && now < data.exp;
+    }
+  } catch {
+    // Malformed token: refresh it
+  }
+  return false;
+}
 
 /**
  * Returns the back-end base URL for server-side requests.
@@ -120,16 +163,20 @@ export async function loginWithBackend(email: string, password: string): Promise
  * once and then reported as `unavailable`, so an idle admin is never logged out by a hiccup.
  *
  * @param {string} refreshToken - The current refresh token.
+ * @param {RefreshOptions} [options] - Attempts and per-attempt timeout (default: 2 × 8 s).
  * @returns {Promise<RefreshResult>} New tokens, `rejected` or `unavailable`.
  */
-export async function refreshWithBackend(refreshToken: string): Promise<RefreshResult> {
-  for (let attempt = 1; attempt <= REFRESH_ATTEMPTS; attempt++) {
+export async function refreshWithBackend(
+  refreshToken: string,
+  { attempts = REFRESH_ATTEMPTS, timeoutMs = REFRESH_TIMEOUT_MS }: RefreshOptions = {},
+): Promise<RefreshResult> {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
     try {
       const res = await fetch(`${serverBackendUrl()}/auth/refresh`, {
         method: "POST",
         headers: { Cookie: `${REFRESH_COOKIE}=${refreshToken}` },
         cache: "no-store",
-        signal: AbortSignal.timeout(REFRESH_TIMEOUT_MS),
+        signal: AbortSignal.timeout(timeoutMs),
       });
       if (res.status === 400 || res.status === 401 || res.status === 403) return { status: "rejected" };
       if (res.ok) {

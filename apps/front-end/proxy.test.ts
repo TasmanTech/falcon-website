@@ -4,15 +4,26 @@ import { NextRequest } from 'next/server';
 const refreshWithBackend = vi.fn();
 vi.mock('@/lib/auth', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/lib/auth')>()),
-  refreshWithBackend: (token: string) => refreshWithBackend(token),
+  refreshWithBackend: (...args: unknown[]) => refreshWithBackend(...args),
 }));
 
 const { proxy } = await import('./proxy');
 
-function requestFor(path: string, refreshToken?: string): NextRequest {
+function requestFor(path: string, refreshToken?: string, accessToken?: string): NextRequest {
+  const cookies = [
+    refreshToken ? `refreshToken=${refreshToken}` : '',
+    accessToken ? `accessToken=${accessToken}` : '',
+  ].filter(Boolean);
   return new NextRequest(`https://falconaccess.co.nz${path}`, {
-    headers: refreshToken ? { cookie: `refreshToken=${refreshToken}` } : {},
+    headers: cookies.length ? { cookie: cookies.join('; ') } : {},
   });
+}
+
+/** An unsigned JWT issued `ageSeconds` ago with a 15-minute lifetime. */
+function accessTokenAged(ageSeconds: number): string {
+  const iat = Math.floor(Date.now() / 1000) - ageSeconds;
+  const payload = btoa(JSON.stringify({ sub: 1, iat, exp: iat + 900 })).replace(/=+$/, '');
+  return `header.${payload}.signature`;
 }
 
 describe('proxy', () => {
@@ -59,5 +70,25 @@ describe('proxy', () => {
     expect(res.headers.get('location')).toBeNull();
     expect(res.cookies.get('accessToken')?.value).toBe('access');
     expect(res.headers.get('x-middleware-request-cookie')).toContain('accessToken=access');
+    expect(refreshWithBackend).toHaveBeenCalledWith('good', { attempts: 1, timeoutMs: 2500 });
+  });
+
+  it('reuses an access token issued moments ago without calling the back-end', async () => {
+    const res = await proxy(requestFor('/admin/invoices', 'good', accessTokenAged(5)));
+    expect(refreshWithBackend).not.toHaveBeenCalled();
+    expect(res.headers.get('location')).toBeNull();
+    expect(res.cookies.get('accessToken')).toBeUndefined();
+  });
+
+  it('sends a signed-in admin with a fresh token from the login page without calling the back-end', async () => {
+    const res = await proxy(requestFor('/admin/login', 'good', accessTokenAged(5)));
+    expect(refreshWithBackend).not.toHaveBeenCalled();
+    expect(res.headers.get('location')).toBe('https://falconaccess.co.nz/admin');
+  });
+
+  it('refreshes an older access token', async () => {
+    refreshWithBackend.mockResolvedValue({ status: 'ok', tokens: { accessToken: 'access', refreshToken: 'rotated' } });
+    await proxy(requestFor('/admin', 'good', accessTokenAged(120)));
+    expect(refreshWithBackend).toHaveBeenCalledOnce();
   });
 });

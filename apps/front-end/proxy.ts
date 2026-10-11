@@ -4,6 +4,7 @@ import {
   ACCESS_COOKIE,
   REFRESH_COOKIE,
   clearSessionCookies,
+  isFreshAccessToken,
   refreshWithBackend,
   setSessionCookies,
 } from "@/lib/auth";
@@ -11,11 +12,19 @@ import {
 const LOGIN_PATH = "/admin/login";
 
 /**
+ * One short attempt: every page load waits on it, and a cold back-end takes several seconds to
+ * start. When it times out the page loads anyway and the browser renews in the background.
+ */
+const PROXY_REFRESH = { attempts: 1, timeoutMs: 2500 };
+
+/**
  * Guards the admin portal. On every `/admin` request the refresh token is exchanged for a
  * new token pair, so pages always receive a valid access token:
  * - no or invalid session: `/admin/*` redirects to the login page;
- * - back-end unreachable: the request continues with the cookies untouched, and the page
- *   renews its token itself once the back-end answers (see `lib/session.ts`);
+ * - access token issued in the last few seconds (e.g. the tab prefetches that follow a page
+ *   load): it is reused as it is, without calling the back-end;
+ * - back-end unreachable or slow to start: the request continues with the cookies untouched,
+ *   and the page renews its token itself once the back-end answers (see `lib/session.ts`);
  * - valid session on the login page: redirects to `/admin`;
  * - valid session elsewhere: the new access token is forwarded to the page and stored.
  *
@@ -30,7 +39,11 @@ export async function proxy(request: NextRequest): Promise<NextResponse> {
     return isLoginPage ? NextResponse.next() : NextResponse.redirect(new URL(LOGIN_PATH, request.url));
   }
 
-  const result = await refreshWithBackend(refreshToken);
+  if (isFreshAccessToken(request.cookies.get(ACCESS_COOKIE)?.value)) {
+    return isLoginPage ? NextResponse.redirect(new URL("/admin", request.url)) : NextResponse.next();
+  }
+
+  const result = await refreshWithBackend(refreshToken, PROXY_REFRESH);
 
   if (result.status === "unavailable") {
     // A cold start or outage is not a logout: keep the session and let the page retry
