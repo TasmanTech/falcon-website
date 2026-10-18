@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Non-destructive car lockout help across Auckland, with after-hours support. Keys in the car or boot, or a dead remote? We come to you and get you back in.',
   keywords: 'Car Lockout, Car Locksmith, Locked Keys in Car, Vehicle Unlocking, Car Door Unlock, Auto Locksmith, Auckland, Vehicle Lockout, Keys Locked in Car, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Auckland Emergency Car Lockout Service',
     description: 'Non-destructive car lockout help across Auckland, with after-hours support. Keys in the car or boot, or a dead remote? We come to you and get you back in.',
     url: "/car-lockout",
@@ -136,7 +138,7 @@ export default function CarLockoutPage() {
         imageSrc="/images/services/car-lockout/car-lockout-kit-air-wedge-reach-tool.webp"
         imageAlt="Car lockout kit with a long-reach tool, blue inflatable air wedge and door wedge"
         imageTitle="Damage-Free Vehicle Entry"
-        imageDescription="The air wedge and long-reach tool we use to open locked cars without scratches or torn weather seals."
+        imageDescription="An air wedge and long-reach tool, the kind used to open locked cars without scratches or torn weather seals."
         title="How We Open Your Car Without Damage"
         content={[
           <p key="1">We use non-destructive entry wherever possible. That usually means a soft inflatable air wedge to ease the top of the door open a few millimetres, then a long-reach tool to press the unlock button or lift the handle from inside.</p>,

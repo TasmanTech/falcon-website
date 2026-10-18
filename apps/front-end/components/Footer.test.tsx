@@ -46,6 +46,24 @@ describe('Footer Component', () => {
     expect(screen.queryByText(/Twitter/)).toBeNull();
   });
 
+  it('lists the suburb pages in a Popular Links dropdown under the map', () => {
+    const { container } = render(<Footer />);
+    const map = screen.getByTitle('Falcon Access Location Map');
+    const details = container.querySelector('details') as HTMLElement;
+    expect(within(details).getByText('Popular Links').tagName).toBe('SUMMARY');
+    expect(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    for (const [name, href] of [
+      ['Locksmith Albany', '/locksmith/albany'],
+      ['Locksmith Takapuna', '/locksmith/takapuna'],
+      ['Locksmith Henderson', '/locksmith/henderson'],
+      ['Locksmith New Lynn', '/locksmith/new-lynn'],
+    ]) {
+      expect(within(details).getByRole('link', { name, hidden: true })).toHaveAttribute('href', href);
+    }
+    expect(within(details).getByText('North Shore')).toBeInTheDocument();
+    expect(within(details).getByText('West Auckland')).toBeInTheDocument();
+  });
+
   it('links and embeds the Google Business profile', () => {
     render(<Footer />);
     expect(screen.getByRole('link', { name: 'Falcon Access' })).toHaveAttribute('href', 'https://www.google.com/maps?cid=14340846117585175277');

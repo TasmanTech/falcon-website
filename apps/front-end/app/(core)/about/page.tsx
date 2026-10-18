@@ -7,6 +7,7 @@ import IconListSection from '@/components/sections/IconListSection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import CTASection from '@/components/sections/CTASection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
   keywords: 'About Falcon Access, Local Locksmith Auckland, General Locksmith, Locksmith Services, Locksmith for Business, After-Hours Locksmith, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'About Our Commercial & Residential Services',
     description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
     url: "/about",

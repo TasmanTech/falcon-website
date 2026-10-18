@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Smart door lock installation across Auckland. Digital and electronic door locks fitted, aligned and set up with codes and app for homes and offices.',
   keywords: 'Smart Lock Installation, Smart Door Lock Installation, Smart Lock Installation Auckland, Digital Lock Installation, Electronic Door Lock, Door Lock Installation Service, Fresh Installation, Door Prep, Electronic Locks, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Smart Door Lock Installation Auckland',
     description: 'Smart door lock installation across Auckland. Digital and electronic door locks fitted, aligned and set up with codes and app for homes and offices.',
     url: "/smart-lock/smart-lock-installation",
@@ -106,7 +108,7 @@ export default function SmartLockInstallationPage() {
         title="Starting From Scratch"
         content={[
           <p key="1">Maybe you&apos;ve hung a new front door, finished a renovation or fitted out a new office. Or the door has only ever had a basic handle and you want something more secure. Either way, a fresh smart lock installation starts with preparing the door properly.</p>,
-          <p key="1a">Smart lock, digital lock, electronic door lock: people use all three names for the same idea, a lock you open with a PIN code, fingerprint, card or phone instead of a key. We fit all of them, in homes and offices from West Auckland and the North Shore to South Auckland.</p>,
+          <p key="1a">Smart lock, digital lock, electronic door lock: people use all three names for the same idea, a lock you open with a PIN code, fingerprint, card or phone instead of a key. Our digital door lock installation covers all of them, in homes and offices from West Auckland and the North Shore to South Auckland.</p>,
           <p key="2">We mark out and drill the holes for the lock body and cylinder, cut the recess in the door edge, and fit the strike plate to the frame. Then we mount the lock, line it up and test it until it locks smoothly with the door shut.</p>,
           <p key="3">Already have a lock in the door that you want to swap? That&apos;s usually a <Link href="/smart-lock/smart-lock-change" className={linkClass}>smart lock change</Link> rather than a fresh install, and often a simpler job. Not sure which you need? Our <Link href="/smart-lock" className={linkClass}>smart lock services overview</Link> runs through the options.</p>
         ]}

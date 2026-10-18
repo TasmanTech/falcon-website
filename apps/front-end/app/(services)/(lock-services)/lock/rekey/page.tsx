@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Rekey locks across Auckland so old keys stop working. House, rental and office rekeying with new keys cut on site, plus a flat NZ$20 call-out.',
   keywords: 'Rekey Locks, Rekey House Locks, Rekey My House, Rekey Office Locks, Rekey Locks Auckland, Change Locks After Moving House, Landlord Lock Change, Rekeying, Lock Rekey, Lock Rekey Service, Lock Changing Service, Hardware Rekeying, Commercial Security, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Lock Rekeying for Auckland Homes & Offices',
     description: 'Rekey locks across Auckland so old keys stop working. House, rental and office rekeying with new keys cut on site, plus a flat NZ$20 call-out.',
     url: "/lock/rekey",
@@ -128,7 +130,7 @@ export default function RekeyPage() {
             <li><strong>Moving house:</strong> previous owners, tenants, builders and neighbours may all still hold a key to your new place.</li>
             <li><strong>Lost or stolen keys:</strong> especially if they were on a ring with your address or car keys.</li>
             <li><strong>New tenants or flatmates:</strong> landlords and property managers often rekey between tenancies.</li>
-            <li><strong>Staff changes:</strong> shops and offices rekey when someone leaves with a key that wasn&apos;t returned.</li>
+            <li><strong>Staff changes:</strong> shops and offices rekey when someone leaves with a key that wasn&apos;t returned. A commercial lock rekey can also put several doors on one key, so fewer keys are in circulation.</li>
           </ul>,
           <p key="3">If you&apos;re locked out because the keys have gone missing, our <Link href="/lock/lockout" className={linkClass}>lockout service</Link> gets you inside first, and we can rekey at the same visit so the lost set stops working.</p>
         ]}

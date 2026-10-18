@@ -9,6 +9,7 @@ import CTASection from '@/components/sections/CTASection';
 import GallerySection from '@/components/sections/GallerySection';
 import JsonLd from '@/components/JsonLd';
 import { homeGalleryImages } from '@/lib/gallery';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
   description: 'Mobile locksmith serving Auckland homes, businesses and vehicles. Lockouts, lock repairs, rekeying, smart locks and jump starts with a $20 call-out fee.',
   keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Auckland, New Zealand',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Auckland Locksmith, Smart Locks & Auto Help',
     description: 'Mobile locksmith serving Auckland homes, businesses and vehicles. Lockouts, lock repairs, rekeying, smart locks and jump starts with a $20 call-out fee.',
     url: "/",
@@ -156,7 +158,7 @@ export default function Home() {
         imageSrc="/images/home/locksmith-lock-pick-set-auckland.webp"
         imageAlt="Locksmith lock pick set with tension wrenches and brass lock cylinders"
         imageTitle="Auckland Locksmith Tools"
-        imageDescription="Lock picks and tension tools we use to open doors without damaging the lock or frame."
+        imageDescription="Lock picks and tension tools of the kind used to open doors without damaging the lock or frame."
         ctaText="View Lock Services"
         ctaHref="/lock"
         photoPosition="right"

@@ -8,6 +8,7 @@ import CTASection from '@/components/sections/CTASection';
 import FAQSection from '@/components/sections/FAQSection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
   description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
   keywords: 'Contact Falcon Access, Property Maintenance Contact, Repair Services New Zealand',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Contact Our Auckland Team',
     description: 'Contact Falcon Access in Auckland for lockouts, lock repairs, smart locks and mobile auto help. Call +64 9 243 1404 or send a message for a quote.',
     url: "/contact",
@@ -171,7 +173,7 @@ export default function ContactPage() {
         imageSrc="/images/contact/locksmith-service-case-locks-and-tools-auckland.webp"
         imageAlt="Open hard-shell service case holding screwdrivers, door latches and spare lock cylinders"
         imageTitle="Mobile Locksmith Service Auckland"
-        imageDescription="The service case our technicians bring to every job, so most repairs and lock changes are done in one visit."
+        imageDescription="A service case with the spare parts that let most repairs and lock changes be done in one visit."
         photoPosition="left"
         theme="light"
       />

@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
   keywords: 'Smart Lock Repair, Smart Lock Programming, Electronic Lock Diagnostics, Keypad Repair, Access Control Fix, Site Access Repair, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Auckland Smart Lock Repair & Programming',
     description: 'Expert diagnostics and repair for smart locks and electronic access systems. Restore functionality to your commercial or residential property.',
     url: "/smart-lock/smart-lock-repair-programming",

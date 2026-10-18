@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Door lock replacement and lock changes across Auckland. New locks supplied, fitted and tested for homes, rentals and businesses. NZ$20 call-out.',
   keywords: 'Lock Replacement, Lock Change, Install Deadbolt, Deadbolt Installation Auckland, Landlord Lock Change, Office Lock Change, Commercial Lock Change, Door Lock Replacement, Change House Locks, Lock Replacement Auckland, Lock Installation, Lock Installation Service, Lock Changing Service, New Locks, Hardware Upgrade, Commercial Security, Residential Replacement, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Lock Replacement & Lock Change Auckland',
     description: 'Door lock replacement and lock changes across Auckland. New locks supplied, fitted and tested for homes, rentals and businesses. NZ$20 call-out.',
     url: "/lock/lock-change-installation",
@@ -110,7 +112,7 @@ export default function LockChangePage() {
         imageSrc="/images/services/lock/lock-change-installation/lever-handle-deadbolt-lock-installation-auckland.webp"
         imageAlt="Brushed steel lever handle and matching round deadbolt"
         imageTitle="Lock Installation Service Auckland"
-        imageDescription="A new lever handle and deadbolt set, installed by our Auckland team."
+        imageDescription="A lever handle and deadbolt set, the kind of hardware fitted during a lock change."
         title="Upgrading Your Security"
         content={[
           <p key="1">Maybe you&apos;ve just moved in, maybe the old lock has finally given up, or maybe you want something stronger on the front door. Whatever the reason, a new lock is only as good as the way it&apos;s fitted.</p>,

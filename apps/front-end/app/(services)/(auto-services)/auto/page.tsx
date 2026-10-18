@@ -6,6 +6,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 const linkClass = "font-semibold text-brand-dark underline hover:text-brand-primary transition-colors";
 
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
   description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts, with after-hours support.',
   keywords: 'Auto Services, Car Lockout, OBDII Diagnostic, Dead Battery Assistance, Auckland, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Mobile Auto Locksmith Auckland',
     description: 'Reliable mobile automotive assistance in Auckland. We provide car lockouts, OBDII diagnostics, and dead battery jump starts, with after-hours support.',
     url: "/auto",

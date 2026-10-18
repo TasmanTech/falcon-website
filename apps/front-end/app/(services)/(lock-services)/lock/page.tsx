@@ -6,6 +6,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
   description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across Auckland.',
   keywords: 'Lock Services, Locksmith Services, Locksmith Near Me, General Locksmith, Locksmith for Business, Lock Service Near Me, Lockout, Rekey, Lock Repair, Lock Change, Lock Replacement, Lock Installation, New Zealand, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Auckland Locksmith & Hardware Services',
     description: 'Comprehensive lock services including emergency lockout assistance, rekeying, lock change, and professional lock repair across Auckland.',
     url: "/lock",
