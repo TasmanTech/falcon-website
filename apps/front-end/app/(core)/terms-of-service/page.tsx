@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Website Terms of Service',
   description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Website Terms of Service',
     description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
     url: "/terms-of-service",

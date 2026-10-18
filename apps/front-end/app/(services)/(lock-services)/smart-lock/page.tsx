@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming for residential and commercial properties.',
   keywords: 'Smart Locks, Smart Lock Installation, Smart Lock Repair, New Zealand, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Smart Lock Installation Auckland',
     description: 'Expert smart lock services including professional installation, upgrades, repairs, and programming.',
     url: "/smart-lock",

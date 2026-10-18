@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Website Privacy Policy',
   description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Website Privacy Policy',
     description: 'Our privacy policy and data handling practices. Learn how Falcon Access protects your information and handles your data with care.',
     url: "/privacy-policy",

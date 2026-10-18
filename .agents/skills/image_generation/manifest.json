@@ -10,7 +10,7 @@
       "crop": "attention",
       "alt": "Locksmith lock pick set with tension wrenches and brass lock cylinders",
       "title": "Auckland Locksmith Tools",
-      "description": "Lock picks and tension tools we use to open doors without damaging the lock or frame.",
+      "description": "Lock picks and tension tools of the kind used to open doors without damaging the lock or frame.",
       "prompt": "a tidy top-down arrangement of a locksmith lock pick set, tension wrenches and a brass pin-tumbler lock cylinder"
     },
     {
@@ -34,7 +34,7 @@
       "crop": "attention",
       "alt": "Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work",
       "title": "Commercial & Residential Repair Tools",
-      "description": "The hand tools our Auckland team carries for commercial and residential repair and maintenance jobs.",
+      "description": "Hand tools for commercial and residential repair and maintenance jobs.",
       "prompt": "a neat flat-lay of trade hand tools: orange and black bolt cutters, insulated screwdrivers, side cutters, long-nose pliers and a pipe wrench, arranged in a wide landscape composition where the tools are large and fill the right 60% of the frame from top to bottom, leaving the left 40% as clear empty background"
     },
     {
@@ -94,7 +94,7 @@
       "crop": "attention",
       "alt": "Car lockout kit with a long-reach tool, blue inflatable air wedge and door wedge",
       "title": "Damage-Free Vehicle Entry",
-      "description": "The air wedge and long-reach tool we use to open locked cars without scratches or torn weather seals.",
+      "description": "An air wedge and long-reach tool, the kind used to open locked cars without scratches or torn weather seals.",
       "prompt": "a professional car lockout kit: a slim long-reach tool, an inflatable air wedge and a plastic door wedge, laid out neatly"
     },
     {
@@ -118,7 +118,7 @@
       "crop": "attention",
       "alt": "Portable jump starter pack with red and black battery clamps",
       "title": "Mobile Battery Assistance",
-      "description": "The portable jump starter we bring to get your car running again at home, work or the roadside.",
+      "description": "A portable jump starter of the kind used to get a car running again at home, work or the roadside.",
       "prompt": "a compact portable jump starter pack with its red and black clamps and cables coiled neatly beside it"
     },
     {
@@ -178,7 +178,7 @@
       "crop": "attention",
       "alt": "Key inserted in a square stainless steel door lock",
       "title": "Residential Lockout Service Auckland",
-      "description": "Back inside and turning your own key again after our Auckland lockout service.",
+      "description": "A key turning in a stainless steel door lock, the goal of every lockout call.",
       "prompt": "a square stainless steel door lock escutcheon with a key inserted in the cylinder"
     },
     {
@@ -202,7 +202,7 @@
       "crop": "attention",
       "alt": "Brushed steel lever handle and matching round deadbolt",
       "title": "Lock Installation Service Auckland",
-      "description": "A new lever handle and deadbolt set, installed by our Auckland team.",
+      "description": "A lever handle and deadbolt set, the kind of hardware fitted during a lock change.",
       "prompt": "a brushed steel lever door handle and a matching round deadbolt shown as a stand-alone lock set"
     },
     {
@@ -559,6 +559,26 @@
     {
       "page": "/",
       "slot": "gallery",
+      "source": "Gallery/black-sliding-door-handle-latch-hooks-auckland.jpg",
+      "output": "images/home/gallery/black-sliding-door-handle-latch-hooks-auckland.webp",
+      "crop": "none",
+      "alt": "Black sliding door handle with its latch hooks showing and keys in the outside lock on aluminium joinery",
+      "title": "Sliding Door Latch Repair Auckland",
+      "description": "A black aluminium sliding door handle with its latch hooks out, checked so the door locks securely."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
+      "source": "Gallery/brass-sliding-door-flush-pull-lock-auckland.jpg",
+      "output": "images/home/gallery/brass-sliding-door-flush-pull-lock-auckland.webp",
+      "crop": "none",
+      "alt": "Brass flush pull with a key cylinder on a white timber sliding door above a brass threshold track",
+      "title": "Timber Sliding Door Lock Auckland",
+      "description": "A keyed brass flush pull lock on a white timber sliding door, an older style we repair and replace."
+    },
+    {
+      "page": "/",
+      "slot": "gallery",
       "source": "Gallery/glass-display-cabinet-lock-auckland.jpg",
       "output": "images/home/gallery/glass-display-cabinet-lock-auckland.webp",
       "crop": {
@@ -600,8 +620,104 @@
       },
       "alt": "Open hard-shell service case holding screwdrivers, door latches and spare lock cylinders",
       "title": "Mobile Locksmith Service Auckland",
-      "description": "The service case our technicians bring to every job, so most repairs and lock changes are done in one visit.",
+      "description": "A service case with the spare parts that let most repairs and lock changes be done in one visit.",
       "prompt": "an open black hard-shell tool case neatly holding screwdrivers, a few door latches, spare door lock cylinders and loose keys in foam compartments"
+    },
+    {
+      "page": "/locksmith/albany",
+      "slot": "content-1",
+      "reference": null,
+      "source": "Generated/matte-black-keypad-deadbolt-locksmith-albany.png",
+      "output": "images/locations/albany/matte-black-keypad-deadbolt-locksmith-albany.webp",
+      "crop": "attention",
+      "alt": "Matte black electronic keypad deadbolt beside its interior battery unit",
+      "title": "Keypad Deadbolt Albany",
+      "description": "A keypad deadbolt like those fitted to many newer Albany townhouses.",
+      "prompt": "a matte black electronic keypad deadbolt with a rectangular numeric keypad and no handle, shown as a stand-alone product with its matching interior battery and thumb-turn unit beside it"
+    },
+    {
+      "page": "/locksmith/albany",
+      "slot": "content-2",
+      "reference": null,
+      "source": "Generated/new-house-keys-on-ring-rekey-albany.png",
+      "output": "images/locations/albany/new-silver-house-keys-rekey-albany.webp",
+      "crop": "attention",
+      "alt": "Six new silver house keys, five fanned out and one on its own",
+      "title": "New Home Rekey Albany",
+      "description": "Rekeying a newly bought home means a fresh set of keys that no previous owner holds.",
+      "prompt": "five brand-new silver house keys laid flat in a neat fan shape with no key ring, beside a single blank silver key"
+    },
+    {
+      "page": "/locksmith/takapuna",
+      "slot": "content-1",
+      "reference": null,
+      "source": "Generated/stainless-mortice-lock-case-locksmith-takapuna.png",
+      "output": "images/locations/takapuna/stainless-mortice-lock-case-locksmith-takapuna.webp",
+      "crop": "attention",
+      "alt": "Stainless steel mortice lock case with its faceplate, a strike plate and one key",
+      "title": "Apartment Door Lock Takapuna",
+      "description": "The mortice lock found inside many Takapuna apartment entry doors.",
+      "prompt": "a closed stainless steel mortice lock case with its long faceplate, a matching strike plate and a single key lying beside it"
+    },
+    {
+      "page": "/locksmith/takapuna",
+      "slot": "content-2",
+      "reference": null,
+      "source": "Generated/letterbox-cam-lock-with-keys-takapuna.png",
+      "output": "images/locations/takapuna/letterbox-cam-lock-with-keys-takapuna.webp",
+      "crop": "attention",
+      "alt": "Small chrome letterbox cam lock with its steel cam and two small keys",
+      "title": "Letterbox Lock Takapuna",
+      "description": "A replacement cam lock for an apartment letterbox in Takapuna.",
+      "prompt": "a small chrome letterbox cam lock with its flat steel cam and retaining nut, and two small keys beside it"
+    },
+    {
+      "page": "/locksmith/henderson",
+      "slot": "content-1",
+      "reference": null,
+      "source": "Generated/brass-rim-night-latch-locksmith-henderson.png",
+      "output": "images/locations/henderson/brass-rim-night-latch-locksmith-henderson.webp",
+      "crop": "attention",
+      "alt": "Brass rim night latch with its keeper and two brass keys",
+      "title": "Night Latch Repair Henderson",
+      "description": "A classic rim night latch like those on older Henderson bungalows.",
+      "prompt": "a classic brass rim night latch lock with its separate keeper and two brass keys, shown as a stand-alone product"
+    },
+    {
+      "page": "/locksmith/henderson",
+      "slot": "content-2",
+      "reference": null,
+      "source": "Generated/white-window-sash-lock-with-key-henderson.png",
+      "output": "images/locations/henderson/white-window-sash-lock-with-key-henderson.webp",
+      "crop": "attention",
+      "alt": "White keyed window sash lock with a small key",
+      "title": "Window Lock Henderson",
+      "description": "A keyed window lock for older timber and aluminium windows in Henderson.",
+      "prompt": "a white keyed window sash lock with its small key, shown as a stand-alone product"
+    },
+    {
+      "page": "/locksmith/new-lynn",
+      "slot": "content-1",
+      "reference": null,
+      "source": "Generated/shopfront-hook-bolt-lock-locksmith-new-lynn.png",
+      "output": "images/locations/new-lynn/shopfront-hook-bolt-lock-locksmith-new-lynn.webp",
+      "crop": "attention",
+      "alt": "Narrow aluminium shopfront hook-bolt lock with its cylinder and two keys",
+      "title": "Shopfront Lock New Lynn",
+      "description": "A narrow-stile shopfront lock used on aluminium shop doors in New Lynn.",
+      "prompt": "a narrow-stile aluminium shopfront hook-bolt lock case with its euro cylinder and two keys beside it"
+    },
+    {
+      "page": "/locksmith/new-lynn",
+      "slot": "content-2",
+      "reference": null,
+      "source": "Generated/garage-roller-door-t-handle-lock-new-lynn.png",
+      "output": "images/locations/new-lynn/garage-roller-door-t-handle-lock-new-lynn.webp",
+      "crop": "attention",
+      "alt": "Chrome garage roller door T-handle lock with two keys",
+      "title": "Garage Door Lock New Lynn",
+      "description": "A roller door T-handle lock for garages and storage units around New Lynn.",
+      "prompt": "a chrome garage roller door T-handle lock with its square drive bar and two keys beside it"
     }
   ]
 }

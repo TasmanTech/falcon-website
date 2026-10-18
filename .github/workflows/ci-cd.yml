@@ -195,6 +195,7 @@ jobs:
             --region ${{ env.REGION }} \
             --project ${{ env.PROJECT_ID }} \
             --allow-unauthenticated \
+            --cpu-boost \
             --set-env-vars="NEXT_PUBLIC_BACKEND_URL=https://api.falconaccess.co.nz"
 
       - name: Purge Cloudflare cache

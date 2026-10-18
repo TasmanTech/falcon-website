@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across Auckland.',
   keywords: 'Smart Lock Change, Smart Lock Installation, Smart Lock Upgrade, Electronic Locks, Digital Keypad, Access Control Upgrade, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Auckland Smart Lock Change & Upgrades',
     description: 'Upgrade your commercial or residential property with modern smart lock systems. Professional installation and integration across Auckland.',
     url: "/smart-lock/smart-lock-change",

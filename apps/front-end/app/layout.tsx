@@ -10,6 +10,7 @@ import GoogleAdsTag from "@/components/GoogleAdsTag";
 import MetaPixel from "@/components/MetaPixel";
 import JsonLd from '@/components/JsonLd';
 import SiteChrome from "@/components/SiteChrome";
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,11 +30,16 @@ export const metadata: Metadata = {
   },
   description: "Mobile locksmith, smart lock and auto services across Auckland. Lockouts, lock repairs, rekeying, jump starts and diagnostics with a $20 call-out fee.",
   openGraph: {
+    images: [SHARE_IMAGE],
     title: "Falcon Access",
     description: "Mobile locksmith, smart lock and auto services across Auckland. Lockouts, lock repairs, rekeying, jump starts and diagnostics with a $20 call-out fee.",
     siteName: "Falcon Access",
     locale: "en_NZ",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [SHARE_IMAGE.url],
   },
 };
 
@@ -129,7 +135,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en-NZ" className="scroll-smooth" data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${montserrat.variable} font-inter antialiased bg-brand-light text-brand-dark flex flex-col min-h-screen`}
       >

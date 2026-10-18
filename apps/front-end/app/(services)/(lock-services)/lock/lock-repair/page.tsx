@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Door lock repair across Auckland: jammed keys, stiff barrels, sliding door locks and repairs after a break-in. Fixed on site, with a NZ$20 call-out.',
   keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Burglary Repairs Auckland, Break-In Lock Repair, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Hardware Repair, Commercial Maintenance, Residential Repair, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Door Lock Repair Service Auckland',
     description: 'Door lock repair across Auckland: jammed keys, stiff barrels, sliding door locks and repairs after a break-in. Fixed on site, with a NZ$20 call-out.',
     url: "/lock/lock-repair",

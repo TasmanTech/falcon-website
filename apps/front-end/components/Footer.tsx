@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CopyrightYear from "./CopyrightYear";
+import { suburbLinksByRegion } from "@/lib/suburbs";
 
 interface FooterLink {
   href: string;
@@ -126,6 +127,29 @@ export default function Footer() {
               title="Falcon Access Location Map"
             ></iframe>
           </div>
+          {/* Native <details> keeps the suburb links in the server HTML for crawlers and needs no JavaScript */}
+          <details className="mt-4 max-w-50 group">
+            <summary className="inline-flex items-center gap-1.5 cursor-pointer list-none font-bold font-montserrat hover:text-brand-accent transition-colors [&::-webkit-details-marker]:hidden">
+              Popular Links
+              <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div className="mt-3 space-y-3 font-inter text-sm">
+              {suburbLinksByRegion.map(({ region, links }) => (
+                <div key={region}>
+                  <div className="text-brand-light/60 uppercase tracking-wider text-xs mb-1.5">{region}</div>
+                  <ul className="pl-4 space-y-1.5 border-l border-brand-light/20">
+                    {links.map((link) => (
+                      <li key={link.href}>
+                        <Link href={link.href} className="text-brand-light/70 hover:text-brand-accent hover:translate-x-1 transition-all inline-block">{link.label}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </details>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-brand-light/10 text-center text-brand-light/70 font-inter text-sm">

@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Car jump start service across Auckland. Flat battery call-outs for 12V and 24V vehicles, with a battery check and a flat NZ$20 call-out fee.',
   keywords: 'Dead Battery Assistance, Jump Start Auckland, Car Jump Start Service, Flat Battery Call-Out Auckland, Jump Start Near Me, Mobile Battery Service, Auto Electric, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Jump Start Service Auckland',
     description: 'Car jump start service across Auckland. Flat battery call-outs for 12V and 24V vehicles, with a battery check and a flat NZ$20 call-out fee.',
     url: "/auto/dead-battery-assistance",
@@ -137,7 +139,7 @@ export default function DeadBatteryPage() {
         imageSrc="/images/services/auto/dead-battery-assistance/portable-jump-starter-pack-clamps.webp"
         imageAlt="Portable jump starter pack with red and black battery clamps"
         imageTitle="Mobile Battery Assistance"
-        imageDescription="The portable jump starter we bring to get your car running again at home, work or the roadside."
+        imageDescription="A portable jump starter of the kind used to get a car running again at home, work or the roadside."
         title="Surge-Protected Equipment"
         content={[
           <p key="1">Modern cars are full of electronics, from the engine computer to the touchscreen. A careless jump start, with leads on the wrong way or a sudden voltage spike, can damage those parts and leave you with a big repair bill.</p>,

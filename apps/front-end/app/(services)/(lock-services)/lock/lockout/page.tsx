@@ -7,6 +7,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import CTASection from '@/components/sections/CTASection';
 import PageHeaderSection from '@/components/sections/PageHeaderSection';
 import JsonLd from '@/components/JsonLd';
+import { SHARE_IMAGE } from "@/lib/share-image";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   description: 'Fast house, apartment and commercial lockout help across Auckland. Non-destructive entry first, a flat NZ$20 call-out and after-hours support.',
   keywords: 'Locksmith to Open Door, Locked Out of House, Office Lockout, Lockout Services, Residential Lockout Service, Commercial Lockout Service, Door Unlocking Service, Lock Opener Service, Emergency Locksmith, Locksmith Emergency Services, After-Hours Locksmith, Auckland, Non-destructive entry, Commercial lockout, Falcon Access',
   openGraph: {
+    images: [SHARE_IMAGE],
     title: 'Emergency Lockout Services Auckland Wide',
     description: 'Fast house, apartment and commercial lockout help across Auckland. Non-destructive entry first, a flat NZ$20 call-out and after-hours support.',
     url: "/lock/lockout",
@@ -111,7 +113,7 @@ export default function LockoutPage() {
         imageSrc="/images/services/lock/lockout/key-in-stainless-door-lock-lockout-auckland.webp"
         imageAlt="Key inserted in a square stainless steel door lock"
         imageTitle="Residential Lockout Service Auckland"
-        imageDescription="Back inside and turning your own key again after our Auckland lockout service."
+        imageDescription="A key turning in a stainless steel door lock, the goal of every lockout call."
         title="Door Unlocking Service Across Auckland"
         content={[
           <p key="1">Being locked out is stressful, whether your keys are sitting on the kitchen bench or the door simply clicked shut behind you. When you need a locksmith to open a door, our door unlocking service covers houses, flats, offices and shops across Auckland, and every lockout call is a priority.</p>,
