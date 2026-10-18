@@ -111,6 +111,22 @@ export const homeGalleryImages: GalleryImage[] = [
     height: 960,
   },
   {
+    src: '/images/home/gallery/black-sliding-door-handle-latch-hooks-auckland.webp',
+    alt: 'Black sliding door handle with its latch hooks showing and keys in the outside lock on aluminium joinery',
+    title: 'Sliding Door Latch Repair Auckland',
+    description: 'A black aluminium sliding door handle with its latch hooks out, checked so the door locks securely.',
+    width: 1200,
+    height: 1600,
+  },
+  {
+    src: '/images/home/gallery/brass-sliding-door-flush-pull-lock-auckland.webp',
+    alt: 'Brass flush pull with a key cylinder on a white timber sliding door above a brass threshold track',
+    title: 'Timber Sliding Door Lock Auckland',
+    description: 'A keyed brass flush pull lock on a white timber sliding door, an older style we repair and replace.',
+    width: 1200,
+    height: 1600,
+  },
+  {
     src: '/images/home/gallery/glass-display-cabinet-lock-auckland.webp',
     alt: 'Timber display cabinet with glass doors and a small lock, holding crystal glasses and teacups',
     title: 'Cabinet Lock Service Auckland',
