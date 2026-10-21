@@ -109,8 +109,8 @@ export class InvoiceService {
   }
 
   /**
-   * Generates a numbered invoice, stores it, and emails it to the client (BCC to the business).
-   * Without a client email the invoice is only stored, and `emailedAt` stays null.
+   * Generates a numbered invoice, stores it, and emails it to the client (optional CC, BCC to the business).
+   * Without a client email, or with `sendEmail: false`, the invoice is only stored and `emailedAt` stays null.
    * If the email fails, the stored record and PDF are removed so history only holds sent invoices.
    *
    * @param {CreateInvoiceDto} dto - The invoice details.
@@ -166,8 +166,10 @@ export class InvoiceService {
       throw new InternalServerErrorException('The invoice could not be saved to the database. Nothing was sent.');
     }
 
-    if (!document.clientEmail) {
-      this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} saved without emailing (no client email)`);
+    if (!document.clientEmail || dto.sendEmail === false) {
+      this.logger.log(
+        `Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} saved without emailing (${document.clientEmail ? 'save only' : 'no client email'})`,
+      );
       return invoice;
     }
 
@@ -183,7 +185,10 @@ export class InvoiceService {
     }
 
     await this.invoiceRepository.update(record.id, { emailedAt: new Date() });
-    this.logger.log(`Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} sent to ${document.clientEmail}`);
+    const cc = dto.ccEmail?.trim();
+    this.logger.log(
+      `Invoice ${invoice.invoiceNumber}${dto.paid ? ' (paid)' : ''} sent to ${document.clientEmail}${cc ? ` (CC ${cc})` : ''}`,
+    );
     return invoice;
   }
 
@@ -375,6 +380,7 @@ export class InvoiceService {
     return {
       from: from ? `"${BUSINESS.tradingName}" <${from}>` : undefined,
       to,
+      cc: dto.ccEmail?.trim() || undefined,
       bcc: from,
       subject: `${dto.paid ? 'Paid invoice' : 'Invoice'} ${invoice.invoiceNumber} from ${BUSINESS.tradingName}`,
       text: [

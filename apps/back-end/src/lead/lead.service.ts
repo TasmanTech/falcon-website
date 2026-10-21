@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, ILike, Repository } from 'typeorm';
 import { CreateLeadDto } from './dto/create-lead.dto';
 import { ListLeadsDto } from './dto/list-leads.dto';
+import { UpdateLeadStatusDto } from './dto/update-lead-status.dto';
 import { Lead, LeadStatus } from './lead.entity';
 
 /** A page of lead history. */
@@ -13,9 +14,27 @@ export interface LeadPage {
   pageSize: number;
 }
 
+/** The closing prices and cancellation reason recorded with a status. */
+type LeadOutcome = Pick<Lead, 'partPrice' | 'paidPrice' | 'calloutPrice' | 'cancellationReason'>;
+
+/**
+ * Keeps only the outcome fields that belong to the status: prices for `closed`, a reason
+ * for `cancelled`, and nothing for `pending`, so a re-opened lead holds no stale values.
+ */
+function toOutcome(status: LeadStatus, dto: Partial<LeadOutcome>): LeadOutcome {
+  const closed = status === 'closed';
+  return {
+    partPrice: closed ? (dto.partPrice ?? null) : null,
+    paidPrice: closed ? (dto.paidPrice ?? null) : null,
+    calloutPrice: closed ? (dto.calloutPrice ?? null) : null,
+    cancellationReason: status === 'cancelled' ? dto.cancellationReason?.trim() || null : null,
+  };
+}
+
 /** Converts the payload to columns, storing blank text as null. */
 function toColumns(dto: CreateLeadDto): Omit<Lead, 'id' | 'createdAt' | 'updatedAt'> {
   const optional = (value?: string) => value?.trim() || null;
+  const status = dto.status ?? 'pending';
   return {
     date: dto.date.slice(0, 10),
     time: optional(dto.time),
@@ -24,7 +43,8 @@ function toColumns(dto: CreateLeadDto): Omit<Lead, 'id' | 'createdAt' | 'updated
     address: optional(dto.address),
     jobType: optional(dto.jobType),
     notes: optional(dto.notes),
-    status: dto.status ?? 'pending',
+    status,
+    ...toOutcome(status, dto),
   };
 }
 
@@ -92,16 +112,17 @@ export class LeadService {
   }
 
   /**
-   * Changes a lead's status.
+   * Changes a lead's status, recording the closing prices or the cancellation reason with it.
    *
    * @param {string} id - The lead ID.
-   * @param {LeadStatus} status - The new status.
+   * @param {UpdateLeadStatusDto} dto - The new status and its outcome details.
    * @returns {Promise<Lead>} The updated lead.
    * @throws {NotFoundException} If the lead does not exist.
    */
-  async updateStatus(id: string, status: LeadStatus): Promise<Lead> {
+  async updateStatus(id: string, dto: UpdateLeadStatusDto): Promise<Lead> {
     const lead = await this.findOrThrow(id);
-    lead.status = status;
+    Object.assign(lead, { status: dto.status, ...toOutcome(dto.status, dto) });
+    this.logger.log(`Lead ${id} marked ${dto.status}`);
     return this.leadRepository.save(lead);
   }
 

@@ -11,6 +11,8 @@ export interface InvoiceItemDraft {
 export interface InvoiceDraft {
   clientName: string;
   clientEmail: string;
+  /** Optional address copied (CC) on the customer email. */
+  ccEmail: string;
   clientPhone: string;
   jobAddress: string;
   technicianName: string;
@@ -182,6 +184,7 @@ export function createEmptyDraft(): InvoiceDraft {
   return {
     clientName: "",
     clientEmail: "",
+    ccEmail: "",
     clientPhone: "",
     jobAddress: "",
     technicianName: "",
@@ -210,16 +213,22 @@ export function toTitleCase(value: string): string {
 }
 
 /**
- * Converts the form state into the back-end `CreateInvoiceDto` payload.
+ * Converts the form state into the back-end `CreateInvoiceDto` payload. The CC address is
+ * only sent when the invoice will actually be emailed.
  *
  * @param {InvoiceDraft} draft - The form state.
+ * @param {boolean} [sendEmail=true] - False saves the invoice without emailing the customer.
  * @returns The request body.
  */
-export function toInvoicePayload(draft: InvoiceDraft) {
+export function toInvoicePayload(draft: InvoiceDraft, sendEmail = true) {
   const optional = (value: string) => value.trim() || undefined;
+  const clientEmail = optional(draft.clientEmail);
+  const emailing = sendEmail && clientEmail !== undefined;
   return {
     clientName: toTitleCase(draft.clientName.trim()),
-    clientEmail: optional(draft.clientEmail),
+    clientEmail,
+    ccEmail: emailing ? optional(draft.ccEmail) : undefined,
+    sendEmail: emailing,
     clientPhone: optional(draft.clientPhone),
     jobAddress: optional(toTitleCase(draft.jobAddress)),
     technicianName: optional(toTitleCase(draft.technicianName)),
@@ -355,14 +364,15 @@ async function readPdf(res: Response): Promise<InvoicePdf> {
 /**
  * POSTs an invoice to the back-end and returns the PDF.
  *
- * @param {"preview" | "send"} mode - Draft preview (not emailed or stored) or send to the client.
+ * @param {"preview" | "send" | "save"} mode - Draft preview (not emailed or stored), send to the client
+ *   (stored, and emailed when there is an email), or save (stored but never emailed).
  * @param {InvoiceDraft} draft - The form state.
  * @param {string} token - The current access token.
  * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
  * @returns {Promise<InvoicePdf & { token: string }>} The PDF and the token that worked.
  */
 export async function submitInvoice(
-  mode: "preview" | "send",
+  mode: "preview" | "send" | "save",
   draft: InvoiceDraft,
   token: string,
   refreshToken: TokenRefresher,
@@ -372,7 +382,7 @@ export async function submitInvoice(
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(toInvoicePayload(draft)),
+      body: JSON.stringify(toInvoicePayload(draft, mode !== "save")),
     },
     token,
     refreshToken,

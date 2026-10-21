@@ -131,6 +131,18 @@ export const LEAD_STATUSES: { value: LeadStatus; label: string; badgeClass: stri
   { value: "cancelled", label: "Cancelled", badgeClass: "bg-slate-200 text-slate-600" },
 ];
 
+/** Default call-out fee offered when closing a lead (the site's flat NZ$20 call-out). */
+export const DEFAULT_CALLOUT_PRICE = 20;
+
+/**
+ * A status plus the details it needs: closing a lead records the part, paid and
+ * call-out prices, cancelling one records the reason.
+ */
+export type LeadStatusChange =
+  | { status: "pending" }
+  | { status: "closed"; partPrice: number; paidPrice: number; calloutPrice: number }
+  | { status: "cancelled"; cancellationReason: string };
+
 /** A lead saved in history, as returned by the back-end. */
 export interface SavedLead {
   id: string;
@@ -142,6 +154,10 @@ export interface SavedLead {
   jobType: string | null;
   notes: string | null;
   status: LeadStatus;
+  partPrice: number | null;
+  paidPrice: number | null;
+  calloutPrice: number | null;
+  cancellationReason: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -173,10 +189,34 @@ export function toLeadDraft(lead: SavedLead): LeadDraft {
 }
 
 /**
+ * Rebuilds a saved lead's status change, so editing it keeps its prices or reason.
+ *
+ * @param {SavedLead} lead - The saved lead.
+ * @returns {LeadStatusChange | null} The status and its details, or null for a lead closed or
+ *   cancelled before those details were recorded.
+ */
+export function toLeadStatusChange(lead: SavedLead): LeadStatusChange | null {
+  if (lead.status === "closed") {
+    if (lead.paidPrice === null) return null;
+    return {
+      status: "closed",
+      partPrice: lead.partPrice ?? 0,
+      paidPrice: lead.paidPrice,
+      calloutPrice: lead.calloutPrice ?? DEFAULT_CALLOUT_PRICE,
+    };
+  }
+  if (lead.status === "cancelled") {
+    return lead.cancellationReason ? { status: "cancelled", cancellationReason: lead.cancellationReason } : null;
+  }
+  return { status: "pending" };
+}
+
+/**
  * Saves a lead: creates it, or replaces an existing one when `id` is given.
  *
  * @param {LeadDraft} lead - The form values.
- * @param {LeadStatus} status - The lead's status.
+ * @param {LeadStatusChange | { status: LeadStatus }} change - The lead's status with its closing prices or
+ *   cancellation reason; a bare status keeps no details (older leads saved before they were recorded).
  * @param {string | undefined} id - The lead to update, or undefined to create one.
  * @param {string} token - The current access token.
  * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
@@ -184,7 +224,7 @@ export function toLeadDraft(lead: SavedLead): LeadDraft {
  */
 export async function saveLead(
   lead: LeadDraft,
-  status: LeadStatus,
+  change: LeadStatusChange | { status: LeadStatus },
   id: string | undefined,
   token: string,
   refreshToken: TokenRefresher,
@@ -203,7 +243,7 @@ export async function saveLead(
         address: optional(lead.address),
         jobType: optional(lead.jobType),
         notes: optional(lead.notes),
-        status,
+        ...change,
       }),
     },
     token,
@@ -238,23 +278,23 @@ export async function fetchLeads(
 }
 
 /**
- * Changes a lead's status.
+ * Changes a lead's status, with the closing prices or cancellation reason it needs.
  *
  * @param {string} id - The lead ID.
- * @param {LeadStatus} status - The new status.
+ * @param {LeadStatusChange} change - The new status and its details.
  * @param {string} token - The current access token.
  * @param {TokenRefresher} refreshToken - Supplies a new token after a 401.
  * @returns {Promise<SavedLead & { token: string }>} The updated lead and the token that worked.
  */
 export async function updateLeadStatus(
   id: string,
-  status: LeadStatus,
+  change: LeadStatusChange,
   token: string,
   refreshToken: TokenRefresher,
 ): Promise<SavedLead & { token: string }> {
   const { res, token: currentToken } = await authorisedFetch(
     `/leads/${encodeURIComponent(id)}/status`,
-    { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status }) },
+    { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(change) },
     token,
     refreshToken,
   );

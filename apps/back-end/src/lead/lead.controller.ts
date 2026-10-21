@@ -64,10 +64,10 @@ export class LeadController {
   }
 
   /**
-   * Changes a lead's status.
+   * Changes a lead's status. Closing needs the part, paid and call-out prices; cancelling needs a reason.
    *
    * @param {string} id - The lead ID.
-   * @param {UpdateLeadStatusDto} dto - The new status.
+   * @param {UpdateLeadStatusDto} dto - The new status and its outcome details.
    * @returns {Promise<Lead>} The updated lead.
    */
   @Patch(':id/status')
@@ -75,7 +75,7 @@ export class LeadController {
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() dto: UpdateLeadStatusDto,
   ): Promise<Lead> {
-    return this.leadService.updateStatus(id, dto.status);
+    return this.leadService.updateStatus(id, dto);
   }
 
   /**

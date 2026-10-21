@@ -57,6 +57,17 @@ export class CreateInvoiceDto {
   @MaxLength(254)
   clientEmail?: string;
 
+  /** Optional address copied (CC) on the customer email. Ignored when the invoice is not emailed. */
+  @ValidateIf((dto: CreateInvoiceDto) => dto.ccEmail !== undefined && dto.ccEmail !== null && dto.ccEmail !== '')
+  @IsEmail()
+  @MaxLength(254)
+  ccEmail?: string;
+
+  /** Set `false` to save the invoice without emailing it, even when a client email is given. Defaults to `true`. */
+  @IsBoolean()
+  @IsOptional()
+  sendEmail?: boolean;
+
   @IsString()
   @IsOptional()
   @MaxLength(40)

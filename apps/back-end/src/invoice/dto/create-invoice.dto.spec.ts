@@ -35,6 +35,17 @@ describe('CreateInvoiceDto', () => {
     expect(await errorsFor({ ...valid, clientEmail: '' })).toEqual([]);
   });
 
+  it('validates the CC email only when one is given', async () => {
+    expect(await errorsFor({ ...valid, ccEmail: 'office@example.com' })).toEqual([]);
+    expect(await errorsFor({ ...valid, ccEmail: '' })).toEqual([]);
+    expect(await errorsFor({ ...valid, ccEmail: 'nope' })).toContain('ccEmail');
+  });
+
+  it('accepts sendEmail as a boolean only', async () => {
+    expect(await errorsFor({ ...valid, sendEmail: false })).toEqual([]);
+    expect(await errorsFor({ ...valid, sendEmail: 'no' })).toContain('sendEmail');
+  });
+
   it('rejects negative rates inside items', async () => {
     expect(await errorsFor({ ...valid, items: [{ title: 'X', quantity: 1, rate: -5 }] })).toContain('items');
   });

@@ -62,6 +62,10 @@ and the API in `apps/back-end/src/invoice/` and `src/lead/` (both guarded by `Jw
     only holds invoices that were really sent.
   - Without an email: the PDF and record are stored and nothing is emailed (`emailedAt` stays null and
     `clientEmail` is stored as `''`). The UI says "Save Invoice" / "Invoice saved" instead of "Send".
+  - Save only: with an email, the review step also offers "Save Without Emailing" (`submitInvoice('save')`,
+    `sendEmail: false`). The record keeps the client email but nothing is sent and `emailedAt` stays null.
+  - CC: the optional "CC email" field is copied on the customer email (`ccEmail`, validated like the client
+    email). It is only sent when the invoice is emailed and is not stored on the record.
   - The PDF, review step and History omit the email line when there isn't one.
   - The DTO validates the email only when one is supplied (`@ValidateIf` + `@IsEmail`).
 - **Title case**: the client name, job address and technician are passed through `toTitleCase`
@@ -84,14 +88,21 @@ and the API in `apps/back-end/src/invoice/` and `src/lead/` (both guarded by `Jw
 - Phone numbers go through `formatLeadPhone` and come out as `+64211234567` with **no spaces**, so
   Telegram links the whole number. Do not reintroduce spaced formatting there.
 - Saved leads appear in Leads → History with a status badge (`LEAD_STATUSES`) and can be deleted.
+- **Closing and cancelling**: choosing Closed (history select or lead form) opens `LeadOutcomeModal` for the
+  paid, part and call-out prices (call-out defaults to `DEFAULT_CALLOUT_PRICE`, NZ$20); Cancelled asks for a
+  reason (with one-tap suggestions). Dismissing it leaves the status unchanged. Status changes send a
+  `LeadStatusChange`; `PATCH /leads/:id/status` requires the prices for `closed` and the reason for
+  `cancelled`. The service keeps only the fields that match the status, so re-opening clears them.
+  Leads closed before this existed have null prices; the edit form shows "No prices recorded" and saves
+  the bare status rather than inventing zeros.
 
 ## Testing
 - Sessions: `lib/session.test.ts` (fake timers, `visibilitychange`), `lib/auth.test.ts`, `proxy.test.ts` and
   `app/api/session/refresh/route.test.ts`. Component tests mock `@/lib/session` with a `useRef`-backed
   `useSessionToken` (see `InvoiceForm.test.tsx`).
 - Front end: extend `InvoiceForm.test.tsx`, `PriceListSheet.test.tsx`, `PortalNav.test.tsx`, `LoginForm.test.tsx`, `InvoiceHistory.test.tsx`, `LeadMessage.test.tsx`,
-  `LeadHistory.test.tsx` and `lib/*.test.ts`. Find inputs by their exact label text (e.g. `'Email'`,
+  `LeadHistory.test.tsx`, `LeadOutcomeModal.test.tsx` and `lib/*.test.ts`. Find inputs by their exact label text (e.g. `'Email'`,
   `'Name *'`) so a wrong required marker fails the test.
 - Back end: extend `invoice.service.spec.ts`, `create-invoice.dto.spec.ts`, `invoice-pdf.spec.ts`,
-  `invoice-storage.spec.ts`, `lead.service.spec.ts` and the `auth/*.spec.ts` files. The `lead` controller
-  and module have no specs yet; add them when you change those files.
+  `invoice-storage.spec.ts`, `lead.service.spec.ts`, `lead.controller.spec.ts`, `update-lead-status.dto.spec.ts`
+  and the `auth/*.spec.ts` files. The `lead` module has no spec yet; add one when you change it.

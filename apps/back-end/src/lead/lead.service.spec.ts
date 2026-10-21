@@ -60,13 +60,44 @@ describe('LeadService', () => {
     await expect(service.update('missing', { date: '2026-09-30' })).rejects.toThrow(NotFoundException);
   });
 
-  it('changes the status', async () => {
+  it('records the prices when a lead is closed', async () => {
     repository.findOne.mockResolvedValueOnce({ id: 'lead-id', status: 'pending' });
-    await expect(service.updateStatus('lead-id', 'cancelled')).resolves.toMatchObject({ status: 'cancelled' });
+
+    const lead = await service.updateStatus('lead-id', { status: 'closed', partPrice: 35, paidPrice: 180, calloutPrice: 20 });
+
+    expect(lead).toMatchObject({ status: 'closed', partPrice: 35, paidPrice: 180, calloutPrice: 20, cancellationReason: null });
+  });
+
+  it('records the reason when a lead is cancelled and clears any prices', async () => {
+    repository.findOne.mockResolvedValueOnce({ id: 'lead-id', status: 'closed', paidPrice: 180, partPrice: 35, calloutPrice: 20 });
+
+    const lead = await service.updateStatus('lead-id', { status: 'cancelled', cancellationReason: '  Found a spare key ' });
+
+    expect(lead).toMatchObject({
+      status: 'cancelled',
+      cancellationReason: 'Found a spare key',
+      paidPrice: null,
+      partPrice: null,
+      calloutPrice: null,
+    });
+  });
+
+  it('clears the outcome when a lead is re-opened', async () => {
+    repository.findOne.mockResolvedValueOnce({ id: 'lead-id', status: 'cancelled', cancellationReason: 'Too far' });
+    const lead = await service.updateStatus('lead-id', { status: 'pending' });
+    expect(lead).toMatchObject({ status: 'pending', cancellationReason: null, paidPrice: null });
+  });
+
+  it('keeps outcome fields on save only when they match the status', async () => {
+    const closed = await service.create({ date: '2026-09-01', status: 'closed', paidPrice: 99, cancellationReason: 'x' });
+    expect(closed).toMatchObject({ paidPrice: 99, partPrice: null, cancellationReason: null });
+
+    const pending = await service.create({ date: '2026-09-01', paidPrice: 99 });
+    expect(pending).toMatchObject({ paidPrice: null });
   });
 
   it('throws when changing a missing lead', async () => {
-    await expect(service.updateStatus('missing', 'closed')).rejects.toThrow(NotFoundException);
+    await expect(service.updateStatus('missing', { status: 'pending' })).rejects.toThrow(NotFoundException);
   });
 
   it('deletes a lead', async () => {

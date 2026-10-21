@@ -70,22 +70,60 @@ describe('LeadMessage', () => {
     expect(await screen.findByRole('button', { name: 'Saved to Leads' })).toBeInTheDocument();
     expect(saveLead).toHaveBeenLastCalledWith(
       expect.objectContaining({ name: 'KC', date: '2026-09-28' }),
-      'pending',
+      { status: 'pending' },
       undefined,
       't',
       expect.any(Function),
     );
   });
 
-  it('saves a historic lead with a chosen status', async () => {
+  it('asks for the prices when a historic lead is closed', async () => {
     const user = userEvent.setup();
     saveLead.mockResolvedValue({ id: 'lead-2', status: 'closed', token: 't' });
     render(<LeadMessage token="t" />);
 
     await user.click(screen.getByLabelText('Closed'));
+    expect(screen.getByRole('dialog', { name: 'Close Lead' })).toBeInTheDocument();
+    expect(screen.getByLabelText('Call-out price ($) *')).toHaveValue(20);
+    await user.type(screen.getByLabelText('Paid price ($) *'), '180');
+    await user.type(screen.getByLabelText('Part price ($) *'), '35.5');
+    await user.click(screen.getByRole('button', { name: 'Mark Closed' }));
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.getByTestId('lead-outcome')).toHaveTextContent('Paid $180.00 · Parts $35.50 · Call-out $20.00');
     await user.click(screen.getByRole('button', { name: 'Save Lead' }));
 
-    expect(saveLead).toHaveBeenLastCalledWith(expect.anything(), 'closed', undefined, 't', expect.any(Function));
+    expect(saveLead).toHaveBeenLastCalledWith(
+      expect.anything(),
+      { status: 'closed', paidPrice: 180, partPrice: 35.5, calloutPrice: 20 },
+      undefined,
+      't',
+      expect.any(Function),
+    );
+  });
+
+  it('asks for a reason when a lead is cancelled and keeps the status if dismissed', async () => {
+    const user = userEvent.setup();
+    saveLead.mockResolvedValue({ id: 'lead-2', status: 'cancelled', token: 't' });
+    render(<LeadMessage token="t" />);
+
+    await user.click(screen.getByLabelText('Cancelled'));
+    await user.click(screen.getByRole('button', { name: 'Back' }));
+    expect(screen.getByLabelText('Pending')).toBeChecked();
+
+    await user.click(screen.getByLabelText('Cancelled'));
+    expect(screen.getByRole('button', { name: 'Mark Cancelled' })).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: 'Price too high' }));
+    await user.click(screen.getByRole('button', { name: 'Mark Cancelled' }));
+    await user.click(screen.getByRole('button', { name: 'Save Lead' }));
+
+    expect(saveLead).toHaveBeenLastCalledWith(
+      expect.anything(),
+      { status: 'cancelled', cancellationReason: 'Price too high' },
+      undefined,
+      't',
+      expect.any(Function),
+    );
   });
 
   it('edits a saved lead', async () => {
@@ -93,7 +131,8 @@ describe('LeadMessage', () => {
     const onSaved = vi.fn();
     const saved = {
       id: 'lead-3', date: '2026-09-30', time: '10:00', name: 'Kerry', phone: null, address: null,
-      jobType: 'Open box without drilling', notes: null, status: 'pending' as const, createdAt: '', updatedAt: '',
+      jobType: 'Open box without drilling', notes: null, status: 'pending' as const, partPrice: null, paidPrice: null,
+      calloutPrice: null, cancellationReason: null, createdAt: '', updatedAt: '',
     };
     saveLead.mockResolvedValue({ ...saved, name: 'Kerry B', token: 't' });
     render(<LeadMessage token="t" editing={saved} onSaved={onSaved} onCancel={vi.fn()} />);
@@ -102,7 +141,23 @@ describe('LeadMessage', () => {
     await user.type(screen.getByLabelText('Name'), ' B');
     await user.click(screen.getByRole('button', { name: 'Save Changes' }));
 
-    expect(saveLead).toHaveBeenLastCalledWith(expect.objectContaining({ name: 'Kerry B' }), 'pending', 'lead-3', 't', expect.any(Function));
+    expect(saveLead).toHaveBeenLastCalledWith(expect.objectContaining({ name: 'Kerry B' }), { status: 'pending' }, 'lead-3', 't', expect.any(Function));
     expect(onSaved).toHaveBeenCalledWith(expect.objectContaining({ id: 'lead-3', name: 'Kerry B' }));
+  });
+
+  it('keeps the bare status of an older closed lead with no prices recorded', async () => {
+    const user = userEvent.setup();
+    const saved = {
+      id: 'lead-4', date: '2026-09-01', time: null, name: 'Ana', phone: null, address: null, jobType: null, notes: null,
+      status: 'closed' as const, partPrice: null, paidPrice: null, calloutPrice: null, cancellationReason: null,
+      createdAt: '', updatedAt: '',
+    };
+    saveLead.mockResolvedValue({ ...saved, token: 't' });
+    render(<LeadMessage token="t" editing={saved} onSaved={vi.fn()} onCancel={vi.fn()} />);
+
+    expect(screen.getByTestId('lead-outcome')).toHaveTextContent('No prices recorded');
+    await user.click(screen.getByRole('button', { name: 'Save Changes' }));
+
+    expect(saveLead).toHaveBeenLastCalledWith(expect.anything(), { status: 'closed' }, 'lead-4', 't', expect.any(Function));
   });
 });

@@ -1,4 +1,4 @@
-import { IsIn, IsISO8601, IsOptional, IsString, Matches, MaxLength } from 'class-validator';
+import { IsIn, IsISO8601, IsNumber, IsOptional, IsString, Matches, Max, MaxLength, Min } from 'class-validator';
 import { LEAD_STATUSES, type LeadStatus } from '../lead.entity';
 
 /**
@@ -44,4 +44,31 @@ export class CreateLeadDto {
   @IsIn(LEAD_STATUSES)
   @IsOptional()
   status?: LeadStatus;
+
+  /** Parts cost; kept only when the status is `closed`. */
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Max(1_000_000)
+  @IsOptional()
+  partPrice?: number;
+
+  /** Amount the customer paid; kept only when the status is `closed`. */
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Max(1_000_000)
+  @IsOptional()
+  paidPrice?: number;
+
+  /** Call-out fee charged; kept only when the status is `closed`. */
+  @IsNumber({ maxDecimalPlaces: 2 })
+  @Min(0)
+  @Max(1_000_000)
+  @IsOptional()
+  calloutPrice?: number;
+
+  /** Why the job fell through; kept only when the status is `cancelled`. */
+  @IsString()
+  @IsOptional()
+  @MaxLength(500)
+  cancellationReason?: string;
 }

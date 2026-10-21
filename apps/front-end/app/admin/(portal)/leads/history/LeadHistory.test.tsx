@@ -34,6 +34,10 @@ const kerry = {
   jobType: 'Open box without drilling',
   notes: 'Key inside',
   status: 'pending',
+  partPrice: null,
+  paidPrice: null,
+  calloutPrice: null,
+  cancellationReason: null,
   createdAt: '2026-09-28T03:51:00.000Z',
   updatedAt: '2026-09-28T03:51:00.000Z',
 };
@@ -66,15 +70,66 @@ describe('LeadHistory', () => {
     );
   });
 
-  it('changes a lead status', async () => {
+  it('asks for the prices before closing a lead', async () => {
     fetchLeads.mockResolvedValue(page([kerry]));
-    updateLeadStatus.mockResolvedValue({ ...kerry, status: 'closed', token: 't' });
+    updateLeadStatus.mockResolvedValue({ ...kerry, status: 'closed', paidPrice: 150, partPrice: 0, calloutPrice: 20, token: 't' });
     render(<LeadHistory token="t" />);
 
     fireEvent.change(await screen.findByLabelText('Status for Kerry'), { target: { value: 'closed' } });
+    expect(updateLeadStatus).not.toHaveBeenCalled();
+    expect(screen.getByLabelText('Call-out price ($) *')).toHaveValue(20);
+    fireEvent.change(screen.getByLabelText('Paid price ($) *'), { target: { value: '150' } });
+    fireEvent.change(screen.getByLabelText('Part price ($) *'), { target: { value: '0' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Mark Closed' }));
 
     await waitFor(() => expect(screen.getByText('Closed', { selector: 'span' })).toBeInTheDocument());
-    expect(updateLeadStatus).toHaveBeenCalledWith('lead-1', 'closed', 't', expect.any(Function));
+    expect(updateLeadStatus).toHaveBeenCalledWith(
+      'lead-1',
+      { status: 'closed', paidPrice: 150, partPrice: 0, calloutPrice: 20 },
+      't',
+      expect.any(Function),
+    );
+    expect(screen.getByText('Paid $150.00')).toBeInTheDocument();
+  });
+
+  it('asks for a reason before cancelling a lead', async () => {
+    fetchLeads.mockResolvedValue(page([kerry]));
+    updateLeadStatus.mockResolvedValue({ ...kerry, status: 'cancelled', cancellationReason: 'Found a spare key', token: 't' });
+    render(<LeadHistory token="t" />);
+
+    fireEvent.change(await screen.findByLabelText('Status for Kerry'), { target: { value: 'cancelled' } });
+    fireEvent.change(screen.getByLabelText('Cancellation reason *'), { target: { value: 'Found a spare key' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Mark Cancelled' }));
+
+    await waitFor(() => expect(screen.getByText('Found a spare key')).toBeInTheDocument());
+    expect(updateLeadStatus).toHaveBeenCalledWith(
+      'lead-1',
+      { status: 'cancelled', cancellationReason: 'Found a spare key' },
+      't',
+      expect.any(Function),
+    );
+  });
+
+  it('leaves the status alone when the dialog is dismissed', async () => {
+    fetchLeads.mockResolvedValue(page([kerry]));
+    render(<LeadHistory token="t" />);
+
+    fireEvent.change(await screen.findByLabelText('Status for Kerry'), { target: { value: 'closed' } });
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Status for Kerry')).toHaveValue('pending');
+    expect(updateLeadStatus).not.toHaveBeenCalled();
+  });
+
+  it('re-opens a lead without asking', async () => {
+    fetchLeads.mockResolvedValue(page([{ ...kerry, status: 'cancelled', cancellationReason: 'Too far' }]));
+    updateLeadStatus.mockResolvedValue({ ...kerry, token: 't' });
+    render(<LeadHistory token="t" />);
+
+    fireEvent.change(await screen.findByLabelText('Status for Kerry'), { target: { value: 'pending' } });
+
+    await waitFor(() => expect(updateLeadStatus).toHaveBeenCalledWith('lead-1', { status: 'pending' }, 't', expect.any(Function)));
   });
 
   it('deletes a lead after confirming', async () => {
