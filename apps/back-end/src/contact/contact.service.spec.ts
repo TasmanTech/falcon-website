@@ -34,6 +34,7 @@ describe('ContactService', () => {
     const dto = {
       name: 'John',
       email: 'john@example.com',
+      phone: '+64211234567',
       message: 'Hello',
       service: 'general',
     };
