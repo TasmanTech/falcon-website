@@ -122,6 +122,7 @@ describe('InvoiceService', () => {
 
       const mail = sendMail.mock.calls[0][0] as Record<string, any>;
       expect(mail.to).toBe('jerry@example.com');
+      expect(mail.cc).toBeUndefined();
       expect(mail.bcc).toBe('info@falconaccess.co.nz');
       expect(mail.text).toContain('NZ$270.00');
       expect(mail.attachments[0]).toMatchObject({ filename: result.fileName, contentType: 'application/pdf' });
@@ -143,6 +144,25 @@ describe('InvoiceService', () => {
 
       expect(fs.existsSync(path.join(storageDir, result.fileName))).toBe(true);
       expect(repository.save).toHaveBeenCalledWith(expect.objectContaining({ clientEmail: '', emailedAt: null }));
+      expect(sendMail).not.toHaveBeenCalled();
+      expect(repository.update).not.toHaveBeenCalled();
+    });
+
+    it('copies the CC address on the customer email', async () => {
+      await service.send({ ...dto, ccEmail: ' office@example.com ' });
+
+      const mail = sendMail.mock.calls[0][0] as Record<string, any>;
+      expect(mail.to).toBe('jerry@example.com');
+      expect(mail.cc).toBe('office@example.com');
+    });
+
+    it('saves without emailing when sendEmail is false, keeping the client email', async () => {
+      const result = await service.send({ ...dto, sendEmail: false, ccEmail: 'office@example.com' });
+
+      expect(fs.existsSync(path.join(storageDir, result.fileName))).toBe(true);
+      expect(repository.save).toHaveBeenCalledWith(
+        expect.objectContaining({ clientEmail: 'jerry@example.com', emailedAt: null }),
+      );
       expect(sendMail).not.toHaveBeenCalled();
       expect(repository.update).not.toHaveBeenCalled();
     });

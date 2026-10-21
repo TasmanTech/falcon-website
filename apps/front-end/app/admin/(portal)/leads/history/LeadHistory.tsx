@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiEdit2, FiMapPin, FiPhone, FiPlus, FiSearch, FiTrash2 } from "react-icons/fi";
 import { refreshSession, useSessionToken } from "@/lib/session";
-import { SessionExpiredError, formatDisplayDate } from "@/lib/invoice";
+import { SessionExpiredError, formatDisplayDate, formatMoney } from "@/lib/invoice";
 import {
   LEAD_STATUSES,
   deleteLead,
@@ -13,9 +13,11 @@ import {
   mapsLink,
   updateLeadStatus,
   type LeadStatus,
+  type LeadStatusChange,
   type SavedLead,
 } from "@/lib/lead";
 import LeadMessage from "../LeadMessage";
+import LeadOutcomeModal from "../LeadOutcomeModal";
 
 /** Delay before a search is sent, so typing doesn't fire a request per keystroke. */
 const SEARCH_DEBOUNCE_MS = 300;
@@ -31,7 +33,8 @@ interface LoadedPage {
 /**
  * Mobile-first list of saved leads. Searches by name, phone, address or job type,
  * filters by status, and lets each lead be re-statused, edited or deleted
- * (deleting asks for a second tap to confirm).
+ * (deleting asks for a second tap to confirm). Closing a lead asks for its part, paid
+ * and call-out prices, and cancelling one asks for the reason, before the status changes.
  *
  * @param {object} props - The component props.
  * @param {string} props.token - The access token for back-end requests.
@@ -48,6 +51,7 @@ export default function LeadHistory({ token }: { token: string }) {
   const [busyId, setBusyId] = useState<string | null>(null);
   const [confirmingDeleteId, setConfirmingDeleteId] = useState<string | null>(null);
   const [editing, setEditing] = useState<{ lead: SavedLead; token: string } | null>(null);
+  const [outcomeFor, setOutcomeFor] = useState<{ lead: SavedLead; status: "closed" | "cancelled" } | null>(null);
 
   const key = `${statusFilter}|${query}`;
   const isLoading = loaded?.key !== key && !error;
@@ -109,12 +113,12 @@ export default function LeadHistory({ token }: { token: string }) {
       return { ...current, items: current.items.map((item) => (item.id === updated.id ? updated : item)) };
     });
 
-  const changeStatus = async (lead: SavedLead, status: LeadStatus) => {
-    if (status === lead.status) return;
+  const changeStatus = async (lead: SavedLead, change: LeadStatusChange) => {
+    setOutcomeFor(null);
     setBusyId(lead.id);
     setError(null);
     try {
-      const { token: nextToken, ...updated } = await updateLeadStatus(lead.id, status, tokenRef.current, refreshSession);
+      const { token: nextToken, ...updated } = await updateLeadStatus(lead.id, change, tokenRef.current, refreshSession);
       tokenRef.current = nextToken;
       replaceLead(updated);
     } catch (err) {
@@ -122,6 +126,13 @@ export default function LeadHistory({ token }: { token: string }) {
     } finally {
       setBusyId(null);
     }
+  };
+
+  /** Pending is set straight away; Closed and Cancelled first ask for their details. */
+  const selectStatus = (lead: SavedLead, status: LeadStatus) => {
+    if (status === lead.status) return;
+    if (status === "pending") void changeStatus(lead, { status });
+    else setOutcomeFor({ lead, status });
   };
 
   const remove = async (lead: SavedLead) => {
@@ -275,6 +286,17 @@ export default function LeadHistory({ token }: { token: string }) {
                     </div>
                   )}
                   {lead.notes && <p className="mt-2 whitespace-pre-line text-sm text-slate-600">{lead.notes}</p>}
+                  {lead.status === "closed" && lead.paidPrice !== null && (
+                    <p className="mt-2 text-sm text-slate-700">
+                      <span className="font-semibold">Paid {formatMoney(lead.paidPrice)}</span>
+                      {` · Parts ${formatMoney(lead.partPrice ?? 0)} · Call-out ${formatMoney(lead.calloutPrice ?? 0)}`}
+                    </p>
+                  )}
+                  {lead.status === "cancelled" && lead.cancellationReason && (
+                    <p className="mt-2 text-sm text-slate-700">
+                      <span className="font-semibold">Reason:</span> {lead.cancellationReason}
+                    </p>
+                  )}
 
                   <div className="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
                     <label htmlFor={`status-${lead.id}`} className="sr-only">
@@ -284,7 +306,7 @@ export default function LeadHistory({ token }: { token: string }) {
                       id={`status-${lead.id}`}
                       value={lead.status}
                       disabled={busy}
-                      onChange={(e) => changeStatus(lead, e.target.value as LeadStatus)}
+                      onChange={(e) => selectStatus(lead, e.target.value as LeadStatus)}
                       className="h-10 min-w-0 flex-1 rounded-full border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-700 disabled:opacity-60"
                     >
                       {LEAD_STATUSES.map((option) => (
@@ -337,6 +359,14 @@ export default function LeadHistory({ token }: { token: string }) {
               );
             })}
           </ul>
+          {outcomeFor && (
+            <LeadOutcomeModal
+              status={outcomeFor.status}
+              leadLabel={outcomeFor.lead.name || outcomeFor.lead.phone || undefined}
+              onConfirm={(change) => changeStatus(outcomeFor.lead, change)}
+              onCancel={() => setOutcomeFor(null)}
+            />
+          )}
           {loaded.items.length < loaded.total && (
             <button
               type="button"

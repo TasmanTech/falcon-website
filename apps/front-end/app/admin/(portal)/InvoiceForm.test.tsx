@@ -102,6 +102,48 @@ describe('InvoiceForm', () => {
     expect(screen.getByText(/No email was sent/)).toBeInTheDocument();
   });
 
+  it('offers to save without emailing when there is an email', async () => {
+    submitInvoice.mockResolvedValue({ blob: new Blob(['%PDF-']), fileName: 'Invoice.pdf', invoiceNumber: 'FA-260925-ABC', token: 'token' });
+    render(<InvoiceForm token="token" />);
+    const user = await fillJerrysInvoice();
+
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await user.click(screen.getByRole('button', { name: /Save Without Emailing/ }));
+
+    await waitFor(() => expect(screen.getByText('Invoice saved')).toBeInTheDocument());
+    expect(submitInvoice).toHaveBeenCalledWith(
+      'save',
+      expect.objectContaining({ clientEmail: 'jerrylee9922@gmail.com' }),
+      'token',
+      expect.any(Function),
+    );
+    expect(screen.getByText(/No email was sent/)).toBeInTheDocument();
+  });
+
+  it('hides the save-only option when there is no email', async () => {
+    render(<InvoiceForm token="token" />);
+    const user = await fillJerrysInvoice();
+    await user.clear(screen.getByLabelText('Email'));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+
+    expect(screen.queryByRole('button', { name: /Save Without Emailing/ })).not.toBeInTheDocument();
+  });
+
+  it('copies the CC address on the sent invoice', async () => {
+    submitInvoice.mockResolvedValue({ blob: new Blob(['%PDF-']), fileName: 'Invoice.pdf', invoiceNumber: 'FA-260925-ABC', token: 'token' });
+    render(<InvoiceForm token="token" />);
+    const user = await fillJerrysInvoice();
+    await user.type(screen.getByLabelText('CC email'), 'office@example.com');
+
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    expect(screen.getByText('CC: office@example.com')).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /Send Invoice/ }));
+
+    await waitFor(() => expect(screen.getByText('Invoice sent')).toBeInTheDocument());
+    expect(submitInvoice).toHaveBeenCalledWith('send', expect.objectContaining({ ccEmail: 'office@example.com' }), 'token', expect.any(Function));
+    expect(screen.getByText('office@example.com')).toBeInTheDocument();
+  });
+
   it('title-cases the name and address when leaving the field', async () => {
     const user = userEvent.setup();
     render(<InvoiceForm token="token" />);

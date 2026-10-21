@@ -1,5 +1,15 @@
-import { describe, it, expect } from 'vitest';
-import { buildLeadMessage, formatLeadDate, formatLeadPhone, formatLeadTime, mapsLink } from './lead';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+import {
+  buildLeadMessage,
+  formatLeadDate,
+  formatLeadPhone,
+  formatLeadTime,
+  mapsLink,
+  saveLead,
+  toLeadStatusChange,
+  updateLeadStatus,
+  type SavedLead,
+} from './lead';
 
 describe('formatLeadPhone', () => {
   it.each([
@@ -74,5 +84,73 @@ describe('buildLeadMessage', () => {
         '*🧩 Parts:',
       ].join('\n'),
     );
+  });
+});
+
+const savedLead: SavedLead = {
+  id: 'lead-1',
+  date: '2026-10-22',
+  time: null,
+  name: 'Kerry',
+  phone: null,
+  address: null,
+  jobType: null,
+  notes: null,
+  status: 'pending',
+  partPrice: null,
+  paidPrice: null,
+  calloutPrice: null,
+  cancellationReason: null,
+  createdAt: '2026-10-22T00:00:00.000Z',
+  updatedAt: '2026-10-22T00:00:00.000Z',
+};
+
+describe('toLeadStatusChange', () => {
+  it('keeps the prices of a closed lead', () => {
+    expect(toLeadStatusChange({ ...savedLead, status: 'closed', partPrice: 35, paidPrice: 180, calloutPrice: 20 })).toEqual({
+      status: 'closed',
+      partPrice: 35,
+      paidPrice: 180,
+      calloutPrice: 20,
+    });
+  });
+
+  it('keeps the reason of a cancelled lead', () => {
+    expect(toLeadStatusChange({ ...savedLead, status: 'cancelled', cancellationReason: 'Too far' })).toEqual({
+      status: 'cancelled',
+      cancellationReason: 'Too far',
+    });
+    expect(toLeadStatusChange(savedLead)).toEqual({ status: 'pending' });
+  });
+
+  it('returns null for leads closed or cancelled before the details were recorded', () => {
+    expect(toLeadStatusChange({ ...savedLead, status: 'closed' })).toBeNull();
+    expect(toLeadStatusChange({ ...savedLead, status: 'cancelled' })).toBeNull();
+  });
+});
+
+describe('lead API', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('sends the closing prices with a status change', async () => {
+    const fetchMock = vi.spyOn(global, 'fetch').mockResolvedValue(new Response(JSON.stringify(savedLead)));
+
+    await updateLeadStatus('lead-1', { status: 'closed', partPrice: 35, paidPrice: 180, calloutPrice: 20 }, 't', vi.fn());
+
+    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(url).toMatch(/\/leads\/lead-1\/status$/);
+    expect(JSON.parse(init.body as string)).toEqual({ status: 'closed', partPrice: 35, paidPrice: 180, calloutPrice: 20 });
+  });
+
+  it('saves a lead with its cancellation reason', async () => {
+    const fetchMock = vi.spyOn(global, 'fetch').mockResolvedValue(new Response(JSON.stringify(savedLead)));
+    const draft = { date: '2026-10-22', time: '', name: 'Kerry', phone: '', address: '', jobType: '', notes: '' };
+
+    await saveLead(draft, { status: 'cancelled', cancellationReason: 'Found a key' }, undefined, 't', vi.fn());
+
+    const [, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(JSON.parse(init.body as string)).toMatchObject({ name: 'Kerry', status: 'cancelled', cancellationReason: 'Found a key' });
   });
 });

@@ -71,6 +71,13 @@ describe('lib/invoice', () => {
     expect(toInvoicePayload({ ...draft, clientEmail: '  ' }).clientEmail).toBeUndefined();
   });
 
+  it('toInvoicePayload sends the CC only when the invoice is emailed', () => {
+    const withCc = { ...draft, ccEmail: ' office@example.com ' };
+    expect(toInvoicePayload(withCc)).toMatchObject({ ccEmail: 'office@example.com', sendEmail: true });
+    expect(toInvoicePayload(withCc, false)).toMatchObject({ clientEmail: 'jerry@example.com', ccEmail: undefined, sendEmail: false });
+    expect(toInvoicePayload({ ...withCc, clientEmail: '' })).toMatchObject({ ccEmail: undefined, sendEmail: false });
+  });
+
   it('toTitleCase capitalises each word and keeps deliberate capitals', () => {
     expect(toTitleCase('jerry li')).toBe('Jerry Li');
     expect(toTitleCase('12 queen st, mount-eden\nauckland')).toBe('12 Queen St, Mount-Eden\nAuckland');
@@ -103,6 +110,17 @@ describe('lib/invoice', () => {
       const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
       expect(url).toMatch(/\/invoices$/);
       expect((init.headers as Record<string, string>).Authorization).toBe('Bearer token');
+      expect(JSON.parse(init.body as string)).toMatchObject({ sendEmail: true });
+    });
+
+    it('saves without emailing in save mode', async () => {
+      const fetchMock = vi.spyOn(global, 'fetch').mockResolvedValue(pdfResponse());
+
+      await submitInvoice('save', draft, 'token', vi.fn());
+
+      const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+      expect(url).toMatch(/\/invoices$/);
+      expect(JSON.parse(init.body as string)).toMatchObject({ clientEmail: 'jerry@example.com', sendEmail: false });
     });
 
     it('refreshes an expired token once and retries', async () => {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { FiCheck, FiCopy, FiRotateCcw, FiSave, FiX } from "react-icons/fi";
 import { refreshSession, useSessionToken } from "@/lib/session";
-import { SessionExpiredError, todayInNz } from "@/lib/invoice";
+import { SessionExpiredError, formatMoney, todayInNz } from "@/lib/invoice";
 import {
   JOB_TYPES,
   LEAD_STATUSES,
@@ -12,10 +12,13 @@ import {
   mapsLink,
   saveLead,
   toLeadDraft,
+  toLeadStatusChange,
   type LeadDraft,
   type LeadStatus,
+  type LeadStatusChange,
   type SavedLead,
 } from "@/lib/lead";
+import LeadOutcomeModal from "./LeadOutcomeModal";
 
 const inputClass =
   "block w-full h-12 rounded-xl border border-slate-300 bg-white px-3.5 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30";
@@ -52,7 +55,8 @@ async function copyText(text: string): Promise<void> {
 /**
  * Lead form: fill in the customer's details, copy a formatted message to paste
  * into the team's Telegram chat, and save the lead to history. Past leads can be
- * entered with a Closed or Cancelled status; new leads default to Pending.
+ * entered with a Closed or Cancelled status; new leads default to Pending. Choosing
+ * Closed asks for the part, paid and call-out prices, and Cancelled asks for the reason.
  *
  * When `editing` is given, the form opens with that lead's details and saving
  * updates it instead of creating a new one.
@@ -78,6 +82,11 @@ export default function LeadMessage({
   const tokenRef = useSessionToken(token);
   const [lead, setLead] = useState<LeadDraft>(() => (editing ? toLeadDraft(editing) : emptyLead()));
   const [status, setStatus] = useState<LeadStatus>(editing?.status ?? "pending");
+  // The prices or reason for the status; null for an older lead saved before they were recorded
+  const [details, setDetails] = useState<LeadStatusChange | null>(() =>
+    editing ? toLeadStatusChange(editing) : { status: "pending" },
+  );
+  const [askingFor, setAskingFor] = useState<"closed" | "cancelled" | null>(null);
   const [copied, setCopied] = useState(false);
   const [saving, setSaving] = useState(false);
   const [savedId, setSavedId] = useState<string | null>(null);
@@ -90,6 +99,19 @@ export default function LeadMessage({
     setLead((current) => ({ ...current, [key]: value }));
     setCopied(false);
     setSavedId(null);
+  };
+
+  const applyDetails = (change: LeadStatusChange) => {
+    setStatus(change.status);
+    setDetails(change);
+    setAskingFor(null);
+    setSavedId(null);
+  };
+
+  /** Pending applies straight away; Closed and Cancelled first ask for their details. */
+  const chooseStatus = (next: LeadStatus) => {
+    if (next === "pending") applyDetails({ status: "pending" });
+    else setAskingFor(next);
   };
 
   const copy = async () => {
@@ -107,7 +129,7 @@ export default function LeadMessage({
     try {
       const { token: nextToken, ...saved } = await saveLead(
         lead,
-        status,
+        details ?? { status },
         editing?.id ?? savedId ?? undefined,
         tokenRef.current,
         refreshSession,
@@ -128,6 +150,7 @@ export default function LeadMessage({
   const reset = () => {
     setLead(emptyLead());
     setStatus("pending");
+    setDetails({ status: "pending" });
     setCopied(false);
     setSavedId(null);
     setError(null);
@@ -208,18 +231,45 @@ export default function LeadMessage({
                   name="leadStatus"
                   value={option.value}
                   checked={status === option.value}
-                  onChange={() => {
-                    setStatus(option.value);
-                    setSavedId(null);
-                  }}
+                  onChange={() => chooseStatus(option.value)}
                   className="sr-only"
                 />
                 {option.label}
               </label>
             ))}
           </div>
+          {status !== "pending" && (
+            <div className="mt-2 flex items-center justify-between gap-3 rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-700">
+              <span data-testid="lead-outcome">
+                {details?.status === "closed"
+                  ? `Paid ${formatMoney(details.paidPrice)} · Parts ${formatMoney(details.partPrice)} · Call-out ${formatMoney(details.calloutPrice)}`
+                  : details?.status === "cancelled"
+                    ? `Reason: ${details.cancellationReason}`
+                    : status === "closed"
+                      ? "No prices recorded"
+                      : "No reason recorded"}
+              </span>
+              <button
+                type="button"
+                onClick={() => setAskingFor(status)}
+                className="h-10 shrink-0 cursor-pointer rounded-full px-3 font-semibold text-brand-dark underline"
+              >
+                Change
+              </button>
+            </div>
+          )}
         </fieldset>
       </section>
+
+      {askingFor && (
+        <LeadOutcomeModal
+          status={askingFor}
+          leadLabel={lead.name.trim() || lead.phone.trim() || undefined}
+          initial={details ?? undefined}
+          onConfirm={applyDetails}
+          onCancel={() => setAskingFor(null)}
+        />
+      )}
 
       <section className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5">
         <h2 className="mb-3 font-montserrat text-base font-bold text-brand-dark">Preview</h2>

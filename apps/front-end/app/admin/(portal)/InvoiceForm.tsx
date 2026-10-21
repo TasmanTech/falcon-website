@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { FiCheckCircle, FiDownload, FiEdit2, FiEye, FiList, FiPlus, FiSend, FiTrash2 } from "react-icons/fi";
+import { FiCheckCircle, FiDownload, FiEdit2, FiEye, FiList, FiPlus, FiSave, FiSend, FiTrash2 } from "react-icons/fi";
 import { refreshSession, useSessionToken } from "@/lib/session";
 import {
   SessionExpiredError,
@@ -72,7 +72,8 @@ function Section({ title, action, children }: { title: string; action?: React.Re
  * Mobile-first invoice generator for the admin portal.
  *
  * Flow: fill in customer and items (from the price list or custom) → review → send.
- * Sending emails the PDF to the customer and offers it for download. A draft PDF can be
+ * Sending emails the PDF to the customer (with an optional CC) and offers it for download;
+ * "Save Without Emailing" stores it in History without emailing anyone. A draft PDF can be
  * previewed from the review step without emailing anything. The draft is kept in
  * localStorage until sent, and an expired access token is refreshed transparently.
  *
@@ -85,10 +86,10 @@ export default function InvoiceForm({ token }: { token: string }) {
   const [draft, setDraft] = useState<InvoiceDraft>(createEmptyDraft);
   const [step, setStep] = useState<"edit" | "review" | "sent">("edit");
   const [isPriceListOpen, setIsPriceListOpen] = useState(false);
-  const [pending, setPending] = useState<"preview" | "send" | null>(null);
+  const [pending, setPending] = useState<"preview" | "send" | "save" | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sessionExpired, setSessionExpired] = useState(false);
-  const [sent, setSent] = useState<(InvoicePdf & { total: number; email: string; paid: boolean }) | null>(null);
+  const [sent, setSent] = useState<(InvoicePdf & { total: number; email: string; cc: string; paid: boolean }) | null>(null);
   const [restoreDismissed, setRestoreDismissed] = useState(false);
 
   const savedDraft = useSyncExternalStore(subscribeToNothing, readSavedDraft, () => null);
@@ -146,7 +147,7 @@ export default function InvoiceForm({ token }: { token: string }) {
 
   const hasEmail = draft.clientEmail.trim() !== "";
 
-  const submit = async (mode: "preview" | "send") => {
+  const submit = async (mode: "preview" | "send" | "save") => {
     setPending(mode);
     setError(null);
     try {
@@ -155,7 +156,14 @@ export default function InvoiceForm({ token }: { token: string }) {
       if (mode === "preview") {
         downloadBlob(result.blob, result.fileName);
       } else {
-        setSent({ ...result, total, email: draft.clientEmail.trim(), paid: draft.paid });
+        const emailed = mode === "send" && hasEmail;
+        setSent({
+          ...result,
+          total,
+          email: emailed ? draft.clientEmail.trim() : "",
+          cc: emailed ? draft.ccEmail.trim() : "",
+          paid: draft.paid,
+        });
         writeSavedDraft(null);
         setStep("sent");
         window.scrollTo({ top: 0 });
@@ -198,7 +206,14 @@ export default function InvoiceForm({ token }: { token: string }) {
             {formatMoney(sent.total)}{sent.paid ? " (paid)" : ""}{" "}
             {sent.email ? (
               <>
-                was emailed to <span className="break-all">{sent.email}</span>. It&apos;s saved in{" "}
+                was emailed to <span className="break-all">{sent.email}</span>
+                {sent.cc && (
+                  <>
+                    {" "}
+                    (CC <span className="break-all">{sent.cc}</span>)
+                  </>
+                )}
+                . It&apos;s saved in{" "}
                 <Link href="/admin/invoices" className="font-semibold text-brand-dark underline">
                   History
                 </Link>{" "}
@@ -247,7 +262,8 @@ export default function InvoiceForm({ token }: { token: string }) {
         <Section title="Customer">
           <div className="space-y-1 text-[15px]">
             <p className="font-semibold">{draft.clientName}</p>
-            {draft.clientEmail.trim() && <p className="break-all text-slate-700">{draft.clientEmail}</p>}
+            {hasEmail && <p className="break-all text-slate-700">{draft.clientEmail}</p>}
+            {hasEmail && draft.ccEmail.trim() && <p className="break-all text-slate-700">CC: {draft.ccEmail}</p>}
             {draft.clientPhone && <p className="text-slate-700">{draft.clientPhone}</p>}
             {draft.jobAddress && <p className="whitespace-pre-line text-slate-700">{draft.jobAddress}</p>}
           </div>
@@ -330,6 +346,16 @@ export default function InvoiceForm({ token }: { token: string }) {
           >
             <FiSend aria-hidden /> {pending === "send" ? (hasEmail ? "Sending…" : "Saving…") : `${hasEmail ? "Send" : "Save"} ${draft.paid ? "Paid Invoice" : "Invoice"}`}
           </button>
+          {hasEmail && (
+            <button
+              type="button"
+              onClick={() => submit("save")}
+              disabled={pending !== null}
+              className="flex h-12 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white font-semibold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <FiSave aria-hidden /> {pending === "save" ? "Saving…" : "Save Without Emailing"}
+            </button>
+          )}
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
@@ -385,6 +411,11 @@ export default function InvoiceForm({ token }: { token: string }) {
             <div>
               <label htmlFor="clientEmail" className={labelClass}>Email</label>
               <input id="clientEmail" type="email" inputMode="email" autoComplete="off" value={draft.clientEmail} onChange={(e) => update("clientEmail", e.target.value)} className={inputClass} />
+            </div>
+            <div>
+              <label htmlFor="ccEmail" className={labelClass}>CC email</label>
+              <input id="ccEmail" type="email" inputMode="email" autoComplete="off" aria-describedby="ccEmailHint" value={draft.ccEmail} onChange={(e) => update("ccEmail", e.target.value)} className={inputClass} />
+              <p id="ccEmailHint" className="mt-1 text-xs text-slate-500">Gets a copy of the invoice email, e.g. a landlord or property manager</p>
             </div>
             <div>
               <label htmlFor="clientPhone" className={labelClass}>Phone</label>
