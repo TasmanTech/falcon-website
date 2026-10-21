@@ -1,31 +1,43 @@
 "use client";
 
 import { useState } from "react";
+import { isValidNzPhone } from "@/lib/nz-phone";
+
+const PHONE_ERROR = "Please enter a valid NZ phone number, e.g. 021 123 4567 or 09 243 1404.";
 
 /**
  * Contact form component.
- * Provides a form for users to submit inquiries. Captures name, email, service type,
- * and a message, then sends a POST request to the back-end API. Handles local state
- * for submission status and error reporting.
+ * Provides a form for users to submit inquiries. Captures name, email, NZ phone number,
+ * service type and a message, then sends a POST request to the back-end API. Handles
+ * local state for submission status and error reporting.
  *
  * @returns {JSX.Element} The rendered ContactForm component.
  */
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStatus("submitting");
-    setErrorMessage("");
 
     const formData = new FormData(e.currentTarget);
     const data = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
       service: formData.get("service") as string,
       message: formData.get("message") as string,
     };
+
+    if (!isValidNzPhone(data.phone)) {
+      setPhoneError(PHONE_ERROR);
+      e.currentTarget.querySelector<HTMLInputElement>("#phone")?.focus();
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMessage("");
 
     try {
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
@@ -39,6 +51,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           name: data.name,
           email: data.email,
+          phone: data.phone,
           message: combinedMessage,
         }),
       });
@@ -75,7 +88,28 @@ export default function ContactForm() {
           <label htmlFor="email" className="block text-sm font-bold font-montserrat text-brand-dark mb-1">Email Address</label>
           <input type="email" id="email" name="email" required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all font-inter" placeholder="john@example.com" />
         </div>
-        
+
+        <div>
+          <label htmlFor="phone" className="block text-sm font-bold font-montserrat text-brand-dark mb-1">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            autoComplete="tel"
+            inputMode="tel"
+            aria-invalid={phoneError ? true : undefined}
+            aria-describedby={phoneError ? "phone-error" : undefined}
+            onChange={() => phoneError && setPhoneError("")}
+            onBlur={(e) => setPhoneError(e.target.value && !isValidNzPhone(e.target.value) ? PHONE_ERROR : "")}
+            className={`w-full px-4 py-3 rounded-lg border ${phoneError ? "border-red-500" : "border-gray-200"} focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all font-inter`}
+            placeholder="021 123 4567"
+          />
+          {phoneError && (
+            <p id="phone-error" className="text-red-600 font-inter text-sm mt-1">{phoneError}</p>
+          )}
+        </div>
+
         <div>
           <label htmlFor="service" className="block text-sm font-bold font-montserrat text-brand-dark mb-1">Service Needed</label>
           <select id="service" name="service" required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all font-inter bg-white">

@@ -37,6 +37,7 @@ describe('ContactController', () => {
     const dto = {
       name: 'Test',
       email: 'test@example.com',
+      phone: '+64211234567',
       message: 'Test message',
       service: 'general',
     };

@@ -50,6 +50,7 @@ export class ContactService {
             <p style="margin: 0 0 8px; font-size: 12px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Contact Details</p>
             <p style="margin: 0 0 4px; font-size: 15px;"><strong>Name:</strong> ${createContactDto.name}</p>
             <p style="margin: 0 0 4px; font-size: 15px;"><strong>Email:</strong> <a href="mailto:${createContactDto.email}" style="color: #0284c7; text-decoration: none;">${createContactDto.email}</a></p>
+            <p style="margin: 0 0 4px; font-size: 15px;"><strong>Phone:</strong> <a href="tel:${createContactDto.phone}" style="color: #0284c7; text-decoration: none;">${createContactDto.phone}</a></p>
           </div>
           <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
             <p style="margin: 0 0 12px; font-size: 12px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;">Message Content</p>
@@ -90,7 +91,7 @@ export class ContactService {
           from: this.configService.get<string>('SMTP_FROM'),
           to: this.configService.get<string>('SMTP_FROM'), // Send to the company's email
           subject: `New Inquiry: ${createContactDto.name}`,
-          text: `Name: ${createContactDto.name}\nEmail: ${createContactDto.email}\n\nMessage:\n${createContactDto.message}`,
+          text: `Name: ${createContactDto.name}\nEmail: ${createContactDto.email}\nPhone: ${createContactDto.phone}\n\nMessage:\n${createContactDto.message}`,
           html: companyEmailHtml,
         }),
         // Auto-reply to the sender
