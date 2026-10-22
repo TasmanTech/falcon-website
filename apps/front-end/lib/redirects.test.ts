@@ -28,9 +28,16 @@ const PUBLISHED_PATHS = [
   '/auto/obd2-diagnostic',
   '/car-lockout',
   '/locksmith/albany',
+  '/locksmith/birkenhead',
+  '/locksmith/blockhouse-bay',
+  '/locksmith/east-tamaki',
+  '/locksmith/flat-bush',
   '/locksmith/henderson',
+  '/locksmith/karaka',
   '/locksmith/new-lynn',
+  '/locksmith/pokeno',
   '/locksmith/takapuna',
+  '/locksmith/titirangi',
   ...legacyRedirects.map((r) => r.source),
 ];
 

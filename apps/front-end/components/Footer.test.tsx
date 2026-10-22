@@ -57,11 +57,20 @@ describe('Footer Component', () => {
       ['Locksmith Takapuna', '/locksmith/takapuna'],
       ['Locksmith Henderson', '/locksmith/henderson'],
       ['Locksmith New Lynn', '/locksmith/new-lynn'],
+      ['Locksmith Birkenhead', '/locksmith/birkenhead'],
+      ['Locksmith Titirangi', '/locksmith/titirangi'],
+      ['Locksmith Blockhouse Bay', '/locksmith/blockhouse-bay'],
+      ['Locksmith East Tamaki', '/locksmith/east-tamaki'],
+      ['Locksmith Flat Bush', '/locksmith/flat-bush'],
+      ['Locksmith Karaka', '/locksmith/karaka'],
+      ['Locksmith Pokeno', '/locksmith/pokeno'],
     ]) {
       expect(within(details).getByRole('link', { name, hidden: true })).toHaveAttribute('href', href);
     }
     expect(within(details).getByText('North Shore')).toBeInTheDocument();
     expect(within(details).getByText('West Auckland')).toBeInTheDocument();
+    expect(within(details).getByText('East Auckland')).toBeInTheDocument();
+    expect(within(details).getByText('South Auckland')).toBeInTheDocument();
   });
 
   it('links and embeds the Google Business profile', () => {

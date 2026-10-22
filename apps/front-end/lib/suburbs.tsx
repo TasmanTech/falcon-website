@@ -18,7 +18,9 @@ export interface SuburbFaq {
 export interface Suburb {
   slug: string;
   name: string;
-  region: "North Shore" | "West Auckland";
+  region: "North Shore" | "West Auckland" | "East Auckland" | "South Auckland";
+  /** Set when the suburb is outside Auckland (e.g. "Waikato"); schema place names default to Auckland. */
+  locality?: string;
   path: string;
   /** Meta title without the brand suffix, 44 characters or fewer. */
   metaTitle: string;
@@ -30,7 +32,7 @@ export interface Suburb {
   commonJobs: { title: string; content: ReactNode[] };
   local: { title: string; image: SuburbImage; content: ReactNode[] };
   nearby: { title: string; content: ReactNode[] };
-  /** Neighbouring suburbs, also listed in the Service areaServed. */
+  /** Neighbouring suburbs, also listed in the Service areaServed. Add ", <Region>" to a name outside Auckland. */
   nearbySuburbs: string[];
   faqs: SuburbFaq[];
 }
@@ -87,7 +89,7 @@ const albany: Suburb = {
   nearby: {
     title: "Areas We Cover Around Albany",
     content: [
-      <p key="1">As well as Albany itself, we regularly work in Greenhithe, Oteha, Rosedale, Unsworth Heights, Schnapper Rock, Glenfield, Browns Bay and Torbay. We also cover the rest of the North Shore, including <Link href="/locksmith/takapuna" className={linkClass}>Takapuna</Link>.</p>,
+      <p key="1">As well as Albany itself, we regularly work in Greenhithe, Oteha, Rosedale, Unsworth Heights, Schnapper Rock, Glenfield, Browns Bay and Torbay. We also cover the rest of the North Shore, including <Link href="/locksmith/takapuna" className={linkClass}>Takapuna</Link> and <Link href="/locksmith/birkenhead" className={linkClass}>Birkenhead</Link>.</p>,
       <p key="2">Stuck with a car rather than a house? Our <Link href="/car-lockout" className={linkClass}>car lockout service</Link> and <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start help</Link> cover Albany too.</p>,
     ],
   },
@@ -162,7 +164,7 @@ const takapuna: Suburb = {
   nearby: {
     title: "Areas We Cover Around Takapuna",
     content: [
-      <p key="1">We regularly work in Milford, Hauraki, Belmont, Bayswater, Devonport, Sunnynook, Forrest Hill and Northcote, and across the wider North Shore, including <Link href="/locksmith/albany" className={linkClass}>Albany</Link>.</p>,
+      <p key="1">We regularly work in Milford, Hauraki, Belmont, Bayswater, Devonport, Sunnynook, Forrest Hill and Northcote, and across the wider North Shore, including <Link href="/locksmith/albany" className={linkClass}>Albany</Link> and <Link href="/locksmith/birkenhead" className={linkClass}>Birkenhead</Link>.</p>,
       <p key="2">Thinking about going keyless? We supply and fit <Link href="/smart-lock" className={linkClass}>smart locks</Link> suited to apartment and house doors.</p>,
     ],
   },
@@ -238,7 +240,7 @@ const henderson: Suburb = {
   nearby: {
     title: "Areas We Cover Around Henderson",
     content: [
-      <p key="1">We regularly work in Te Atatū, Glendene, Sunnyvale, Western Heights, Henderson Valley, Massey, Ranui and Swanson, and across West Auckland, including <Link href="/locksmith/new-lynn" className={linkClass}>New Lynn</Link>.</p>,
+      <p key="1">We regularly work in Te Atatū, Glendene, Sunnyvale, Western Heights, Henderson Valley, Massey, Ranui and Swanson, and across West Auckland, including <Link href="/locksmith/new-lynn" className={linkClass}>New Lynn</Link> and <Link href="/locksmith/titirangi" className={linkClass}>Titirangi</Link>.</p>,
       <p key="2">Car trouble instead? Our <Link href="/car-lockout" className={linkClass}>car lockout service</Link> and <Link href="/auto/dead-battery-assistance" className={linkClass}>flat battery help</Link> cover Henderson too.</p>,
     ],
   },
@@ -313,7 +315,7 @@ const newLynn: Suburb = {
   nearby: {
     title: "Areas We Cover Around New Lynn",
     content: [
-      <p key="1">We regularly work in Avondale, Kelston, Glen Eden, Titirangi, Green Bay, Blockhouse Bay, Fruitvale and Rosebank, and across West Auckland, including <Link href="/locksmith/henderson" className={linkClass}>Henderson</Link>.</p>,
+      <p key="1">We regularly work in Avondale, Kelston, Glen Eden, <Link href="/locksmith/titirangi" className={linkClass}>Titirangi</Link>, Green Bay, <Link href="/locksmith/blockhouse-bay" className={linkClass}>Blockhouse Bay</Link>, Fruitvale and Rosebank, and across West Auckland, including <Link href="/locksmith/henderson" className={linkClass}>Henderson</Link>.</p>,
       <p key="2">Locked out of a car at the shops or station? Our <Link href="/car-lockout" className={linkClass}>car lockout service</Link> covers New Lynn as well.</p>,
     ],
   },
@@ -338,11 +340,543 @@ const newLynn: Suburb = {
   ],
 };
 
+const birkenhead: Suburb = {
+  slug: "birkenhead",
+  name: "Birkenhead",
+  region: "North Shore",
+  path: "/locksmith/birkenhead",
+  metaTitle: "Locksmith Birkenhead, North Shore",
+  metaDescription: "Mobile locksmith in Birkenhead for villa door locks, rekeys after renovations, lockouts and lock repairs. Flat NZ$20 call-out, quoted on site.",
+  heading: "Locksmith in Birkenhead, North Shore",
+  subtitle: "Lock repairs, rekeys, lockouts and upgrades for Birkenhead villas, bungalows and businesses, from Birkenhead Point to Highbury and Chatswood.",
+  intro: {
+    title: "Mobile Locksmith Service for Birkenhead",
+    image: {
+      src: "/images/locations/birkenhead/brass-mortice-sashlock-villa-door-birkenhead.webp",
+      alt: "Brass mortice sashlock with a pair of brass lever handles on long backplates",
+      title: "Villa Door Lock Birkenhead",
+      description: "A brass mortice sashlock and lever set like those on Birkenhead villa front doors.",
+    },
+    content: [
+      <p key="1">Birkenhead is full of character homes. Around Birkenhead Point and the older streets near the wharf, many villas and bungalows still have their original timber doors with mortice locks set inside them. Those locks wear with age, and replacing them badly can split a heritage door or leave it looking out of place.</p>,
+      <p key="2">We repair or replace mortice locks to suit the door, and fit modern deadbolts where you want more security. We come to you, with a flat <strong>NZ$20 call-out fee</strong>, and quote every job on site before work starts.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Birkenhead Customers Call Us For",
+    content: [
+      <p key="1">Around Birkenhead, these are the jobs we&apos;re asked to do most:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Worn mortice locks:</strong> old villa locks that catch, slip or need the key held at just the right angle. Our <Link href="/lock/lock-repair" className={linkClass}>door lock repair service</Link> sorts the mechanism or replaces it with one that fits the existing cut-out.</li>
+        <li><strong>Security upgrades:</strong> adding a deadbolt to a door that only has a latch, or a full <Link href="/lock/lock-change-installation" className={linkClass}>door lock replacement</Link> where the old hardware is past saving.</li>
+        <li><strong>Rekeys after building work:</strong> a <Link href="/lock/rekey" className={linkClass}>residential rekey</Link> once the builders, painters and tradies have handed back their keys.</li>
+        <li><strong>Break-in repairs:</strong> burglary repairs for doors and locks damaged in a break-in, through our <Link href="/lock/lock-repair" className={linkClass}>lock repair</Link> service, so the house can be secured the same day.</li>
+        <li><strong>Lockouts:</strong> locked out of your house, flat or office around Highbury? Our <Link href="/lock/lockout" className={linkClass}>house lockout service</Link> uses non-destructive entry first.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Rekeying After a Renovation",
+    image: {
+      src: "/images/locations/birkenhead/brass-deadbolt-new-keys-rekey-birkenhead.webp",
+      alt: "Brass deadbolt with its thumb-turn and a set of four newly cut brass keys",
+      title: "Rekey After Renovation Birkenhead",
+      description: "Rekeying a Birkenhead home after renovations so builders' and trades' keys stop working.",
+    },
+    content: [
+      <p key="1">Renovating an older home means handing out keys. By the end of a job, builders, electricians, painters and project managers may all have had a copy, and not every one comes back. Rekeying changes the pins inside your locks so only your new keys work, without replacing the hardware you&apos;ve just had painted around.</p>,
+      <p key="2">If the renovation included new doors, we can key the new and existing locks alike so one key does the lot. Prefer to go keyless? Our <Link href="/smart-lock/smart-lock-installation" className={linkClass}>smart door lock installation</Link> lets you give trades a temporary code instead of a key.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Birkenhead",
+    content: [
+      <p key="1">We regularly work in Northcote, Northcote Point, Chatswood, Beach Haven, Birkdale, Hillcrest, Glenfield and Kauri Point, and across the North Shore, including <Link href="/locksmith/takapuna" className={linkClass}>Takapuna</Link> and <Link href="/locksmith/albany" className={linkClass}>Albany</Link>.</p>,
+      <p key="2">Locked out of a car at Highbury or the ferry? Our <Link href="/car-lockout" className={linkClass}>car lockout service</Link> covers Birkenhead too.</p>,
+    ],
+  },
+  nearbySuburbs: ["Northcote", "Northcote Point", "Chatswood", "Beach Haven", "Birkdale", "Hillcrest", "Glenfield", "Kauri Point"],
+  faqs: [
+    {
+      question: "Can you repair the original lock on a villa door?",
+      answer: "Often, yes. Many old mortice locks just need cleaning, adjusting or a new spring. If it's beyond repair, we fit a replacement sized to the existing cut-out so the door isn't damaged.",
+    },
+    {
+      question: "Should I rekey after renovating?",
+      answer: "If keys went to anyone outside your household during the work, yes. Rekeying is usually cheaper than new locks, and we can cut as many new keys as you need on the day.",
+    },
+    {
+      question: "Can you add a deadbolt to an old timber door?",
+      answer: "Yes. We check the door's thickness and condition first, then fit a deadbolt that suits it. If the door is too thin or damaged, we'll tell you before we drill anything.",
+    },
+    {
+      question: "Do you work at businesses in Highbury?",
+      answer: "Yes. We change and repair locks for shops and offices around Highbury and Birkenhead, and do commercial lock rekeys when staff leave or a lease changes hands.",
+    },
+  ],
+};
+
+const titirangi: Suburb = {
+  slug: "titirangi",
+  name: "Titirangi",
+  region: "West Auckland",
+  path: "/locksmith/titirangi",
+  metaTitle: "Locksmith Titirangi, West Auckland",
+  metaDescription: "Mobile locksmith in Titirangi for lockouts, stiff or corroded locks, gate locks and rekeys for bush-clad homes. Flat NZ$20 call-out, quoted on site.",
+  heading: "Locksmith in Titirangi, West Auckland",
+  subtitle: "Lockouts, lock repairs, gate locks and rekeys for Titirangi homes, from the village and Scenic Drive to Woodlands Park and French Bay.",
+  intro: {
+    title: "Mobile Locksmith Service for Titirangi",
+    image: {
+      src: "/images/locations/titirangi/black-keyed-gate-lock-locksmith-titirangi.webp",
+      alt: "Black powder-coated keyed gate lock with its striker plate and two keys",
+      title: "Gate Lock Titirangi",
+      description: "A keyed gate lock for the driveway and side gates common on Titirangi properties.",
+    },
+    content: [
+      <p key="1">Titirangi homes sit among the bush on the edge of the Waitākere Ranges, often down long, steep driveways behind a gate. Many properties have more than one building, such as a sleepout, studio or garage, each with its own lock and its own set of keys to keep track of.</p>,
+      <p key="2">We come to you anywhere in Titirangi, however far down the drive. Let us know about gates, steps or tricky access when you call. You pay a flat <strong>NZ$20 call-out fee</strong>, and every job is quoted on site before work begins.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Titirangi Customers Call Us For",
+    content: [
+      <p key="1">Around Titirangi, these are our most common jobs:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Stiff and seized locks:</strong> damp bush air is hard on lock parts. Our <Link href="/lock/lock-repair" className={linkClass}>lock repair service</Link> cleans, lubricates and replaces corroded components.</li>
+        <li><strong>Gate, sleepout and studio locks:</strong> new or replacement locks, including garage door locks, through our <Link href="/lock/lock-change-installation" className={linkClass}>lock installation service</Link>, keyed alike to the house where the hardware allows.</li>
+        <li><strong>Rekeys:</strong> <Link href="/lock/rekey" className={linkClass}>rekeying locks</Link> for new owners, or when a spare key has gone missing.</li>
+        <li><strong>Lockouts:</strong> house and sleepout lockouts, opened through our <Link href="/lock/lockout" className={linkClass}>emergency lockout service</Link> with non-destructive entry first.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Locks That Struggle in the Damp",
+    image: {
+      src: "/images/locations/titirangi/corroded-and-new-brass-lock-cylinders-titirangi.webp",
+      alt: "Corroded brass lock cylinder with green patina beside a new polished brass cylinder",
+      title: "Corroded Lock Replacement Titirangi",
+      description: "A lock cylinder corroded by damp bush air, next to the new cylinder that replaces it.",
+    },
+    content: [
+      <p key="1">Under the canopy, moisture hangs around and outdoor locks rarely dry out. Over time, brass and steel parts corrode, keys get harder to turn, and one day the lock won&apos;t open at all. A key that needs forcing is a warning sign, and it&apos;s much cheaper to deal with before the key snaps in the lock.</p>,
+      <p key="2">We service locks with a lubricant that suits damp conditions, and replace corroded cylinders with new ones. If you&apos;d rather not rely on keys at all, we also do <Link href="/smart-lock/smart-lock-installation" className={linkClass}>electronic door lock installation</Link> with weather-rated keypad and fingerprint locks.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Titirangi",
+    content: [
+      <p key="1">We regularly work in Laingholm, Woodlands Park, Waima, Konini, Glen Eden, Green Bay, Oratia and Parau, and work as a locksmith across West Auckland, including <Link href="/locksmith/new-lynn" className={linkClass}>New Lynn</Link>, <Link href="/locksmith/henderson" className={linkClass}>Henderson</Link> and <Link href="/locksmith/blockhouse-bay" className={linkClass}>Blockhouse Bay</Link>.</p>,
+      <p key="2">Car won&apos;t start at the end of a long driveway? Our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> and <Link href="/car-lockout" className={linkClass}>car lockout help</Link> cover Titirangi as well.</p>,
+    ],
+  },
+  nearbySuburbs: ["Laingholm", "Woodlands Park", "Waima", "Konini", "Glen Eden", "Green Bay", "Oratia", "Parau"],
+  faqs: [
+    {
+      question: "Do you come out to properties down long driveways in Titirangi?",
+      answer: "Yes. The NZ$20 call-out fee is the same wherever you are in Titirangi. Tell us about gates, steps or parking when you call so we can find you quickly.",
+    },
+    {
+      question: "Why are my outdoor locks getting hard to turn?",
+      answer: "Damp air and grit build up inside the lock and corrode the parts. Servicing often frees it off. If the cylinder is corroded through, we quote a replacement.",
+    },
+    {
+      question: "Can you key my house, sleepout and gate locks the same?",
+      answer: "Usually, yes, if the locks use compatible cylinders. We check each one on site and tell you if any need a new cylinder to match.",
+    },
+    {
+      question: "My key snapped in the lock. Can you get it out?",
+      answer: "Yes. We extract broken keys without damaging the lock where possible, then cut you a new key or repair the lock if it's worn.",
+    },
+  ],
+};
+
+const blockhouseBay: Suburb = {
+  slug: "blockhouse-bay",
+  name: "Blockhouse Bay",
+  region: "West Auckland",
+  path: "/locksmith/blockhouse-bay",
+  metaTitle: "Locksmith Blockhouse Bay, West Auckland",
+  metaDescription: "Mobile locksmith in Blockhouse Bay for ranch slider locks, lockouts, rekeys and lock upgrades for units and homes. Flat NZ$20 call-out, quoted on site.",
+  heading: "Locksmith in Blockhouse Bay, Auckland",
+  subtitle: "Lockouts, sliding door locks, rekeys and security upgrades for Blockhouse Bay homes and units, from the village shops to the beach and Lynfield.",
+  intro: {
+    title: "Mobile Locksmith Service for Blockhouse Bay",
+    image: {
+      src: "/images/locations/blockhouse-bay/aluminium-sliding-door-lock-blockhouse-bay.webp",
+      alt: "Silver aluminium sliding door lock with a flush pull handle, hook latch and two keys",
+      title: "Ranch Slider Lock Blockhouse Bay",
+      description: "An aluminium sliding door lock like those on many Blockhouse Bay homes and units.",
+    },
+    content: [
+      <p key="1">Blockhouse Bay looks out over the Manukau Harbour, and many of its homes were built from the 1950s to the 1970s, alongside blocks of units and ownership flats. Almost every one has at least one aluminium ranch slider, and sliding door locks are some of the hardest-working locks in the house.</p>,
+      <p key="2">We come to you with the tools and common parts on board. You pay a flat <strong>NZ$20 call-out fee</strong>, and we quote every job on site before work starts.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Blockhouse Bay Customers Call Us For",
+    content: [
+      <p key="1">Around Blockhouse Bay, these are the calls we get most often:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Ranch slider locks:</strong> sliding doors that won&apos;t latch, locks that have stopped catching, or lost keys. Our <Link href="/lock/lock-repair" className={linkClass}>lock repair service</Link> fixes or replaces them.</li>
+        <li><strong>Locked out of the house:</strong> homes, units and flats with doors that lock behind you, opened through our <Link href="/lock/lockout" className={linkClass}>emergency lockout service</Link> with non-destructive entry first.</li>
+        <li><strong>Rekeys between tenants:</strong> landlords and property managers use our <Link href="/lock/rekey" className={linkClass}>rekeying service</Link> so the last tenant&apos;s keys stop working.</li>
+        <li><strong>Old doorknob locks:</strong> if you need to change house locks, our <Link href="/lock/lock-change-installation" className={linkClass}>lock replacement</Link> service swaps key-in-knob locks for a proper deadbolt.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Upgrading Locks on Older Units",
+    image: {
+      src: "/images/locations/blockhouse-bay/brass-key-in-knob-entrance-lock-blockhouse-bay.webp",
+      alt: "Brass key-in-knob entrance doorknob and latch, with a key in the knob and a second key on its ring",
+      title: "Doorknob Lock Upgrade Blockhouse Bay",
+      description: "An older key-in-knob entrance lock of the kind still found on many Blockhouse Bay units.",
+    },
+    content: [
+      <p key="1">Lots of older units still rely on a key-in-knob lock on the front door. They&apos;re convenient, but the latch is short and easy to force, and the knob itself can be twisted off. Adding a deadbolt, or replacing the set with a deadbolt and lever handle, is one of the most effective security upgrades for the money.</p>,
+      <p key="2">If you own several units on one site, <Link href="/lock/rekey" className={linkClass}>master rekeying</Link> means each tenant&apos;s key opens only their own unit, while your key opens them all. Prefer codes to keys? We also offer <Link href="/smart-lock/smart-lock-installation" className={linkClass}>digital door lock installation</Link>, with codes you can change between tenants.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Blockhouse Bay",
+    content: [
+      <p key="1">We regularly work in Lynfield, New Windsor, Avondale, Green Bay, Hillsborough, Waikōwhai, Mount Roskill and Wesley, and across West Auckland, including <Link href="/locksmith/new-lynn" className={linkClass}>New Lynn</Link> and <Link href="/locksmith/titirangi" className={linkClass}>Titirangi</Link>.</p>,
+      <p key="2">Locked out of a car at the beach or the village shops? Our <Link href="/car-lockout" className={linkClass}>car unlock service</Link> covers Blockhouse Bay too.</p>,
+    ],
+  },
+  nearbySuburbs: ["Lynfield", "New Windsor", "Avondale", "Green Bay", "Hillsborough", "Waikōwhai", "Mount Roskill", "Wesley"],
+  faqs: [
+    {
+      question: "Can you fix a ranch slider that won't lock?",
+      answer: "Usually, yes. It's often a worn lock, a hook that no longer lines up with the keeper, or a door that has dropped on its rollers. We diagnose it on site and quote the repair.",
+    },
+    {
+      question: "Can I get a key for my sliding door lock?",
+      answer: "Yes. If the lock takes a key, we can cut one or replace the cylinder. If it's a snib-only lock, we can fit a keyed sliding door lock instead.",
+    },
+    {
+      question: "Can you key a block of units so I have one master key?",
+      answer: "Often, yes. Each unit gets its own key and the owner's key opens all of them. We check the existing locks and quote any cylinders that need changing.",
+    },
+    {
+      question: "How much is a locksmith call-out in Blockhouse Bay?",
+      answer: "A flat NZ$20, the same as anywhere else in Auckland. The work is quoted on site before we start, and work outside normal hours costs a bit more.",
+    },
+  ],
+};
+
+const eastTamaki: Suburb = {
+  slug: "east-tamaki",
+  name: "East Tamaki",
+  region: "East Auckland",
+  path: "/locksmith/east-tamaki",
+  metaTitle: "Locksmith East Tamaki, East Auckland",
+  metaDescription: "Commercial and residential locksmith in East Tamaki for warehouse locks, commercial rekeys, master key systems and lockouts. Flat NZ$20 call-out.",
+  heading: "Locksmith in East Tamaki, East Auckland",
+  subtitle: "Lock changes, commercial rekeys, master key systems and lockouts for East Tamaki warehouses, offices and homes, from the industrial area to Dannemora.",
+  intro: {
+    title: "Mobile Locksmith Service for East Tamaki",
+    image: {
+      src: "/images/locations/east-tamaki/commercial-lever-lockset-euro-cylinder-east-tamaki.webp",
+      alt: "Heavy-duty stainless steel commercial lever handle on a long backplate with a euro cylinder cut-out and two keys",
+      title: "Commercial Door Lock East Tamaki",
+      description: "A heavy-duty commercial lever lock of the kind fitted to East Tamaki warehouse and office doors.",
+    },
+    content: [
+      <p key="1">East Tamaki is one of Auckland&apos;s biggest industrial and business areas, with warehouses, factories, trade counters and offices stretching towards Highbrook. Business doors take far more use than a front door at home, so commercial locks wear faster and need hardware built for the job.</p>,
+      <p key="2">We also look after the homes in Dannemora, Golflands and East Tamaki Heights. Wherever you are, we come to you for a flat <strong>NZ$20 call-out fee</strong>, and quote every job on site before work starts.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What East Tamaki Customers Call Us For",
+    content: [
+      <p key="1">Around East Tamaki, these are the jobs we&apos;re asked to do most:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Commercial lock rekeys:</strong> when staff leave, keys go missing or a unit changes tenants, a <Link href="/lock/rekey" className={linkClass}>commercial lock rekey</Link> makes old keys useless without new hardware.</li>
+        <li><strong>Lock replacements:</strong> heavy-duty <Link href="/lock/lock-change-installation" className={linkClass}>lock replacement and installation</Link> for warehouse, office and roller door locks that are worn or not secure enough.</li>
+        <li><strong>Door lock repair:</strong> commercial doors that won&apos;t latch or lock at the end of the day, fixed through our <Link href="/lock/lock-repair" className={linkClass}>door lock repair service</Link>.</li>
+        <li><strong>Access control and keypads:</strong> <Link href="/smart-lock/smart-lock-repair-programming" className={linkClass}>programming and repairs</Link> for keypad and card locks, so you can add and remove staff codes.</li>
+        <li><strong>Lockouts:</strong> offices, units and homes opened through our <Link href="/lock/lockout" className={linkClass}>emergency lockout service</Link> with non-destructive entry first.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Master Key Systems for Businesses",
+    image: {
+      src: "/images/locations/east-tamaki/master-key-and-change-keys-east-tamaki.webp",
+      alt: "One brass master key on its own ring above five silver change keys laid in a row",
+      title: "Master Key System East Tamaki",
+      description: "A master key system lets one key open every door while each staff key opens only its own areas.",
+    },
+    content: [
+      <p key="1">A business with a dozen doors doesn&apos;t need a dozen keys on the owner&apos;s ring. With master rekeying, each lock gets its own key for the staff who use it, while a master key opens them all. Managers can be given keys that open their own areas and nothing else.</p>,
+      <p key="2">We can set up a master key system on your existing locks where the cylinders allow, and add to it as the business grows. If you&apos;d rather manage access with codes or cards, our <Link href="/smart-lock/smart-lock-installation" className={linkClass}>electronic door lock installation</Link> is another option.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around East Tamaki",
+    content: [
+      <p key="1">We regularly work in Highbrook, Ōtara, Dannemora, Golflands, Burswood, Botany Downs, East Tamaki Heights and Huntington Park, and across East Auckland, including <Link href="/locksmith/flat-bush" className={linkClass}>Flat Bush</Link>.</p>,
+      <p key="2">Work vehicle locked or flat? Our <Link href="/car-lockout" className={linkClass}>vehicle lockout service</Link> and <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> cover vans and utes in East Tamaki too.</p>,
+    ],
+  },
+  nearbySuburbs: ["Highbrook", "Ōtara", "Dannemora", "Golflands", "Burswood", "Botany Downs", "East Tamaki Heights", "Huntington Park"],
+  faqs: [
+    {
+      question: "Can you rekey our business locks when a staff member leaves?",
+      answer: "Yes. A commercial rekey changes the pins so the old key stops working, and we cut new keys for everyone who still needs one. It's usually cheaper than new locks.",
+    },
+    {
+      question: "Can you set up a master key system on our existing locks?",
+      answer: "Often, yes. We check each cylinder first. Locks that can't be master keyed get a new cylinder, and we quote everything before we start.",
+    },
+    {
+      question: "Do you work on warehouse and roller door locks?",
+      answer: "Yes. We repair and replace locks on warehouse doors, roller doors and gates. Unusual commercial hardware may need a part ordered in, and we'll tell you first.",
+    },
+    {
+      question: "Can you come out after hours to secure a business?",
+      answer: "Yes. If a lock fails at closing time or after a break-in, we can come out after hours. Work outside normal hours costs a bit more, and we tell you before we start.",
+    },
+  ],
+};
+
+const flatBush: Suburb = {
+  slug: "flat-bush",
+  name: "Flat Bush",
+  region: "East Auckland",
+  path: "/locksmith/flat-bush",
+  metaTitle: "Locksmith Flat Bush, East Auckland",
+  metaDescription: "Mobile locksmith in Flat Bush for smart door lock installation, lockouts, rekeys and lock repairs on newer homes. Flat NZ$20 call-out, quoted on site.",
+  heading: "Locksmith in Flat Bush, East Auckland",
+  subtitle: "Smart lock fitting, lockouts, rekeys and lock repairs for Flat Bush homes, from Ormiston Town Centre to Barry Curtis Park and Murphys Bush.",
+  intro: {
+    title: "Mobile Locksmith Service for Flat Bush",
+    image: {
+      src: "/images/locations/flat-bush/face-recognition-smart-lock-flat-bush.webp",
+      alt: "Matte black push-pull smart lock with a face recognition camera, fingerprint reader and keypad",
+      title: "Smart Door Lock Flat Bush",
+      description: "A face recognition smart lock of the kind many Flat Bush homeowners fit to newer front doors.",
+    },
+    content: [
+      <p key="1">Flatbush, or Flat Bush, is one of Auckland&apos;s newest suburbs, and most of its homes were built in the last twenty years. Many have aluminium front doors with multipoint locks, internal garage access, and a growing number have smart locks. Newer hardware needs a locksmith who knows how it fits together.</p>,
+      <p key="2">We come to you anywhere in Flat Bush. You pay a flat <strong>NZ$20 call-out fee</strong>, and every job is quoted on site before work begins.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Flat Bush Customers Call Us For",
+    content: [
+      <p key="1">Around Flat Bush, these are our most common jobs:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Smart door lock installation:</strong> keypad, fingerprint and face recognition locks fitted through our <Link href="/smart-lock/smart-lock-installation" className={linkClass}>smart lock installation</Link> service, matched to your door type.</li>
+        <li><strong>Smart lock problems:</strong> locks that won&apos;t accept codes or have lost their settings, fixed through <Link href="/smart-lock/smart-lock-repair-programming" className={linkClass}>smart lock repair and programming</Link>.</li>
+        <li><strong>Residential rekeys:</strong> a <Link href="/lock/rekey" className={linkClass}>lock rekey</Link> after buying a home, so the builder&apos;s and previous owners&apos; keys stop working.</li>
+        <li><strong>House lockouts:</strong> locked out of the house? Our <Link href="/lock/lockout" className={linkClass}>lockout service</Link> uses non-destructive entry first.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Securing the Internal Garage Door",
+    image: {
+      src: "/images/locations/flat-bush/chrome-deadbolt-strike-plate-flat-bush.webp",
+      alt: "Satin chrome deadbolt with its interior thumb-turn and a long steel reinforcing strike plate",
+      title: "Garage Access Door Lock Flat Bush",
+      description: "A deadbolt and reinforced strike plate for the internal garage door common in Flat Bush homes.",
+    },
+    content: [
+      <p key="1">Most Flat Bush homes have a door straight from the garage into the house, and it often has nothing more than a passage latch. If the garage door is opened or its remote is stolen from a car, that internal door is all that stands between a burglar and the house.</p>,
+      <p key="2">Fitting a deadbolt with a reinforced strike plate is a quick, affordable upgrade through our <Link href="/lock/lock-change-installation" className={linkClass}>lock installation service</Link>. We can key it alike with your front door so you don&apos;t need another key.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Flat Bush",
+    content: [
+      <p key="1">We regularly work in Ormiston, Botany Downs, Dannemora, East Tamaki Heights, Clover Park, Totara Heights, Chapel Downs and Northpark, and across East Auckland, including <Link href="/locksmith/east-tamaki" className={linkClass}>East Tamaki</Link>.</p>,
+      <p key="2">Locked out of a car at Ormiston or Botany? Our <Link href="/car-lockout" className={linkClass}>car lockout service</Link> covers Flat Bush as well.</p>,
+    ],
+  },
+  nearbySuburbs: ["Ormiston", "Botany Downs", "Dannemora", "East Tamaki Heights", "Clover Park", "Totara Heights", "Chapel Downs", "Northpark"],
+  faqs: [
+    {
+      question: "Can you fit a smart lock to an aluminium front door?",
+      answer: "Often, yes. Many aluminium doors have multipoint locks, which need a smart lock designed for them. We check your door and recommend locks that will fit properly.",
+    },
+    {
+      question: "My smart lock's batteries died and I'm locked out. Can you help?",
+      answer: "Yes. Many smart locks have a backup key or emergency power contacts. If not, we use non-destructive entry where we can, then get the lock working again.",
+    },
+    {
+      question: "Should I rekey a new-build home?",
+      answer: "It's a good idea. Builders, trades and agents may all have had keys. A rekey makes sure only your keys work, and costs less than new locks.",
+    },
+    {
+      question: "Can you add a deadbolt to my internal garage door?",
+      answer: "Yes. We fit a deadbolt with a reinforced strike plate and can key it to match your front door. We check the door first and quote before drilling.",
+    },
+  ],
+};
+
+const karaka: Suburb = {
+  slug: "karaka",
+  name: "Karaka",
+  region: "South Auckland",
+  path: "/locksmith/karaka",
+  metaTitle: "Locksmith Karaka, South Auckland",
+  metaDescription: "Mobile locksmith in Karaka for lifestyle block gates and sheds, new-build rekeys, lockouts and lock changes. Flat NZ$20 call-out, quoted on site.",
+  heading: "Locksmith in Karaka, South Auckland",
+  subtitle: "Lockouts, rekeys, gate and shed locks and lock upgrades for Karaka homes and lifestyle blocks, from Karaka Lakes and Karaka Harbourside to Kingseat Road.",
+  intro: {
+    title: "Mobile Locksmith Service for Karaka",
+    image: {
+      src: "/images/locations/karaka/laminated-steel-padlock-chain-karaka.webp",
+      alt: "Heavy-duty laminated steel padlock with a ring of three keys and a coiled galvanised chain",
+      title: "Gate and Shed Padlock Karaka",
+      description: "A heavy-duty padlock and chain for the gates, sheds and stables on Karaka lifestyle blocks.",
+    },
+    content: [
+      <p key="1">Karaka is two places in one. There are lifestyle blocks, horse properties and farms with gates, sheds, stables and tack rooms, and there are the newer subdivisions at Karaka Lakes and Karaka Harbourside full of modern homes. We work on both, from a seized gate padlock to a smart lock on a brand-new front door.</p>,
+      <p key="2">We come to you, however far down the road. You pay a flat <strong>NZ$20 call-out fee</strong>, and every job is quoted on site before work starts.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Karaka Customers Call Us For",
+    content: [
+      <p key="1">Around Karaka, these are the calls we get most often:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Shed, stable and tack room locks:</strong> new or replacement locks through our <Link href="/lock/lock-change-installation" className={linkClass}>lock installation service</Link>, keyed alike where the hardware allows.</li>
+        <li><strong>Seized and weathered locks:</strong> outdoor locks that won&apos;t turn, fixed or replaced through our <Link href="/lock/lock-repair" className={linkClass}>lock repair service</Link>.</li>
+        <li><strong>Rekeying a new home:</strong> a <Link href="/lock/rekey" className={linkClass}>residential rekey</Link> after moving in, so no one else&apos;s keys still work.</li>
+        <li><strong>Smart and digital locks:</strong> <Link href="/smart-lock/smart-lock-installation" className={linkClass}>digital door lock installation</Link> for new homes in Karaka Lakes and Karaka Harbourside.</li>
+        <li><strong>Lockouts:</strong> house and outbuilding lockouts, opened through our <Link href="/lock/lockout" className={linkClass}>emergency lockout service</Link> with non-destructive entry first.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Keys After Moving Into a New Build",
+    image: {
+      src: "/images/locations/karaka/new-build-lever-set-construction-key-karaka.webp",
+      alt: "Satin nickel entrance lever set with one yellow-capped key and two black-capped keys",
+      title: "New Build Lock Rekey Karaka",
+      description: "A new-build entrance lock with its construction key and homeowner keys, common in new Karaka homes.",
+    },
+    content: [
+      <p key="1">New homes change hands a lot before you get the keys. Builders, subcontractors, cleaners and real estate agents may all have had access. Some new locks use construction keys that stop working once the homeowner&apos;s key is used, but many don&apos;t, and it&apos;s hard to know which you have.</p>,
+      <p key="2">A rekey removes the doubt. We change the pins in your existing locks, cut fresh keys, and can key the front door, garage and back doors alike. If any lock is cheap or flimsy, we&apos;ll suggest a <Link href="/lock/lock-change-installation" className={linkClass}>lock change</Link> instead.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Karaka",
+    content: [
+      <p key="1">We regularly work in Papakura, Drury, Hingaia, Kingseat, Patumahoe, Takanini, Pukekohe and Waiau Pa, and across South Auckland, including <Link href="/locksmith/pokeno" className={linkClass}>Pokeno</Link>.</p>,
+      <p key="2">Ute or float car won&apos;t start? Our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> and <Link href="/car-lockout" className={linkClass}>car lockout service</Link> cover Karaka too.</p>,
+    ],
+  },
+  nearbySuburbs: ["Papakura", "Drury", "Hingaia", "Kingseat", "Patumahoe", "Takanini", "Pukekohe", "Waiau Pa"],
+  faqs: [
+    {
+      question: "Do you come out to lifestyle blocks in Karaka?",
+      answer: "Yes. The NZ$20 call-out fee is the same for rural properties. Let us know about gates or access when you call so we can find you quickly.",
+    },
+    {
+      question: "Can you key my house, shed and stable locks the same?",
+      answer: "Usually, if the locks use compatible cylinders. We check each lock on site and tell you if any need a new cylinder to match.",
+    },
+    {
+      question: "My padlock has seized. Can you cut it off and replace it?",
+      answer: "Yes. We remove seized or lost-key padlocks and supply a heavy-duty replacement, keyed to match your other locks where possible.",
+    },
+    {
+      question: "Do I need to rekey a brand-new house?",
+      answer: "It's worth it if you can't be sure who has had keys. A rekey is quick, costs less than new locks, and means only your keys work.",
+    },
+  ],
+};
+
+const pokeno: Suburb = {
+  slug: "pokeno",
+  name: "Pokeno",
+  region: "South Auckland",
+  locality: "Waikato",
+  path: "/locksmith/pokeno",
+  metaTitle: "Locksmith Pokeno, South of Auckland",
+  metaDescription: "Mobile locksmith in Pokeno for new home rekeys, lockouts, lock changes and car lockouts on SH1. Flat NZ$20 call-out, work quoted on site.",
+  heading: "Locksmith in Pokeno, Just South of Auckland",
+  subtitle: "Lockouts, rekeys, lock changes and car lockouts for Pokeno homes, businesses and motorists, from the village to the new subdivisions and the expressway.",
+  intro: {
+    title: "Mobile Locksmith Service for Pokeno",
+    image: {
+      src: "/images/locations/pokeno/matte-black-lever-deadbolt-set-pokeno.webp",
+      alt: "Matte black lever handle entrance set beside a matching matte black round deadbolt",
+      title: "New Home Door Lock Pokeno",
+      description: "Matte black lever and deadbolt hardware like that on many new Pokeno homes.",
+    },
+    content: [
+      <p key="1">Pōkeno has grown from a small village into one of the fastest-growing towns south of Auckland. Most homes in the new subdivisions are only a few years old, often with matching black or chrome door hardware, alongside older houses in the village and businesses in the industrial area.</p>,
+      <p key="2">We come down from Auckland to you. You pay a flat <strong>NZ$20 call-out fee</strong>, and every job is quoted on site before work starts.</p>,
+    ],
+  },
+  commonJobs: {
+    title: "What Pokeno Customers Call Us For",
+    content: [
+      <p key="1">Around Pokeno, these are our most common jobs:</p>,
+      <ul key="2" className="list-disc pl-6 space-y-2">
+        <li><strong>Rekeys after moving in:</strong> new homes pass through a lot of hands before settlement. Our <Link href="/lock/rekey" className={linkClass}>rekeying service</Link> makes sure only your keys work.</li>
+        <li><strong>Lock changes:</strong> upgrading basic builder-grade locks through our <Link href="/lock/lock-change-installation" className={linkClass}>lock change and installation</Link> service.</li>
+        <li><strong>Smart locks:</strong> <Link href="/smart-lock/smart-lock-installation" className={linkClass}>smart door lock installation</Link> for families who&apos;d rather use codes than keys.</li>
+        <li><strong>House lockouts:</strong> doors that lock behind you, opened through our <Link href="/lock/lockout" className={linkClass}>house lockout service</Link> with non-destructive entry first.</li>
+        <li><strong>Business premises:</strong> <Link href="/lock/lock-repair" className={linkClass}>door lock repairs</Link> and commercial rekeys for units in the Pokeno industrial area.</li>
+      </ul>,
+    ],
+  },
+  local: {
+    title: "Car Lockouts on the Way Through",
+    image: {
+      src: "/images/locations/pokeno/flip-car-key-blade-extended-pokeno.webp",
+      alt: "Black flip-out car key with its metal blade extended, lying on its side",
+      title: "Car Lockout Pokeno",
+      description: "A car key like the ones that get locked inside vehicles at the Pokeno stop on State Highway 1.",
+    },
+    content: [
+      <p key="1">Pokeno sits right on State Highway 1 at the start of the Waikato Expressway, and plenty of travellers stop for a break in the village. Keys locked in the car, or a battery that won&apos;t start after the stop, are common calls.</p>,
+      <p key="2">Our <Link href="/car-lockout" className={linkClass}>car unlock service</Link> gets you back in without damage, and our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> gets a flat battery going again so you can carry on.</p>,
+    ],
+  },
+  nearby: {
+    title: "Areas We Cover Around Pokeno",
+    content: [
+      <p key="1">We regularly work in Bombay, Pukekohe, Tuakau, Mangatāwhiri, Mercer, Buckland, Paerata and Ramarama, and across South Auckland, including <Link href="/locksmith/karaka" className={linkClass}>Karaka</Link>.</p>,
+      <p key="2">Need an <Link href="/auto/obd2-diagnostic" className={linkClass}>engine diagnostic</Link> after a warning light on the motorway? We can read the fault codes where you are.</p>,
+    ],
+  },
+  nearbySuburbs: ["Bombay", "Pukekohe", "Tuakau, Waikato", "Mangatāwhiri, Waikato", "Mercer, Waikato", "Buckland", "Paerata", "Ramarama"],
+  faqs: [
+    {
+      question: "Do you come out to Pokeno from Auckland?",
+      answer: "Yes. We cover Pokeno and the surrounding area for the same flat NZ$20 call-out fee, and quote the work on site before we start.",
+    },
+    {
+      question: "I've locked my keys in the car at the Pokeno shops. Can you help?",
+      answer: "Yes. We open most cars without damage using professional lockout tools. Tell us the make and model when you call so we bring the right gear.",
+    },
+    {
+      question: "Can you rekey all the locks in my new Pokeno home to one key?",
+      answer: "Usually, yes, if the locks use compatible cylinders. We check each lock on site and tell you if any need a new cylinder to match.",
+    },
+    {
+      question: "Do you work on business premises in the industrial area?",
+      answer: "Yes. We change, repair and rekey locks for warehouses, workshops and offices, including when staff change or keys go missing.",
+    },
+  ],
+};
+
 /** The suburb landing pages, in the order the footer lists them. */
-export const suburbs = { albany, takapuna, henderson, newLynn } as const;
+export const suburbs = { albany, takapuna, birkenhead, henderson, newLynn, titirangi, blockhouseBay, eastTamaki, flatBush, karaka, pokeno } as const;
 
 /** Suburb links grouped by region, for the footer's Popular Links dropdown. */
 export const suburbLinksByRegion: { region: Suburb["region"]; links: { href: string; label: string }[] }[] = [
-  { region: "North Shore", links: [albany, takapuna].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
-  { region: "West Auckland", links: [henderson, newLynn].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
+  { region: "North Shore", links: [albany, takapuna, birkenhead].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
+  { region: "West Auckland", links: [henderson, newLynn, titirangi, blockhouseBay].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
+  { region: "East Auckland", links: [eastTamaki, flatBush].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
+  { region: "South Auckland", links: [karaka, pokeno].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
 ];

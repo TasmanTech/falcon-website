@@ -7,6 +7,13 @@ import AlbanyPage from '@/app/(locations)/locksmith/albany/page';
 import TakapunaPage from '@/app/(locations)/locksmith/takapuna/page';
 import HendersonPage from '@/app/(locations)/locksmith/henderson/page';
 import NewLynnPage from '@/app/(locations)/locksmith/new-lynn/page';
+import BirkenheadPage from '@/app/(locations)/locksmith/birkenhead/page';
+import TitirangiPage from '@/app/(locations)/locksmith/titirangi/page';
+import BlockhouseBayPage from '@/app/(locations)/locksmith/blockhouse-bay/page';
+import EastTamakiPage from '@/app/(locations)/locksmith/east-tamaki/page';
+import FlatBushPage from '@/app/(locations)/locksmith/flat-bush/page';
+import KarakaPage from '@/app/(locations)/locksmith/karaka/page';
+import PokenoPage from '@/app/(locations)/locksmith/pokeno/page';
 
 vi.mock('next/image', () => ({
   /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
@@ -46,7 +53,7 @@ describe.each(all)('SuburbPage: $name', (suburb) => {
     const rendered = Array.from(container.querySelectorAll('details summary')).map((s) => s.textContent?.trim());
     expect(faqPage?.mainEntity?.map((q) => q.name)).toEqual(rendered);
     const service = schema['@graph'].find((node) => node['@type'] === 'Service');
-    expect(service?.areaServed?.[0].name).toBe(`${suburb.name}, Auckland`);
+    expect(service?.areaServed?.[0].name).toBe(`${suburb.name}, ${suburb.locality ?? 'Auckland'}`);
   });
 
   it('has a self-canonical and metadata within length limits', () => {
@@ -68,7 +75,7 @@ describe('suburb content', () => {
   });
 
   it('renders each route with its own suburb', () => {
-    for (const [Page, name] of [[AlbanyPage, 'Albany'], [TakapunaPage, 'Takapuna'], [HendersonPage, 'Henderson'], [NewLynnPage, 'New Lynn']] as const) {
+    for (const [Page, name] of [[AlbanyPage, 'Albany'], [TakapunaPage, 'Takapuna'], [HendersonPage, 'Henderson'], [NewLynnPage, 'New Lynn'], [BirkenheadPage, 'Birkenhead'], [TitirangiPage, 'Titirangi'], [BlockhouseBayPage, 'Blockhouse Bay'], [EastTamakiPage, 'East Tamaki'], [FlatBushPage, 'Flat Bush'], [KarakaPage, 'Karaka'], [PokenoPage, 'Pokeno']] as const) {
       const { unmount } = render(<Page />);
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(name);
       unmount();
