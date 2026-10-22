@@ -56,6 +56,7 @@ export const metadata: Metadata = {
 - **`app/sitemap.ts`**: add every new public page (no `lastModified`; priority 0.9 for service pages, 0.8 for core pages, 0.5 for legal pages).
 - **`public/llms.txt`**: add every new public page under its section with a one-line plain description. Keep its key facts (phone, email, hours, call-out fee, Google Business Profile link) identical to the `LocalBusiness` schema in `app/layout.tsx` and the footer.
 - **`app/robots.ts`**: allows `/`, disallows `/admin`, points at `/sitemap.xml`.
+- **`lib/redirects.ts`**: permanent redirects for every retired URL. Removing or renaming a public page needs one in the same commit, and every new page goes in `PUBLISHED_PATHS` in `lib/redirects.test.ts` (`url_changes` skill).
 
 ## Content rules
 No "24/7", no arrival times, no web design and no invented credentials in titles, descriptions, keywords or schema (`AGENTS.md`). UK / NZ spelling throughout.

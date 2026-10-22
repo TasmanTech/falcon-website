@@ -15,6 +15,7 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 | Rule | Loads | Covers |
 |---|---|---|
 | `uk_nz_english` | always | UK / NZ spelling essentials for all user-facing text |
+| `no_404_routes` | always | Every renamed, moved or deleted public URL gets a permanent redirect; published URLs never 404 |
 
 ### Skills (`skills/`)
 | Skill | Use when |
@@ -40,6 +41,7 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 | `seo` | Setting page metadata, JSON-LD, the sitemap or `llms.txt` |
 | `style` | Colours, typography, Tailwind v4 theme tokens and visual style |
 | `uk_nz_english` | Auditing or converting text to UK / NZ English in detail |
+| `url_changes` | Renaming, moving, merging or deleting a public page, changing a slug, or fixing a reported 404 |
 
 ### Workflows (`workflows/`)
 | Command | Does |
@@ -57,7 +59,7 @@ Next.js 16 differs from older versions: before writing front-end code, read the 
 ## Front-end (`apps/front-end`)
 - **Server Components by default.** Add `"use client"` only for browser APIs, state or effects.
 - **Cache Components**: `new Date()`, `Date.now()` or `Math.random()` in a server component breaks the `next build` prerender. Use a `"use cache"` component with `cacheLife` (see `components/CopyrightYear.tsx`), a client component, or `await connection()`.
-- **File conventions**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`. Route guarding lives in `proxy.ts` (Next 16 renamed middleware), which only matches `/admin/:path*`. The only route handler is `app/api/session/refresh/route.ts` (admin session renewal).
+- **File conventions**: `page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`. Route guarding lives in `proxy.ts` (Next 16 renamed middleware), which only matches `/admin/:path*`. Permanent redirects for retired URLs come from `lib/redirects.ts` via `redirects()` in `next.config.ts`. The only route handler is `app/api/session/refresh/route.ts` (admin session renewal).
 - **Tests**: every new or changed component, page, server action and `lib/` helper gets a colocated `.test.tsx` / `.test.ts` (`frontend_testing` skill).
 - **`next/image` with `fill`** must have a `sizes` prop.
 - **Env vars**: only `NEXT_PUBLIC_*` reach the browser. The front-end uses one: `NEXT_PUBLIC_BACKEND_URL` (defaults to `http://localhost:3001`).
@@ -100,7 +102,8 @@ The homepage gallery is the one exception to the stock / AI rule: it shows real 
 - **CTAs** are short and specific ("Call Now", "Get a Quote", "Get Help Now"). Anchor text describes the target page ("rekeying service", not "click here").
 - **Internal links**: add relevant links whenever you write or edit content, without rewriting the readable copy, and never remove existing ones.
 - **Meta titles** read `<Page name> | Falcon Access`: `|` is the only separator, used once before the brand (the layout template adds it). No `:`, `-` or `—` inside titles (`seo` skill, Titles).
-- **New public page**: add it to `app/sitemap.ts` and `public/llms.txt` (`/new-page` workflow). Metadata and schema follow the `seo` skill.
+- **New public page**: add it to `app/sitemap.ts`, `public/llms.txt` and `PUBLISHED_PATHS` in `lib/redirects.test.ts` (`/new-page` workflow). Metadata and schema follow the `seo` skill.
+- **No 404s, ever**: renaming, moving or deleting a public page needs a 301 redirect in `lib/redirects.ts` in the same commit, and existing redirects are never removed (`no_404_routes` rule, `url_changes` skill).
 - Readability (`readability` skill) and UK / NZ spelling (`uk_nz_english` rule) apply to all copy.
 
 ## Business Facts (keep in sync)

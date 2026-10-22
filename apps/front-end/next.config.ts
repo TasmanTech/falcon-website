@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { legacyRedirects } from "./lib/redirects";
 
 // The local backend is only reachable during development, so keep it out of production headers
 const devConnectSrc = process.env.NODE_ENV === "development" ? "http://localhost:3001" : "";
@@ -25,6 +26,10 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   cacheComponents: true,
   poweredByHeader: false,
+  async redirects() {
+    // Retired URLs keep working: every renamed or removed public page 301s to its replacement
+    return legacyRedirects.map(({ source, destination }) => ({ source, destination, statusCode: 301 as const }));
+  },
   async headers() {
     return [
       {

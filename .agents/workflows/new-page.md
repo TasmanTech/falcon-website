@@ -17,7 +17,7 @@ description: Scaffold a new public service or content page with metadata, JSON-L
    - From the parent hub page (e.g. `/lock`) and at least one related page back to the new page, without rewriting their copy.
    - Add a service page to the navbar (desktop and mobile lists) and to `serviceLinks` in `Footer.tsx`, nested under its hub (`navbar_footer` skill). A new hub goes in all three at the top level.
 
-7. Add the route to `app/sitemap.ts` and a one-line entry under the right section of `public/llms.txt`.
+7. Add the route to `app/sitemap.ts`, a one-line entry under the right section of `public/llms.txt`, and the path to `PUBLISHED_PATHS` in `lib/redirects.test.ts`. Settle the slug now: changing it after launch needs a permanent redirect (`url_changes` skill).
 
 8. Create `page.test.tsx` next to the page (`frontend_testing` skill): it renders, the `h1`, key headings and CTAs are present, and the JSON-LD script exists. Update `Navbar.test.tsx` / `Footer.test.tsx` if you changed them.
 
