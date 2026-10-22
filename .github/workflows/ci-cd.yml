@@ -145,6 +145,14 @@ jobs:
             --cpu-boost \
             --set-env-vars="NODE_ENV=production,FRONTEND_URLS=${{ secrets.FRONTEND_URLS }},WEBSITE_URL=${{ secrets.WEBSITE_URL }},SMTP_HOST=${{ secrets.SMTP_HOST }},SMTP_PORT=${{ secrets.SMTP_PORT }},SERVICE_ACCOUNT_CLIENT_ID=${{ secrets.SERVICE_ACCOUNT_CLIENT_ID }},SERVICE_ACCOUNT_PRIVATE_KEY=${{ secrets.SERVICE_ACCOUNT_PRIVATE_KEY }},SMTP_FROM=${{ secrets.SMTP_FROM }},DB_HOST=${DB_HOST},DB_NAME=${DB_NAME},DB_USER=${DB_USER},DB_PASS=${DB_PASS},JWT_SECRET=${JWT_SECRET},JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET},GST_NUMBER=${GST_NUMBER},INVOICE_STORAGE_DIR=${INVOICE_STORAGE_DIR}"
 
+      - name: Route all traffic to the new backend revision
+        # A manual rollback pins traffic to an old revision, and gcloud run deploy keeps that pin
+        run: |
+          gcloud run services update-traffic falcon-backend-service \
+            --to-latest \
+            --region ${{ env.REGION }} \
+            --project ${{ env.PROJECT_ID }}
+
   # ==========================================
   # 4. FRONTEND DEPLOYMENT
   # ==========================================
@@ -197,6 +205,15 @@ jobs:
             --allow-unauthenticated \
             --cpu-boost \
             --set-env-vars="NEXT_PUBLIC_BACKEND_URL=https://api.falconaccess.co.nz"
+
+      - name: Route all traffic to the new frontend revision
+        # A manual rollback pins traffic to an old revision, and gcloud run deploy keeps that pin.
+        # Runs before the cache purge so Cloudflare refills from the new revision.
+        run: |
+          gcloud run services update-traffic falcon-frontend-service \
+            --to-latest \
+            --region ${{ env.REGION }} \
+            --project ${{ env.PROJECT_ID }}
 
       - name: Purge Cloudflare cache
         env:
