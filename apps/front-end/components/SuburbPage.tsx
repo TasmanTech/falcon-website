@@ -39,6 +39,7 @@ export function suburbMetadata(suburb: Suburb): Metadata {
  */
 export default function SuburbPage({ suburb }: { suburb: Suburb }) {
   const url = `${BASE_URL}${suburb.path}`;
+  const locality = suburb.locality ?? "Auckland";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -68,10 +69,10 @@ export default function SuburbPage({ suburb }: { suburb: Suburb }) {
         "areaServed": [
           {
             "@type": "Place",
-            "name": `${suburb.name}, Auckland`,
-            "containedInPlace": { "@type": "Place", "name": `${suburb.region}, Auckland` }
+            "name": `${suburb.name}, ${locality}`,
+            "containedInPlace": { "@type": "Place", "name": suburb.locality ?? `${suburb.region}, Auckland` }
           },
-          ...suburb.nearbySuburbs.map((name) => ({ "@type": "Place", "name": `${name}, Auckland` }))
+          ...suburb.nearbySuburbs.map((name) => ({ "@type": "Place", "name": name.includes(",") ? name : `${name}, Auckland` }))
         ]
       },
       {

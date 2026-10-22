@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readdirSync } from 'fs';
 import path from 'path';
-import { legacyRedirects } from './redirects';
+import { legacyRedirects } from '@/next.config';
 import sitemap from '@/app/sitemap';
 
 /**
@@ -28,9 +28,15 @@ const PUBLISHED_PATHS = [
   '/auto/obd2-diagnostic',
   '/car-lockout',
   '/locksmith/albany',
+  '/locksmith/birkenhead',
+  '/locksmith/blockhouse-bay',
+  '/locksmith/east-tamaki',
+  '/locksmith/flat-bush',
   '/locksmith/henderson',
+  '/locksmith/karaka',
   '/locksmith/new-lynn',
   '/locksmith/takapuna',
+  '/locksmith/titirangi',
   ...legacyRedirects.map((r) => r.source),
 ];
 
