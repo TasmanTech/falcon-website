@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readdirSync } from 'fs';
 import path from 'path';
-import { legacyRedirects } from './redirects';
+import { legacyRedirects } from '@/next.config';
 import sitemap from '@/app/sitemap';
 
 /**
@@ -35,7 +35,6 @@ const PUBLISHED_PATHS = [
   '/locksmith/henderson',
   '/locksmith/karaka',
   '/locksmith/new-lynn',
-  '/locksmith/pokeno',
   '/locksmith/takapuna',
   '/locksmith/titirangi',
   ...legacyRedirects.map((r) => r.source),

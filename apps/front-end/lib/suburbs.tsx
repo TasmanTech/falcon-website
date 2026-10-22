@@ -768,7 +768,7 @@ const karaka: Suburb = {
   nearby: {
     title: "Areas We Cover Around Karaka",
     content: [
-      <p key="1">We regularly work in Papakura, Drury, Hingaia, Kingseat, Patumahoe, Takanini, Pukekohe and Waiau Pa, and across South Auckland, including <Link href="/locksmith/pokeno" className={linkClass}>Pokeno</Link>.</p>,
+      <p key="1">We regularly work in Papakura, Drury, Hingaia, Kingseat, Patumahoe, Takanini, Pukekohe and Waiau Pa, and across South and East Auckland, including <Link href="/locksmith/flat-bush" className={linkClass}>Flat Bush</Link>.</p>,
       <p key="2">Ute or float car won&apos;t start? Our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> and <Link href="/car-lockout" className={linkClass}>car lockout service</Link> cover Karaka too.</p>,
     ],
   },
@@ -793,90 +793,13 @@ const karaka: Suburb = {
   ],
 };
 
-const pokeno: Suburb = {
-  slug: "pokeno",
-  name: "Pokeno",
-  region: "South Auckland",
-  locality: "Waikato",
-  path: "/locksmith/pokeno",
-  metaTitle: "Locksmith Pokeno, South of Auckland",
-  metaDescription: "Mobile locksmith in Pokeno for new home rekeys, lockouts, lock changes and car lockouts on SH1. Flat NZ$20 call-out, work quoted on site.",
-  heading: "Locksmith in Pokeno, Just South of Auckland",
-  subtitle: "Lockouts, rekeys, lock changes and car lockouts for Pokeno homes, businesses and motorists, from the village to the new subdivisions and the expressway.",
-  intro: {
-    title: "Mobile Locksmith Service for Pokeno",
-    image: {
-      src: "/images/locations/pokeno/matte-black-lever-deadbolt-set-pokeno.webp",
-      alt: "Matte black lever handle entrance set beside a matching matte black round deadbolt",
-      title: "New Home Door Lock Pokeno",
-      description: "Matte black lever and deadbolt hardware like that on many new Pokeno homes.",
-    },
-    content: [
-      <p key="1">Pōkeno has grown from a small village into one of the fastest-growing towns south of Auckland. Most homes in the new subdivisions are only a few years old, often with matching black or chrome door hardware, alongside older houses in the village and businesses in the industrial area.</p>,
-      <p key="2">We come down from Auckland to you. You pay a flat <strong>NZ$20 call-out fee</strong>, and every job is quoted on site before work starts.</p>,
-    ],
-  },
-  commonJobs: {
-    title: "What Pokeno Customers Call Us For",
-    content: [
-      <p key="1">Around Pokeno, these are our most common jobs:</p>,
-      <ul key="2" className="list-disc pl-6 space-y-2">
-        <li><strong>Rekeys after moving in:</strong> new homes pass through a lot of hands before settlement. Our <Link href="/lock/rekey" className={linkClass}>rekeying service</Link> makes sure only your keys work.</li>
-        <li><strong>Lock changes:</strong> upgrading basic builder-grade locks through our <Link href="/lock/lock-change-installation" className={linkClass}>lock change and installation</Link> service.</li>
-        <li><strong>Smart locks:</strong> <Link href="/smart-lock/smart-lock-installation" className={linkClass}>smart door lock installation</Link> for families who&apos;d rather use codes than keys.</li>
-        <li><strong>House lockouts:</strong> doors that lock behind you, opened through our <Link href="/lock/lockout" className={linkClass}>house lockout service</Link> with non-destructive entry first.</li>
-        <li><strong>Business premises:</strong> <Link href="/lock/lock-repair" className={linkClass}>door lock repairs</Link> and commercial rekeys for units in the Pokeno industrial area.</li>
-      </ul>,
-    ],
-  },
-  local: {
-    title: "Car Lockouts on the Way Through",
-    image: {
-      src: "/images/locations/pokeno/flip-car-key-blade-extended-pokeno.webp",
-      alt: "Black flip-out car key with its metal blade extended, lying on its side",
-      title: "Car Lockout Pokeno",
-      description: "A car key like the ones that get locked inside vehicles at the Pokeno stop on State Highway 1.",
-    },
-    content: [
-      <p key="1">Pokeno sits right on State Highway 1 at the start of the Waikato Expressway, and plenty of travellers stop for a break in the village. Keys locked in the car, or a battery that won&apos;t start after the stop, are common calls.</p>,
-      <p key="2">Our <Link href="/car-lockout" className={linkClass}>car unlock service</Link> gets you back in without damage, and our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start service</Link> gets a flat battery going again so you can carry on.</p>,
-    ],
-  },
-  nearby: {
-    title: "Areas We Cover Around Pokeno",
-    content: [
-      <p key="1">We regularly work in Bombay, Pukekohe, Tuakau, Mangatāwhiri, Mercer, Buckland, Paerata and Ramarama, and across South Auckland, including <Link href="/locksmith/karaka" className={linkClass}>Karaka</Link>.</p>,
-      <p key="2">Need an <Link href="/auto/obd2-diagnostic" className={linkClass}>engine diagnostic</Link> after a warning light on the motorway? We can read the fault codes where you are.</p>,
-    ],
-  },
-  nearbySuburbs: ["Bombay", "Pukekohe", "Tuakau, Waikato", "Mangatāwhiri, Waikato", "Mercer, Waikato", "Buckland", "Paerata", "Ramarama"],
-  faqs: [
-    {
-      question: "Do you come out to Pokeno from Auckland?",
-      answer: "Yes. We cover Pokeno and the surrounding area for the same flat NZ$20 call-out fee, and quote the work on site before we start.",
-    },
-    {
-      question: "I've locked my keys in the car at the Pokeno shops. Can you help?",
-      answer: "Yes. We open most cars without damage using professional lockout tools. Tell us the make and model when you call so we bring the right gear.",
-    },
-    {
-      question: "Can you rekey all the locks in my new Pokeno home to one key?",
-      answer: "Usually, yes, if the locks use compatible cylinders. We check each lock on site and tell you if any need a new cylinder to match.",
-    },
-    {
-      question: "Do you work on business premises in the industrial area?",
-      answer: "Yes. We change, repair and rekey locks for warehouses, workshops and offices, including when staff change or keys go missing.",
-    },
-  ],
-};
-
 /** The suburb landing pages, in the order the footer lists them. */
-export const suburbs = { albany, takapuna, birkenhead, henderson, newLynn, titirangi, blockhouseBay, eastTamaki, flatBush, karaka, pokeno } as const;
+export const suburbs = { albany, takapuna, birkenhead, henderson, newLynn, titirangi, blockhouseBay, eastTamaki, flatBush, karaka } as const;
 
 /** Suburb links grouped by region, for the footer's Popular Links dropdown. */
 export const suburbLinksByRegion: { region: Suburb["region"]; links: { href: string; label: string }[] }[] = [
   { region: "North Shore", links: [albany, takapuna, birkenhead].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
   { region: "West Auckland", links: [henderson, newLynn, titirangi, blockhouseBay].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
   { region: "East Auckland", links: [eastTamaki, flatBush].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
-  { region: "South Auckland", links: [karaka, pokeno].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
+  { region: "South Auckland", links: [karaka].map((s) => ({ href: s.path, label: `Locksmith ${s.name}` })) },
 ];

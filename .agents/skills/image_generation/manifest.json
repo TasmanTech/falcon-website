@@ -862,30 +862,6 @@
       "title": "New Build Lock Rekey Karaka",
       "description": "A new-build entrance lock with its construction key and homeowner keys, common in new Karaka homes.",
       "prompt": "a satin nickel entrance lever handle on a round rose with a keyed cylinder, beside three keys: one with a plain yellow plastic key cap and two with plain black plastic key caps, no text; exactly one of each object, all pin-sharp, nothing else in the frame, no blurred, mirrored or duplicate objects"
-    },
-    {
-      "page": "/locksmith/pokeno",
-      "slot": "content-1",
-      "reference": null,
-      "source": "Generated/matte-black-lever-deadbolt-set-pokeno.png",
-      "output": "images/locations/pokeno/matte-black-lever-deadbolt-set-pokeno.webp",
-      "crop": "attention",
-      "alt": "Matte black lever handle entrance set beside a matching matte black round deadbolt",
-      "title": "New Home Door Lock Pokeno",
-      "description": "Matte black lever and deadbolt hardware like that on many new Pokeno homes.",
-      "prompt": "a matte black lever handle on a round rose next to a matching matte black round keyed deadbolt, shown as a stand-alone entrance set with one black key; exactly one of each object, all pin-sharp, nothing else in the frame, no blurred, mirrored or duplicate objects"
-    },
-    {
-      "page": "/locksmith/pokeno",
-      "slot": "content-2",
-      "reference": null,
-      "source": "Generated/flip-car-key-blade-extended-pokeno.png",
-      "output": "images/locations/pokeno/flip-car-key-blade-extended-pokeno.webp",
-      "crop": "attention",
-      "alt": "Black flip-out car key with its metal blade extended, lying on its side",
-      "title": "Car Lockout Pokeno",
-      "description": "A car key like the ones that get locked inside vehicles at the Pokeno stop on State Highway 1.",
-      "prompt": "a generic black flip-out car key with its metal key blade folded out and three blank unlabelled buttons, lying on its side, no brand logo; exactly one of each object, all pin-sharp, nothing else in the frame, no blurred, mirrored or duplicate objects"
     }
   ]
 }

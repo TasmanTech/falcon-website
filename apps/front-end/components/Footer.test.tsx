@@ -63,7 +63,6 @@ describe('Footer Component', () => {
       ['Locksmith East Tamaki', '/locksmith/east-tamaki'],
       ['Locksmith Flat Bush', '/locksmith/flat-bush'],
       ['Locksmith Karaka', '/locksmith/karaka'],
-      ['Locksmith Pokeno', '/locksmith/pokeno'],
     ]) {
       expect(within(details).getByRole('link', { name, hidden: true })).toHaveAttribute('href', href);
     }

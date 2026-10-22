@@ -13,7 +13,6 @@ import BlockhouseBayPage from '@/app/(locations)/locksmith/blockhouse-bay/page';
 import EastTamakiPage from '@/app/(locations)/locksmith/east-tamaki/page';
 import FlatBushPage from '@/app/(locations)/locksmith/flat-bush/page';
 import KarakaPage from '@/app/(locations)/locksmith/karaka/page';
-import PokenoPage from '@/app/(locations)/locksmith/pokeno/page';
 
 vi.mock('next/image', () => ({
   /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
@@ -75,7 +74,7 @@ describe('suburb content', () => {
   });
 
   it('renders each route with its own suburb', () => {
-    for (const [Page, name] of [[AlbanyPage, 'Albany'], [TakapunaPage, 'Takapuna'], [HendersonPage, 'Henderson'], [NewLynnPage, 'New Lynn'], [BirkenheadPage, 'Birkenhead'], [TitirangiPage, 'Titirangi'], [BlockhouseBayPage, 'Blockhouse Bay'], [EastTamakiPage, 'East Tamaki'], [FlatBushPage, 'Flat Bush'], [KarakaPage, 'Karaka'], [PokenoPage, 'Pokeno']] as const) {
+    for (const [Page, name] of [[AlbanyPage, 'Albany'], [TakapunaPage, 'Takapuna'], [HendersonPage, 'Henderson'], [NewLynnPage, 'New Lynn'], [BirkenheadPage, 'Birkenhead'], [TitirangiPage, 'Titirangi'], [BlockhouseBayPage, 'Blockhouse Bay'], [EastTamakiPage, 'East Tamaki'], [FlatBushPage, 'Flat Bush'], [KarakaPage, 'Karaka']] as const) {
       const { unmount } = render(<Page />);
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(name);
       unmount();
