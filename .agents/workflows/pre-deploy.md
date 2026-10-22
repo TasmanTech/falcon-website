@@ -14,21 +14,23 @@ Merging `staging` into `master` triggers `.github/workflows/ci-cd.yml`, which de
 
 5. **Assets check**: new files the back-end reads at runtime must be committed under `apps/back-end/assets/`. Nothing in the diff should be a stray script or report (`scratch_*.js`, `fix-*.mjs`, `temp.js`, `lighthouse-report.json`, coverage output); flag any as a blocker.
 
-6. **Content check**: grep the changed copy, metadata and `public/llms.txt` for "24/7", "24 hours", "web design", "web development" and minutes-based arrival times. Confirm new public pages are in `app/sitemap.ts` and `public/llms.txt`.
+6. **404 check**: run `git diff --name-status -M github/master...github/staging -- apps/front-end/app` and list every renamed (`R`) or deleted (`D`) `page.tsx` outside `admin/`, plus any slug removed from a dynamic route's data. Each old URL must have a permanent redirect in `apps/front-end/lib/redirects.ts`, and no existing redirect may have been removed. A missing one is a blocker (`no_404_routes` rule, `url_changes` skill).
+
+7. **Content check**: grep the changed copy, metadata and `public/llms.txt` for "24/7", "24 hours", "web design", "web development" and minutes-based arrival times. Confirm new public pages are in `app/sitemap.ts` and `public/llms.txt`.
 
 // turbo
-7. Run `npm ci` from the repo root if any `package.json` or `package-lock.json` changed. It must pass without `--legacy-peer-deps`.
+8. Run `npm ci` from the repo root if any `package.json` or `package-lock.json` changed. It must pass without `--legacy-peer-deps`.
 
 // turbo
-8. Run `npm --prefix apps/front-end run test`.
+9. Run `npm --prefix apps/front-end run test`.
 
 // turbo
-9. Run `npm --prefix apps/back-end run test`.
+10. Run `npm --prefix apps/back-end run test`.
 
 // turbo
-10. Run `npm run build:frontend`.
+11. Run `npm run build:frontend`.
 
 // turbo
-11. Run `npm run build:backend`.
+12. Run `npm run build:backend`.
 
-12. Give a go / no-go verdict listing every blocker. If it is a go, give the PR command from the `deployment` skill (`gh pr create -R TasmanTech/falcon-website --base master --head staging`) for the user to run or approve, and remind them that deploy results show in GitHub Actions.
+13. Give a go / no-go verdict listing every blocker. If it is a go, give the PR command from the `deployment` skill (`gh pr create -R TasmanTech/falcon-website --base master --head staging`) for the user to run or approve, and remind them that deploy results show in GitHub Actions.
