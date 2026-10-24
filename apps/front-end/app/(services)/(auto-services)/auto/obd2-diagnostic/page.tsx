@@ -150,7 +150,7 @@ export default function obd2Page() {
         content={[
           <p key="1">Not every warning light means engine trouble. A weak or recently flat battery can confuse a car&apos;s electronics and light up the dash, and some of those faults stay stored as codes after the car is running normally again.</p>,
           <p key="2">If your car struggled to start before the lights came on, our <Link href="/auto/dead-battery-assistance" className={linkClass}>jump start and battery check</Link> is often the better first step. We get it running, test the battery and alternator, then scan for any codes still there.</p>,
-          <p key="3">We&apos;re a mobile repair and locksmith business, so the same team can help with a <Link href="/car-lockout" className={linkClass}>car lockout</Link> or a <Link href="/lock/lockout" className={linkClass}>house lockout</Link> too. One number covers the lot.</p>
+          <p key="3">We&apos;re a mobile locksmith and auto business, so the same team can help with a <Link href="/car-lockout" className={linkClass}>car lockout</Link> or a <Link href="/lock/lockout" className={linkClass}>house lockout</Link> too. One number covers the lot.</p>
         ]}
         theme="light"
         align="left"

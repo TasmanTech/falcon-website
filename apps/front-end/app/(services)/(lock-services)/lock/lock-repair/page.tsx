@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   title: 'Door Lock Repair Service Auckland',
   description: 'Door lock repair across Auckland: jammed keys, stiff barrels, sliding door locks and repairs after a break-in. Fixed on site, with a NZ$20 call-out.',
-  keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Burglary Repairs Auckland, Break-In Lock Repair, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Hardware Repair, Commercial Maintenance, Residential Repair, Falcon Access',
+  keywords: 'Lock Repair, Door Lock Repair, Door Lock Repair Service, Burglary Repairs Auckland, Break-In Lock Repair, Lock Repair Near Me, Door and Lock Repair, Door Lock Mechanic, Lock Fixer, Commercial Locksmith, Residential Locksmith, Falcon Access',
   openGraph: {
     images: [SHARE_IMAGE],
     title: 'Door Lock Repair Service Auckland',

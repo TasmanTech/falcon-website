@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within, fireEvent } from '@testing-library/react';
 import Footer from './Footer';
 
 vi.mock('next/image', () => ({
@@ -48,7 +48,7 @@ describe('Footer Component', () => {
 
   it('lists the suburb pages in a Popular Links dropdown under the map', () => {
     const { container } = render(<Footer />);
-    const map = screen.getByTitle('Falcon Access Location Map');
+    const map = screen.getByRole('button', { name: 'Show map' });
     const details = container.querySelector('details') as HTMLElement;
     expect(within(details).getByText('Popular Links').tagName).toBe('SUMMARY');
     expect(map.compareDocumentPosition(details) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -74,7 +74,10 @@ describe('Footer Component', () => {
 
   it('links and embeds the Google Business profile', () => {
     render(<Footer />);
-    expect(screen.getByRole('link', { name: 'Falcon Access' })).toHaveAttribute('href', 'https://www.google.com/maps?cid=14340846117585175277');
-    expect(screen.getByTitle('Falcon Access Location Map').getAttribute('src')).toContain('0x6528990332c1aad5%3A0xc704eb90193442ed');
+    expect(screen.getByRole('link', { name: 'Falcon Access Locksmith' })).toHaveAttribute('href', 'https://www.google.com/maps?cid=5329156453652255336');
+    // The map only loads on request, so the Google embed is not fetched on page load
+    expect(screen.queryByTitle('Falcon Access Locksmith Location Map')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Show map' }));
+    expect(screen.getByTitle('Falcon Access Locksmith Location Map').getAttribute('src')).toContain('0x874f32ad50f5c01f%3A0x49f4f78f3c6c5268');
   });
 });

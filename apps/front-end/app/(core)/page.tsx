@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   title: 'Auckland Locksmith, Smart Locks & Auto Help',
   description: 'Mobile locksmith serving Auckland homes, businesses and vehicles. Lockouts, lock repairs, rekeying, smart locks and jump starts with a $20 call-out fee.',
-  keywords: 'Commercial Repair, Residential Maintenance, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Auckland, New Zealand',
+  keywords: 'Commercial Locksmith, Residential Locksmith, Locksmith, Locksmith Near Me, After-Hours Locksmith, Locksmith Services, Emergency Locksmith, Door Lock Repair, Lock Replacement, Lock Installation, Residential Lockout Service, Commercial Lockout Service, Auckland, New Zealand',
   openGraph: {
     images: [SHARE_IMAGE],
     title: 'Auckland Locksmith, Smart Locks & Auto Help',
@@ -36,8 +36,8 @@ const homeFaqs: { question: string; answer: string }[] = [
     answer: "Houses, flats and apartments, rentals, shops, offices and other commercial sites across Auckland. If it has a door, a lock or a gate keypad, we can usually help."
   },
   {
-    question: "Do you only provide lockout and locksmithing services?",
-    answer: "No. Lockouts and lock work are our speciality, but we also do general repair and maintenance for homes and businesses, such as sticking doors, loose hinges and worn hardware."
+    question: "Do you only handle lockouts?",
+    answer: "No. Lockouts are our most common call, but we're a full-service locksmith. We also repair, replace and rekey locks, fit smart locks and keypads, and fix the latches, strike plates and handles that stop a door locking properly."
   },
   {
     question: "Do you offer emergency repairs?",
@@ -77,7 +77,7 @@ export default function Home() {
         "@type": "WebPage",
         "@id": "https://falconaccess.co.nz/#webpage",
         "url": "https://falconaccess.co.nz/",
-        "name": "Commercial & Residential Repair | Falcon Access",
+        "name": "Auckland Locksmith, Smart Locks & Auto Help | Falcon Access",
         "isPartOf": { "@id": "https://falconaccess.co.nz/#website" }
       },
       {
@@ -125,11 +125,11 @@ export default function Home() {
     <div className="w-full">
       <JsonLd id="schema-(core)-page" schema={jsonLd} />
       <Hero
-        title="Commercial & Residential Repair"
+        title="Commercial & Residential Locksmith"
         description={<>Locked out, or a lock playing up? We come to you for lockouts, lock repairs and smart locks across Auckland, with after-hours support for emergencies. Call us on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a> and we&apos;ll help you sort it.</>}
         imageSrc="/images/home/auckland-repair-maintenance-hand-tools.webp"
-        imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for repair work"
-        imageTitle="Commercial & Residential Repair Tools"
+        imageAlt="Orange bolt cutters, screwdrivers, pliers and a pipe wrench laid out for locksmith work"
+        imageTitle="Commercial & Residential Locksmith Tools"
         ctaText="Get a Quote"
         ctaLink="/contact"
         isMain={true}
@@ -212,16 +212,16 @@ export default function Home() {
       />
 
       <PhotoContentSection
-        title="Comprehensive Property Care"
+        title="Locks, Latches & Door Hardware"
         content={[
-          <p key="1">Locks are only part of what keeps a building working. We also look after the doors, frames and hardware around them, for homes, rentals, shops and offices all over Auckland.</p>,
-          <p key="2">That might be a door that drags on the floor, a hinge that&apos;s worked loose, or a latch that no longer lines up with the strike plate. Small fixes like these stop bigger problems later.</p>,
-          <p key="3">For ongoing upkeep, we can plan the work around your schedule and budget. We turn up with the tools for the job, work tidily and keep out of your way as much as we can.</p>
+          <p key="1">A lock only works if the door around it does. As locksmiths, we also look after the latches, strike plates and handles that keep a door secure, for homes, rentals, shops and offices all over Auckland.</p>,
+          <p key="2">That might be a latch that no longer lines up with the strike plate, a handle that&apos;s worked loose, or a key that has to be forced. Small fixes like these stop a lock failing later.</p>,
+          <p key="3">For landlords and businesses with several doors, we can plan lock work around your schedule and budget. We turn up with the tools for the job, work tidily and keep out of your way as much as we can.</p>
         ]}
         imageSrc="/images/home/property-maintenance-power-tools-auckland.webp"
         imageAlt="Orange cordless drill and impact driver with pliers, screwdrivers and a pipe wrench"
-        imageTitle="Property Maintenance Tools"
-        imageDescription="Cordless power tools and hand tools for commercial and residential property maintenance in Auckland."
+        imageTitle="Locksmith Tools"
+        imageDescription="Cordless power tools and hand tools for commercial and residential locksmith work in Auckland."
         ctaText="Connect Now"
         ctaHref="/contact"
         photoPosition="left"
@@ -233,7 +233,7 @@ export default function Home() {
         content={[
           <h3 key="subtitle" className="text-xl text-brand-accent font-semibold mb-6">Authentic, Reliable Service Every Time</h3>,
           <p key="1">We&apos;d rather do a job once and do it properly. You&apos;ll get straight answers about what&apos;s wrong, what it will take to fix and what it costs, before any work starts. You can read more <Link href="/about" className={darkLinkClass}>about how we work</Link>.</p>,
-          <p key="2">Whether it&apos;s a sticking hinge, a broken lock or a lockout, we go for repairs that last rather than quick patches. Give us a call on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
+          <p key="2">Whether it&apos;s a sticking latch, a broken lock or a lockout, we go for repairs that last rather than quick patches. Give us a call on <a href="tel:+6492431404" className="text-brand-accent underline hover:text-brand-accent/80 transition-colors">+64 9 243 1404</a>.</p>
         ]}
         theme="dark"
       />
@@ -241,8 +241,8 @@ export default function Home() {
       <CTASection theme="catchy" />
 
       <FAQSection
-        title="General Maintenance & Locksmith FAQs"
-        subtitle="Common questions about our repair and maintenance services."
+        title="Locksmith FAQs"
+        subtitle="Common questions about our locksmith services."
         faqs={homeFaqs}
         theme="light"
       />

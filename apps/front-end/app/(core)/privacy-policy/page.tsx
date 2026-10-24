@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">2. How We Use Your Information</h2>
             <p className="mb-4">We collect your data to:</p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>To give you our repair and maintenance services.</li>
+              <li>To give you our locksmith services.</li>
               <li>To talk to you about quotes and appointments.</li>
               <li>To process payments and manage bills.</li>
               <li>To improve our website and customer service.</li>

@@ -112,7 +112,7 @@ These appear in the LocalBusiness schema in `app/layout.tsx`, `components/Footer
 - **Email**: `info@falconaccess.co.nz`.
 - **Hours**: Monday to Saturday 7 am to 9 pm, Sunday 7 am to 7 pm, plus after-hours emergency support.
 - **Pricing**: flat NZ$20 call-out fee; work is quoted on site.
-- **Google Business Profile**: `https://www.google.com/maps?cid=14340846117585175277`. Use this CID link, never a `maps.app.goo.gl` short link (those reopen a stale map view).
+- **Google Business Profile**: `https://www.google.com/maps?cid=5329156453652255336`. Use this CID link, never a `maps.app.goo.gl` short link (those reopen a stale map view).
 
 ## Admin Portal (`app/admin`)
 - Private: every page sets `robots: { index: false, follow: false }` and a title only, and is never added to the sitemap or `llms.txt`. `next.config.ts` also sends `X-Robots-Tag: noindex` and `robots.ts` disallows `/admin`.
