@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CopyrightYear from "./CopyrightYear";
+import MapEmbed from "./MapEmbed";
 import { suburbLinksByRegion } from "@/lib/suburbs";
 
 interface FooterLink {
@@ -110,22 +111,13 @@ export default function Footer() {
             <li>Mon to Sat: 7 am to 9 pm</li>
             <li>Sun: 7 am to 7 pm</li>
             <li>
-              <a href="https://www.google.com/maps?cid=14340846117585175277" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
-                Falcon Access
+              <a href="https://www.google.com/maps?cid=5329156453652255336" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
+                Falcon Access Locksmith
               </a>
             </li>
           </ul>
-          <div className="mt-4 rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d408755.524889178!2d174.7265725!3d-36.8328344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6528990332c1aad5%3A0xc704eb90193442ed!2sFalcon%20Access!5e0!3m2!1sen!2snz!4v1790732079856!5m2!1sen!2snz"
-              width="200"
-              height="200"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="Falcon Access Location Map"
-            ></iframe>
+          <div className="mt-4 rounded-lg overflow-hidden w-fit">
+            <MapEmbed />
           </div>
           {/* Native <details> keeps the suburb links in the server HTML for crawlers and needs no JavaScript */}
           <details className="mt-4 max-w-50 group">

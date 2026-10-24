@@ -97,9 +97,9 @@ export default function RootLayout({
             { "@type": "Offer", "itemOffered": { "@id": "https://falconaccess.co.nz/auto/obd2-diagnostic#service" } }
           ]
         },
-        "hasMap": "https://www.google.com/maps?cid=14340846117585175277",
+        "hasMap": "https://www.google.com/maps?cid=5329156453652255336",
         "sameAs": [
-          "https://www.google.com/maps?cid=14340846117585175277",
+          "https://www.google.com/maps?cid=5329156453652255336",
           "https://www.facebook.com/falconaccessnz",
           "https://www.instagram.com/falconaccess/"
         ],
