@@ -55,7 +55,7 @@ describe('Page Component: (core)', () => {
 
   it('renders the h1 and key h2 headings', () => {
     render(<Page />);
-    expect(screen.getByRole('heading', { level: 1, name: 'Commercial & Residential Repair' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: 'Commercial & Residential Locksmith' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Specialised Lockout & Security Services' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Our Recent Locksmith Work in Auckland' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'The Kinds of Jobs We Do Every Week' })).toBeInTheDocument();

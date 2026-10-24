@@ -114,8 +114,8 @@ export default function ContactForm() {
           <label htmlFor="service" className="block text-sm font-bold font-montserrat text-brand-dark mb-1">Service Needed</label>
           <select id="service" name="service" required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all font-inter bg-white">
             <option value="">Select a service</option>
-            <option value="general">General Maintenance</option>
-            <option value="hardware">Hardware Repair</option>
+            <option value="general">General Locksmith Enquiry</option>
+            <option value="hardware">Lock Repair</option>
             <option value="locksmithing">Locksmithing / Security</option>
             <option value="emergency">Emergency Assistance</option>
           </select>

@@ -132,7 +132,7 @@ export default function AutoServicesPage() {
         content={[
           <p key="1">Car trouble rarely happens somewhere convenient. Our mobile auto services come to you, whether the car is in your driveway, outside work or in a supermarket car park. We bring the tools to the car, so the everyday problems don&apos;t need a tow or a trip to a workshop.</p>,
           <p key="2">Most of our auto calls are lockouts: keys on the front seat, keys in the boot, or a remote that has stopped working. After that come flat batteries and dashboard warning lights, which is where a jump start or a diagnostic scan helps.</p>,
-          <p key="3">Auto work sits alongside our commercial and residential repair and maintenance, including <Link href="/lock" className={linkClass}>locksmith services</Link> for homes and businesses, so one call covers a lot.</p>
+          <p key="3">Auto work sits alongside our commercial and residential <Link href="/lock" className={linkClass}>locksmith services</Link> for homes and businesses, so one call covers a lot.</p>
         ]}
         photoPosition="right"
         theme="light"

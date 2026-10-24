@@ -133,7 +133,7 @@ export default function LockServicesPage() {
         imageDescription="Lock cylinders and keys for residential and commercial locksmith work across Auckland."
         title="Secure Your Property with Expert Lock Services"
         content={[
-          <p key="1">Locks are one part of what we do as a commercial and residential repair and maintenance business, and they&apos;re the part people usually need in a hurry. We look after front doors, back doors, sliding doors, internal doors and shopfronts all over Auckland.</p>,
+          <p key="1">Locks are our trade as a commercial and residential locksmith, and they&apos;re usually needed in a hurry. We look after front doors, back doors, sliding doors, internal doors and shopfronts all over Auckland.</p>,
           <p key="2">We&apos;re mobile, so we come to you with the tools and common parts in the van. We&apos;re open Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm, with after-hours support for lockouts and other emergencies.</p>
         ]}
         photoPosition="right"

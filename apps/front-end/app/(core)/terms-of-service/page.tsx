@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     canonical: "/terms-of-service",
   },
   title: 'Website Terms of Service',
-  description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
+  description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before using our locksmith services.',
   openGraph: {
     images: [SHARE_IMAGE],
     title: 'Website Terms of Service',
-    description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before utilising our repair and maintenance solutions.',
+    description: 'Terms and conditions for using Falcon Access services. Please read our terms of service carefully before using our locksmith services.',
     url: "/terms-of-service",
   }
 };
@@ -52,12 +52,12 @@ export default function TermsOfServicePage() {
         <div className="bg-white rounded-2xl shadow-sm border border-brand-dark/5 p-8 md:p-12 animate-text-blurb-ready animate-play-text" style={{ animationDelay: '100ms' }}>
           <div className="prose prose-lg max-w-none font-inter text-brand-dark/80">
             <p className="mb-6">
-              Welcome to Falcon Access. These Terms of Service govern your use of our website and our commercial and residential repair and maintenance services. By booking a service or using our website, you agree to these terms.
+              Welcome to Falcon Access. These Terms of Service govern your use of our website and our commercial and residential locksmith services. By booking a service or using our website, you agree to these terms.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">1. Services Provided</h2>
             <p className="mb-6">
-              Falcon Access provides general property maintenance, hardware repair, and specialised services including locksmithing. We commit to performing all services with reasonable care and skill. We reserve the right to decline any service request that we deem unsafe or outside the scope of our expertise.
+              Falcon Access provides locksmith services, including lockouts, lock repair, rekeying and smart locks, as well as mobile auto services. We commit to performing all services with reasonable care and skill. We reserve the right to decline any service request that we deem unsafe or outside the scope of our expertise.
             </p>
 
             <h2 className="text-2xl font-bold font-montserrat text-brand-dark mt-10 mb-4">2. Quotes and Estimates</h2>

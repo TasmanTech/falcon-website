@@ -14,12 +14,12 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
   title: 'About Our Commercial & Residential Services',
-  description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
-  keywords: 'About Falcon Access, Local Locksmith Auckland, General Locksmith, Locksmith Services, Locksmith for Business, After-Hours Locksmith, Property Maintenance New Zealand, Commercial Repair Auckland, Honest Locksmith',
+  description: 'Meet Falcon Access, a local Auckland locksmith team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
+  keywords: 'About Falcon Access, Local Locksmith Auckland, General Locksmith, Locksmith Services, Locksmith for Business, After-Hours Locksmith, Locksmith New Zealand, Commercial Locksmith Auckland, Honest Locksmith',
   openGraph: {
     images: [SHARE_IMAGE],
     title: 'About Our Commercial & Residential Services',
-    description: 'Meet Falcon Access, a local Auckland locksmith and repair team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
+    description: 'Meet Falcon Access, a local Auckland locksmith team. Honest advice, after-hours lockout help and a flat NZ$20 call-out for homes and businesses.',
     url: "/about",
   }
 };
@@ -82,21 +82,21 @@ export default function AboutPage() {
 
       <PageHeaderSection
         title="About Falcon Access"
-        subtitle="A local locksmith and repair team for homes and businesses across Auckland."
+        subtitle="A local locksmith team for homes and businesses across Auckland."
       />
 
       <PhotoContentSection
         priority
         title="Who We Are"
         content={[
-          <p key="1">Falcon Access is a mobile repair and maintenance business based in Auckland. We fit, fix and look after locks, doors and the hardware around them, for homes and businesses alike.</p>,
+          <p key="1">Falcon Access is a mobile locksmith based in Auckland. We fit, fix and look after locks and the door hardware around them, for homes and businesses alike.</p>,
           <p key="2">Locks are our main trade. Most of our calls are lockouts, from front doors and bedrooms to apartments and shops, and our <Link href="/lock/lockout" className={linkClass}>lockout service</Link> is built around getting you in without damage. We also repair and replace locks, rekey cylinders, and fit and programme <Link href="/smart-lock" className={linkClass}>smart locks and keypads</Link>.</p>,
-          <p key="3">We help with more than doors, too. We take on general repairs around your property, and our <Link href="/auto" className={linkClass}>mobile auto services</Link> cover car lockouts and flat batteries.</p>
+          <p key="3">We help with more than doors, too. Our <Link href="/auto" className={linkClass}>mobile auto services</Link> cover car lockouts and flat batteries.</p>
         ]}
         imageSrc="/falcon_access_logo_about.webp"
         imageAlt="Falcon Access Official Logo"
-        imageTitle="Falcon Access Property Maintenance"
-        imageDescription="The official logo of Falcon Access, a trusted New Zealand commercial and residential repair service."
+        imageTitle="Falcon Access Locksmith"
+        imageDescription="The official logo of Falcon Access, a trusted New Zealand commercial and residential locksmith."
         ctaText="View Lock Services"
         ctaHref="/lock"
         photoPosition="right"

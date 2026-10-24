@@ -7,5 +7,5 @@ export const SHARE_IMAGE = {
   url: "/opengraph-image.jpg",
   width: 1200,
   height: 630,
-  alt: "Trade hand tools laid out for commercial and residential repair work in Auckland",
+  alt: "Trade hand tools laid out for commercial and residential locksmith work in Auckland",
 };
