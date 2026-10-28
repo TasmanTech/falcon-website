@@ -469,21 +469,6 @@
     {
       "page": "/",
       "slot": "gallery",
-      "source": "Gallery/brass-privacy-door-knob-auckland.jpg",
-      "output": "images/home/gallery/brass-privacy-door-knob-auckland.webp",
-      "crop": {
-        "left": 0.3125,
-        "top": 0,
-        "width": 0.5625,
-        "height": 1
-      },
-      "alt": "Polished brass privacy door knob with a push-button lock on a white interior door",
-      "title": "Door Knob Lock Repair Auckland",
-      "description": "A brass privacy knob on an interior door, a common lockout when the button locks behind you."
-    },
-    {
-      "page": "/",
-      "slot": "gallery",
       "source": "Gallery/lockwood-security-deadlock-timber-door-auckland.jpg",
       "output": "images/home/gallery/lockwood-security-deadlock-timber-door-auckland.webp",
       "crop": {
