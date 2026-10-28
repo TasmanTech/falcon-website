@@ -63,14 +63,6 @@ export const homeGalleryImages: GalleryImage[] = [
     height: 992,
   },
   {
-    src: '/images/home/gallery/brass-privacy-door-knob-auckland.webp',
-    alt: 'Polished brass privacy door knob with a push-button lock on a white interior door',
-    title: 'Door Knob Lock Repair Auckland',
-    description: 'A brass privacy knob on an interior door, a common lockout when the button locks behind you.',
-    width: 900,
-    height: 1200,
-  },
-  {
     src: '/images/home/gallery/lockwood-security-deadlock-timber-door-auckland.webp',
     alt: 'Lockwood security deadlock cylinder on a black painted timber door stile',
     title: 'Lockwood Deadlock Auckland',
