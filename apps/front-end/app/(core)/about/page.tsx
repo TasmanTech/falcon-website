@@ -43,7 +43,7 @@ const aboutFaqs: { question: string; answer: string }[] = [
   },
   {
     question: "Do you work outside normal hours?",
-    answer: "Yes. We're open Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm, with after-hours emergency support. Work outside normal hours costs a bit more, and we'll tell you before we start."
+    answer: "Yes. We're open Monday to Friday 6 am to 10:30 pm, Saturday 6 am to 9 pm and Sunday 9 am to 9 pm, with after-hours emergency support. Work outside normal hours costs a bit more, and we'll tell you before we start."
   }
 ];
 

@@ -134,7 +134,7 @@ export default function LockServicesPage() {
         title="Secure Your Property with Expert Lock Services"
         content={[
           <p key="1">Locks are our trade as a commercial and residential locksmith, and they&apos;re usually needed in a hurry. We look after front doors, back doors, sliding doors, internal doors and shopfronts all over Auckland.</p>,
-          <p key="2">We&apos;re mobile, so we come to you with the tools and common parts in the van. We&apos;re open Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm, with after-hours support for lockouts and other emergencies.</p>
+          <p key="2">We&apos;re mobile, so we come to you with the tools and common parts in the van. We&apos;re open Monday to Friday 6 am to 10:30 pm, Saturday 6 am to 9 pm and Sunday 9 am to 9 pm, with after-hours support for lockouts and other emergencies.</p>
         ]}
         photoPosition="right"
         theme="light"

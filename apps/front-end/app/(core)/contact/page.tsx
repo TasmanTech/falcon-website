@@ -35,7 +35,7 @@ const contactFaqs: { question: string; answer: string }[] = [
   },
   {
     question: "What are your opening hours?",
-    answer: "Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm. We also offer after-hours emergency support."
+    answer: "Monday to Friday 6 am to 10:30 pm, Saturday 6 am to 9 pm and Sunday 9 am to 9 pm. We also offer after-hours emergency support."
   },
   {
     question: "How much is the call-out fee?",
@@ -124,8 +124,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold font-montserrat text-brand-dark/70 uppercase tracking-wider mb-1">Hours</h3>
-                    <p className="text-lg font-bold text-brand-dark">Mon to Sat: 7 am to 9 pm</p>
-                    <p className="text-lg font-bold text-brand-dark">Sun: 7 am to 7 pm</p>
+                    <p className="text-lg font-bold text-brand-dark">Mon to Fri: 6 am to 10:30 pm</p>
+                    <p className="text-lg font-bold text-brand-dark">Sat: 6 am to 9 pm</p>
+                    <p className="text-lg font-bold text-brand-dark">Sun: 9 am to 9 pm</p>
                     <p className="text-sm text-brand-dark/70 font-inter mt-1">Mobile service across Auckland City, the North Shore, and West, East, and South Auckland.</p>
                   </div>
                 </div>
@@ -181,7 +182,7 @@ export default function ContactPage() {
       <TextContentSection
         title="Service Areas and Hours"
         content={[
-          <p key="1">We cover Auckland City, the North Shore, and West, East and South Auckland. We&apos;re open Monday to Saturday from 7 am to 9 pm and Sunday from 7 am to 7 pm.</p>,
+          <p key="1">We cover Auckland City, the North Shore, and West, East and South Auckland. We&apos;re open Monday to Friday from 6 am to 10:30 pm, Saturday from 6 am to 9 pm and Sunday from 9 am to 9 pm.</p>,
           <p key="2">Outside those hours, we offer after-hours emergency support. Work outside normal hours costs a bit more, and we&apos;ll tell you before we start.</p>
         ]}
         theme="dark"

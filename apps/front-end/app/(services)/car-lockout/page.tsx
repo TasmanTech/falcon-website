@@ -153,7 +153,7 @@ export default function CarLockoutPage() {
         title="What Affects the Price"
         content={[
           <p key="1">The call-out is a flat NZ$20. After that, car lockouts are priced on site by the vehicle and the entry method it needs. Keys on the seat of a common hatchback are usually straightforward. A car with deadlocks, or keys in a boot that only opens electrically, takes more time.</p>,
-          <p key="2">We&apos;re available Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm, with after-hours emergency support outside those times. Work outside normal hours costs a bit more, and we&apos;ll tell you before we start.</p>,
+          <p key="2">We&apos;re available Monday to Friday 6 am to 10:30 pm, Saturday 6 am to 9 pm and Sunday 9 am to 9 pm, with after-hours emergency support outside those times. Work outside normal hours costs a bit more, and we&apos;ll tell you before we start.</p>,
           <p key="3">If a warning light stays on after a flat battery, our <Link href="/auto/obd2-diagnostic" className={linkClass}>OBD2 diagnostic scan</Link> reads the fault codes and explains them in plain English. House keys locked in the car too? Our <Link href="/lock/lockout" className={linkClass}>house lockout service</Link> can get you inside at home as well.</p>
         ]}
         theme="light"
