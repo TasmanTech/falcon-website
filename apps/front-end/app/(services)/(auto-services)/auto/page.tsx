@@ -170,7 +170,7 @@ export default function AutoServicesPage() {
         title="Pricing and Hours"
         content={[
           <p key="1">Every job starts with a flat <strong>NZ$20 call-out fee</strong>. After that, car lockouts are priced on site by the vehicle and the entry method, and jump starts and scans are quoted before we begin. You agree the price before any work starts.</p>,
-          <p key="2">We&apos;re available Monday to Saturday 7 am to 9 pm and Sunday 7 am to 7 pm, with after-hours emergency support outside those times. Work outside normal hours costs a bit more, and we&apos;ll tell you before we start.</p>,
+          <p key="2">We&apos;re available Monday to Friday 6 am to 10:30 pm, Saturday 6 am to 9 pm and Sunday 9 am to 9 pm, with after-hours emergency support outside those times. Work outside normal hours costs a bit more, and we&apos;ll tell you before we start.</p>,
           <p key="3">Not urgent? <Link href="/contact" className={linkClass}>Send us a request</Link> with a few details about the car and where it is, and we&apos;ll get back to you.</p>
         ]}
         theme="white"

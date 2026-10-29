@@ -108,8 +108,9 @@ export default function Footer() {
           <ul className="space-y-2 font-inter text-brand-light/80 mb-4">
             <li>Phone: <a href="tel:+6492431404" className="underline hover:text-brand-accent transition-colors">+64 9 243 1404</a></li>
             <li>Email: <a href="mailto:info@falconaccess.co.nz" className="underline hover:text-brand-accent transition-colors">info@falconaccess.co.nz</a></li>
-            <li>Mon to Sat: 7 am to 9 pm</li>
-            <li>Sun: 7 am to 7 pm</li>
+            <li>Mon to Fri: 6 am to 10:30 pm</li>
+            <li>Sat: 6 am to 9 pm</li>
+            <li>Sun: 9 am to 9 pm</li>
             <li>
               <a href="https://www.google.com/maps?cid=5329156453652255336" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
                 Falcon Access Locksmith
